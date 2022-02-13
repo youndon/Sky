@@ -55,7 +55,7 @@ If you do not have git, you can click the following button to download all the c
 
 Open the project in Android Studio Artic Fox or newer and select ‘File > Import Project' and browse to the `ThemingCodelab` directory.
 
-The project contains three main packages:
+The project contains three com.example.sky.main packages:
 
 - `com.codelab.theming.data` This contains model classes and sample data. You should not need to edit this package during this codelab.
 - `com.codelab.theming.ui.start` This is the starting point for the codelab, you should make all changes requested in this codelab **in this package**.
@@ -85,7 +85,7 @@ Material Design defines a number of semantically named [colors](https://material
 
 ![bb8ab0b2d8f9bca8.png](https://developer.android.com/codelabs/jetpack-compose-theming/img/bb8ab0b2d8f9bca8.png)
 
-Primary is your main brand color and secondary is used to provide accents. You can supply darker/lighter variants for contrasting areas. Background and surface colors are used for containers holding components which notionally live on a "surface" in your application. Material also defines "on" colors—colors to use for content on top of one of the named colors e.g. text in a ‘surface' colored container should be colored ‘on surface'. Material components are configured to use these theme colors, for example by default a [Floating Action Button](https://material.io/components/buttons-floating-action-button) is colored `secondary`, [Cards](https://material.io/components/cards) default to `surface` etc.
+Primary is your com.example.sky.main brand color and secondary is used to provide accents. You can supply darker/lighter variants for contrasting areas. Background and surface colors are used for containers holding components which notionally live on a "surface" in your application. Material also defines "on" colors—colors to use for content on top of one of the named colors e.g. text in a ‘surface' colored container should be colored ‘on surface'. Material components are configured to use these theme colors, for example by default a [Floating Action Button](https://material.io/components/buttons-floating-action-button) is colored `secondary`, [Cards](https://material.io/components/cards) default to `surface` etc.
 
 By defining named colors, it becomes possible to provide alternate color palettes such as both a light and a dark theme:
 
@@ -131,7 +131,7 @@ fun MaterialTheme(
 
 You can later retrieve the parameters passed into this composable using the `MaterialTheme` `object`, which exposes `colors`, `typography` and `shapes` properties. We'll go into each of these in depth later.
 
-Open `Home.kt` and locate the `Home` composable function — this is the main entry point to the app. Notice that while we declare a `MaterialTheme`, we do not specify any parameters so receive the default "baseline" styling:
+Open `Home.kt` and locate the `Home` composable function — this is the com.example.sky.main entry point to the app. Notice that while we declare a `MaterialTheme`, we do not specify any parameters so receive the default "baseline" styling:
 
 ```
 @Composable
@@ -701,7 +701,7 @@ Text(
 )
 ```
 
-Many places in our app automatically apply theme `TextStyle`s, for example the `TopAppBar` styles it's `title` as `h6` and [`ListItem`](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#ListItem(androidx.compose.ui.Modifier,kotlin.Function0,kotlin.Function0,kotlin.Boolean,kotlin.Function0,kotlin.Function0,kotlin.Function0)) styles the main and secondary text to `subtitle1` and `body2` respectively.
+Many places in our app automatically apply theme `TextStyle`s, for example the `TopAppBar` styles it's `title` as `h6` and [`ListItem`](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#ListItem(androidx.compose.ui.Modifier,kotlin.Function0,kotlin.Function0,kotlin.Boolean,kotlin.Function0,kotlin.Function0,kotlin.Function0)) styles the com.example.sky.main and secondary text to `subtitle1` and `body2` respectively.
 
 Let's apply the theme typographic styles to the rest of our app. Set `Header` to use `subtitle2` and text in the `FeaturedPost` to use `h6` for the title and `body2` for the author and metadata:
 

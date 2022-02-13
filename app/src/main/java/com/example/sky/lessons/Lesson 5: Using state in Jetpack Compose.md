@@ -697,7 +697,7 @@ In the last section we learned how composable functions have memory, now we're g
 
 ### **Todo input (state: collapsed)** ![f00186b8b5b43ea8.png](https://developer.android.com/codelabs/jetpack-compose-state/img/f00186b8b5b43ea8.png)
 
-Our designer has moved on from disheveled design and is now into post-Material. The new design for todo input takes up the same space as a collapsible header and has two main states: expanded and collapsed. The expanded version will show whenever the text is not empty.
+Our designer has moved on from disheveled design and is now into post-Material. The new design for todo input takes up the same space as a collapsible header and has two com.example.sky.main states: expanded and collapsed. The expanded version will show whenever the text is not empty.
 
 To build this, first we'll build the text and button, then we'll look at adding the auto-hiding icons.
 
@@ -798,7 +798,7 @@ fun TodoItemInput(onItemComplete: (TodoItem) -> Unit) {
 }
 ```
 
-`TodoItemInput` has only one parameter, an event `onItemComplete`. When the user completes a `TodoItem` the event will be triggered. This pattern of passing a lambda is the main way that you define custom events in compose.
+`TodoItemInput` has only one parameter, an event `onItemComplete`. When the user completes a `TodoItem` the event will be triggered. This pattern of passing a lambda is the com.example.sky.main way that you define custom events in compose.
 
 Also, update the `TodoScreen` composable to call `TodoItemInput` in the background `TodoItemInputBackground` that's already defined in the project:
 
@@ -865,7 +865,7 @@ In order to do that, we'll need to move the state from the child composable, `To
 
 ![866bd1a19a36fbab.png](https://developer.android.com/codelabs/jetpack-compose-state/img/866bd1a19a36fbab.png)
 
-This pattern is called **state hoisting**. We will "hoist" (or lift) state from a composable to make it stateless. State hoisting is the main pattern to build unidirectional data flow designs in Compose.
+This pattern is called **state hoisting**. We will "hoist" (or lift) state from a composable to make it stateless. State hoisting is the com.example.sky.main pattern to build unidirectional data flow designs in Compose.
 
 **State hoisting** is a pattern of moving state up to make a component stateless.
 

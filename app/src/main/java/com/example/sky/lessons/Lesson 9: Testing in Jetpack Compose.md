@@ -47,7 +47,7 @@ For this codelab, use the **TestingCodelab** project.
 
 The project is built in multiple git branches:
 
-- **main** – the starter code for this project, you will make changes to this to complete the codelab
+- **com.example.sky.main** – the starter code for this project, you will make changes to this to complete the codelab
 - **end** – contains the solution to this codelab
 
 ## Examine the project structure
@@ -116,7 +116,7 @@ class TopAppBarTest {
 
 ## Testing in isolation
 
-In a Compose test, we can start the app's main activity similarly to how you would do it in the Android View world using Espresso, for example. You can do this with `createAndroidComposeRule`.
+In a Compose test, we can start the app's com.example.sky.main activity similarly to how you would do it in the Android View world using Espresso, for example. You can do this with `createAndroidComposeRule`.
 
 ```
 // Don't copy this over
@@ -604,7 +604,7 @@ You might already have guessed that the problem is the infinite flashing animati
 
 Let's look at the implementation of the infinite animation:
 
-### app/src/main/java/com/example/compose/rally/ui/overview/OverviewScreen.kt
+### app/src/com.example.sky.main/java/com/example/compose/rally/ui/overview/OverviewScreen.kt
 
 ```
 var currentTargetElevation by remember {  mutableStateOf(1.dp) }

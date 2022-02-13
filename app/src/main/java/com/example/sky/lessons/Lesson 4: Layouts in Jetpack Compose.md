@@ -381,7 +381,7 @@ With preview:
 
 ![54b175d305766292.png](https://developer.android.com/codelabs/jetpack-compose-layouts/img/54b175d305766292.png)
 
-If we wanted to have a `Column` with the main content of our screen, we should apply the modifier to `Column`:
+If we wanted to have a `Column` with the com.example.sky.main content of our screen, we should apply the modifier to `Column`:
 
 ```
 @Composable
@@ -1301,7 +1301,7 @@ If you use the Interactive Preview button ![bb4c8dfe4b8debaa.png](https://develo
 
 Now that we know the basics of modifiers, how to create custom composables and measure and position children manually, we'll better understand how modifiers work under the hood.
 
-As a recap, modifiers allow you to customize the behavior of a composable. You can combine multiple modifiers by chaining them together. There are multiple types of modifiers, but in this section, we'll focus on [`LayoutModifier`](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main-release:compose/ui/ui/src/commonMain/kotlin/androidx/compose/ui/layout/LayoutModifier.kt)s since they can change the way a UI component is measured and laid out.
+As a recap, modifiers allow you to customize the behavior of a composable. You can combine multiple modifiers by chaining them together. There are multiple types of modifiers, but in this section, we'll focus on [`LayoutModifier`](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-com.example.sky.main-release:compose/ui/ui/src/commonMain/kotlin/androidx/compose/ui/layout/LayoutModifier.kt)s since they can change the way a UI component is measured and laid out.
 
 Composables are responsible for their own content and that content may not be inspected or manipulated by a parent unless that composables's author exposes an explicit API to do so. Similarly, modifiers of a composable decorate what they modify in the same opaque way: modifiers are encapsulated.
 
