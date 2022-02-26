@@ -2,7 +2,8 @@ package com.example.sky
 
 import android.annotation.SuppressLint
 import android.util.Log
- import androidx.compose.animation.animateColor
+import android.widget.Toast
+import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -28,14 +29,12 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.squareup.moshi.Moshi
+import kotlinx.coroutines.*
+import retrofit2.Retrofit
+import kotlin.coroutines.coroutineContext
 import kotlin.random.Random
 
-@OptIn(DelicateCoroutinesApi::class)
-fun main() {
 
-}
+
 
