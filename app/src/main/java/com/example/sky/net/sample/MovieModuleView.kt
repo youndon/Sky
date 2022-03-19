@@ -1,4 +1,4 @@
-package com.example.sky.network
+package com.example.sky.net.sample
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
@@ -21,8 +21,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.rememberImagePainter
 import coil.size.Scale

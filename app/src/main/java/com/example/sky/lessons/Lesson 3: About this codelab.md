@@ -12,7 +12,7 @@ A Compose app is made up of composable functions - just regular functions marked
 
 By making small reusable composables - it's easy to build up a library of UI elements used in your app. Each one is responsible for one part of the screen and can be edited independently.
 
-**Note:** In this codelab, the terms "UI Components," "Composable functions," and "composables" are used interchangeably to refer to the same concept.
+**com.example.sky.database.Note:** In this codelab, the terms "UI Components," "Composable functions," and "composables" are used interchangeably to refer to the same concept.
 
 ## Prerequisites
 
@@ -41,7 +41,7 @@ When creating a new project, choose **Empty Compose Activity** from the availabl
 
 Click **Next** and configure your project as usual. Make sure you select a *minimumSdkVersion* of at least API level 21, which is the minimum API Compose supports.
 
-**Note:** For more information about setting up Compose with an empty activity or adding it to an existing project, check out the [documentation](https://developer.android.com/jetpack/compose/setup).
+**com.example.sky.database.Note:** For more information about setting up Compose with an empty activity or adding it to an existing project, check out the [documentation](https://developer.android.com/jetpack/compose/setup).
 
 When choosing the **Empty Compose Activity** template, the following code is generated for you in your project:
 
@@ -78,10 +78,10 @@ dependencies {
 }
 ```
 
-After syncing the project, open `MainActivity.kt` and check out the code.
+After syncing the project, open `com.example.sky.com.example.sky.com.example.sky.MainActivity.kt` and check out the code.
 
 ```
-class MainActivity : AppCompatActivity() {
+class com.example.sky.com.example.sky.com.example.sky.MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -142,14 +142,14 @@ fun Greeting(name: String) {
 }
 ```
 
-**Note:** Composable functions are Kotlin functions that are marked with the `@Composable` annotation, as you can see in the code snippet above.
+**com.example.sky.database.Note:** Composable functions are Kotlin functions that are marked with the `@Composable` annotation, as you can see in the code snippet above.
 
 ## Compose in an Android app
 
-With Compose, `Activities` remain the entry point to an Android app. In our project, `MainActivity` is launched when the user opens the app (as it's specified in the `AndroidManifest.xml` file). You use `setContent` to define your layout, but instead of using an XML file as you'd do in the traditional View system, you call Composable functions within it.
+With Compose, `Activities` remain the entry point to an Android app. In our project, `com.example.sky.com.example.sky.com.example.sky.MainActivity` is launched when the user opens the app (as it's specified in the `AndroidManifest.xml` file). You use `setContent` to define your layout, but instead of using an XML file as you'd do in the traditional View system, you call Composable functions within it.
 
 ```
-class MainActivity : AppCompatActivity() {
+class com.example.sky.com.example.sky.com.example.sky.MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -166,7 +166,7 @@ class MainActivity : AppCompatActivity() {
 
 `BasicsCodelabTheme` is a way to style Composable functions. You'll see more about this in the **Theming your app** section. To see how the text displays on the screen, you can either run the app in an emulator or device, or use the Android Studio preview.
 
-To use the Android Studio preview, you just have to mark any parameterless Composable function or functions with default parameters with the `@Preview` annotation and build your project. You can already see a `Preview Composable` function in the `MainActivity.kt` file. You can have multiple previews in the same file and give them names.
+To use the Android Studio preview, you just have to mark any parameterless Composable function or functions with default parameters with the `@Preview` annotation and build your project. You can already see a `Preview Composable` function in the `com.example.sky.com.example.sky.com.example.sky.MainActivity.kt` file. You can have multiple previews in the same file and give them names.
 
 ```
 @Preview(showBackground = true, name = "Text preview")
@@ -180,7 +180,7 @@ fun DefaultPreview() {
 
 ![88d6e7a2cfc33ed9.png](https://developer.android.com/codelabs/jetpack-compose-basics/img/88d6e7a2cfc33ed9.png)
 
-**Note:** When importing classes related to Jetpack Compose in this project, use those from:
+**com.example.sky.database.Note:** When importing classes related to Jetpack Compose in this project, use those from:
 
 - androidx.compose.* for compiler and runtime classes
 - androidx.compose.ui.* for UI toolkit and libraries
@@ -243,16 +243,16 @@ Click **Build & Refresh** to see the new changes.
 
 The more components you add to the UI, the more levels of nesting you create, just like other functions in your codebase. This can affect readability if a function becomes really large. By making small reusable components it's easy to build up a library of UI elements used in your app. Each one is responsible for one small part of the screen and can be edited independently.
 
-**Note:** The `@Composable` annotation is necessary just for functions which emit UI or call other composable functions. They can call both regular and other composable functions. If a function doesn't meet these requirements, it shouldn't be annotated with `@Composable`.
+**com.example.sky.database.Note:** The `@Composable` annotation is necessary just for functions which emit UI or call other composable functions. They can call both regular and other composable functions. If a function doesn't meet these requirements, it shouldn't be annotated with `@Composable`.
 
-Notice how the composable functions in `MainActivity.kt` are outside of the `MainActivity` class, declared as top-level functions. The more code you have outside of the Activity, the more you can share and reuse.
+Notice how the composable functions in `com.example.sky.com.example.sky.com.example.sky.MainActivity.kt` are outside of the `com.example.sky.com.example.sky.com.example.sky.MainActivity` class, declared as top-level functions. The more code you have outside of the Activity, the more you can share and reuse.
 
 First, refactor your code to make it more reusable and create a new `@Composable MyApp` function that contains the Compose UI logic specific to this Activity.
 
 Second, it doesn't make sense that the background color of the app is placed in the reusable `Greeting` Composable. That configuration should be applied to every piece of UI on this screen, so move the `Surface` from `Greeting` to your new `MyApp` function:
 
 ```
-class MainActivity : AppCompatActivity() {
+class com.example.sky.com.example.sky.com.example.sky.MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -301,7 +301,7 @@ fun MyApp(content: @Composable () -> Unit) {
 }
 ```
 
-**Note**: Watch out for the extra parentheses in `@Composable`**`()`** when using a Composable function as a parameter. Since the annotation is applied on a function, they're needed!
+**com.example.sky.database.Note**: Watch out for the extra parentheses in `@Composable`**`()`** when using a Composable function as a parameter. Since the annotation is applied on a function, they're needed!
 
 ```
 fun MyApp(content: @Composable` **`()`** `-> Unit) { ... }
@@ -312,7 +312,7 @@ Inside your function, you define all of the shared configuration you want your c
 You can use it like this (utilizing Kotlin's [trailing lambda syntax](https://kotlinlang.org/docs/reference/lambdas.html#passing-a-lambda-to-the-last-parameter)):
 
 ```
-class MainActivity : AppCompatActivity() {
+class com.example.sky.com.example.sky.com.example.sky.MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -364,12 +364,12 @@ fun MyScreenContent() {
 }
 ```
 
-**Note:** `Divider` is a provided composable function that creates a horizontal divider.
+**com.example.sky.database.Note:** `Divider` is a provided composable function that creates a horizontal divider.
 
-As you want `MyScreenContent` to be what your users see when they open the app, you have to modify the `MainActivity` code accordingly. Also, you can modify the preview code, so that you can iterate faster in Android Studio without deploying the app to a device or emulator.
+As you want `MyScreenContent` to be what your users see when they open the app, you have to modify the `com.example.sky.com.example.sky.com.example.sky.MainActivity` code accordingly. Also, you can modify the preview code, so that you can iterate faster in Android Studio without deploying the app to a device or emulator.
 
 ```
-class MainActivity : AppCompatActivity() {
+class com.example.sky.com.example.sky.com.example.sky.MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -393,7 +393,7 @@ If you refresh the preview, you'll see the items placed vertically:
 
 ![148453907504be1f.png](https://developer.android.com/codelabs/jetpack-compose-basics/img/148453907504be1f.png)
 
-**Note:** When a Composable function is called, it adds elements to the Compose UI hierarchy. You can call the same function (with potentially different parameters) from multiple parts of your code to add new elements. You can think of this as if UI elements are emitted by calling the composable function.
+**com.example.sky.database.Note:** When a Composable function is called, it adds elements to the Compose UI hierarchy. You can call the same function (with potentially different parameters) from multiple parts of your code to add new elements. You can think of this as if UI elements are emitted by calling the composable function.
 
 ## Compose and Kotlin
 
@@ -448,7 +448,7 @@ fun Counter() {
 }
 ```
 
-**Note:** Compose provides different types of `Button` according to the [Material Design Buttons spec](https://material.io/develop/android/components/buttons/)—`Button`, `OutlinedButton`, and `TextButton`. In your case, you'll use a `Button` that has a `Text` as the `Button` content showing how many times it's been clicked.
+**com.example.sky.database.Note:** Compose provides different types of `Button` according to the [Material Design Buttons spec](https://material.io/develop/android/components/buttons/)—`Button`, `OutlinedButton`, and `TextButton`. In your case, you'll use a `Button` that has a `Text` as the `Button` content showing how many times it's been clicked.
 
 Since `Button` reads `count.value`, `Button` will be recomposed whenever it changes and will display the new value of `count`.
 
@@ -619,7 +619,7 @@ fun NameList(names: List<String>, modifier: Modifier = Modifier) {
 }
 ```
 
-**Note:** `LazyColumn` doesn't recycle its children like `RecyclerView`. It emits new Composables as you scroll through it and is still performant as emitting Composables is relatively cheap compared to instantiating Android `Views`.
+**com.example.sky.database.Note:** `LazyColumn` doesn't recycle its children like `RecyclerView`. It emits new Composables as you scroll through it and is still performant as emitting Composables is relatively cheap compared to instantiating Android `Views`.
 
 ![7021b34729244ba8.gif](https://developer.android.com/codelabs/jetpack-compose-basics/img/7021b34729244ba8.gif)
 
@@ -651,7 +651,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.codelab.basics.ui.BasicsCodelabTheme
 
-class MainActivity : AppCompatActivity() {
+class com.example.sky.com.example.sky.com.example.sky.MainActivity : AppCompatActivity() {
    override fun onCreate(savedInstanceState: Bundle?) {
        super.onCreate(savedInstanceState)
        setContent {
@@ -757,7 +757,7 @@ fun Greeting(name: String) {
 }
 ```
 
-**Note:** Make sure these imports are included in your file otherwise delegate properties (the `by` keyword) won't work:
+**com.example.sky.database.Note:** Make sure these imports are included in your file otherwise delegate properties (the `by` keyword) won't work:
 
 ```
 import androidx.compose.runtime.getValue
@@ -788,7 +788,7 @@ fun Greeting(name: String) {
 }
 ```
 
-**Note:** As `isSelected` state is hoisted in the `Greeting` composable, the `NameList` will not keep track if its items are selected or not. Once items are scrolled out of the screen, their states will be set to `false`. The behavior is intended as the goal of this exercise is to keep a simple list. To keep track of selected items in the list, their `isSelected` state should be hoisted at the `NameList` level.
+**com.example.sky.database.Note:** As `isSelected` state is hoisted in the `Greeting` composable, the `NameList` will not keep track if its items are selected or not. Once items are scrolled out of the screen, their states will be set to `false`. The behavior is intended as the goal of this exercise is to keep a simple list. To keep track of selected items in the list, their `isSelected` state should be hoisted at the `NameList` level.
 
 ## Full code for this section
 
@@ -819,7 +819,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.codelab.basics.ui.BasicsCodelabTheme
 
-class MainActivity : AppCompatActivity() {
+class com.example.sky.com.example.sky.com.example.sky.MainActivity : AppCompatActivity() {
    override fun onCreate(savedInstanceState: Bundle?) {
        super.onCreate(savedInstanceState)
        setContent {
@@ -908,7 +908,7 @@ You didn't define any styling for any composables in the previous examples of th
 If you open the `Theme.kt` file, you see that `BasicsCodelabTheme` uses `MaterialTheme` in its implementation. `MaterialTheme` is a Composable function that reflects the styling principles from the [Material design specification](https://material.io/design/material-theming/implementing-your-theme.html). That styling information cascades down to the components that are inside it, which may read the information to style themselves. In your original simple UI, you can use `BasicsCodelabTheme` as follows:
 
 ```
-class MainActivity : AppCompatActivity() {
+class com.example.sky.com.example.sky.com.example.sky.MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -936,7 +936,7 @@ fun Greeting(name: String) {
 
 The `Text` composable in the example above sets three arguments, a String to be displayed, modifiers, and a `TextStyle`. You can create your own `TextStyle`, or you can retrieve a theme-defined style by using `MaterialTheme.typography`. This construct gives you access to the Material-defined text styles, such as `h1`, `body1` or `subtitle1`. In your example, you use the `h1` style defined in the theme.
 
-**Note:** Whenever you want to query a color or a text style from your Theme, use `MaterialTheme.colors` or `MaterialTheme.typography` in a Composable function.
+**com.example.sky.database.Note:** Whenever you want to query a color or a text style from your Theme, use `MaterialTheme.colors` or `MaterialTheme.typography` in a Composable function.
 
 For example, `style = MaterialTheme.typography.body1`
 
@@ -956,7 +956,7 @@ fun DefaultPreview() {
 
 ![1e9254f91d86a92b.png](https://developer.android.com/codelabs/jetpack-compose-basics/img/1e9254f91d86a92b.png)
 
-**Note:** You can modify a predefined style by using the `copy` function.
+**com.example.sky.database.Note:** You can modify a predefined style by using the `copy` function.
 
 For example, `style = MaterialTheme.typography.body1.copy(color = Color.Yellow)`
 

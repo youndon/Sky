@@ -502,7 +502,7 @@ But node 6, the selected tab, has one and we can now see the ‘Text' property:
 
 In order to verify the correct behavior as we wanted, you'll write a matcher that finds one node with text "ACCOUNTS" whose parent is a node with content description "Accounts".
 
-Check the [Compose Testing Cheat Sheet](https://developer.android.com/jetpack/compose/testing-cheatsheet) again and try to find a way to write that matcher. Note that you can use boolean operators such as `and` and `or` with matchers.
+Check the [Compose Testing Cheat Sheet](https://developer.android.com/jetpack/compose/testing-cheatsheet) again and try to find a way to write that matcher. com.example.sky.database.Note that you can use boolean operators such as `and` and `or` with matchers.
 
 All finders have a parameter called `useUnmergedTree`. Set it to `true` to use the unmerged tree.
 
@@ -538,7 +538,7 @@ fun rallyTopAppBarTest_currentLabelExists() {
 }
 ```
 
-Note: In this case, strictly, you don't have to add the parent to the matcher because it's a very isolated test. However, it's a good idea to avoid using broad finders alone (such as `hasText`) which might fail in larger tests (when other instances of the text might be found).
+com.example.sky.database.Note: In this case, strictly, you don't have to add the parent to the matcher because it's a very isolated test. However, it's a good idea to avoid using broad finders alone (such as `hasText`) which might fail in larger tests (when other instances of the text might be found).
 
 Go ahead and run it:
 
@@ -554,7 +554,7 @@ We'll use the Overview screen for this step, which looks like this when you run 
 
 ![17e585f529a6d613.gif](https://developer.android.com/codelabs/jetpack-compose-testing/img/17e585f529a6d613.gif)
 
-Note the repeating flashing animation of the Alerts card, drawing attention to this element.
+com.example.sky.database.Note the repeating flashing animation of the Alerts card, drawing attention to this element.
 
 Create another test class called `OverviewScreenTest` and add the following content:
 

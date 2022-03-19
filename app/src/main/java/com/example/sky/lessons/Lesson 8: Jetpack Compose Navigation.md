@@ -218,7 +218,7 @@ At this point the top bar is not yet wired up, so clicking on the tabs won't cha
 
 In this step you'll wire up the `RallyTabRow` and will get to delete the current manual navigation code. After you have finished this step, the navigation component will completely take care of routing.
 
-**Note:** To make your code testable, we recommend not passing around the navController. In this codelab, you will be providing callbacks to enable navigating from a single point of responsibility.
+**com.example.sky.database.Note:** To make your code testable, we recommend not passing around the navController. In this codelab, you will be providing callbacks to enable navigating from a single point of responsibility.
 
 Still in `RallyActivity`, you'll find that the `RallyTabRow` composable has a callback when a tab has been clicked, called `onTabSelected`. Update the selection code to use `navController` for navigating to the selected screen.
 
@@ -326,7 +326,7 @@ enum class RallyScreen(
 
 Run the app again. You'll see the original three screens and can navigate between them through the TabRow.
 
-**Note:** With the above changes, back navigation is now supported through the Navigation Component. Switching between the screens and then pressing the back button will result in popping the stack and bringing you to the previous destination.
+**com.example.sky.database.Note:** With the above changes, back navigation is now supported through the Navigation Component. Switching between the screens and then pressing the back button will result in popping the stack and bringing you to the previous destination.
 
 ## **Enable clicks on OverviewScreen**
 
@@ -355,7 +355,7 @@ Let's add some new functionality to Rally! We'll add an Accounts screen which sh
 
 A navigation argument makes the route dynamic. Navigation arguments are a very powerful tool to make routing behavior dynamic by passing one or more arguments into a route and adjusting argument types or default values.
 
-**Note:** A named argument is provided inside routes in curly braces like this `{argument}`. It is a syntax that looks similar to Kotlin's string template syntax, using the dollar sign `$` to escape variable names.
+**com.example.sky.database.Note:** A named argument is provided inside routes in curly braces like this `{argument}`. It is a syntax that looks similar to Kotlin's string template syntax, using the dollar sign `$` to escape variable names.
 
 In `RallyActivity` add a new destination to the graph by adding a new composable to the existing `NavHost` with the argument `Accounts/{name}`. For this destination we'll also specify a list of `navArgument`s. We'll define a single argument called "name" of type `String`.
 
@@ -600,7 +600,7 @@ fun RallyApp() {
 
 ## [7. Testing Navigation in Compose](https://developer.android.com/codelabs/jetpack-compose-navigation?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-navigation#6)
 
-**Note:** This codelab does not teach the Compose testing basics. To learn these, visit the Compose Testing [docs](https://developer.android.com/jetpack/compose/testing) or [codelab](https://developer.android.com/codelabs/jetpack-compose-testing). To learn more about advanced testing of navigation code, such as using the `TestNavHostController`, visit the [Test Navigation](https://developer.android.com/guide/navigation/navigation-testing) guide.
+**com.example.sky.database.Note:** This codelab does not teach the Compose testing basics. To learn these, visit the Compose Testing [docs](https://developer.android.com/jetpack/compose/testing) or [codelab](https://developer.android.com/codelabs/jetpack-compose-testing). To learn more about advanced testing of navigation code, such as using the `TestNavHostController`, visit the [Test Navigation](https://developer.android.com/guide/navigation/navigation-testing) guide.
 
 From the beginning of this codelab we made sure not to pass the `navController` directly into any composables, but instead you passed callbacks as parameters. This means that all your composables are individually testable. But you also can test the entire `NavHost`, and that's what this step is all about. To test individual Composable functions, make sure to check out the [Testing in Jetpack Compose](https://developer.android.com/codelabs/jetpack-compose-testing) codelab.
 
@@ -657,7 +657,7 @@ class RallyNavHostTest {
 
 If you copied above code, the `fail()` call will ensure that your test fails until there is an actual assertion made. It serves as a reminder to finish implementing the test.
 
-**Note:** To check that your `NavHost` is working correctly, the hierarchy will have to be composed first. This means that your assertions will have to be written **outside** of the `setContent` function.
+**com.example.sky.database.Note:** To check that your `NavHost` is working correctly, the hierarchy will have to be composed first. This means that your assertions will have to be written **outside** of the `setContent` function.
 
 You can verify that the correct screen is displayed using content description. In this codelab, content descriptions for `"Accounts Screen"` and `"Overview Screen"` are provided for you to use for test verification. Create a `lateinit` property in the test class itself, so you can use it in future tests as well.
 

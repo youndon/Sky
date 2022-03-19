@@ -28,13 +28,19 @@ import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.datastore.dataStore
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
 import com.squareup.moshi.Moshi
 import kotlinx.coroutines.*
 import retrofit2.Retrofit
 import kotlin.coroutines.coroutineContext
 import kotlin.random.Random
 
+@Composable
+fun Land() {
 
+}
 
 

@@ -127,7 +127,7 @@ To start, we wrap our `MessageCard` function with the Material theme created in 
 
 Material Design is built around three pillars: Color, Typography, Shape. Let's add them one by one
 
-**Note:** the Empty Compose Activity generates a default theme for your project that allows you to customize MaterialTheme. If you named your project anything different from ComposeTutorial, you can find your custom theme in the ui.theme package.
+**com.example.sky.database.Note:** the Empty Compose Activity generates a default theme for your project that allows you to customize MaterialTheme. If you named your project anything different from ComposeTutorial, you can find your custom theme in the ui.theme package.
 
 #### Color
 
@@ -185,7 +185,7 @@ Composable functions can store local state in memory by using `remember`, and tr
 
 By using Compose’s state APIs like `remember` and `mutableStateOf`, any changes to state automatically update the UI:
 
-Note: you will need to add the following imports to correctly use `by`. Alt+Enter will add them for you.
+com.example.sky.database.Note: you will need to add the following imports to correctly use `by`. Alt+Enter will add them for you.
 
 Now we can change the background of the message content based on `isExpanded` when we click on a message. We will use the `clickable` modifier to handle click events on the composable. Instead of just toggling the background color of the `Surface`, we will animate the background color by gradually modifying its value from `MaterialTheme.colors.surface` to `MaterialTheme.colors.primary` and vice versa. To do so, we will use the `animateColorAsState` function. Lastly, we will use the `animateContentSize` modifier to animate the message container size smoothly:
 

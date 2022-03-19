@@ -55,7 +55,7 @@ Let's implement the profile layout seen in the introduction section:
 
 ![d2c39f3c2416c321.png](https://developer.android.com/codelabs/jetpack-compose-layouts/img/d2c39f3c2416c321.png)
 
-Open `MainActivity.kt` and add the following:
+Open `com.example.sky.com.example.sky.com.example.sky.MainActivity.kt` and add the following:
 
 ```
 @Composable
@@ -84,7 +84,7 @@ With preview:
 
 **Important**: The app theme used inside `setContent` depends on how your project is named. This codelab assumes that the project is called *LayoutsCodelab*. If you copy-paste code from the codelab, don't forget to update `LayoutsCodelabTheme` with the name of your theme available in the `ui/Theme.kt` file.
 
-**Note:** In this code snippet, we're using `CompositionLocalProvider`. It allows us to pass data implicitly through the composition tree. In this case, we're accessing `ContentAlpha.medium`, the medium opacity level, which is defined at the theme level in this case by `MaterialTheme`.
+**com.example.sky.database.Note:** In this code snippet, we're using `CompositionLocalProvider`. It allows us to pass data implicitly through the composition tree. In this case, we're accessing `ContentAlpha.medium`, the medium opacity level, which is defined at the theme level in this case by `MaterialTheme`.
 
 Next, while the picture is loading, you might want to show a placeholder. For that, you can use a `Surface` where we specify a circle shape and the placeholder color. To specify how big it should be, we can use the `size` modifier:
 
@@ -118,7 +118,7 @@ There are a couple of improvements we would like to do here:
 
 For #1, we can use `Modifier.padding` on the `Column` that contains the text to add some space at the `start` of the composable to separate the image and the text. For #2, some layouts offer modifiers that are only applicable to them and their layout characteristics. For example composables in a `Row` can access certain modifiers (from the `RowScope` receiver of Row's content) that make sense there such as `weight` or `align`. This scoping offers type-safety, so you cannot accidentally use a modifier which does not make sense in another layout, for example `weight` does not make sense in a `Box`, so this will be prevented as a compile-time error.
 
-**Note:** Modifiers can play a similar role to XML attributes in the View system, but the type safety of scope-specific modifiers helps you to discover and understand what is available and applicable to a certain layout. Compare this with XML layouts where it was not always clear if a layout attribute was applicable to a given View.
+**com.example.sky.database.Note:** Modifiers can play a similar role to XML attributes in the View system, but the type safety of scope-specific modifiers helps you to discover and understand what is available and applicable to a certain layout. Compare this with XML layouts where it was not always clear if a layout attribute was applicable to a given View.
 
 ```
 @Composable
@@ -158,7 +158,7 @@ fun PhotographerCard(modifier: Modifier = Modifier) {
 }
 ```
 
-**Note:** By convention, the modifier is specified as the *first* optional parameter of a function. This enables you to specify a modifier on a composable without having to name all parameters.
+**com.example.sky.database.Note:** By convention, the modifier is specified as the *first* optional parameter of a function. This enables you to specify a modifier on a composable without having to name all parameters.
 
 ## Order of modifiers matter
 
@@ -202,7 +202,7 @@ Using interactive preview or running in an emulator:
 
 ![a1ea4c8e16d61ffa.gif](https://developer.android.com/codelabs/jetpack-compose-layouts/img/a1ea4c8e16d61ffa.gif)
 
-**Note:** The explicit order helps you to reason about how different modifiers will interact. Compare this to the View system where you had to learn the box model; that margins applied "outside" the element but padding "inside" it and a background element would be sized accordingly. The modifier design makes this behavior explicit and predictable, and gives you more control to achieve the exact behavior you want.
+**com.example.sky.database.Note:** The explicit order helps you to reason about how different modifiers will interact. Compare this to the View system where you had to learn the box model; that margins applied "outside" the element but padding "inside" it and a background element would be sized accordingly. The modifier design makes this behavior explicit and predictable, and gives you more control to achieve the exact behavior you want.
 
 Let your imagination fly! Modifiers let you modify your composable in a very flexible way. For example, if you wanted to add some outer spacing, change the background color of the composable, and round the corners of the `Row`, you could use the following code:
 
@@ -235,7 +235,7 @@ Compose provides high-level [Material Components](https://material.io/components
 
 **Slot APIs** are a pattern Compose introduces to bring in a layer of customization on top of composables, in this use case, the available Material Components composables.
 
-**Note:** This section of the codelab is theoretical. You shouldn't copy the code in here to Android Studio.
+**com.example.sky.database.Note:** This section of the codelab is theoretical. You shouldn't copy the code in here to Android Studio.
 
 Let's see this with an example:
 
@@ -324,7 +324,7 @@ Compose comes with built-in Material Component composables that you can use to c
 
 `Scaffold` allows you to implement a UI with the basic Material Design layout structure. It provides slots for the most common top-level Material components such as [TopAppBar](https://material.io/components/app-bars-top/), [BottomAppBar](https://material.io/components/app-bars-bottom/), [FloatingActionButton](https://material.io/components/buttons-floating-action-button/) and [Drawer](https://material.io/components/navigation-drawer/). With `Scaffold`, you make sure these components will be positioned and work together correctly.
 
-Based on the generated Android Studio template, we're going to modify the sample code to use `Scaffold`. Open `MainActivity.kt` and feel free to remove the `Greeting` and `GreetingPreview` composables as they won't be used.
+Based on the generated Android Studio template, we're going to modify the sample code to use `Scaffold`. Open `com.example.sky.com.example.sky.com.example.sky.MainActivity.kt` and feel free to remove the `Greeting` and `GreetingPreview` composables as they won't be used.
 
 Create a new composable called `LayoutsCodelab` that we'll be modifying throughout the codelab:
 
@@ -337,7 +337,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.codelab.layouts.ui.LayoutsCodelabTheme
 
-class MainActivity : AppCompatActivity() {
+class com.example.sky.com.example.sky.com.example.sky.MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -589,7 +589,7 @@ fun SimpleList() {
 
 The `Column` renders all the list items, even the ones not visible on the screen, which is a performance issue when the list size gets bigger. To avoid this problem, use [`LazyColumn`](https://developer.android.com/reference/kotlin/androidx/compose/foundation/lazy/package-summary#LazyColumn(androidx.compose.ui.Modifier,androidx.compose.foundation.lazy.LazyListState,androidx.compose.foundation.layout.PaddingValues,kotlin.Boolean,androidx.compose.foundation.layout.Arrangement.Vertical,androidx.compose.ui.Alignment.Horizontal,androidx.compose.foundation.gestures.FlingBehavior,kotlin.Function1)), which renders only the visible items on screen, allowing performance gains and doesn't need to `scroll` modifier.
 
-**Note:** `LazyColumn` in Jetpack Compose is the equivalent of `RecyclerView` in Android Views.
+**com.example.sky.database.Note:** `LazyColumn` in Jetpack Compose is the equivalent of `RecyclerView` in Android Views.
 
 `LazyColumn` has a [DSL](https://developer.android.com/jetpack/compose/kotlin#dsl) to describe its list content. You will use `items`, which can take a number as list size. It also supports arrays and lists (read more in the [Lists documentation section](https://developer.android.com/jetpack/compose/lists)).
 
@@ -616,7 +616,7 @@ As we've seen earlier with the `PhotographCard`, `Image` is a composable that yo
 
 To simplify those steps, you will use the [Coil](https://github.com/coil-kt/coil) library, which provides composables that run these tasks efficiently.
 
-**Note:** While we use [Coil](https://github.com/coil-kt/coil) in the code sample below, you can choose [Glide](https://bumptech.github.io/glide/) via an [Accompanist wrapper](https://google.github.io/accompanist/glide/) if you prefer.
+**com.example.sky.database.Note:** While we use [Coil](https://github.com/coil-kt/coil) in the code sample below, you can choose [Glide](https://bumptech.github.io/glide/) via an [Accompanist wrapper](https://google.github.io/accompanist/glide/) if you prefer.
 
 Add the Coil dependency in your project's `build.gradle` file:
 
@@ -790,7 +790,7 @@ Compose promotes reusability of composables as small chunks that can be enough f
 
 However, you might need to build something unique to your app that requires measuring and laying out children manually. For that, you can use the [`Layout`](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main-release:compose/ui/ui/src/commonMain/kotlin/androidx/compose/ui/layout/Layout.kt) composable. In fact all higher level layouts like `Column` and `Row` are built with this.
 
-**Note:** In the View system, creating a custom layout required extending `ViewGroup` and implementing measure and layout functions. In Compose you simply write a function using the `Layout` composable.
+**com.example.sky.database.Note:** In the View system, creating a custom layout required extending `ViewGroup` and implementing measure and layout functions. In Compose you simply write a function using the `Layout` composable.
 
 Before diving into how to create custom layouts, we need to know more about the principles of Layouts in Compose.
 
@@ -1603,7 +1603,7 @@ fun LayoutsCodelabPreview() {
 
 `ConstraintLayout` can help you place composables relative to others on the screen and is an alternative to using multiple `Row`s, `Column`s and `Box`es. ConstraintLayout is useful when implementing larger layouts with more complicated alignment requirements.
 
-**Note:** In the View system, [`ConstraintLayout`](https://developer.android.com/training/constraint-layout) was the recommended way to create large and complex layouts as the flat view hierarchy was better for performance. However, this is not a concern in Compose, which is able to efficiently handle deep layout hierarchies.
+**com.example.sky.database.Note:** In the View system, [`ConstraintLayout`](https://developer.android.com/training/constraint-layout) was the recommended way to create large and complex layouts as the flat view hierarchy was better for performance. However, this is not a concern in Compose, which is able to efficiently handle deep layout hierarchies.
 
 You can find the Compose Constraint Layout dependency in your project's `build.gradle` file:
 
@@ -1728,7 +1728,7 @@ With preview:
 
 ![a4117576ef1768a2.png](https://developer.android.com/codelabs/jetpack-compose-layouts/img/a4117576ef1768a2.png)
 
-Note that
+com.example.sky.database.Note that
 
 - barriers (and all the other helpers) can be created in the body of `ConstraintLayout`, but not inside `constrainAs`.
 - `linkTo` can be used to constrain with guidelines and barriers the same way it works for edges of layouts.

@@ -61,7 +61,7 @@ The project contains three com.example.sky.main packages:
 - `com.codelab.theming.ui.start` This is the starting point for the codelab, you should make all changes requested in this codelab **in this package**.
 - `com.codelab.theming.ui.finish` This is the end state of the codelab, for your reference.
 
-**Note:** At any time you can compare your current state of a file with the end state. Select your working version of a file and the corresponding file from the `finish` package and use [Android Studio's Compare function](https://www.jetbrains.com/help/idea/comparing-files-and-folders.html#twofiles).
+**com.example.sky.database.Note:** At any time you can compare your current state of a file with the end state. Select your working version of a file and the corresponding file from the `finish` package and use [Android Studio's Compare function](https://www.jetbrains.com/help/idea/comparing-files-and-folders.html#twofiles).
 
 ## Build and run the app
 
@@ -164,7 +164,7 @@ Now switch back to `Home.kt` and replace `MaterialTheme` with our `JetnewsTheme`
     ...
 ```
 
-**Note:** Be careful to import `com.codelab.theming.ui.`**`start`**`.theme.JetnewsTheme` **not** `com.codelab.theming.ui.`**`finish`**`.theme.JetnewsTheme`.
+**com.example.sky.database.Note:** Be careful to import `com.codelab.theming.ui.`**`start`**`.theme.JetnewsTheme` **not** `com.codelab.theming.ui.`**`finish`**`.theme.JetnewsTheme`.
 
 You won't notice any changes just yet in the `@Preview` on this screen. Update `PostItemPreview` and `FeaturedPostPreview` to wrap their content with our new `JetnewsTheme` composable so that the previews use our new theme:
 
@@ -179,7 +179,7 @@ private fun FeaturedPostPreview() {
 }
 ```
 
-**Note:** The Compose project template in Android Studio creates this structure for you, but we're building this up from scratch to better understand the concepts.
+**com.example.sky.database.Note:** The Compose project template in Android Studio creates this structure for you, but we're building this up from scratch to better understand the concepts.
 
 ## Colors
 
@@ -189,7 +189,7 @@ Here's the color palette we'd like to implement in our app (just a light palette
 
 Colors in Compose are defined using the [`Color`](https://developer.android.com/reference/kotlin/androidx/compose/ui/graphics/Color.html) class. There are multiple constructors allowing you to specify the color as a `ULong` or by separate color channel.
 
-**Note:** To convert from the common ‘#dd0d3c' format for specifying colors, replace the ‘#' with ‘0xff' i.e. `Color(0xffdd0d3c)` where ‘ff' means full alpha.
+**com.example.sky.database.Note:** To convert from the common ‘#dd0d3c' format for specifying colors, replace the ‘#' with ‘0xff' i.e. `Color(0xffdd0d3c)` where ‘ff' means full alpha.
 
 Create a new file `Color.kt` in your `theme` package. Add the following colors as top-level public properties in this file:
 
@@ -199,9 +199,9 @@ val Red800 = Color(0xffd00036)
 val Red900 = Color(0xffc20029)
 ```
 
-**Note:** When defining colors, we name them "literally", based on the color value, rather than "semantically" e.g. `Red500` not `primary`. This enables us to define multiple themes e.g. another color might be considered `primary` in dark theme or on a differently styled screen.
+**com.example.sky.database.Note:** When defining colors, we name them "literally", based on the color value, rather than "semantically" e.g. `Red500` not `primary`. This enables us to define multiple themes e.g. another color might be considered `primary` in dark theme or on a differently styled screen.
 
-**Note:** Be careful to import Compose's Color type `androidx.compose.ui.graphics.Color` **not** `android.graphics.Color`.
+**com.example.sky.database.Note:** Be careful to import Compose's Color type `androidx.compose.ui.graphics.Color` **not** `android.graphics.Color`.
 
 Now that we have defined our apps colors, let's pull them together into a [`Colors`](https://developer.android.com/reference/kotlin/androidx/compose/material/Colors) object that the `MaterialTheme` requires, assigning specific colors to Material's named colors. Switch back to `Theme.kt` and add the following:
 
@@ -219,7 +219,7 @@ private val LightColors = lightColors(
 
 Here we use the [`lightColors`](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#lightColors(androidx.compose.ui.graphics.Color, androidx.compose.ui.graphics.Color, androidx.compose.ui.graphics.Color, androidx.compose.ui.graphics.Color, androidx.compose.ui.graphics.Color, androidx.compose.ui.graphics.Color, androidx.compose.ui.graphics.Color, androidx.compose.ui.graphics.Color, androidx.compose.ui.graphics.Color, androidx.compose.ui.graphics.Color, androidx.compose.ui.graphics.Color, androidx.compose.ui.graphics.Color)) function to build our `Colors`, this provides sensible defaults so we don't have to specify all colors that make up a Material color palette. For example, notice that we haven't specified a `background` color or many of the ‘on' colors, we'll use the defaults.
 
-**Note:** If your brand doesn't have separate primary and secondary colors, then it's fine to supply the same color for both.
+**com.example.sky.database.Note:** If your brand doesn't have separate primary and secondary colors, then it's fine to supply the same color for both.
 
 Now let's use these colors in our app. Update your `JetnewsTheme` composable to use our new `Colors`:
 
@@ -261,7 +261,7 @@ data class TextStyle(
 
 Our desired type scale uses [Montserrat](https://fonts.google.com/specimen/Montserrat) for titles and [Domine](https://fonts.google.com/specimen/Domine) for body text. The relevant font files are already added to the `res/fonts` folder of your project.
 
-**Note:** Unfortunately Compose does not support Android's [Downloadable Fonts](https://developer.android.com/guide/topics/ui/look-and-feel/downloadable-fonts) feature at this time.
+**com.example.sky.database.Note:** Unfortunately Compose does not support Android's [Downloadable Fonts](https://developer.android.com/guide/topics/ui/look-and-feel/downloadable-fonts) feature at this time.
 
 Create a new file `Typography.kt` in the `theme` package. Let's first define the [`FontFamily`](https://developer.android.com/reference/kotlin/androidx/compose/ui/text/font/FontFamily)s (which combine the different weights of each [`Font`](https://developer.android.com/reference/kotlin/androidx/compose/ui/text/font/Font) ):
 
@@ -457,7 +457,7 @@ fun FloatingActionButton(
 ) {
 ```
 
-**Note:** Seeing what theme color a material component uses is greatly simplified in Compose compared to Views as they are specified as default parameters on the component. Easily see these by [going to the component's declaration](https://www.jetbrains.com/help/idea/navigating-through-the-source-code.html#go_to_declaration).
+**com.example.sky.database.Note:** Seeing what theme color a material component uses is greatly simplified in Compose compared to Views as they are specified as default parameters on the component. Easily see these by [going to the component's declaration](https://www.jetbrains.com/help/idea/navigating-through-the-source-code.html#go_to_declaration).
 
 You don't always want to use the default settings, this section shows how to work with color in your app.
 
@@ -474,7 +474,7 @@ Surface(color = Color.LightGray) {
 }
 ```
 
-**Note:** Be careful when statically declaring color definitions as they make it harder/impossible to support different themes like light/dark theming. Material guidelines do however call out some situations where the same colors should be used across light/dark themes such as critical [brand colors](https://material.io/design/color/dark-theme.html#ui-application).
+**com.example.sky.database.Note:** Be careful when statically declaring color definitions as they make it harder/impossible to support different themes like light/dark theming. Material guidelines do however call out some situations where the same colors should be used across light/dark themes such as critical [brand colors](https://material.io/design/color/dark-theme.html#ui-application).
 
 `Color` has a number of useful methods on it such as `copy` allowing you to create a new color with different alpha/red/green/blue values.
 
@@ -569,7 +569,7 @@ Let's fix this. In the `Header` composable in `Home.kt`, remove the `background`
 
 Often we want to emphasize or deemphasize content to communicate importance and provide visual hierarchy. Material Design [recommends](https://material.io/design/color/text-legibility.html) employing different levels of opacity to convey these different importance levels.
 
-Jetpack Compose implements this via [`LocalContentAlpha`](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#LocalContentAlpha()). You can specify a content alpha for a hierarchy by [providing](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary#CompositionLocalProvider(kotlin.Array,kotlin.Function0)) a value for this [`CompositionLocal`](https://developer.android.com/reference/kotlin/androidx/compose/runtime/CompositionLocal). Child composables can use this value, for example [`Text`](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#Text(kotlin.String,androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Color,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.font.FontStyle,androidx.compose.ui.text.font.FontWeight,androidx.compose.ui.text.font.FontFamily,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.style.TextDecoration,androidx.compose.ui.text.style.TextAlign,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.style.TextOverflow,kotlin.Boolean,kotlin.Int,kotlin.Function1,androidx.compose.ui.text.TextStyle)) and [`Icon`](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#Icon(androidx.compose.ui.graphics.vector.ImageVector,kotlin.String,androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Color)) by default use the combination of `LocalContentColor` adjusted to use `LocalContentAlpha`. Material specifies some standard alpha values ( [`high`](https://developer.android.com/reference/kotlin/androidx/compose/material/ContentAlpha#high()), [`medium`](https://developer.android.com/reference/kotlin/androidx/compose/material/ContentAlpha#medium()), [`disabled`](https://developer.android.com/reference/kotlin/androidx/compose/material/ContentAlpha#disabled())) which are modelled by the [`ContentAlpha`](https://developer.android.com/reference/kotlin/androidx/compose/material/ContentAlpha) object. Note that `MaterialTheme` defaults `LocalContentAlpha` to `ContentAlpha.high`.
+Jetpack Compose implements this via [`LocalContentAlpha`](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#LocalContentAlpha()). You can specify a content alpha for a hierarchy by [providing](https://developer.android.com/reference/kotlin/androidx/compose/runtime/package-summary#CompositionLocalProvider(kotlin.Array,kotlin.Function0)) a value for this [`CompositionLocal`](https://developer.android.com/reference/kotlin/androidx/compose/runtime/CompositionLocal). Child composables can use this value, for example [`Text`](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#Text(kotlin.String,androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Color,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.font.FontStyle,androidx.compose.ui.text.font.FontWeight,androidx.compose.ui.text.font.FontFamily,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.style.TextDecoration,androidx.compose.ui.text.style.TextAlign,androidx.compose.ui.unit.TextUnit,androidx.compose.ui.text.style.TextOverflow,kotlin.Boolean,kotlin.Int,kotlin.Function1,androidx.compose.ui.text.TextStyle)) and [`Icon`](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#Icon(androidx.compose.ui.graphics.vector.ImageVector,kotlin.String,androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Color)) by default use the combination of `LocalContentColor` adjusted to use `LocalContentAlpha`. Material specifies some standard alpha values ( [`high`](https://developer.android.com/reference/kotlin/androidx/compose/material/ContentAlpha#high()), [`medium`](https://developer.android.com/reference/kotlin/androidx/compose/material/ContentAlpha#medium()), [`disabled`](https://developer.android.com/reference/kotlin/androidx/compose/material/ContentAlpha#disabled())) which are modelled by the [`ContentAlpha`](https://developer.android.com/reference/kotlin/androidx/compose/material/ContentAlpha) object. com.example.sky.database.Note that `MaterialTheme` defaults `LocalContentAlpha` to `ContentAlpha.high`.
 
 ```
 // By default, both Icon & Text use the combination of LocalContentColor &
@@ -763,7 +763,7 @@ fun Button( ...
 
 Like colors, Material components use default parameters so it's straightforward to check what category of shape a component will use, or to provide an alternative. For a full mapping of components to shape category, see the [documentation](https://material.io/design/shape/applying-shape-to-ui.html#shape-scheme).
 
-Note that some components use modified theme shapes to suit their context. For example by default `TextField` use the small shape theme, but applies a zero corner size to the bottom corners:
+com.example.sky.database.Note that some components use modified theme shapes to suit their context. For example by default `TextField` use the small shape theme, but applies a zero corner size to the bottom corners:
 
 ```
 @Composable

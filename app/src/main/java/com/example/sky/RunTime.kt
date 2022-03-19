@@ -46,7 +46,7 @@ private inline fun <T, E,reified R> void() {
     sourceInformationMarkerStart(currentComposer,1,"")
     staticCompositionLocalOf {  }
     structuralEqualityPolicy<T>()
-    runBlocking {
+    suspend {
         withFrameMillis { frameTimeMillis: Long -> frameTimeMillis }
         withFrameNanos { frameTimeMillis: Long -> frameTimeMillis }
         withRunningRecomposer { recomposer: Recomposer -> recomposer }

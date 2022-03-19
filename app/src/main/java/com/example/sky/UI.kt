@@ -2,6 +2,7 @@ package com.example.sky
 
 import android.annotation.SuppressLint
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.currentCompositionLocalContext
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.geometry.*
 import androidx.compose.ui.graphics.*
@@ -88,7 +89,6 @@ private fun Ui() {
     LocalClipboardManager
     LocalDensity
     LocalFocusManager
-    LocalFontLoader
     LocalHapticFeedback
     LocalInspectionMode
     LocalLayoutDirection
@@ -107,11 +107,19 @@ private fun Ui() {
     ToggleableState(false)
     AnnotatedString("")
 //    Paragraph() // FIXME: 16/07/2021
-    ParagraphIntrinsics("", TextStyle.Default, listOf(), listOf(), Density(1f),object :Font.ResourceLoader{
+    object :Font.ResourceLoader{
         override fun load(font: Font): Any {
             TODO("Not yet implemented")
         }
-    })
+    }
+    ParagraphIntrinsics(
+        text = "",
+        style = TextStyle.Default,
+        spanStyles = listOf(),
+        placeholders = listOf(),
+        density = Density(LocalContext.current),
+        fontFamilyResolver = LocalFontFamilyResolver.current
+    )
     TextRange(1)
     buildAnnotatedString {  }
     resolveDefaults(TextStyle.Default,LayoutDirection.Ltr)

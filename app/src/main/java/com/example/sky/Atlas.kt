@@ -23,7 +23,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
-private interface Box {
+private interface Atlas {
 
     @Composable
     fun Coloring() {

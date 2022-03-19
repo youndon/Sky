@@ -15,13 +15,15 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.toolingGraphicsLayer
+import androidx.compose.ui.input.key.KeyEvent
+import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 
-private interface Modifier {
+interface Modifier {
     @OptIn(ExperimentalComposeUiApi::class, androidx.compose.material.ExperimentalMaterialApi::class)
     val Modifier.ss: Any
         get() = with(this) {
@@ -96,7 +98,7 @@ private interface Modifier {
 //        this.relocationRequester()
 //        this.mouseScrollFilter { event, bounds ->  }
 //        this.nestedScroll()
-//        this.onKeyEvent {  }
+//        this.onKeyEvent {}
 //        this.onPreviewKeyEvent {  }
 //        this.pointerInput()
 //        this.pointerMoveFilter {  }

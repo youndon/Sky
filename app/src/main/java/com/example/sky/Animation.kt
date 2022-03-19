@@ -51,7 +51,7 @@ private fun <T> Animation() {
     Easing { fraction: Float -> fraction }
 //    TargetBasedAnimation() // FIXME: 14/07/2021
 //    TwoWayConverter() // FIXME: 14/07/2021
-    runBlocking {
+    suspend {
         animate(1f,1f){value, velocity ->  }
         withInfiniteAnimationFrameMillis { frameTimeMillis: Long ->  }
         withInfiniteAnimationFrameNanos { frameTimeMillis: Long ->  }

@@ -45,7 +45,7 @@ Or, you can download [the zip file](https://github.com/googlecodelabs/android-co
 
 ![7a7c10526864d5c2.png](https://developer.android.com/codelabs/jetpack-compose-animation/img/7a7c10526864d5c2.png)
 
-**Note**: If you are running a newer version of Android Studio than the sample was created with, you may see a notification asking to update the Gradle version. Feel free to do that, or skip if you are short on time.
+**com.example.sky.database.Note**: If you are running a newer version of Android Studio than the sample was created with, you may see a notification asking to update the Gradle version. Feel free to do that, or skip if you are short on time.
 
 The project has multiple modules in it:
 
@@ -249,7 +249,7 @@ Here, `indicatorLeft` is the horizontal position of the left edge of the indicat
 
 In order to animate these multiple values simultaneously, we can use a `Transition`. A `Transition` can be created with the `updateTransition` function. Pass the index of the tab currently selected as the `targetState` parameter.
 
-Each animating value can be declared with the `animate*` extension functions of `Transition`. In this example, we use `animateDp` and `animateColor`. They take a lambda block and we can specify the target value for each of the states. We already know what their target values should be, so we can simply wrap the values like below. Note that we can use a `by` declaration and make it a local delegated property here again because the `animate*` functions return a `State` object.
+Each animating value can be declared with the `animate*` extension functions of `Transition`. In this example, we use `animateDp` and `animateColor`. They take a lambda block and we can specify the target value for each of the states. We already know what their target values should be, so we can simply wrap the values like below. com.example.sky.database.Note that we can use a `by` declaration and make it a local delegated property here again because the `animate*` functions return a `State` object.
 
 ```
 val transition = updateTransition(tabPage)
@@ -378,7 +378,7 @@ pointerInput {
             // ...
 ```
 
-**TODO 6-2** is where we have just received a touch down event. We should intercept the animation if it is currently running. This can be done by calling `stop` on the `Animatable`. Note that the call is ignored if the animation is not running.
+**TODO 6-2** is where we have just received a touch down event. We should intercept the animation if it is currently running. This can be done by calling `stop` on the `Animatable`. com.example.sky.database.Note that the call is ignored if the animation is not running.
 
 ```
 // Wait for a touch down event.
