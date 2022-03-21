@@ -7,6 +7,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.datastore.core.DataStore
 import androidx.datastore.dataStoreFile
@@ -17,6 +19,8 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.sky.db.sample.AtlasModel
 import com.example.sky.db.sample.AtlasNav
+import com.example.sky.db.sample.AtlasStore
+import com.example.sky.db.sample.tV
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -25,7 +29,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         val atlasModule by viewModels<AtlasModel>()
         setContent {
-            Land(atlasModule.themeState) {
+            val get_theme = AtlasStore(this).getTheme.collectAsState(false)
+            Land(get_theme.value!!) {
                 Surface(color = MaterialTheme.colorScheme.background) {
                     AtlasNav(atlasModule, atlasModule.usersList)
                 }

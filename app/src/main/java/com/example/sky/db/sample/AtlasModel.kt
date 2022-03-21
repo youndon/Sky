@@ -58,6 +58,7 @@ class AtlasModel(application: Application):AndroidViewModel(application) {
         }
     }
 
+
     fun editThemeState(state: Boolean) {
         viewModelScope.launch {
             themeState = state

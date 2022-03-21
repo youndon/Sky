@@ -23,6 +23,7 @@ private val id = fun() = (1..Int.MAX_VALUE).random()
 val uV = mutableStateOf("")
 val pV = mutableStateOf("")
 val iV = mutableStateOf(0)
+val tV = mutableStateOf(true)
 
 @Composable
 fun AtlasNav(
@@ -136,7 +137,8 @@ fun Atlasbase(
             onCheckedChange = {
                 scope.launch {
                     atlasStore.saveTheme(it)
-                    model.editThemeState(it)
+//                    model.editThemeState(it)
+                    tV.value = it
                 }
             }
         )
