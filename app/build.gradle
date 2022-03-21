@@ -59,32 +59,35 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
     implementation 'androidx.activity:activity-compose:1.4.0'
 
-    // Material3
+    // Material3.
     implementation "androidx.compose.material3:material3:1.0.0-alpha07"
 
-    // Retrofit
+    // Retrofit.
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    // Retrofit with Moshi Converter
+    // Retrofit with Moshi Converter.
     implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
 
-    // JSON Moshi
+    // JSON Moshi.
     implementation("com.squareup.moshi:moshi-kotlin:1.13.0")
 
-    // Coil library to load images from API
+    // Coil library to load images from API.
     implementation "io.coil-kt:coil-compose:1.4.0"
 
-    // Navigation
+    // Navigation.
     implementation("androidx.navigation:navigation-compose:2.4.1")
 
-    //Room
+    //Room.
     implementation "androidx.room:room-ktx:2.4.2"
     implementation "androidx.room:room-runtime:2.4.2"
     annotationProcessor "androidx.room:room-compiler:2.4.2"
     kapt "androidx.room:room-compiler:2.4.2"
 
-    //DataStore
+    //DataStore.
     implementation "androidx.datastore:datastore-preferences:1.0.0"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.4.1"
+
+    //WorkManager.
+    implementation "androidx.work:work-runtime-ktx:2.7.1"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

@@ -7,6 +7,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "userTable")
 data class AtlasEntity(
     @PrimaryKey(autoGenerate = true) val id: Int,
-    @ColumnInfo val userName: String,
-    @ColumnInfo val password: String
+    @ColumnInfo var userName: String,
+    @ColumnInfo var password: String
 )

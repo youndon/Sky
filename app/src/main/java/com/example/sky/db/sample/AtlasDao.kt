@@ -14,6 +14,6 @@ interface AtlasDao {
     @Delete
     fun deleteUser(user: AtlasEntity)
 
-    @Update
+    @Update(entity = AtlasEntity::class, onConflict = OnConflictStrategy.REPLACE)
     fun editUser(user: AtlasEntity)
 }

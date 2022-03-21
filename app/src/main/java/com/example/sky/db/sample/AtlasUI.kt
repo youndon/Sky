@@ -3,23 +3,23 @@ package com.example.sky.db.sample
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Button
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
-import androidx.compose.material.TextField
+import androidx.compose.material.*
+import androidx.compose.material3.ColorScheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navigation
-import kotlin.random.Random
+import kotlinx.coroutines.launch
 
-private val id = fun() = Random.nextInt()
+private val id = fun() = (1..Int.MAX_VALUE).random()
 val uV = mutableStateOf("")
 val pV = mutableStateOf("")
 val iV = mutableStateOf(0)
@@ -51,6 +51,12 @@ fun Atlasbase(
 ) {
     var userValue by remember { uV }
     var passValue by remember { pV }
+    val c = LocalContext.current
+    val atlasStore = AtlasStore(c)
+    val scope = rememberCoroutineScope()
+    val get_theme = atlasStore.getTheme.collectAsState(false)
+    val anyID =  model.usersList.any { it.id == iV.value }
+    val findID = model.usersList.find { it.id == iV.value }
     Column(
         Modifier
             .padding(20.dp)
@@ -61,62 +67,79 @@ fun Atlasbase(
         TextField(
             value = userValue,
             onValueChange = { userValue = it },
-            label = { Text("UserName!") }
+            label = { Text("UserName!") },
+            maxLines = 1,
         )
         Spacer(modifier = Modifier.height(20.dp))
         TextField(
             value = passValue,
             onValueChange = { passValue = it },
             visualTransformation = PasswordVisualTransformation(),
-            label = { Text("UserPassword!") }
+            label = { Text("UserPassword!") },
+            maxLines = 1,
         )
         Spacer(modifier = Modifier.height(20.dp))
-        Button(onClick = {
-            model.addUser(
-                AtlasEntity(
-                    id = id.invoke(),
-                    userName = userValue,
-                    password = passValue
+        Button(
+            enabled = !anyID && userValue.isNotEmpty() && passValue.isNotEmpty(),
+            onClick = {
+                model.addUser(
+                    AtlasEntity(
+                        id = id.invoke(),
+                        userName = userValue,
+                        password = passValue
+                    )
                 )
-            )
-            userValue = ""; passValue = ""
-        }) {
-            Text(text = "Add Atlas")
+                userValue = ""; passValue = ""
+            }) {
+            Text(text = "Add User")
         }
 
         Spacer(Modifier.height(20.dp))
 
         Row {
-            Button(onClick = {
-                navController.navigate("atlasTable")
-            }) {
+            Button(
+                onClick = {
+                    navController.navigate("atlasTable")
+                }) {
                 Text(text = "User List")
             }
             Spacer(modifier = Modifier.width(15.dp))
             Button(
-                enabled = model.usersList.any { it.id == iV.value }
+                enabled = anyID
                         &&
-                        (model.usersList.find { it.id == iV.value }?.userName != userValue
-                                || model.usersList.find { it.id == iV.value }?.password != passValue),
+                        (findID?.userName != userValue
+                                || findID.password != passValue),
                 onClick = {
-                model.editUser(AtlasEntity(
-                    iV.value,
-                    userValue,
-                    passValue
-                ))
-            }) {
+                    model.editUser(AtlasEntity(
+                        iV.value,
+                        userValue,
+                        passValue
+                    ))
+                    userValue = ""; passValue = ""; iV.value = 0
+                }) {
                 Text(text = "Save")
             }
             Spacer(modifier = Modifier.width(15.dp))
             Button(
-                enabled = model.usersList.any { it.id == iV.value},
+                enabled = anyID,
                 onClick = {
                     model.deleteUser(AtlasEntity(iV.value, uV.value, pV.value))
+                    userValue = ""; passValue = ""
                 }
-            ){
+            ) {
                 Text(text = "Delete")
             }
         }
+        Spacer(modifier = Modifier.height(20.dp))
+        Switch(
+            checked = get_theme.value!!,
+            onCheckedChange = {
+                scope.launch {
+                    atlasStore.saveTheme(it)
+                    model.editThemeState(it)
+                }
+            }
+        )
     }
 }
 
@@ -138,5 +161,6 @@ fun UsersTable(
         }
     }
 }
+
 
 
