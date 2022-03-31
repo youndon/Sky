@@ -1,4 +1,4 @@
-package components
+package com.example.sky.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -22,14 +22,13 @@ private interface Buttons {
                 onClick = { },
                 modifier = Modifier.clip(CircleShape),
                 enabled = true,
-                interactionSource = remember { MutableInteractionSource() },
+                interactionSource = remember { MutableInteractionSource() }, // TODO:
                 elevation = null,
                 shape = RoundedCornerShape(10.dp),
                 border = BorderStroke(5.dp, Color(6464631)),
                 colors = ButtonDefaults.buttonColors(Color.Blue, Color.White),
                 contentPadding = ButtonDefaults.ContentPadding,
             ) {
-                Text("NeverLand")
             }
             //
             TextButton(
@@ -43,7 +42,6 @@ private interface Buttons {
                 colors = ButtonDefaults.textButtonColors(),
                 contentPadding = ButtonDefaults.TextButtonContentPadding,
             ) {
-                Text("Live Each day as It Your Last.")
             }
             //
             RadioButton(
@@ -56,12 +54,12 @@ private interface Buttons {
             )
             //
             OutlinedButton(
-                {}, modifier = Modifier,
+                onClick = {},
+                modifier = Modifier,
                 colors = ButtonDefaults.buttonColors(Color.DarkGray, Color.LightGray),
                 contentPadding = ButtonDefaults.ContentPadding
             )
             {
-                Text("OutLine!")
             }
             //
             IconButton(
@@ -92,7 +90,6 @@ private interface Buttons {
                 contentColor = contentColorFor(backgroundColor),
                 elevation = FloatingActionButtonDefaults.elevation()
             ) {
-                Text("+")
             }
             //
             ExtendedFloatingActionButton(

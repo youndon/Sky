@@ -1,4 +1,4 @@
-package components
+package com.example.sky.components
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.material.Checkbox
@@ -13,7 +13,7 @@ interface CheckBox {
     @Composable fun checkBox() {
         Checkbox(
             checked = true,
-            onCheckedChange = { println("") },
+            onCheckedChange = {  },
             modifier = Modifier,
             enabled = true,
             interactionSource = remember { MutableInteractionSource() },

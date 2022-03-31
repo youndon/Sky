@@ -1,4 +1,4 @@
-package components
+package com.example.sky.components
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -30,13 +30,6 @@ interface Menus {
             enabled = true,
             contentPadding = MenuDefaults.DropdownMenuItemContentPadding,
             interactionSource = remember { MutableInteractionSource() },
-            content = @Composable {}
-        )
-        DropdownMenu(
-            expanded = true,
-            onDismissRequest = {},
-            properties = PopupProperties(),
-            modifier = Modifier,
             content = @Composable {}
         )
     }

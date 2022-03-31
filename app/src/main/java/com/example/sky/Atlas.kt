@@ -1,5 +1,6 @@
 package com.example.sky
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
@@ -23,7 +24,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
-private interface Atlas {
 
     @Composable
     fun Coloring() {
@@ -84,12 +84,16 @@ private interface Atlas {
             }
         }
     }
+
     @Composable
     fun Effect() {
         val scaffold = rememberScaffoldState()
-        Scaffold(scaffoldState = scaffold) {
+        Scaffold(
+            scaffoldState = scaffold) {
 //        var c by remember { mutableStateOf(0) }
-            val c = produceState(0){ delay(2000) ;value = 11 }
+            val c = produceState(0){
+                delay(1000)
+                value = 12 }
             if (c.value % 2 == 0 && c.value != 0){
                 LaunchedEffect(scaffold.snackbarHostState) {
                     scaffold.snackbarHostState.showSnackbar("The Count's $c")
@@ -128,7 +132,6 @@ private interface Atlas {
         }
     }
 
-    @Preview(showBackground = true)
     @Composable
     fun Atlas() {
         Canvas(modifier = Modifier){
@@ -141,5 +144,4 @@ private interface Atlas {
                 style = Stroke(50f, cap = StrokeCap.Round)
             )
         }
-    }
 }

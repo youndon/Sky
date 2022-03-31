@@ -1,4 +1,4 @@
-package components
+package com.example.sky.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.runtime.Composable

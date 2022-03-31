@@ -35,8 +35,8 @@ interface Fields {
             trailingIcon = { Icon(Icons.Rounded.Phone, null) },
             isError = false,
             visualTransformation = VisualTransformation.None, // PasswordVisualTransformation() for password input.
-            keyboardOptions = KeyboardOptions.Default,
-            keyboardActions = KeyboardActions.Default,
+            keyboardOptions = KeyboardOptions(),
+            keyboardActions = KeyboardActions(),
             singleLine = false,
             maxLines = 200,
             interactionSource = remember { MutableInteractionSource() },
@@ -59,8 +59,7 @@ interface Fields {
             onTextLayout = {},
             interactionSource = remember { MutableInteractionSource() },
             cursorBrush = SolidColor(Color.Black)
-        )
-        @Composable { innerTextField -> innerTextField() }
+        ) { innerTextField -> innerTextField() }
         //
         OutlinedTextField(
             value = "",

@@ -1,4 +1,4 @@
-package components
+package com.example.sky.components
 
 import androidx.compose.material.*
 import androidx.compose.material3.MaterialTheme as MT3

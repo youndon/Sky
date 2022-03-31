@@ -24,9 +24,6 @@ class AtlasModel(application: Application):AndroidViewModel(application) {
     var usersList by mutableStateOf(listOf<AtlasEntity>())
         private set
 
-    var themeState by mutableStateOf(true)
-    private set
-
     init {
         GlobalScope.launch(Dispatchers.IO) {
             val users = db.userDao().readUser()
@@ -55,13 +52,6 @@ class AtlasModel(application: Application):AndroidViewModel(application) {
         }
         GlobalScope.launch(Dispatchers.IO) {
             db.userDao().editUser(user)
-        }
-    }
-
-
-    fun editThemeState(state: Boolean) {
-        viewModelScope.launch {
-            themeState = state
         }
     }
 }

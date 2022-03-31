@@ -1,4 +1,4 @@
-package components
+package com.example.sky.components
 
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -17,8 +17,9 @@ interface Drawers {
             drawerBackgroundColor = MaterialTheme.colors.surface,
             drawerContentColor = contentColorFor(SnackbarDefaults.backgroundColor),
             scrimColor = DrawerDefaults.scrimColor,
-            content = { }
-        )
+        ) {
+
+        }
 
         //
         ModalDrawer(
@@ -31,6 +32,8 @@ interface Drawers {
             drawerBackgroundColor = MaterialTheme.colors.surface,
             drawerContentColor = contentColorFor(MaterialTheme.colors.surface),
             scrimColor = DrawerDefaults.scrimColor,
-        ) {}
+        ) {
+
+        }
     }
 }

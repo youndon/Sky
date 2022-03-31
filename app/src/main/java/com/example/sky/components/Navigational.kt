@@ -86,7 +86,7 @@ interface Navigational {
             drawerContentColor = contentColorFor(M3.colorScheme.surface)
         ) {
 
-        }
+            }
         ModalNavigationDrawer(
             drawerContent = @Composable { },
             modifier = Modifier,

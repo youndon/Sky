@@ -18,6 +18,7 @@ import androidx.compose.ui.text.*
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.*
+import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.Popup
 import org.xml.sax.InputSource
 
@@ -107,16 +108,10 @@ private fun Ui() {
     ToggleableState(false)
     AnnotatedString("")
 //    Paragraph() // FIXME: 16/07/2021
-    object :Font.ResourceLoader{
-        override fun load(font: Font): Any {
-            TODO("Not yet implemented")
-        }
-    }
+//    FontFamily.Resolver
     ParagraphIntrinsics(
         text = "",
         style = TextStyle.Default,
-        spanStyles = listOf(),
-        placeholders = listOf(),
         density = Density(LocalContext.current),
         fontFamilyResolver = LocalFontFamilyResolver.current
     )
@@ -135,7 +130,7 @@ private fun Ui() {
     Velocity(1f,1f)
     max(Dp(1f),Dp(1f))
     min(Dp(1f),Dp(1f))
-//    Dialog() // FIXME: 16/07/2021
+    Dialog({ }) {  }
     Popup {  }
     DpSize(Dp.Hairline, Dp.Hairline)
 }

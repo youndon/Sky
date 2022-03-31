@@ -1,4 +1,4 @@
-package components
+package com.example.sky.components
 
 import androidx.compose.material.*
 import androidx.compose.material.MaterialTheme
@@ -13,29 +13,30 @@ private interface AppBars {
         //
         TopAppBar(
             modifier = Modifier,
-        backgroundColor = MaterialTheme.colors.primarySurface,
-        contentColor = contentColorFor(backgroundColor),
-        elevation = AppBarDefaults.TopAppBarElevation,
-        contentPadding = AppBarDefaults.ContentPadding,
+            backgroundColor = MaterialTheme.colors.primarySurface,
+            contentColor = contentColorFor(backgroundColor),
+            elevation = AppBarDefaults.TopAppBarElevation,
+            contentPadding = AppBarDefaults.ContentPadding,
         ) {
 
         }
+        //
         LargeTopAppBar(
             title = @Composable {},
-        modifier = Modifier,
-        navigationIcon = @Composable {},
-        actions = @Composable {},
-        colors = TopAppBarDefaults.largeTopAppBarColors(),
-        scrollBehavior = null
-        ) 
+            modifier = Modifier,
+            navigationIcon = @Composable {},
+            actions = @Composable {},
+            colors = TopAppBarDefaults.largeTopAppBarColors(),
+            scrollBehavior = null
+        )
+        //
         MediumTopAppBar(
             title = @Composable {},
-        modifier = Modifier,
-        navigationIcon = @Composable {},
-        actions = @Composable {},
-        colors = TopAppBarDefaults.mediumTopAppBarColors(),
-        scrollBehavior = null
-        )
+            modifier = Modifier,
+            navigationIcon = @Composable {},
+            actions = @Composable {},
+            colors = TopAppBarDefaults.mediumTopAppBarColors(),
+            scrollBehavior = null)
         //
         SmallTopAppBar(
             title = @Composable {},
@@ -45,23 +46,24 @@ private interface AppBars {
             colors = TopAppBarDefaults.smallTopAppBarColors(),
             scrollBehavior = null
         )
+        //
         CenterAlignedTopAppBar(
             title = @Composable {},
-        modifier = Modifier,
-        navigationIcon = @Composable {},
-        actions = @Composable {},
-        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
-        scrollBehavior = null
-        )
+            modifier = Modifier,
+            navigationIcon = @Composable {},
+            actions = @Composable {},
+            colors = TopAppBarDefaults.centerAlignedTopAppBarColors(),
+            scrollBehavior = null)
         //
         BottomAppBar(
             modifier = Modifier,
             backgroundColor = MaterialTheme.colors.primarySurface,
-            contentColor = contentColorFor(SnackbarDefaults.backgroundColor),
+            contentColor = contentColorFor(backgroundColor),
             cutoutShape = null,
             elevation = AppBarDefaults.BottomAppBarElevation,
             contentPadding = AppBarDefaults.ContentPadding,
-        ){}
+        ){
 
+        }
     }
 }

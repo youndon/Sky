@@ -1,10 +1,11 @@
-package components
+package com.example.sky.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.ScrollableDefaults
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.*
@@ -71,18 +72,9 @@ interface CRB {
         //
         BoxWithConstraints(
             modifier = Modifier,
-        contentAlignment = Alignment.TopStart,
-        propagateMinConstraints = false,
+            contentAlignment = Alignment.TopStart,
+            propagateMinConstraints = false,
         ) {
-        }
-        //
-        BadgeBox(
-            modifier = Modifier,
-        backgroundColor = MaterialTheme.colors.error,
-        contentColor = contentColorFor(backgroundColor),
-        badgeContent = @Composable {},
-        ){
-            
         }
     }
 }

@@ -12,23 +12,17 @@ interface Dialogs {
     @Composable
     fun dialog() {
         Column {
-            Dialog(
-                onDismissRequest = {},
-            properties = DialogProperties(),
-            ) {
-            }
-
             //
             AlertDialog(
-                onDismissRequest = {   },
-                buttons = @Composable {   },
+                onDismissRequest = { },
+                buttons = @Composable { },
                 modifier = Modifier,
-                title = @Composable {   },
-                text = @Composable {   },
+                title = @Composable { },
+                text = @Composable { },
                 shape = MaterialTheme.shapes.medium,
                 backgroundColor = MaterialTheme.colors.surface,
                 contentColor = contentColorFor(backgroundColor),
-                properties = DialogProperties()
+                properties = DialogProperties(),
             )
         }
     }
