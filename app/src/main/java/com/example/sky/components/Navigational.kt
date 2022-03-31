@@ -6,6 +6,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.DrawerValue
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material3.MaterialTheme as M3
 import androidx.compose.material.contentColorFor
 import androidx.compose.material.icons.Icons
@@ -26,7 +27,7 @@ interface Navigational {
         NavigationRail(
             modifier = Modifier,
             containerColor = contentColorFor(backgroundColor = Color.Gray),
-            contentColor = contentColorFor(SnackbarDefaults.backgroundColor),
+            contentColor = contentColorFor(backgroundColor),
             header = @Composable {},
         ) {
             NavigationRailItem(
@@ -45,7 +46,7 @@ interface Navigational {
         BottomNavigation(
             modifier = Modifier,
             backgroundColor = MaterialTheme.colors.primarySurface,
-            contentColor = contentColorFor(SnackbarDefaults.backgroundColor),
+            contentColor = contentColorFor(backgroundColor),
             elevation = BottomNavigationDefaults.Elevation,
             content = {
                 BottomNavigationItem(

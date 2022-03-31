@@ -1,60 +1,29 @@
 package com.example.sky
 
-import android.annotation.SuppressLint
-import android.content.res.Configuration.UI_MODE_NIGHT_NO
-import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import android.os.Build
-import android.os.Message
-import android.os.SystemClock
-import android.util.Log
-import android.widget.Toast
-import androidx.annotation.RequiresApi
-import androidx.compose.animation.animateColor
-import androidx.compose.animation.core.*
-import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.ScrollableState
-import androidx.compose.foundation.gestures.scrollable
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.text.ClickableText
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.lightColorScheme
-import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.End
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.StrokeCap
-import androidx.compose.ui.graphics.drawscope.Stroke
-import androidx.compose.ui.modifier.modifierLocalConsumer
-import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.tooling.preview.Devices
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
-import androidx.datastore.dataStore
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
-import androidx.navigation.compose.NavHost
-import androidx.room.util.UUIDUtil
-import com.example.sky.db.sample.iV
-import com.squareup.moshi.Moshi
-import kotlinx.coroutines.*
-import retrofit2.Retrofit
-import java.time.Clock
-import java.util.*
-import kotlin.coroutines.coroutineContext
-import kotlin.random.Random
+import kotlinx.coroutines.launch
 
 @Composable
 fun MAX() {
@@ -83,11 +52,63 @@ fun MAX() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Scaf() {
-
+    val remScope = rememberCoroutineScope()
+    val remSState = rememberScaffoldState()
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        scaffoldState = remSState
+    ) {
+        Column {
+            Button(onClick = {
+                remScope.launch {
+                    remSState.snackbarHostState.showSnackbar("my method...", "done!")
+                }
+            }) {
+                Text(text = "Snacked!!")
+            }
+            Divider()
+            Plant()
+        }
+        Snackbar(
+            action = {
+                Text(text = "hide")
+            }
+        ) {
+            Text(text = "sldqmldkqsfqsfq")
+        }
+    }
 }
 
+@OptIn(ExperimentalComposeUiApi::class)
+@Composable
+fun Plant() {
+    val rem = remember { mutableStateOf("") }
+    val keybCtrl = LocalSoftwareKeyboardController.current
+    Column {
+        TextField(
+            value = rem.value,
+            onValueChange = {
+                rem.value = it
+            },
+            keyboardOptions = KeyboardOptions(
+                imeAction = ImeAction.Done
+            ),
+            keyboardActions = KeyboardActions(
+                onDone = {
+                    keybCtrl?.hide()
+                },
+            )
+        )
+        TextField(
+            value = "",
+            onValueChange = {}
+        )
+    }
+
+}
 
 
 

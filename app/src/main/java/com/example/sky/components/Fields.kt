@@ -16,6 +16,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 
 interface Fields {
@@ -29,14 +32,24 @@ interface Fields {
             enabled = true,
             readOnly = false,
             textStyle = LocalTextStyle.current,
-            label = { Text("this is text field!") },
-            placeholder = { Text("user input.") },
-            leadingIcon = { Icon(Icons.TwoTone.Build, null) },
-            trailingIcon = { Icon(Icons.Rounded.Phone, null) },
+            label = @Composable { Text("label") },
+            placeholder = @Composable { Text("place holder") },
+            leadingIcon = @Composable { Icon(Icons.TwoTone.Build, null) },
+            trailingIcon = @Composable { Icon(Icons.Rounded.Phone, null) },
             isError = false,
             visualTransformation = VisualTransformation.None, // PasswordVisualTransformation() for password input.
-            keyboardOptions = KeyboardOptions(),
-            keyboardActions = KeyboardActions(),
+            keyboardOptions = KeyboardOptions(
+                capitalization = KeyboardCapitalization.None, // Characters, Words, Sentences.
+                autoCorrect = true,
+                keyboardType = KeyboardType.Text, // Ascii, Number, Phone, Uri, Email, Password, NumberPassword.
+                imeAction = ImeAction.Default // Go, Search, Send, Previous, Next, Done.
+            ),
+            keyboardActions = KeyboardActions(
+                // onGo, onNext, onPrevious, onSearch, onSend.
+                onDone = {
+                         this.defaultKeyboardAction(ImeAction.None)
+                },
+            ),
             singleLine = false,
             maxLines = 200,
             interactionSource = remember { MutableInteractionSource() },

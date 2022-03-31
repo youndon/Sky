@@ -13,14 +13,14 @@ interface Badge {
     @Composable
     fun Others() {
         BadgedBox(
+            modifier = Modifier,
             badge = @Composable {
                 Badge(
                     modifier = Modifier,
                     contentColor = contentColorFor(Color.Unspecified)
                 ) {
                 }
-            },
-            modifier = Modifier
+            }
         ) {
 
         }

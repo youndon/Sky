@@ -48,7 +48,8 @@ class MainActivity : ComponentActivity() {
                         Surface {
                             AtlasNav(atlasModule, atlasModule.usersList)
                         }
-                }
+            }
+//            Scaf()
         }
     }
 }

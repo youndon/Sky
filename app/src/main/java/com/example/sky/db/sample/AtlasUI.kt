@@ -4,17 +4,20 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
-import androidx.compose.material.SnackbarDuration
-import androidx.compose.material.Text
-import androidx.compose.material3.*
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -22,10 +25,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
-import androidx.compose.material.SnackbarHost as SnackbarHost3
 import androidx.compose.material3.MaterialTheme as MaterialTheme3
-import androidx.compose.material3.Scaffold as Scaffold3
-import androidx.compose.material3.Snackbar as Snackbar3
 
 private val id = fun() = (1..Int.MAX_VALUE).random()
 val uV = mutableStateOf("")
@@ -53,7 +53,7 @@ fun AtlasNav(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, androidx.compose.ui.ExperimentalComposeUiApi::class)
 @Composable
 fun Atlasbase(
     model: AtlasModel,
@@ -61,23 +61,17 @@ fun Atlasbase(
 ) {
     var userValue by remember { uV }
     var passValue by remember { pV }
-    val atlasStore = AtlasStore(LocalContext.current)
+    val scaffState = rememberScaffoldState()
     val scope = rememberCoroutineScope()
+    val atlasStore = AtlasStore(LocalContext.current)
     val get_theme = atlasStore.getTheme.collectAsState(false)
     val anyID =  model.usersList.any { it.id == iV.value }
     val findID = model.usersList.find { it.id == iV.value }
-    val scaffoldS = rememberScaffoldState()
-    val scaffoldV = remember { mutableStateOf(false) }
+    val ctrl = LocalSoftwareKeyboardController.current
     Scaffold(
-        modifier = Modifier.fillMaxSize(),
-        scaffoldState = scaffoldS,
-    backgroundColor = MaterialTheme3.colorScheme.background) {
-        if (scaffoldV.value) LaunchedEffect(scaffoldS.snackbarHostState) {
-            scaffoldS.snackbarHostState.showSnackbar(
-                message = "$userValue $passValue Added!!",
-                duration = SnackbarDuration.Short)
-            scaffoldV.value = false
-        }
+//        modifier = Modifier.fillMaxSize(),
+        scaffoldState = scaffState,
+        backgroundColor = MaterialTheme3.colorScheme.background) {
         Column  (
             Modifier
                 .padding(20.dp)
@@ -92,7 +86,20 @@ fun Atlasbase(
                 maxLines = 1,
                 colors = TextFieldDefaults.textFieldColors(
                     textColor = MaterialTheme3.colorScheme.onPrimaryContainer,
-                )
+                ),
+                singleLine = true,
+                keyboardOptions = KeyboardOptions(
+                    capitalization = KeyboardCapitalization.Sentences,
+                    autoCorrect = true,
+                    keyboardType = KeyboardType.Uri,
+                    imeAction = ImeAction.Done
+                ),
+                keyboardActions = KeyboardActions(
+                    onDone = {
+                        ctrl?.hide()
+                    }
+                ),
+                isError = userValue.any { !it.isLetter() }
             )
 
             Spacer(modifier = Modifier.height(20.dp))
@@ -105,12 +112,14 @@ fun Atlasbase(
                 maxLines = 1,
                 colors = TextFieldDefaults.textFieldColors(
                     textColor = MaterialTheme3.colorScheme.onPrimaryContainer
-                )
+                ),
+                singleLine = true
             )
 
             Spacer(modifier = Modifier.height(20.dp))
 
             androidx.compose.material3.Button(
+                modifier = Modifier.fillMaxWidth(),
                 enabled = !anyID && userValue.isNotEmpty() && passValue.isNotEmpty(),
                 onClick = {
                     model.addUser(
@@ -120,7 +129,9 @@ fun Atlasbase(
                             password = passValue
                         )
                     )
-                    scaffoldV.value = true
+                    scope.launch {
+                        scaffState.snackbarHostState.showSnackbar("Added User.",actionLabel = "hide")
+                    }
                     userValue = ""; passValue = ""
                 }) {
                 Text(text = "Add User")
@@ -147,6 +158,9 @@ fun Atlasbase(
                             userValue,
                             passValue
                         ))
+                        scope.launch {
+                            scaffState.snackbarHostState.showSnackbar("Saved!",actionLabel = "hide")
+                        }
                         userValue = ""; passValue = ""; iV.value = 0
                     }) {
                     Text(text = "Save")
@@ -160,6 +174,9 @@ fun Atlasbase(
                     enabled = anyID,
                     onClick = {
                         model.deleteUser(AtlasEntity(iV.value, uV.value, pV.value))
+                        scope.launch {
+                            scaffState.snackbarHostState.showSnackbar("Deleting!",actionLabel = "Undo")
+                        }
                         userValue = ""; passValue = ""
                     }
                 ) {
