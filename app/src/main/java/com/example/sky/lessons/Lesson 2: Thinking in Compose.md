@@ -230,7 +230,7 @@ fun NamePicker(
  */
 @Composable
 private fun NamePickerItem(name: String, onClicked: (String) -> Unit) {
-    Text(name, Modifier.clickable(onClick = { onClicked(name) }))
+    Text(name, com.example.sky.Modifier.clickable(onClick = { onClicked(name) }))
 }
 ```
 

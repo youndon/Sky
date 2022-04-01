@@ -30,7 +30,7 @@ In this codelab we will style a news-reading app. We begin with an unstyled appl
 
 - Experience with [Kotlin syntax](https://www.google.com/url?q=https://developers.android.com/jetpack/compose/kotlin&sa=D&ust=1597843503683000&usg=AFQjCNGNsrzy2Ppx_v8tk56vLypncZkvFw), including lambdas
 - [Basic understanding of Compose](https://codelabs.developers.google.com/codelabs/jetpack-compose-basics/#0).
-- Basic familiarity with [Compose layouts](https://codelabs.developers.google.com/codelabs/android-compose-layouts) e.g. `Row` , `Column` & `Modifier`
+- Basic familiarity with [Compose layouts](https://codelabs.developers.google.com/codelabs/android-compose-layouts) e.g. `Row` , `Column` & `com.example.sky.Modifier`
 
 ## [2. Getting set up](https://developer.android.com/codelabs/jetpack-compose-theming?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-theming#1)
 
@@ -534,10 +534,10 @@ BottomNavigationItem(
   unselectedContentColor = LocalContentColor.current ...
 ```
 
-When setting the color of any elements, prefer using a [`Surface`](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#Surface(androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Shape,androidx.compose.ui.graphics.Color,androidx.compose.ui.graphics.Color,androidx.compose.foundation.BorderStroke,androidx.compose.ui.unit.Dp,kotlin.Function0)) to do this as it sets an appropriate content color [`CompositionLocal`](https://developer.android.com/reference/kotlin/androidx/compose/runtime/CompositionLocal) value, be wary of direct [`Modifier.background`](https://developer.android.com/reference/kotlin/androidx/compose/foundation/package-summary#background(androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Color,androidx.compose.ui.graphics.Shape)) calls which do **not** set an appropriate content color.
+When setting the color of any elements, prefer using a [`Surface`](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#Surface(androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Shape,androidx.compose.ui.graphics.Color,androidx.compose.ui.graphics.Color,androidx.compose.foundation.BorderStroke,androidx.compose.ui.unit.Dp,kotlin.Function0)) to do this as it sets an appropriate content color [`CompositionLocal`](https://developer.android.com/reference/kotlin/androidx/compose/runtime/CompositionLocal) value, be wary of direct [`com.example.sky.Modifier.background`](https://developer.android.com/reference/kotlin/androidx/compose/foundation/package-summary#background(androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Color,androidx.compose.ui.graphics.Shape)) calls which do **not** set an appropriate content color.
 
 ```
--Row(Modifier.background(MaterialTheme.colors.primary)) {
+-Row(com.example.sky.Modifier.background(MaterialTheme.colors.primary)) {
 +Surface(color = MaterialTheme.colors.primary) {
 +  Row(
 ...
@@ -557,7 +557,7 @@ Let's fix this. In the `Header` composable in `Home.kt`, remove the `background`
 + ) {
   Text(
     text = text,
-    modifier = Modifier
+    modifier = com.example.sky.Modifier
       .fillMaxWidth()
 -     .background(Color.LightGray)
       .padding(horizontal = 16.dp, vertical = 8.dp)
@@ -780,7 +780,7 @@ fun FilledTextField(
 
 ## Theme shapes
 
-You can of course use shapes yourself when creating your own components by using composables or `Modifier`s which accept shapes e.g. [`Surface`](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#Surface(androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Shape,androidx.compose.ui.graphics.Color,androidx.compose.ui.graphics.Color,androidx.compose.foundation.BorderStroke,androidx.compose.ui.unit.Dp,kotlin.Function0)), [`Modifier.clip`](https://developer.android.com/reference/kotlin/androidx/compose/ui/draw/package-summary#clip(androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Shape)), [`Modifier.background`](https://developer.android.com/reference/kotlin/androidx/compose/foundation/package-summary#background(androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Color,androidx.compose.ui.graphics.Shape)), [`Modifier.border`](https://developer.android.com/reference/kotlin/androidx/compose/foundation/package-summary#border(androidx.compose.ui.Modifier,androidx.compose.foundation.BorderStroke,androidx.compose.ui.graphics.Shape)) etc.
+You can of course use shapes yourself when creating your own components by using composables or `com.example.sky.Modifier`s which accept shapes e.g. [`Surface`](https://developer.android.com/reference/kotlin/androidx/compose/material/package-summary#Surface(androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Shape,androidx.compose.ui.graphics.Color,androidx.compose.ui.graphics.Color,androidx.compose.foundation.BorderStroke,androidx.compose.ui.unit.Dp,kotlin.Function0)), [`com.example.sky.Modifier.clip`](https://developer.android.com/reference/kotlin/androidx/compose/ui/draw/package-summary#clip(androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Shape)), [`com.example.sky.Modifier.background`](https://developer.android.com/reference/kotlin/androidx/compose/foundation/package-summary#background(androidx.compose.ui.Modifier,androidx.compose.ui.graphics.Color,androidx.compose.ui.graphics.Shape)), [`com.example.sky.Modifier.border`](https://developer.android.com/reference/kotlin/androidx/compose/foundation/package-summary#border(androidx.compose.ui.Modifier,androidx.compose.foundation.BorderStroke,androidx.compose.ui.graphics.Shape)) etc.
 
 ```
 @Composable
@@ -794,7 +794,7 @@ fun UserProfile(
 }
 ```
 
-Let's add shape theming to the image displayed in `PostItem`; we'll apply the theme's `small` shape to it with a `clip` `Modifier` to cut the top-left corner:
+Let's add shape theming to the image displayed in `PostItem`; we'll apply the theme's `small` shape to it with a `clip` `com.example.sky.Modifier` to cut the top-left corner:
 
 ```
 @Composable
@@ -802,7 +802,7 @@ fun PostItem(...) {
   ...
   Image(
     painter = painterResource(post.imageThumbId),
-+   modifier = Modifier.clip(shape = MaterialTheme.shapes.small)
++   modifier = com.example.sky.Modifier.clip(shape = MaterialTheme.shapes.small)
   )
 ```
 
@@ -818,7 +818,7 @@ We've already been doing this in our app:
 @Composable
 fun Header(
   text: String,
-  modifier: Modifier = Modifier
+  modifier: com.example.sky.Modifier = com.example.sky.Modifier
 ) {
   Surface(
     color = MaterialTheme.colors.onSurface.copy(alpha = 0.1f),
@@ -828,7 +828,7 @@ fun Header(
     Text(
       text = text,
       style = MaterialTheme.typography.subtitle2,
-      modifier = Modifier
+      modifier = com.example.sky.Modifier
         .fillMaxWidth()
         .padding(horizontal = 16.dp, vertical = 8.dp)
     )
@@ -844,7 +844,7 @@ We've seen that all components are constructed out of lower level building block
 @Composable
 fun LoginButton(
     onClick: () -> Unit,
-    modifier: Modifier = Modifier,
+    modifier: com.example.sky.Modifier = com.example.sky.Modifier,
     content: @Composable RowScope.() -> Unit
 ) {
     Button(

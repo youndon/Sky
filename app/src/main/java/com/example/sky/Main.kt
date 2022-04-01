@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -36,7 +37,8 @@ fun MAX() {
                 .fillMaxSize()
                 .padding(20.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center) {
+                verticalArrangement = Arrangement.Center
+            ) {
                 androidx.compose.material3.Button(onClick = { }) {
                     androidx.compose.material3.Text(text = "Max!!")
                 }
@@ -72,13 +74,6 @@ fun Scaf() {
             Divider()
             Plant()
         }
-        Snackbar(
-            action = {
-                Text(text = "hide")
-            }
-        ) {
-            Text(text = "sldqmldkqsfqsfq")
-        }
     }
 }
 
@@ -107,9 +102,14 @@ fun Plant() {
             onValueChange = {}
         )
     }
-
 }
 
+@Composable
+fun Seabeds() {
+    SelectionContainer {
+        Text(text = "")
+    }
+}
 
 
 

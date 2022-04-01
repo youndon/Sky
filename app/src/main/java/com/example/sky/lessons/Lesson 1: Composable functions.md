@@ -80,11 +80,11 @@ Our message layout has the right structure but its elements aren't well spaced a
 @Composable
 fun MessageCard(msg: Message) {
     // Add padding around our message
-    Row(modifier = Modifier.padding(all = 8.dp)) {
+    Row(modifier = com.example.sky.Modifier.padding(all = 8.dp)) {
         Image(
             painter = painterResource(R.drawable.profile_picture),
             contentDescription = "Contact profile picture",
-            modifier = Modifier
+            modifier = com.example.sky.Modifier
                 // Set image size to 40 dp
                 .size(40.dp)
                 // Clip image to be shaped as a circle
@@ -92,12 +92,12 @@ fun MessageCard(msg: Message) {
         )
 
         // Add a horizontal space between the image and the column
-        Spacer(modifier = Modifier.width(8.dp))
+        Spacer(modifier = com.example.sky.Modifier.width(8.dp))
 
         Column {
             Text(text = msg.author)
             // Add a vertical space between the author and message texts
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = com.example.sky.Modifier.height(4.dp))
             Text(text = msg.body)
         }
     }
@@ -204,16 +204,16 @@ Now we can change the background of the message content based on `isExpanded` wh
 ```kotlin
 @Composable
 fun MessageCard(msg: Message) {
-    Row(modifier = Modifier.padding(all = 8.dp)) {
+    Row(modifier = com.example.sky.Modifier.padding(all = 8.dp)) {
         Image(
             painter = painterResource(R.drawable.profile_picture),
             contentDescription = null,
-            modifier = Modifier
+            modifier = com.example.sky.Modifier
                 .size(40.dp)
                 .clip(CircleShape)
                 .border(1.5.dp, MaterialTheme.colors.secondaryVariant, CircleShape)
         )
-        Spacer(modifier = Modifier.width(8.dp))
+        Spacer(modifier = com.example.sky.Modifier.width(8.dp))
 
         // We keep track if the message is expanded or not in this
         // variable
@@ -224,14 +224,14 @@ fun MessageCard(msg: Message) {
         )
 
         // We toggle the isExpanded variable when we click on this Column
-        Column(modifier = Modifier.clickable { isExpanded = !isExpanded }) {
+        Column(modifier = com.example.sky.Modifier.clickable { isExpanded = !isExpanded }) {
             Text(
                 text = msg.author,
                 color = MaterialTheme.colors.secondaryVariant,
                 style = MaterialTheme.typography.subtitle2
             )
 
-            Spacer(modifier = Modifier.height(4.dp))
+            Spacer(modifier = com.example.sky.Modifier.height(4.dp))
 
             Surface(
                 shape = MaterialTheme.shapes.medium,
@@ -239,11 +239,11 @@ fun MessageCard(msg: Message) {
                 // surfaceColor color will be changing gradually from primary to surface
                 color = surfaceColor,
                 // animateContentSize will change the Surface size gradually
-                modifier = Modifier.animateContentSize().padding(1.dp)
+                modifier = com.example.sky.Modifier.animateContentSize().padding(1.dp)
             ) {
                 Text(
                     text = msg.body,
-                    modifier = Modifier.padding(all = 4.dp),
+                    modifier = com.example.sky.Modifier.padding(all = 4.dp),
                     // If the message is expanded, we display all its content
                     // otherwise we only display the first line
                     maxLines = if (isExpanded) Int.MAX_VALUE else 1,

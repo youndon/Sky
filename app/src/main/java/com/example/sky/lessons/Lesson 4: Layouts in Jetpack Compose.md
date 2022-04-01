@@ -93,7 +93,7 @@ Next, while the picture is loading, you might want to show a placeholder. For th
 fun PhotographerCard() {
     Row {
         Surface(
-            modifier = Modifier.size(50.dp),
+            modifier = com.example.sky.Modifier.size(50.dp),
             shape = CircleShape,
             color = MaterialTheme.colors.onSurface.copy(alpha = 0.2f)
         ) {
@@ -116,7 +116,7 @@ There are a couple of improvements we would like to do here:
 1. We want some separation between the placeholder and the text.
 2. We would like the text to be centered vertically.
 
-For #1, we can use `Modifier.padding` on the `Column` that contains the text to add some space at the `start` of the composable to separate the image and the text. For #2, some layouts offer modifiers that are only applicable to them and their layout characteristics. For example composables in a `Row` can access certain modifiers (from the `RowScope` receiver of Row's content) that make sense there such as `weight` or `align`. This scoping offers type-safety, so you cannot accidentally use a modifier which does not make sense in another layout, for example `weight` does not make sense in a `Box`, so this will be prevented as a compile-time error.
+For #1, we can use `com.example.sky.Modifier.padding` on the `Column` that contains the text to add some space at the `start` of the composable to separate the image and the text. For #2, some layouts offer modifiers that are only applicable to them and their layout characteristics. For example composables in a `Row` can access certain modifiers (from the `RowScope` receiver of Row's content) that make sense there such as `weight` or `align`. This scoping offers type-safety, so you cannot accidentally use a modifier which does not make sense in another layout, for example `weight` does not make sense in a `Box`, so this will be prevented as a compile-time error.
 
 **com.example.sky.database.Note:** Modifiers can play a similar role to XML attributes in the View system, but the type safety of scope-specific modifiers helps you to discover and understand what is available and applicable to a certain layout. Compare this with XML layouts where it was not always clear if a layout attribute was applicable to a given View.
 
@@ -125,14 +125,14 @@ For #1, we can use `Modifier.padding` on the `Column` that contains the text to 
 fun PhotographerCard() {
     Row {
         Surface(
-            modifier = Modifier.size(50.dp),
+            modifier = com.example.sky.Modifier.size(50.dp),
             shape = CircleShape,
             color = MaterialTheme.colors.onSurface.copy(alpha = 0.2f)
         ) {
             // Image goes here
         }
         Column(
-            modifier = Modifier
+            modifier = com.example.sky.Modifier
                 .padding(start = 8.dp)
                 .align(Alignment.CenterVertically)
         ) {
@@ -149,11 +149,11 @@ With preview:
 
 ![1542fadc7f68feb2.png](https://developer.android.com/codelabs/jetpack-compose-layouts/img/1542fadc7f68feb2.png)
 
-Most composables accept an optional modifier parameter to make them more flexible, enabling the caller to modify them. If you're creating your own composable, consider having a modifier as a parameter, default it to `Modifier` (i.e. empty modifier that doesn't do anything) and apply it to the root composable of your function. In this case:
+Most composables accept an optional modifier parameter to make them more flexible, enabling the caller to modify them. If you're creating your own composable, consider having a modifier as a parameter, default it to `com.example.sky.Modifier` (i.e. empty modifier that doesn't do anything) and apply it to the root composable of your function. In this case:
 
 ```
 @Composable
-fun PhotographerCard(modifier: Modifier = Modifier) {
+fun PhotographerCard(modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
     Row(modifier) { ... }
 }
 ```
@@ -162,7 +162,7 @@ fun PhotographerCard(modifier: Modifier = Modifier) {
 
 ## Order of modifiers matter
 
-In the code, notice how you can chain multiple modifiers one after the other by using the factory-extension functions (i.e. `Modifier.padding(start = 8.dp).align(Alignment.CenterVertically)`).
+In the code, notice how you can chain multiple modifiers one after the other by using the factory-extension functions (i.e. `com.example.sky.Modifier.padding(start = 8.dp).align(Alignment.CenterVertically)`).
 
 Be mindful when chaining modifiers as the order matters. As they're concatenated into a single argument, the order affects the final result.
 
@@ -170,7 +170,7 @@ If you wanted to make the Photographer profile both clickable and have some padd
 
 ```
 @Composable
-fun PhotographerCard(modifier: Modifier = Modifier) {
+fun PhotographerCard(modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
     Row(modifier
         .padding(16.dp)
         .clickable(onClick = { /* Ignoring onClick */ })
@@ -188,7 +188,7 @@ Notice how the whole area is **not** clickable! This is because `padding` was ap
 
 ```
 @Composable
-fun PhotographerCard(modifier: Modifier = Modifier) {
+fun PhotographerCard(modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
     Row(modifier
         .clickable(onClick = { /* Ignoring onClick */ })
         .padding(16.dp)
@@ -208,7 +208,7 @@ Let your imagination fly! Modifiers let you modify your composable in a very fle
 
 ```
 @Composable
-fun PhotographerCard(modifier: Modifier = Modifier) {
+fun PhotographerCard(modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
     Row(modifier
         .padding(8.dp)
         .clip(RoundedCornerShape(4.dp))
@@ -282,7 +282,7 @@ To enable this, we provide an API for Button that takes a children composable la
 ```
 @Composable
 fun Button(
-    modifier: Modifier = Modifier,
+    modifier: com.example.sky.Modifier = com.example.sky.Modifier,
     onClick: (() -> Unit)? = null,
     ...
     content: @Composable () -> Unit
@@ -372,7 +372,7 @@ Let's add the `Scaffold` composable to our example so that we can have a typical
 @Composable
 fun LayoutsCodelab() {
     Scaffold { innerPadding ->
-        Text(text = "Hi there!", modifier = Modifier.padding(innerPadding))
+        Text(text = "Hi there!", modifier = com.example.sky.Modifier.padding(innerPadding))
     }
 }
 ```
@@ -387,7 +387,7 @@ If we wanted to have a `Column` with the com.example.sky.main content of our scr
 @Composable
 fun LayoutsCodelab() {
     Scaffold { innerPadding ->
-        Column(modifier = Modifier.padding(innerPadding)) {
+        Column(modifier = com.example.sky.Modifier.padding(innerPadding)) {
             Text(text = "Hi there!")
             Text(text = "Thanks for going through the Layouts codelab")
         }
@@ -405,12 +405,12 @@ To make our code more reusable and testable, we should structure it into small c
 @Composable
 fun LayoutsCodelab() {
     Scaffold { innerPadding ->
-        BodyContent(Modifier.padding(innerPadding))
+        BodyContent(com.example.sky.Modifier.padding(innerPadding))
     }
 }
 
 @Composable
-fun BodyContent(modifier: Modifier = Modifier) {
+fun BodyContent(modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
     Column(modifier = modifier) {
         Text(text = "Hi there!")
         Text(text = "Thanks for going through the Layouts codelab")
@@ -435,7 +435,7 @@ fun LayoutsCodelab() {
             )
         }
     ) { innerPadding ->
-        BodyContent(Modifier.padding(innerPadding))
+        BodyContent(com.example.sky.Modifier.padding(innerPadding))
     }
 }
 ```
@@ -460,7 +460,7 @@ fun LayoutsCodelab() {
             )
         }
     ) { innerPadding ->
-        BodyContent(Modifier.padding(innerPadding))
+        BodyContent(com.example.sky.Modifier.padding(innerPadding))
     }
 }
 ```
@@ -490,7 +490,7 @@ fun LayoutsCodelab() {
             )
         }
     ) { innerPadding ->
-        BodyContent(Modifier.padding(innerPadding))
+        BodyContent(com.example.sky.Modifier.padding(innerPadding))
     }
 }
 ```
@@ -503,7 +503,7 @@ Normally, actions modify the state of your application somehow. For more informa
 
 ## Placing modifiers
 
-Whenever we create new composables, having a `modifier` parameter that defaults to `Modifier` is a good practice to make the composable more reusable. Our `BodyContent` composable already takes a modifier as a parameter. If we wanted to add some more extra padding to `BodyContent`, where should we place the `padding` modifier?
+Whenever we create new composables, having a `modifier` parameter that defaults to `com.example.sky.Modifier` is a good practice to make the composable more reusable. Our `BodyContent` composable already takes a modifier as a parameter. If we wanted to add some more extra padding to `BodyContent`, where should we place the `padding` modifier?
 
 We have two possibilities:
 
@@ -511,7 +511,7 @@ We have two possibilities:
 
 ```
 @Composable
-fun BodyContent(modifier: Modifier = Modifier) {
+fun BodyContent(modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
     Column(modifier = modifier.padding(8.dp)) {
         Text(text = "Hi there!")
         Text(text = "Thanks for going through the Layouts codelab")
@@ -525,7 +525,7 @@ fun BodyContent(modifier: Modifier = Modifier) {
 @Composable
 fun LayoutsCodelab() {
     Scaffold(...) { innerPadding ->
-        BodyContent(Modifier.padding(innerPadding).padding(8.dp))
+        BodyContent(com.example.sky.Modifier.padding(innerPadding).padding(8.dp))
     }
 }
 ```
@@ -577,7 +577,7 @@ fun SimpleList() {
     // be used to programmatically scroll the list
     val scrollState = rememberScrollState()
 
-    Column(Modifier.verticalScroll(scrollState)) {
+    Column(com.example.sky.Modifier.verticalScroll(scrollState)) {
         repeat(100) {
             Text("Item #$it")
         }
@@ -644,9 +644,9 @@ fun ImageListItem(index: Int) {
                 data = "https://developer.android.com/images/brand/Android_Robot.png"
             ),
             contentDescription = "Android Logo",
-            modifier = Modifier.size(50.dp)
+            modifier = com.example.sky.Modifier.size(50.dp)
         )
-        Spacer(Modifier.width(10.dp))
+        Spacer(com.example.sky.Modifier.width(10.dp))
         Text("Item #$index", style = MaterialTheme.typography.subtitle1)
     }
 }
@@ -724,7 +724,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.com.example.sky.Modifier
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import kotlinx.coroutines.launch
@@ -737,9 +737,9 @@ fun ImageListItem(index: Int) {
                 data = "https://developer.android.com/images/brand/Android_Robot.png"
             ),
             contentDescription = "Android Logo",
-            modifier = Modifier.size(50.dp)
+            modifier = com.example.sky.Modifier.size(50.dp)
         )
-        Spacer(Modifier.width(10.dp))
+        Spacer(com.example.sky.Modifier.width(10.dp))
         Text("Item #$index", style = MaterialTheme.typography.subtitle1)
     }
 }
@@ -807,7 +807,7 @@ Elements are asked to measure themselves with Constraints that should be satisfi
 Use the `layout` modifier to manually control how to measure and position an element. Usually, the common structure of a custom `layout` modifier is as follows:
 
 ```
-fun Modifier.customLayoutModifier(...) = Modifier.layout { measurable, constraints ->
+fun com.example.sky.Modifier.customLayoutModifier(...) = com.example.sky.Modifier.layout { measurable, constraints ->
   ...
 })
 ```
@@ -824,7 +824,7 @@ Let's say you want to display a `Text` on the screen and control the distance fr
 Let's create a `firstBaselineToTop` modifier first:
 
 ```
-fun Modifier.firstBaselineToTop(
+fun com.example.sky.Modifier.firstBaselineToTop(
   firstBaselineToTop: Dp
 ) = this.then(
     layout { measurable, constraints ->
@@ -840,7 +840,7 @@ Measure the composable by calling `measurable.measure(constraints)`. When callin
 For this use case, don't constrain measurement further, just use the given constraints:
 
 ```
-fun Modifier.firstBaselineToTop(
+fun com.example.sky.Modifier.firstBaselineToTop(
     firstBaselineToTop: Dp
 ) = this.then(
     layout { measurable, constraints ->
@@ -856,7 +856,7 @@ Now that the composable has been measured, you need to calculate its size and sp
 In this case, the width of our composable will be the `width` of the measured composable and the height will be the composable's `height` with the desired top-to-baseline height minus the first baseline:
 
 ```
-fun Modifier.firstBaselineToTop(
+fun com.example.sky.Modifier.firstBaselineToTop(
     firstBaselineToTop: Dp
 ) = this.then(
     layout { measurable, constraints ->
@@ -883,7 +883,7 @@ Now, you can position the composable on the screen by calling `placeable.placeRe
 In this case, the `y` position of the text corresponds to the top padding minus the position of the first baseline:
 
 ```
-fun Modifier.firstBaselineToTop(
+fun com.example.sky.Modifier.firstBaselineToTop(
     firstBaselineToTop: Dp
 ) = this.then(
     layout { measurable, constraints ->
@@ -907,7 +907,7 @@ To verify this works as expected, you can use this modifier on a `Text` as you s
 @Composable
 fun TextWithPaddingToBaselinePreview() {
   LayoutsCodelabTheme {
-    Text("Hi there!", Modifier.firstBaselineToTop(32.dp))
+    Text("Hi there!", com.example.sky.Modifier.firstBaselineToTop(32.dp))
   }
 }
 
@@ -915,7 +915,7 @@ fun TextWithPaddingToBaselinePreview() {
 @Composable
 fun TextWithNormalPaddingPreview() {
   LayoutsCodelabTheme {
-    Text("Hi there!", Modifier.padding(top = 32.dp))
+    Text("Hi there!", com.example.sky.Modifier.padding(top = 32.dp))
   }
 }
 ```
@@ -931,7 +931,7 @@ Instead of controlling how a single composable gets measured and laid out on the
 ```
 @Composable
 fun CustomLayout(
-    modifier: Modifier = Modifier,
+    modifier: com.example.sky.Modifier = com.example.sky.Modifier,
     // custom layout attributes 
     content: @Composable () -> Unit
 ) {
@@ -957,7 +957,7 @@ Create a new composable called `MyOwnColumn` and add the common structure of a `
 ```
 @Composable
 fun MyOwnColumn(
-    modifier: Modifier = Modifier,
+    modifier: com.example.sky.Modifier = com.example.sky.Modifier,
     content: @Composable () -> Unit
 ) {
     Layout(
@@ -976,7 +976,7 @@ For this use case, you won't constrain our child views further. When measuring t
 ```
 @Composable
 fun MyOwnColumn(
-    modifier: Modifier = Modifier,
+    modifier: com.example.sky.Modifier = com.example.sky.Modifier,
     content: @Composable () -> Unit
 ) {
     Layout(
@@ -999,7 +999,7 @@ Now that you have the list of measured children in our logic, before positioning
 ```
 @Composable
 fun MyOwnColumn(
-    modifier: Modifier = Modifier,
+    modifier: com.example.sky.Modifier = com.example.sky.Modifier,
     content: @Composable () -> Unit
 ) {
     Layout(
@@ -1022,7 +1022,7 @@ Lastly, we position our children on the screen by calling `placeable.placeRelati
 ```
 @Composable
 fun MyOwnColumn(
-    modifier: Modifier = Modifier,
+    modifier: com.example.sky.Modifier = com.example.sky.Modifier,
     content: @Composable () -> Unit
 ) {
     Layout(
@@ -1060,7 +1060,7 @@ Let's see `MyOwnColumn` on the screen by using it in the `BodyContent` composabl
 
 ```
 @Composable
-fun BodyContent(modifier: Modifier = Modifier) {
+fun BodyContent(modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
     MyOwnColumn(modifier.padding(8.dp)) {
         Text("MyOwnColumn")
         Text("places items")
@@ -1091,7 +1091,7 @@ If we wanted to make the grid reusable on different orientations, we could take 
 ```
 @Composable
 fun StaggeredGrid(
-    modifier: Modifier = Modifier,
+    modifier: com.example.sky.Modifier = com.example.sky.Modifier,
     rows: Int = 3,
     content: @Composable () -> Unit
 ) {
@@ -1198,21 +1198,21 @@ Now that we have our custom grid layout that knows how to measure and position c
 
 ```
 @Composable
-fun Chip(modifier: Modifier = Modifier, text: String) {
+fun Chip(modifier: com.example.sky.Modifier = com.example.sky.Modifier, text: String) {
     Card(
         modifier = modifier,
         border = BorderStroke(color = Color.Black, width = Dp.Hairline),
         shape = RoundedCornerShape(8.dp)
     ) {
         Row(
-            modifier = Modifier.padding(start = 8.dp, top = 4.dp, end = 8.dp, bottom = 4.dp), 
+            modifier = com.example.sky.Modifier.padding(start = 8.dp, top = 4.dp, end = 8.dp, bottom = 4.dp), 
             verticalAlignment = Alignment.CenterVertically
         ) {
             Box(
-                modifier = Modifier.size(16.dp, 16.dp)
+                modifier = com.example.sky.Modifier.size(16.dp, 16.dp)
                     .background(color = MaterialTheme.colors.secondary)
             )
-            Spacer(Modifier.width(4.dp))
+            Spacer(com.example.sky.Modifier.width(4.dp))
             Text(text = text)
         }
     }
@@ -1242,10 +1242,10 @@ val topics = listOf(
 
 
 @Composable
-fun BodyContent(modifier: Modifier = Modifier) {
+fun BodyContent(modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
     StaggeredGrid(modifier = modifier) {
         for (topic in topics) {
-            Chip(modifier = Modifier.padding(8.dp), text = topic)
+            Chip(modifier = com.example.sky.Modifier.padding(8.dp), text = topic)
         }
     }
 }
@@ -1267,10 +1267,10 @@ Notice that we can change the number of rows of our grid and it still works as e
 
 ```
 @Composable
-fun BodyContent(modifier: Modifier = Modifier) {
+fun BodyContent(modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
     StaggeredGrid(modifier = modifier, rows = 5) {
         for (topic in topics) {
-            Chip(modifier = Modifier.padding(8.dp), text = topic)
+            Chip(modifier = com.example.sky.Modifier.padding(8.dp), text = topic)
         }
     }
 }
@@ -1284,11 +1284,11 @@ As depending on the number of rows, our topics can go off the screen, we can mak
 
 ```
 @Composable
-fun BodyContent(modifier: Modifier = Modifier) {
+fun BodyContent(modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
     Row(modifier = modifier.horizontalScroll(rememberScrollState())) {
         StaggeredGrid {
             for (topic in topics) {
-                Chip(modifier = Modifier.padding(8.dp), text = topic)
+                Chip(modifier = com.example.sky.Modifier.padding(8.dp), text = topic)
             }
         }
     }
@@ -1307,7 +1307,7 @@ Composables are responsible for their own content and that content may not be in
 
 ## Analysing a modifier
 
-Since `Modifier` and `LayoutModifier` are public interfaces, you can create your own modifiers. As we used `Modifier.padding` before, let's analyse its implementation to understand modifiers better.
+Since `com.example.sky.Modifier` and `LayoutModifier` are public interfaces, you can create your own modifiers. As we used `com.example.sky.Modifier.padding` before, let's analyse its implementation to understand modifiers better.
 
 [`padding`](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main-release:compose/foundation/foundation-layout/src/commonMain/kotlin/androidx/compose/foundation/layout/Padding.kt) is a function that is backed up by a class that implements the `LayoutModifier` interface and it's going to override the `measure` method. `PaddingModifier` is a regular class that implements `equals()` so the modifier can be compared across recompositions.
 
@@ -1316,7 +1316,7 @@ As an example, here's the source code of how `padding` modifies the size and con
 ```
 // How to create a modifier
 @Stable
-fun Modifier.padding(all: Dp) =
+fun com.example.sky.Modifier.padding(all: Dp) =
     this.then(
         PaddingModifier(start = all, top = all, end = all, bottom = all, rtlAware = true)
     )
@@ -1363,7 +1363,7 @@ First, modifiers will **update the constraints from left to right**, and then, t
 
 ```
 @Composable
-fun BodyContent(modifier: Modifier = Modifier) {
+fun BodyContent(modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
     Row(
         modifier = modifier
             .background(color = Color.LightGray)
@@ -1373,7 +1373,7 @@ fun BodyContent(modifier: Modifier = Modifier) {
     ) {
         StaggeredGrid {
             for (topic in topics) {
-                Chip(modifier = Modifier.padding(8.dp), text = topic)
+                Chip(modifier = com.example.sky.Modifier.padding(8.dp), text = topic)
             }
         }
     }
@@ -1392,7 +1392,7 @@ If we change the order of the modifiers, to apply first the padding and then the
 
 ```
 @Composable
-fun BodyContent(modifier: Modifier = Modifier) {
+fun BodyContent(modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
     Row(
         modifier = modifier
             .background(color = Color.LightGray, shape = RectangleShape)
@@ -1402,7 +1402,7 @@ fun BodyContent(modifier: Modifier = Modifier) {
     ) {
         StaggeredGrid {
             for (topic in topics) {
-                Chip(modifier = Modifier.padding(8.dp), text = topic)
+                Chip(modifier = com.example.sky.Modifier.padding(8.dp), text = topic)
             }
         }
     }
@@ -1446,7 +1446,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.com.example.sky.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.tooling.preview.Preview
@@ -1477,12 +1477,12 @@ fun LayoutsCodelab() {
             )
         }
     ) { innerPadding ->
-        BodyContent(Modifier.padding(innerPadding))
+        BodyContent(com.example.sky.Modifier.padding(innerPadding))
     }
 }
 
 @Composable
-fun BodyContent(modifier: Modifier = Modifier) {
+fun BodyContent(modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
     Row(modifier = modifier
         .background(color = Color.LightGray)
         .padding(16.dp)
@@ -1491,7 +1491,7 @@ fun BodyContent(modifier: Modifier = Modifier) {
         content = {
             StaggeredGrid {
                 for (topic in topics) {
-                    Chip(modifier = Modifier.padding(8.dp), text = topic)
+                    Chip(modifier = com.example.sky.Modifier.padding(8.dp), text = topic)
                 }
             }
         })
@@ -1499,7 +1499,7 @@ fun BodyContent(modifier: Modifier = Modifier) {
 
 @Composable
 fun StaggeredGrid(
-    modifier: Modifier = Modifier,
+    modifier: com.example.sky.Modifier = com.example.sky.Modifier,
     rows: Int = 3,
     content: @Composable () -> Unit
 ) {
@@ -1561,22 +1561,22 @@ fun StaggeredGrid(
 }
 
 @Composable
-fun Chip(modifier: Modifier = Modifier, text: String) {
+fun Chip(modifier: com.example.sky.Modifier = com.example.sky.Modifier, text: String) {
     Card(
         modifier = modifier,
         border = BorderStroke(color = Color.Black, width = Dp.Hairline),
         shape = RoundedCornerShape(8.dp)
     ) {
         Row(
-            modifier = Modifier.padding(start = 8.dp, top = 4.dp, end = 8.dp, bottom = 4.dp),
+            modifier = com.example.sky.Modifier.padding(start = 8.dp, top = 4.dp, end = 8.dp, bottom = 4.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Box(
-                modifier = Modifier
+                modifier = com.example.sky.Modifier
                     .size(16.dp, 16.dp)
                     .background(color = MaterialTheme.colors.secondary)
             )
-            Spacer(Modifier.width(4.dp))
+            Spacer(com.example.sky.Modifier.width(4.dp))
             Text(text = text)
         }
     }
@@ -1633,7 +1633,7 @@ fun ConstraintLayoutContent() {
             onClick = { /* Do something */ },
             // Assign reference "button" to the Button composable
             // and constrain it to the top of the ConstraintLayout
-            modifier = Modifier.constrainAs(button) {
+            modifier = com.example.sky.Modifier.constrainAs(button) {
                 top.linkTo(parent.top, margin = 16.dp)
             }
         ) {
@@ -1642,7 +1642,7 @@ fun ConstraintLayoutContent() {
 
         // Assign reference "text" to the Text composable
         // and constrain it to the bottom of the Button composable
-        Text("Text", Modifier.constrainAs(text) {
+        Text("Text", com.example.sky.Modifier.constrainAs(text) {
             top.linkTo(button.bottom, margin = 16.dp)
         })
     }
@@ -1669,7 +1669,7 @@ fun ConstraintLayoutContent() {
     ConstraintLayout {
         ... // Same as before
 
-        Text("Text", Modifier.constrainAs(text) {
+        Text("Text", com.example.sky.Modifier.constrainAs(text) {
             top.linkTo(button.bottom, margin = 16.dp)
             // Centers Text horizontally in the ConstraintLayout
             centerHorizontallyTo(parent)
@@ -1698,14 +1698,14 @@ fun ConstraintLayoutContent() {
 
         Button(
             onClick = { /* Do something */ },
-            modifier = Modifier.constrainAs(button1) {
+            modifier = com.example.sky.Modifier.constrainAs(button1) {
                 top.linkTo(parent.top, margin = 16.dp)
             }
         ) { 
             Text("Button 1") 
         }
 
-        Text("Text", Modifier.constrainAs(text) {
+        Text("Text", com.example.sky.Modifier.constrainAs(text) {
             top.linkTo(button1.bottom, margin = 16.dp)
             centerAround(button1.end)
         })
@@ -1713,7 +1713,7 @@ fun ConstraintLayoutContent() {
         val barrier = createEndBarrier(button1, text)
         Button(
             onClick = { /* Do something */ },
-            modifier = Modifier.constrainAs(button2) {
+            modifier = com.example.sky.Modifier.constrainAs(button2) {
                 top.linkTo(parent.top, margin = 16.dp)
                 start.linkTo(barrier)
             }
@@ -1746,7 +1746,7 @@ fun LargeConstraintLayout() {
         val guideline = createGuidelineFromStart(fraction = 0.5f)
         Text(
             "This is a very very very very very very very long text",
-            Modifier.constrainAs(text) {
+            com.example.sky.Modifier.constrainAs(text) {
                 linkTo(start = guideline, end = parent.end)
             }
         )
@@ -1775,7 +1775,7 @@ fun LargeConstraintLayout() {
         val guideline = createGuidelineFromStart(0.5f)
         Text(
             "This is a very very very very very very very long text",
-            Modifier.constrainAs(text) {
+            com.example.sky.Modifier.constrainAs(text) {
                 linkTo(guideline, parent.end)
                 width = Dimension.preferredWrapContent
             }
@@ -1826,12 +1826,12 @@ fun DecoupledConstraintLayout() {
         ConstraintLayout(constraints) {
             Button(
                 onClick = { /* Do something */ },
-                modifier = Modifier.layoutId("button")
+                modifier = com.example.sky.Modifier.layoutId("button")
             ) {
                 Text("Button")
             }
 
-            Text("Text", Modifier.layoutId("text"))
+            Text("Text", com.example.sky.Modifier.layoutId("text"))
         }
     }
 }
@@ -1876,19 +1876,19 @@ How can we do this? We can have a `Row` with two `Text`s inside that expands as 
 
 ```
 @Composable
-fun TwoTexts(modifier: Modifier = Modifier, text1: String, text2: String) {
+fun TwoTexts(modifier: com.example.sky.Modifier = com.example.sky.Modifier, text1: String, text2: String) {
     Row(modifier = modifier) {
         Text(
-            modifier = Modifier
+            modifier = com.example.sky.Modifier
                 .weight(1f)
                 .padding(start = 4.dp)
                 .wrapContentWidth(Alignment.Start),
             text = text1
         )
 
-        Divider(color = Color.Black, modifier = Modifier.fillMaxHeight().width(1.dp))
+        Divider(color = Color.Black, modifier = com.example.sky.Modifier.fillMaxHeight().width(1.dp))
         Text(
-            modifier = Modifier
+            modifier = com.example.sky.Modifier
                 .weight(1f)
                 .padding(end = 4.dp)
                 .wrapContentWidth(Alignment.End),
@@ -1921,19 +1921,19 @@ Applying that to our code, it'll work as expected
 
 ```
 @Composable
-fun TwoTexts(modifier: Modifier = Modifier, text1: String, text2: String) {
+fun TwoTexts(modifier: com.example.sky.Modifier = com.example.sky.Modifier, text1: String, text2: String) {
     Row(modifier = modifier.height(IntrinsicSize.Min)) {
         Text(
-            modifier = Modifier
+            modifier = com.example.sky.Modifier
                 .weight(1f)
                 .padding(start = 4.dp)
                 .wrapContentWidth(Alignment.Start),
             text = text1
         )
 
-        Divider(color = Color.Black, modifier = Modifier.fillMaxHeight().width(1.dp))
+        Divider(color = Color.Black, modifier = com.example.sky.Modifier.fillMaxHeight().width(1.dp))
         Text(
-            modifier = Modifier
+            modifier = com.example.sky.Modifier
                 .weight(1f)
                 .padding(end = 4.dp)
                 .wrapContentWidth(Alignment.End),
@@ -1963,7 +1963,7 @@ Row's `minIntrinsicHeight` will be the maximum `minIntrinsicHeight` of its child
 
 Whenever you are creating your custom layout, you can modify how intrinsics are calculated with the `(min|max)Intrinsic(Width|Height)MeasurePolicy` [parameters](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main-release:compose/ui/ui/src/commonMain/kotlin/androidx/compose/ui/layout/Layout.kt); however, the defaults should be enough most of the time.
 
-Also, you can modify intrinsics with modifiers overriding the `Density.(min|max)Intrinsic(Width|Height)Of` methods of the [Modifier](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main-release:compose/ui/ui/src/commonMain/kotlin/androidx/compose/ui/layout/LayoutModifier.kt) interface which also have a good default.
+Also, you can modify intrinsics with modifiers overriding the `Density.(min|max)Intrinsic(Width|Height)Of` methods of the [com.example.sky.Modifier](https://cs.android.com/androidx/platform/frameworks/support/+/androidx-main-release:compose/ui/ui/src/commonMain/kotlin/androidx/compose/ui/layout/LayoutModifier.kt) interface which also have a good default.
 
 ## [12. Congratulations](https://developer.android.com/codelabs/jetpack-compose-layouts?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fcompose%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fjetpack-compose-layouts#11)
 

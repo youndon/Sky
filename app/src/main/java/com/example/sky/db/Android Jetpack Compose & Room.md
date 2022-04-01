@@ -129,7 +129,7 @@ fun AddNote(title: String, onNoteAdded: (String) -> Unit) {
             value = text.value,
             onValueChange = { text.value = it },
             label = { Text(title) },
-            modifier = Modifier
+            modifier = com.example.sky.Modifier
                 .weight(1f, true)
                 .padding(16.dp, 16.dp, 8.dp, 16.dp)
         )
@@ -141,14 +141,14 @@ fun AddNote(title: String, onNoteAdded: (String) -> Unit) {
                     text.value = TextFieldValue("")
                 }
             },
-            modifier = Modifier
+            modifier = com.example.sky.Modifier
                 .padding(8.dp, 16.dp, 16.dp, 16.dp)
                 .align(Alignment.CenterVertically)
         ) {
             Icon(
                 Icons.Filled.Add,
                 "...",
-                modifier = Modifier.size(24.dp)
+                modifier = com.example.sky.Modifier.size(24.dp)
             )
         }
     }
@@ -167,7 +167,7 @@ fun ShowNotes(items: List<Note>, onNodeRemoved: (Note) -> Unit) {
             Row {
                 Text(
                     text = it.content,
-                    modifier = Modifier
+                    modifier = com.example.sky.Modifier
                         .padding(16.dp, 4.dp, 4.dp, 4.dp)
                         .weight(1f, true)
                         .align(Alignment.CenterVertically)
@@ -177,14 +177,14 @@ fun ShowNotes(items: List<Note>, onNodeRemoved: (Note) -> Unit) {
                         onNodeRemoved(it)
                     },
                     contentPadding = PaddingValues(0.dp),
-                    modifier = Modifier
+                    modifier = com.example.sky.Modifier
                         .padding(4.dp, 4.dp, 16.dp, 4.dp)
                         .align(Alignment.CenterVertically)
                 ) {
                     Icon(
                         Icons.Filled.Delete,
                         "...",
-                        modifier = Modifier.size(24.dp)
+                        modifier = com.example.sky.Modifier.size(24.dp)
                     )
                 }
             }

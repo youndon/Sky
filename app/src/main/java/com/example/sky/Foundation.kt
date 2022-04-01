@@ -33,21 +33,28 @@ private fun Foundation() {
 //    Canvas() // FIXME: 15/07/2021
 //    Image() // FIXME: 15/07/2021
     rememberScrollState()
-    DraggableState {  }
+    DraggableState {
+    }
     ScrollableState { fl: Float -> fl }
     TransformableState { zoomChange: Float, panChange: Offset, rotationChange: Float -> }
     rememberDraggableState {  }
     rememberScrollableState { fl: Float -> fl }
     rememberTransformableState {zoomChange: Float, panChange: Offset, rotationChange: Float ->  }
     MutableInteractionSource()
-    Box {}
-    BoxWithConstraints {}
-    Column{}
+    Box {
+    }
+    BoxWithConstraints {
+    }
+    Column{
+    }
     PaddingValues()
-    Row{}
+    Row{
+    }
     Spacer(Modifier)
-    LazyColumn {  }
-    LazyRow {  }
+    LazyColumn {
+    }
+    LazyRow {
+    }
 //    LazyVerticalGrid(){} // FIXME: 15/07/2021
     rememberLazyListState()
     CircleShape
@@ -60,7 +67,8 @@ private fun Foundation() {
     BasicText("")
     BasicTextField("",{})
     ClickableText(AnnotatedString("")){}
-    KeyboardActions {  }
+    KeyboardActions {
+    }
     LocalTextSelectionColors
     DisableSelection {  }
     SelectionContainer {  }

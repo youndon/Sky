@@ -69,15 +69,15 @@ fun Atlasbase(
     val findID = model.usersList.find { it.id == iV.value }
     val ctrl = LocalSoftwareKeyboardController.current
     Scaffold(
-//        modifier = Modifier.fillMaxSize(),
+//        modifier = com.example.sky.Modifier.fillMaxSize(),
         scaffoldState = scaffState,
         backgroundColor = MaterialTheme3.colorScheme.background) {
         Column  (
             Modifier
                 .padding(20.dp)
                 .fillMaxSize(),
-            verticalArrangement = Arrangement.Top,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
             OutlinedTextField(
                 value = userValue,

@@ -98,11 +98,11 @@ fun LoginSCreen() {
     // we instantiate the saveEmail class
     val dataStore = StoreUserEmail(context)
 
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(modifier = com.example.sky.Modifier.fillMaxSize()) {
         var email by rememberSaveable { mutableStateOf("") }
         //
         Text(
-            modifier = Modifier
+            modifier = com.example.sky.Modifier
                 .padding(16.dp, 0.dp)
                 .alpha(0.6f),
             text = "EMAIL",
@@ -118,11 +118,11 @@ fun LoginSCreen() {
                 keyboardType
                 = KeyboardType.Email
             ),
-            modifier = Modifier
+            modifier = com.example.sky.Modifier
                 .padding(16.dp, 0.dp, 16.dp, 0.dp)
                 .fillMaxWidth(),
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = com.example.sky.Modifier.height(16.dp))
         Button(
             onClick = {
                 //launch the class in a coroutine scope
@@ -131,7 +131,7 @@ fun LoginSCreen() {
                 }
 
             },
-            modifier = Modifier
+            modifier = com.example.sky.Modifier
                 .fillMaxWidth()
                 .height(60.dp)
                 .padding(16.dp, 0.dp, 16.dp, 0.dp),
@@ -143,7 +143,7 @@ fun LoginSCreen() {
 
                 )
         }
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = com.example.sky.Modifier.height(32.dp))
 
     }
 }
@@ -168,11 +168,11 @@ fun LoginSCreen() {
     val scope = rememberCoroutineScope()
     // we instantiate the saveEmail class
     val dataStore = StoreUserEmail(context)
-Column(modifier = Modifier.wrapContentSize()) {
+Column(modifier = com.example.sky.Modifier.wrapContentSize()) {
     var email by rememberSaveable { mutableStateOf("") }
     //
     Text(
-        modifier = Modifier
+        modifier = com.example.sky.Modifier
             .padding(16.dp, 0.dp)
             .alpha(0.6f),
         text = "EMAIL",
@@ -189,11 +189,11 @@ Column(modifier = Modifier.wrapContentSize()) {
             keyboardType
             = KeyboardType.Email
         ),
-        modifier = Modifier
+        modifier = com.example.sky.Modifier
             .padding(16.dp, 0.dp, 16.dp, 0.dp)
             .fillMaxWidth(),
         )
-    Spacer(modifier = Modifier.height(16.dp))
+    Spacer(modifier = com.example.sky.Modifier.height(16.dp))
     Button(
         onClick = {
             //launch the class in a coroutine scope
@@ -202,7 +202,7 @@ Column(modifier = Modifier.wrapContentSize()) {
             }
 
         },
-        modifier = Modifier
+        modifier = com.example.sky.Modifier
             .fillMaxWidth()
             .height(60.dp)
             .padding(16.dp, 0.dp, 16.dp, 0.dp),
@@ -214,7 +214,7 @@ Column(modifier = Modifier.wrapContentSize()) {
 
             )
     }
-    Spacer(modifier = Modifier.height(32.dp))
+    Spacer(modifier = com.example.sky.Modifier.height(32.dp))
 
     val userEmail = dataStore.getEmail.collectAsState(initial = "")
 

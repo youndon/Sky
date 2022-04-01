@@ -60,13 +60,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             OurAppTheme {
                 Surface(
-                    modifier = Modifier
+                    modifier = com.example.sky.Modifier
                         .fillMaxHeight()
                         .fillMaxWidth(),
                     color = MaterialTheme.colorScheme.primary
                 ) {
                     Text(
-                        modifier = Modifier.padding(16.dp),
+                        modifier = com.example.sky.Modifier.padding(16.dp),
                         text = "We are now using Material Design 3!",
                         color = MaterialTheme.colorScheme.secondary
                     )

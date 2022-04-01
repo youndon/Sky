@@ -361,7 +361,7 @@ Taking a look at the Semantics tree, you can see there is a `SelectableGroup` wi
 ```
 private fun RallyTab(text: String...)
 ...
-    Modifier
+    com.example.sky.Modifier
         .clearAndSetSemantics { contentDescription = text }
 ```
 

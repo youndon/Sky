@@ -215,7 +215,7 @@ You can see the new changes in the preview:
 
 ## Modifiers
 
-Most Compose UI elements like `Surface` and `Text` accept an optional modifier parameter. Modifier parameters tell a UI element how to lay out, display, or behave within its parent layout. Modifiers are regular Kotlin objects.
+Most Compose UI elements like `Surface` and `Text` accept an optional modifier parameter. com.example.sky.Modifier parameters tell a UI element how to lay out, display, or behave within its parent layout. Modifiers are regular Kotlin objects.
 
 You can assign them to variables and reuse them. You can also chain several of these modifiers one after the other thanks to the factory-extension functions or with the function `then` that are merged to a single argument.
 
@@ -223,14 +223,14 @@ The `padding` modifier will apply an amount of space around the element it decor
 
 ```
 import androidx.compose.foundation.layout.padding
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.com.example.sky.Modifier
 import androidx.compose.ui.unit.dp
 ...
 
 @Composable
 fun Greeting(name: String) {
     Surface(color = Color.Yellow) {
-        Text(text = "Hello $name!", modifier = Modifier.padding(24.dp))
+        Text(text = "Hello $name!", modifier = com.example.sky.Modifier.padding(24.dp))
     }
 }
 ```
@@ -272,7 +272,7 @@ fun MyApp() {
 
 @Composable
 fun Greeting(name: String) {
-    Text(text = "Hello $name!", modifier = Modifier.padding(24.dp))
+    Text(text = "Hello $name!", modifier = com.example.sky.Modifier.padding(24.dp))
 }
 
 @Preview
@@ -531,8 +531,8 @@ import androidx.compose.foundation.layout.fillMaxHeight
 fun MyScreenContent(names: List<String> = listOf("Android", "there")) {
     val counterState = remember { mutableStateOf(0) }
 
-    Column(modifier = Modifier.fillMaxHeight()) {
-        Column(modifier = Modifier.weight(1f)) {
+    Column(modifier = com.example.sky.Modifier.fillMaxHeight()) {
+        Column(modifier = com.example.sky.Modifier.weight(1f)) {
             for (name in names) {
                 Greeting(name = name)
                 Divider(color = Color.Black)
@@ -579,7 +579,7 @@ Now let's make the names list more realistic. So far you have displayed two item
 
 ```
 @Composable
-fun NameList(names: List<String>, modifier: Modifier = Modifier) {
+fun NameList(names: List<String>, modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
    Column(modifier = modifier) {
        for (name in names) {
            Greeting(name = name)
@@ -609,7 +609,7 @@ import androidx.compose.foundation.lazy.items
 ...
 
 @Composable
-fun NameList(names: List<String>, modifier: Modifier = Modifier) {
+fun NameList(names: List<String>, modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
    LazyColumn(modifier = modifier) {
        items(items = names) { name ->
            Greeting(name = name)
@@ -645,7 +645,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.com.example.sky.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -675,8 +675,8 @@ fun MyApp(content: @Composable () -> Unit) {
 fun MyScreenContent(names: List<String> = List(1000) { "Hello Android #$it" }) {
    val counterState = remember { mutableStateOf(0) }
 
-   Column(modifier = Modifier.fillMaxHeight()) {
-       NameList(names, Modifier.weight(1f))
+   Column(modifier = com.example.sky.Modifier.fillMaxHeight()) {
+       NameList(names, com.example.sky.Modifier.weight(1f))
        Counter(
            count = counterState.value,
            updateCount = { newCount ->
@@ -687,7 +687,7 @@ fun MyScreenContent(names: List<String> = List(1000) { "Hello Android #$it" }) {
 }
 
 @Composable
-fun NameList(names: List<String>, modifier: Modifier = Modifier) {
+fun NameList(names: List<String>, modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
    LazyColumn(modifier = modifier) {
        items(items = names) { name ->
            Greeting(name = name)
@@ -698,7 +698,7 @@ fun NameList(names: List<String>, modifier: Modifier = Modifier) {
 
 @Composable
 fun Greeting(name: String) {
-   Text(text = "Hello $name!", modifier = Modifier.padding(24.dp))
+   Text(text = "Hello $name!", modifier = com.example.sky.Modifier.padding(24.dp))
 }
 
 @Composable
@@ -749,7 +749,7 @@ fun Greeting(name: String) {
 
    Text(
        text = "Hello $name!",
-       modifier = Modifier
+       modifier = com.example.sky.Modifier
            .padding(24.dp)
            .background(color = backgroundColor)
            .clickable(onClick = { isSelected = !isSelected })
@@ -780,7 +780,7 @@ fun Greeting(name: String) {
 
    Text(
        text = "Hello $name!",
-       modifier = Modifier
+       modifier = com.example.sky.Modifier
            .padding(24.dp)
            .background(color = backgroundColor)
            .clickable(onClick = { isSelected = !isSelected })
@@ -813,7 +813,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.com.example.sky.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -843,8 +843,8 @@ fun MyApp(content: @Composable () -> Unit) {
 fun MyScreenContent(names: List<String> = List(1000) { "Hello Android #$it" }) {
    val counterState = remember { mutableStateOf(0) }
 
-   Column(modifier = Modifier.fillMaxHeight()) {
-       NameList(names, Modifier.weight(1f))
+   Column(modifier = com.example.sky.Modifier.fillMaxHeight()) {
+       NameList(names, com.example.sky.Modifier.weight(1f))
        Counter(
            count = counterState.value,
            updateCount = { newCount ->
@@ -855,7 +855,7 @@ fun MyScreenContent(names: List<String> = List(1000) { "Hello Android #$it" }) {
 }
 
 @Composable
-fun NameList(names: List<String>, modifier: Modifier = Modifier) {
+fun NameList(names: List<String>, modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
    LazyColumn(modifier = modifier) {
        items(items = names) { name ->
            Greeting(name = name)
@@ -871,7 +871,7 @@ fun Greeting(name: String) {
 
    Text(
        text = "Hello $name!",
-       modifier = Modifier
+       modifier = com.example.sky.Modifier
            .padding(24.dp)
            .background(color = backgroundColor)
            .clickable(onClick = { isSelected = !isSelected })
@@ -928,7 +928,7 @@ Because `BasicsCodelabTheme` wraps `MaterialTheme` internally, `Greeting` is sty
 fun Greeting(name: String) {
     Text (
         text = "Hello $name!",
-        modifier = Modifier.padding(24.dp),
+        modifier = com.example.sky.Modifier.padding(24.dp),
         style = MaterialTheme.typography.h1
     )
 }

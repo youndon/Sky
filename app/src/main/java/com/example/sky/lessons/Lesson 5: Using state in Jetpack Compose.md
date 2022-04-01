@@ -44,7 +44,7 @@ In the next section you'll learn about Unidirectional Data Flow – a design pat
 - Consider taking the [Jetpack Compose basics codelab](https://codelabs.developers.google.com/codelabs/jetpack-compose-basics/) before this codelab
 - Basic understanding of Compose (such as the `@Composable` annotation)
 - Basic familiarity with Compose layouts (e.g. Row and Column)
-- Basic familiarity with modifiers (e.g. Modifier.padding)
+- Basic familiarity with modifiers (e.g. com.example.sky.Modifier.padding)
 - Basic understanding of Architecture Component's [`ViewModel`](https://developer.android.com/topic/libraries/architecture/viewmodel?gclid=Cj0KCQjwhIP6BRCMARIsALu9LfmXmU5iTaUvGwPlXUzuDdM7owMPHyLrMGN1JXavO8rxamW7vWvKthoaAuvtEALw_wcB&gclsrc=aw.ds) and [`LiveData`](https://developer.android.com/topic/libraries/architecture/livedata)
 
 ## **What you'll build**
@@ -526,7 +526,7 @@ Define a new `val iconAlpha` with a value of `randomTint()`. This is a float bet
 import androidx.compose.material.LocalContentColor
 
 @Composable
-fun TodoRow(todo: TodoItem, onItemClicked: (TodoItem) -> Unit, modifier: Modifier = Modifier) {
+fun TodoRow(todo: TodoItem, onItemClicked: (TodoItem) -> Unit, modifier: com.example.sky.Modifier = com.example.sky.Modifier) {
    Row(
        modifier = modifier
            .clickable { onItemClicked(todo) }
@@ -651,7 +651,7 @@ To allow the caller to control this value, simply move the remember call to a de
 fun TodoRow(
    todo: TodoItem,
    onItemClicked: (TodoItem) -> Unit,
-   modifier: Modifier = Modifier,
+   modifier: com.example.sky.Modifier = com.example.sky.Modifier,
    iconAlpha: Float = remember(todo.id) { randomTint() }
 ) {
    Row(
@@ -725,7 +725,7 @@ To get started, open `TodoScreen.kt` and add the following function
 import androidx.compose.runtime.mutableStateOf
 
 @Composable
-fun TodoInputTextField(modifier: Modifier) {
+fun TodoInputTextField(modifier: com.example.sky.Modifier) {
    val (text, setText) = remember { mutableStateOf("") }
    TodoInputText(text, setText, modifier)
 }
@@ -780,18 +780,18 @@ import androidx.compose.ui.Alignment
 fun TodoItemInput(onItemComplete: (TodoItem) -> Unit) {
    // onItemComplete is an event will fire when an item is completed by the user
    Column {
-       Row(Modifier
+       Row(com.example.sky.Modifier
            .padding(horizontal = 16.dp)
            .padding(top = 16.dp)
        ) {
-           TodoInputTextField(Modifier
+           TodoInputTextField(com.example.sky.Modifier
                .weight(1f)
                .padding(end = 8.dp)
            )
            TodoEditButton(
                onClick = { /* todo */ },
                text = "Add",
-               modifier = Modifier.align(Alignment.CenterVertically)
+               modifier = com.example.sky.Modifier.align(Alignment.CenterVertically)
            )
        }
    }
@@ -813,7 +813,7 @@ fun TodoScreen(
 ) {
    Column {
        // add TodoItemInputBackground and TodoItem at the top of TodoScreen
-       TodoItemInputBackground(elevate = true, modifier = Modifier.fillMaxWidth()) {
+       TodoItemInputBackground(elevate = true, modifier = com.example.sky.Modifier.fillMaxWidth()) {
            TodoItemInput(onItemComplete = onAddItem)
        }
 ...
@@ -884,7 +884,7 @@ Edit `TodoInputTextField` to hoist the state by adding `(value, onValueChange)` 
 // TodoInputTextField with hoisted state
 
 @Composable
-fun TodoInputTextField(text: String, onTextChange: (String) -> Unit, modifier: Modifier) {
+fun TodoInputTextField(text: String, onTextChange: (String) -> Unit, modifier: com.example.sky.Modifier) {
    TodoInputText(text, onTextChange, modifier)
 }
 ```
@@ -910,21 +910,21 @@ Now, add the state in `TodoItemInput` and pass it to `TodoInputTextField`:
 fun TodoItemInput(onItemComplete: (TodoItem) -> Unit) {
    val (text, setText) = remember { mutableStateOf("") }
    Column {
-       Row(Modifier
+       Row(com.example.sky.Modifier
            .padding(horizontal = 16.dp)
            .padding(top = 16.dp)
        ) {
            TodoInputTextField(
                text = text,
                onTextChange = setText,
-               modifier = Modifier
+               modifier = com.example.sky.Modifier
                    .weight(1f)
                    .padding(end = 8.dp)
            )
            TodoEditButton(
                onClick = { /* todo */ },
                text = "Add",
-               modifier = Modifier.align(Alignment.CenterVertically)
+               modifier = com.example.sky.Modifier.align(Alignment.CenterVertically)
            )
        }
    }
@@ -943,7 +943,7 @@ TodoEditButton(
        setText("") // clear the internal text
    },
    text = "Add",
-   modifier = Modifier.align(Alignment.CenterVertically),
+   modifier = com.example.sky.Modifier.align(Alignment.CenterVertically),
    enabled = text.isNotBlank() // enable if text is not blank
 )
 ```
@@ -969,14 +969,14 @@ When you're done, your `TodoItemInput` should look like this:
 fun TodoItemInput(onItemComplete: (TodoItem) -> Unit) {
    val (text, setText) = remember { mutableStateOf("") }
    Column {
-       Row(Modifier
+       Row(com.example.sky.Modifier
            .padding(horizontal = 16.dp)
            .padding(top = 16.dp)
        ) {
            TodoInputText(
                text = text,
                onTextChange = setText,
-               modifier = Modifier
+               modifier = com.example.sky.Modifier
                    .weight(1f)
                    .padding(end = 8.dp)
            )
@@ -986,7 +986,7 @@ fun TodoItemInput(onItemComplete: (TodoItem) -> Unit) {
                    setText("")
                },
                text = "Add",
-               modifier = Modifier.align(Alignment.CenterVertically),
+               modifier = com.example.sky.Modifier.align(Alignment.CenterVertically),
                enabled = text.isNotBlank()
            )
        }
@@ -1056,9 +1056,9 @@ fun TodoItemInput(onItemComplete: (TodoItem) -> Unit) {
            /* ... */
        }
        if (iconsVisible) {
-           AnimatedIconRow(icon, setIcon, Modifier.padding(top = 8.dp))
+           AnimatedIconRow(icon, setIcon, com.example.sky.Modifier.padding(top = 8.dp))
        } else {
-           Spacer(modifier = Modifier.height(16.dp))
+           Spacer(modifier = com.example.sky.Modifier.height(16.dp))
        }
    }
 }
@@ -1098,7 +1098,7 @@ TodoEditButton(
        setText("")
    },
    text = "Add",
-   modifier = Modifier.align(Alignment.CenterVertically),
+   modifier = com.example.sky.Modifier.align(Alignment.CenterVertically),
    enabled = text.isNotBlank()
 )
 ```
@@ -1139,14 +1139,14 @@ fun TodoItemInput(onItemComplete: (TodoItem) -> Unit) {
        setText("")
    }
    Column {
-       Row(Modifier
+       Row(com.example.sky.Modifier
            .padding(horizontal = 16.dp)
            .padding(top = 16.dp)
        ) {
            TodoInputText(
                text = text,
                onTextChange = setText,
-               modifier = Modifier
+               modifier = com.example.sky.Modifier
                    .weight(1f)
                    .padding(end = 8.dp),
                onImeAction = submit // pass the submit callback to TodoInputText
@@ -1154,14 +1154,14 @@ fun TodoItemInput(onItemComplete: (TodoItem) -> Unit) {
            TodoEditButton(
                onClick = submit, // pass the submit callback to TodoEditButton
                text = "Add",
-               modifier = Modifier.align(Alignment.CenterVertically),
+               modifier = com.example.sky.Modifier.align(Alignment.CenterVertically),
                enabled = text.isNotBlank()
            )
        }
        if (iconsVisible) {
-           AnimatedIconRow(icon, setIcon, Modifier.padding(top = 8.dp))
+           AnimatedIconRow(icon, setIcon, com.example.sky.Modifier.padding(top = 8.dp))
        } else {
-           Spacer(modifier = Modifier.height(16.dp))
+           Spacer(modifier = com.example.sky.Modifier.height(16.dp))
        }
    }
 }
@@ -1184,7 +1184,7 @@ To control the software keyboard, we'll use `LocalSoftwareKeyboardController.cur
 fun TodoInputText(
     text: String,
     onTextChange: (String) -> Unit,
-    modifier: Modifier = Modifier,
+    modifier: com.example.sky.Modifier = com.example.sky.Modifier,
     onImeAction: () -> Unit = {}
 ) {
     val keyboardController = LocalSoftwareKeyboardController.current
@@ -1304,14 +1304,14 @@ fun TodoItemInput(
 ) {
    Column {
        Row(
-           Modifier
+           com.example.sky.Modifier
                .padding(horizontal = 16.dp)
                .padding(top = 16.dp)
        ) {
            TodoInputText(
                text,
                onTextChange,
-               Modifier
+               com.example.sky.Modifier
                    .weight(1f)
                    .padding(end = 8.dp),
                submit
@@ -1319,14 +1319,14 @@ fun TodoItemInput(
            TodoEditButton(
                onClick = submit,
                text = "Add",
-               modifier = Modifier.align(Alignment.CenterVertically),
+               modifier = com.example.sky.Modifier.align(Alignment.CenterVertically),
                enabled = text.isNotBlank()
            )
        }
        if (iconsVisible) {
-           AnimatedIconRow(icon, onIconChange, Modifier.padding(top = 8.dp))
+           AnimatedIconRow(icon, onIconChange, com.example.sky.Modifier.padding(top = 8.dp))
        } else {
-           Spacer(modifier = Modifier.height(16.dp))
+           Spacer(modifier = com.example.sky.Modifier.height(16.dp))
        }
    }
 }
@@ -1769,7 +1769,7 @@ Also, start editing when clicking an item (instead of removing it like before).
 // fun TodoScreen()
 // ...
 LazyColumn(
-   modifier = Modifier.weight(1f),
+   modifier = com.example.sky.Modifier.weight(1f),
    contentPadding = PaddingValues(top = 8.dp)
 ) { 
  items(items) { todo ->
@@ -1784,7 +1784,7 @@ LazyColumn(
        TodoRow(
            todo,
            { onStartEdit(it) },
-           Modifier.fillParentMaxWidth()
+           com.example.sky.Modifier.fillParentMaxWidth()
        )
    }
  }
@@ -1842,7 +1842,7 @@ fun TodoScreen(
                    "Editing item",
                    style = MaterialTheme.typography.h6,
                    textAlign = TextAlign.Center,
-                   modifier = Modifier
+                   modifier = com.example.sky.Modifier
                        .align(Alignment.CenterVertically)
                        .padding(16.dp)
                        .fillMaxWidth()
@@ -1941,14 +1941,14 @@ fun TodoItemInput(
 ) {
    Column {
        Row(
-           Modifier
+           com.example.sky.Modifier
                .padding(horizontal = 16.dp)
                .padding(top = 16.dp)
        ) {
            TodoInputText(
                text,
                onTextChange,
-               Modifier
+               com.example.sky.Modifier
                    .weight(1f)
                    .padding(end = 8.dp),
                submit
@@ -1956,16 +1956,16 @@ fun TodoItemInput(
 
            // New code: Replace the call to TodoEditButton with the content of the slot
 
-           Spacer(modifier = Modifier.width(8.dp))
-           Box(Modifier.align(Alignment.CenterVertically)) { buttonSlot() }
+           Spacer(modifier = com.example.sky.Modifier.width(8.dp))
+           Box(com.example.sky.Modifier.align(Alignment.CenterVertically)) { buttonSlot() }
 
            
            // End new code
        }
        if (iconsVisible) {
-           AnimatedIconRow(icon, onIconChange, Modifier.padding(top = 8.dp))
+           AnimatedIconRow(icon, onIconChange, com.example.sky.Modifier.padding(top = 8.dp))
        } else {
-           Spacer(modifier = Modifier.height(16.dp))
+           Spacer(modifier = com.example.sky.Modifier.height(16.dp))
        }
    }
 }
@@ -2032,19 +2032,19 @@ fun TodoItemInlineEditor(
    iconsVisible = true,
    buttonSlot = {
        Row {
-           val shrinkButtons = Modifier.widthIn(20.dp)
+           val shrinkButtons = com.example.sky.Modifier.widthIn(20.dp)
            TextButton(onClick = onEditDone, modifier = shrinkButtons) {
                Text(
                    text = "\uD83D\uDCBE", // floppy disk
                    textAlign = TextAlign.End,
-                   modifier = Modifier.width(30.dp)
+                   modifier = com.example.sky.Modifier.width(30.dp)
                )
            }
            TextButton(onClick = onRemoveItem, modifier = shrinkButtons) {
                Text(
                    text = "❌",
                    textAlign = TextAlign.End,
-                   modifier = Modifier.width(30.dp)
+                   modifier = com.example.sky.Modifier.width(30.dp)
                )
            }
        }

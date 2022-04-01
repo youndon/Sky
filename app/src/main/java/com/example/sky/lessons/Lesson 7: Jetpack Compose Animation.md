@@ -104,7 +104,7 @@ Find **TODO 2-1** and check out how this works. It is in the `HomeFloatingAction
 if (extended) {
     Text(
         text = stringResource(R.string.edit),
-        modifier = Modifier
+        modifier = com.example.sky.Modifier
             .padding(start = 8.dp, top = 3.dp)
     )
 }
@@ -116,7 +116,7 @@ Animating this visibility change is as simple as replacing the `if` with an `Ani
 AnimatedVisibility(extended) {
     Text(
         text = stringResource(R.string.edit),
-        modifier = Modifier
+        modifier = com.example.sky.Modifier
             .padding(start = 8.dp, top = 3.dp)
     )
 }
@@ -139,13 +139,13 @@ AnimatedVisibility(
     visible = shown
 ) {
     Surface(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = com.example.sky.Modifier.fillMaxWidth(),
         color = MaterialTheme.colors.secondary,
         elevation = 4.dp
     ) {
         Text(
             text = stringResource(R.string.edit_message),
-            modifier = Modifier.padding(16.dp)
+            modifier = com.example.sky.Modifier.padding(16.dp)
         )
     }
 }
@@ -176,13 +176,13 @@ AnimatedVisibility(
     )
 ) {
     Surface(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = com.example.sky.Modifier.fillMaxWidth(),
         color = MaterialTheme.colors.secondary,
         elevation = 4.dp
     ) {
         Text(
             text = stringResource(R.string.edit_message),
-            modifier = Modifier.padding(16.dp)
+            modifier = com.example.sky.Modifier.padding(16.dp)
         )
     }
 }
@@ -204,7 +204,7 @@ Check out the code for **TODO 3** in the `TopicRow` composable.
 
 ```
 Column(
-    modifier = Modifier
+    modifier = com.example.sky.Modifier
         .fillMaxWidth()
         .padding(16.dp)
 ) {
@@ -216,7 +216,7 @@ This `Column` composable here changes its size as its content is changed. We can
 
 ```
 Column(
-    modifier = Modifier
+    modifier = com.example.sky.Modifier
         .fillMaxWidth()
         .padding(16.dp)
         .animateContentSize()
@@ -449,9 +449,9 @@ Finally, see **TODO 6-7**. We have all the animations and gestures set up, so do
 As a result of this section, you will end up with code like below:
 
 ```
-private fun Modifier.swipeToDismiss(
+private fun com.example.sky.Modifier.swipeToDismiss(
     onDismissed: () -> Unit
-): Modifier = composed {
+): com.example.sky.Modifier = composed {
     // This `Animatable` stores the horizontal offset for the element.
     val offsetX = remember { Animatable(0f) }
     pointerInput(Unit) {

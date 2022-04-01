@@ -106,7 +106,7 @@ When using Navigation within Compose, routes are represented as strings. You can
 
 ### **Preparation**
 
-Go back to the `RallyApp` composable in `RallyActivity.kt` and replace `Box` containing the screen's contents with a newly created `NavHost`. Pass in the `navController` we created in the previous step. The `NavHost` also needs a `startDestination`. Set it to `RallyScreen.Overview.name`. Also, create a `Modifier` to pass the padding into the `NavHost`.
+Go back to the `RallyApp` composable in `RallyActivity.kt` and replace `Box` containing the screen's contents with a newly created `NavHost`. Pass in the `navController` we created in the previous step. The `NavHost` also needs a `startDestination`. Set it to `RallyScreen.Overview.name`. Also, create a `com.example.sky.Modifier` to pass the padding into the `NavHost`.
 
 ```
 import androidx.compose.foundation.layout.Box
@@ -118,7 +118,7 @@ Scaffold(...) { innerPadding ->
         NavHost(
             navController = navController,
             startDestination = RallyScreen.Overview.name,
-            modifier = Modifier.padding(innerPadding)
+            modifier = com.example.sky.Modifier.padding(innerPadding)
         ) { ... }
 ```
 
@@ -131,7 +131,7 @@ import androidx.navigation.compose.NavHost
 NavHost(
     navController = navController,
     startDestination = RallyScreen.Overview.name,
-    modifier = Modifier.padding(innerPadding)
+    modifier = com.example.sky.Modifier.padding(innerPadding)
 
 ) { 
     composable(RallyScreen.Overview.name) { ... }
@@ -148,7 +148,7 @@ import androidx.navigation.compose.composable
 NavHost(
     navController = navController,
     startDestination = RallyScreen.Overview.name
-    modifier = Modifier.padding(innerPadding)
+    modifier = com.example.sky.Modifier.padding(innerPadding)
 ) { 
     composable(RallyScreen.Overview.name) {
       Text(text = RallyScreen.Overview.name)
@@ -166,7 +166,7 @@ You should end up with a NavHost similar to this one:
 NavHost(
     navController = navController,
     startDestination = RallyScreen.Overview.name,
-    modifier = Modifier.padding(innerPadding)
+    modifier = com.example.sky.Modifier.padding(innerPadding)
 ) {
     composable(RallyScreen.Overview.name) { 
       Text(RallyScreen.Overview.name)
@@ -180,7 +180,7 @@ NavHost(
 }
 ```
 
-The `NavHost` now can replace the `Box` within `Scaffold`. Pass the `Modifier` into NavHost to keep the `innerPadding` intact.
+The `NavHost` now can replace the `Box` within `Scaffold`. Pass the `com.example.sky.Modifier` into NavHost to keep the `innerPadding` intact.
 
 ```
 @Composable
@@ -205,7 +205,7 @@ fun RallyApp() {
             NavHost(
                 navController = navController,
                 startDestination = RallyScreen.Overview.name,
-                modifier = Modifier.padding(innerPadding)) {
+                modifier = com.example.sky.Modifier.padding(innerPadding)) {
             }
         }
     }
@@ -287,7 +287,7 @@ import com.example.compose.rally.ui.overview.OverviewBody
 NavHost(
     navController = navController,
     startDestination = Overview.name,
-    modifier = Modifier.padding(innerPadding)
+    modifier = com.example.sky.Modifier.padding(innerPadding)
 ) {
     
     composable(Overview.name) {
@@ -535,7 +535,7 @@ Now your `NavHost` is complete. You can extract it from the `RallyApp` composabl
 @Composable
 fun RallyNavHost(
     navController: NavHostController,
-    modifier: Modifier = Modifier
+    modifier: com.example.sky.Modifier = com.example.sky.Modifier
 ) {
     NavHost(
         navController = navController,
@@ -590,7 +590,7 @@ fun RallyApp() {
         ) { innerPadding ->
             RallyNavHost(
                 navController = navController,
-                modifier = Modifier.padding(innerPadding)
+                modifier = com.example.sky.Modifier.padding(innerPadding)
             )
             
         }

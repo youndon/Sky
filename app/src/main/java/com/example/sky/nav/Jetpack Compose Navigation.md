@@ -113,7 +113,7 @@ Now, let's make the UI of each screen. The following is the code of the First Sc
 @Composable
 fun FirstScreen(navController: NavController) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = com.example.sky.Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -122,7 +122,7 @@ fun FirstScreen(navController: NavController) {
                     "Click me to go to Second Screen",
             color = Color.Green,
             style = TextStyle(textAlign = TextAlign.Center),
-            modifier = Modifier.padding(24.dp).clickable(onClick = {
+            modifier = com.example.sky.Modifier.padding(24.dp).clickable(onClick = {
                 // this will navigate to second screen
                 navController.navigate("second_screen")
             })
@@ -145,7 +145,7 @@ Similarly, you can make the UI of other screens like below:
 @Composable
 fun SecondScreen(navController: NavController) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = com.example.sky.Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -154,7 +154,7 @@ fun SecondScreen(navController: NavController) {
                     "Click me to go to Third Screen",
             color = Color.Yellow,
             style = TextStyle(textAlign = TextAlign.Center),
-            modifier = Modifier.clickable(onClick = {
+            modifier = com.example.sky.Modifier.clickable(onClick = {
                 // this will navigate to third screen
                 navController.navigate("third_screen")
             })
@@ -165,7 +165,7 @@ fun SecondScreen(navController: NavController) {
 @Composable
 fun ThirdScreen(navController: NavController) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = com.example.sky.Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -174,7 +174,7 @@ fun ThirdScreen(navController: NavController) {
                     "Click me to go to First Screen",
             color = Color.Red,
             style = TextStyle(textAlign = TextAlign.Center),
-            modifier = Modifier.clickable(onClick = {
+            modifier = com.example.sky.Modifier.clickable(onClick = {
                 // this will navigate to first screen
                 navController.navigate("first_screen")
             })

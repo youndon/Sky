@@ -98,45 +98,45 @@ Material 3 defines the qualities that can be expressed by UI regions, surfaces, 
 
 ## Top-level functions summary
 
-| `@Composable Unit`                                  | `AlertDialog(  onDismissRequest: (() -> Unit)?,  confirmButton: (@Composable () -> Unit)?,  modifier: Modifier?,  dismissButton: (@Composable () -> Unit)?,  icon: (@Composable () -> Unit)?,  title: (@Composable () -> Unit)?,  text: (@Composable () -> Unit)?,  shape: Shape?,  containerColor: Color?,  tonalElevation: Dp?,  iconContentColor: Color?,  titleContentColor: Color?,  textContentColor: Color?,  properties: DialogProperties?)`![Basic dialog image](https://developer.android.google.cn/images/reference/androidx/compose/material3/basic-dialog.png) |
+| `@Composable Unit`                                  | `AlertDialog(  onDismissRequest: (() -> Unit)?,  confirmButton: (@Composable () -> Unit)?,  modifier: com.example.sky.Modifier?,  dismissButton: (@Composable () -> Unit)?,  icon: (@Composable () -> Unit)?,  title: (@Composable () -> Unit)?,  text: (@Composable () -> Unit)?,  shape: Shape?,  containerColor: Color?,  tonalElevation: Dp?,  iconContentColor: Color?,  titleContentColor: Color?,  textContentColor: Color?,  properties: DialogProperties?)`![Basic dialog image](https://developer.android.google.cn/images/reference/androidx/compose/material3/basic-dialog.png) |
 | --------------------------------------------------- | ------------------------------------------------------------ |
-| `@Composable Unit`                                  | `Badge(  modifier: Modifier?,  containerColor: Color?,  contentColor: Color?,  content: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?)`Badge is a component that can contain dynamic information, such as the presence of a new notification or a number of pending requests. |
-| `@Composable Unit`                                  | `BadgedBox(  badge: (@Composable @ExtensionFunctionType BoxScope.() -> Unit)?,  modifier: Modifier?,  content: (@Composable @ExtensionFunctionType BoxScope.() -> Unit)?)`A BadgeBox is used to decorate `content` with a `badge` that can contain dynamic information, such as the presence of a new notification or a number of pending requests. |
-| `@Composable Unit`                                  | `Button(  onClick: (() -> Unit)?,  modifier: Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  elevation: ButtonElevation?,  shape: Shape?,  border: BorderStroke?,  colors: ButtonColors?,  contentPadding: PaddingValues?,  content: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?)`![Filled button image](https://developer.android.google.cn/images/reference/androidx/compose/material3/filled-button.png) |
-| `@Composable Unit`                                  | `CenterAlignedTopAppBar(  title: (@Composable () -> Unit)?,  modifier: Modifier?,  navigationIcon: (@Composable () -> Unit)?,  actions: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?,  colors: TopAppBarColors?,  scrollBehavior: TopAppBarScrollBehavior?)`![Center-aligned top app bar image](https://developer.android.google.cn/images/reference/androidx/compose/material3/center-aligned-top-app-bar.png) |
-| `@Composable Unit`                                  | `Checkbox(  checked: Boolean?,  onCheckedChange: ((Boolean) -> Unit)?,  modifier: Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  colors: CheckboxColors?)`Material Design checkbox. |
-| `@Composable Unit`                                  | `ElevatedButton(  onClick: (() -> Unit)?,  modifier: Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  elevation: ButtonElevation?,  shape: Shape?,  border: BorderStroke?,  colors: ButtonColors?,  contentPadding: PaddingValues?,  content: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?)`![Elevated button image](https://developer.android.google.cn/images/reference/androidx/compose/material3/elevated-button.png) |
-| `@Composable Unit`                                  | `ExtendedFloatingActionButton(  text: (@Composable () -> Unit)?,  onClick: (() -> Unit)?,  modifier: Modifier?,  icon: (@Composable () -> Unit)?,  interactionSource: MutableInteractionSource?,  shape: Shape?,  containerColor: Color?,  contentColor: Color?,  elevation: FloatingActionButtonElevation?)`![Extended FAB image](https://developer.android.google.cn/images/reference/androidx/compose/material3/extended-fab.png) |
-| `@Composable Unit`                                  | `FilledTonalButton(  onClick: (() -> Unit)?,  modifier: Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  elevation: ButtonElevation?,  shape: Shape?,  border: BorderStroke?,  colors: ButtonColors?,  contentPadding: PaddingValues?,  content: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?)`![Filled tonal button image](https://developer.android.google.cn/images/reference/androidx/compose/material3/filled-tonal-button.png) |
-| `@Composable Unit`                                  | `FloatingActionButton(  onClick: (() -> Unit)?,  modifier: Modifier?,  interactionSource: MutableInteractionSource?,  shape: Shape?,  containerColor: Color?,  contentColor: Color?,  elevation: FloatingActionButtonElevation?,  content: (@Composable () -> Unit)?)`![FAB image](https://developer.android.google.cn/images/reference/androidx/compose/material3/fab.png) |
-| `@Composable Unit`                                  | `Icon(  imageVector: ImageVector?,  contentDescription: String?,  modifier: Modifier?,  tint: Color?)`Icon component that draws `imageVector` using `tint`, defaulting to `LocalContentColor`. |
-| `@Composable Unit`                                  | `Icon(  bitmap: ImageBitmap?,  contentDescription: String?,  modifier: Modifier?,  tint: Color?)`Icon component that draws `bitmap` using `tint`, defaulting to `LocalContentColor`. |
-| `@Composable Unit`                                  | `Icon(  painter: Painter?,  contentDescription: String?,  modifier: Modifier?,  tint: Color?)`Icon component that draws a `painter` using `tint`, defaulting to `LocalContentColor`. |
-| `@Composable Unit`                                  | `IconButton(  onClick: (() -> Unit)?,  modifier: Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  content: (@Composable () -> Unit)?)`IconButton is a clickable icon, used to represent actions. |
-| `@Composable Unit`                                  | `IconToggleButton(  checked: Boolean?,  onCheckedChange: ((Boolean) -> Unit)?,  modifier: Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  content: (@Composable () -> Unit)?)`An `IconButton` with two states, for icons that can be toggled 'on' and 'off', such as a bookmark icon, or a navigation icon that opens a drawer. |
-| `@Composable Unit`                                  | `LargeFloatingActionButton(  onClick: (() -> Unit)?,  modifier: Modifier?,  interactionSource: MutableInteractionSource?,  shape: Shape?,  containerColor: Color?,  contentColor: Color?,  elevation: FloatingActionButtonElevation?,  content: (@Composable () -> Unit)?)`![Large FAB image](https://developer.android.google.cn/images/reference/androidx/compose/material3/large-fab.png) |
-| `@Composable Unit`                                  | `LargeTopAppBar(  title: (@Composable () -> Unit)?,  modifier: Modifier?,  navigationIcon: (@Composable () -> Unit)?,  actions: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?,  colors: TopAppBarColors?,  scrollBehavior: TopAppBarScrollBehavior?)`![Large top app bar image](https://developer.android.google.cn/images/reference/androidx/compose/material3/large-top-app-bar.png) |
+| `@Composable Unit`                                  | `Badge(  modifier: com.example.sky.Modifier?,  containerColor: Color?,  contentColor: Color?,  content: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?)`Badge is a component that can contain dynamic information, such as the presence of a new notification or a number of pending requests. |
+| `@Composable Unit`                                  | `BadgedBox(  badge: (@Composable @ExtensionFunctionType BoxScope.() -> Unit)?,  modifier: com.example.sky.Modifier?,  content: (@Composable @ExtensionFunctionType BoxScope.() -> Unit)?)`A BadgeBox is used to decorate `content` with a `badge` that can contain dynamic information, such as the presence of a new notification or a number of pending requests. |
+| `@Composable Unit`                                  | `Button(  onClick: (() -> Unit)?,  modifier: com.example.sky.Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  elevation: ButtonElevation?,  shape: Shape?,  border: BorderStroke?,  colors: ButtonColors?,  contentPadding: PaddingValues?,  content: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?)`![Filled button image](https://developer.android.google.cn/images/reference/androidx/compose/material3/filled-button.png) |
+| `@Composable Unit`                                  | `CenterAlignedTopAppBar(  title: (@Composable () -> Unit)?,  modifier: com.example.sky.Modifier?,  navigationIcon: (@Composable () -> Unit)?,  actions: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?,  colors: TopAppBarColors?,  scrollBehavior: TopAppBarScrollBehavior?)`![Center-aligned top app bar image](https://developer.android.google.cn/images/reference/androidx/compose/material3/center-aligned-top-app-bar.png) |
+| `@Composable Unit`                                  | `Checkbox(  checked: Boolean?,  onCheckedChange: ((Boolean) -> Unit)?,  modifier: com.example.sky.Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  colors: CheckboxColors?)`Material Design checkbox. |
+| `@Composable Unit`                                  | `ElevatedButton(  onClick: (() -> Unit)?,  modifier: com.example.sky.Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  elevation: ButtonElevation?,  shape: Shape?,  border: BorderStroke?,  colors: ButtonColors?,  contentPadding: PaddingValues?,  content: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?)`![Elevated button image](https://developer.android.google.cn/images/reference/androidx/compose/material3/elevated-button.png) |
+| `@Composable Unit`                                  | `ExtendedFloatingActionButton(  text: (@Composable () -> Unit)?,  onClick: (() -> Unit)?,  modifier: com.example.sky.Modifier?,  icon: (@Composable () -> Unit)?,  interactionSource: MutableInteractionSource?,  shape: Shape?,  containerColor: Color?,  contentColor: Color?,  elevation: FloatingActionButtonElevation?)`![Extended FAB image](https://developer.android.google.cn/images/reference/androidx/compose/material3/extended-fab.png) |
+| `@Composable Unit`                                  | `FilledTonalButton(  onClick: (() -> Unit)?,  modifier: com.example.sky.Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  elevation: ButtonElevation?,  shape: Shape?,  border: BorderStroke?,  colors: ButtonColors?,  contentPadding: PaddingValues?,  content: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?)`![Filled tonal button image](https://developer.android.google.cn/images/reference/androidx/compose/material3/filled-tonal-button.png) |
+| `@Composable Unit`                                  | `FloatingActionButton(  onClick: (() -> Unit)?,  modifier: com.example.sky.Modifier?,  interactionSource: MutableInteractionSource?,  shape: Shape?,  containerColor: Color?,  contentColor: Color?,  elevation: FloatingActionButtonElevation?,  content: (@Composable () -> Unit)?)`![FAB image](https://developer.android.google.cn/images/reference/androidx/compose/material3/fab.png) |
+| `@Composable Unit`                                  | `Icon(  imageVector: ImageVector?,  contentDescription: String?,  modifier: com.example.sky.Modifier?,  tint: Color?)`Icon component that draws `imageVector` using `tint`, defaulting to `LocalContentColor`. |
+| `@Composable Unit`                                  | `Icon(  bitmap: ImageBitmap?,  contentDescription: String?,  modifier: com.example.sky.Modifier?,  tint: Color?)`Icon component that draws `bitmap` using `tint`, defaulting to `LocalContentColor`. |
+| `@Composable Unit`                                  | `Icon(  painter: Painter?,  contentDescription: String?,  modifier: com.example.sky.Modifier?,  tint: Color?)`Icon component that draws a `painter` using `tint`, defaulting to `LocalContentColor`. |
+| `@Composable Unit`                                  | `IconButton(  onClick: (() -> Unit)?,  modifier: com.example.sky.Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  content: (@Composable () -> Unit)?)`IconButton is a clickable icon, used to represent actions. |
+| `@Composable Unit`                                  | `IconToggleButton(  checked: Boolean?,  onCheckedChange: ((Boolean) -> Unit)?,  modifier: com.example.sky.Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  content: (@Composable () -> Unit)?)`An `IconButton` with two states, for icons that can be toggled 'on' and 'off', such as a bookmark icon, or a navigation icon that opens a drawer. |
+| `@Composable Unit`                                  | `LargeFloatingActionButton(  onClick: (() -> Unit)?,  modifier: com.example.sky.Modifier?,  interactionSource: MutableInteractionSource?,  shape: Shape?,  containerColor: Color?,  contentColor: Color?,  elevation: FloatingActionButtonElevation?,  content: (@Composable () -> Unit)?)`![Large FAB image](https://developer.android.google.cn/images/reference/androidx/compose/material3/large-fab.png) |
+| `@Composable Unit`                                  | `LargeTopAppBar(  title: (@Composable () -> Unit)?,  modifier: com.example.sky.Modifier?,  navigationIcon: (@Composable () -> Unit)?,  actions: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?,  colors: TopAppBarColors?,  scrollBehavior: TopAppBarScrollBehavior?)`![Large top app bar image](https://developer.android.google.cn/images/reference/androidx/compose/material3/large-top-app-bar.png) |
 | `@Composable Unit`                                  | `MaterialTheme(  colorScheme: ColorScheme?,  typography: Typography?,  content: (@Composable () -> Unit)?)`Material Theming refers to the customization of your Material Design app to better reflect your product’s brand. |
-| `@Composable Unit`                                  | `MediumTopAppBar(  title: (@Composable () -> Unit)?,  modifier: Modifier?,  navigationIcon: (@Composable () -> Unit)?,  actions: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?,  colors: TopAppBarColors?,  scrollBehavior: TopAppBarScrollBehavior?)`![Medium top app bar image](https://developer.android.google.cn/images/reference/androidx/compose/material3/medium-top-app-bar.png) |
-| `@Composable Unit`                                  | `NavigationBar(  modifier: Modifier?,  containerColor: Color?,  contentColor: Color?,  tonalElevation: Dp?,  content: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?)`![Navigation bar image](https://developer.android.google.cn/images/reference/androidx/compose/material3/navigation-bar.png) |
-| `@Composable @ExperimentalMaterial3Api Unit`        | `NavigationDrawer(  drawerContent: (@Composable @ExtensionFunctionType ColumnScope.() -> Unit)?,  modifier: Modifier?,  drawerState: DrawerState?,  gesturesEnabled: Boolean?,  drawerShape: Shape?,  drawerTonalElevation: Dp?,  drawerContainerColor: Color?,  drawerContentColor: Color?,  scrimColor: Color?,  content: (@Composable () -> Unit)?)`![Navigation drawer image](https://developer.android.google.cn/images/reference/androidx/compose/material3/navigation-drawer.png) |
-| `@Composable Unit`                                  | `NavigationRail(  modifier: Modifier?,  containerColor: Color?,  contentColor: Color?,  header: (@Composable @ExtensionFunctionType ColumnScope.() -> Unit)?,  content: (@Composable @ExtensionFunctionType ColumnScope.() -> Unit)?)`![Navigation rail image](https://developer.android.google.cn/images/reference/androidx/compose/material3/navigation-rail.png) |
-| `@Composable Unit`                                  | `NavigationRailItem(  selected: Boolean?,  onClick: (() -> Unit)?,  icon: (@Composable () -> Unit)?,  modifier: Modifier?,  enabled: Boolean?,  label: (@Composable () -> Unit)?,  alwaysShowLabel: Boolean?,  interactionSource: MutableInteractionSource?,  colors: NavigationRailItemColors?)`Material Design navigation rail item. |
-| `@Composable Unit`                                  | `OutlinedButton(  onClick: (() -> Unit)?,  modifier: Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  elevation: ButtonElevation?,  shape: Shape?,  border: BorderStroke?,  colors: ButtonColors?,  contentPadding: PaddingValues?,  content: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?)`![Outlined button image](https://developer.android.google.cn/images/reference/androidx/compose/material3/outlined-button.png) |
+| `@Composable Unit`                                  | `MediumTopAppBar(  title: (@Composable () -> Unit)?,  modifier: com.example.sky.Modifier?,  navigationIcon: (@Composable () -> Unit)?,  actions: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?,  colors: TopAppBarColors?,  scrollBehavior: TopAppBarScrollBehavior?)`![Medium top app bar image](https://developer.android.google.cn/images/reference/androidx/compose/material3/medium-top-app-bar.png) |
+| `@Composable Unit`                                  | `NavigationBar(  modifier: com.example.sky.Modifier?,  containerColor: Color?,  contentColor: Color?,  tonalElevation: Dp?,  content: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?)`![Navigation bar image](https://developer.android.google.cn/images/reference/androidx/compose/material3/navigation-bar.png) |
+| `@Composable @ExperimentalMaterial3Api Unit`        | `NavigationDrawer(  drawerContent: (@Composable @ExtensionFunctionType ColumnScope.() -> Unit)?,  modifier: com.example.sky.Modifier?,  drawerState: DrawerState?,  gesturesEnabled: Boolean?,  drawerShape: Shape?,  drawerTonalElevation: Dp?,  drawerContainerColor: Color?,  drawerContentColor: Color?,  scrimColor: Color?,  content: (@Composable () -> Unit)?)`![Navigation drawer image](https://developer.android.google.cn/images/reference/androidx/compose/material3/navigation-drawer.png) |
+| `@Composable Unit`                                  | `NavigationRail(  modifier: com.example.sky.Modifier?,  containerColor: Color?,  contentColor: Color?,  header: (@Composable @ExtensionFunctionType ColumnScope.() -> Unit)?,  content: (@Composable @ExtensionFunctionType ColumnScope.() -> Unit)?)`![Navigation rail image](https://developer.android.google.cn/images/reference/androidx/compose/material3/navigation-rail.png) |
+| `@Composable Unit`                                  | `NavigationRailItem(  selected: Boolean?,  onClick: (() -> Unit)?,  icon: (@Composable () -> Unit)?,  modifier: com.example.sky.Modifier?,  enabled: Boolean?,  label: (@Composable () -> Unit)?,  alwaysShowLabel: Boolean?,  interactionSource: MutableInteractionSource?,  colors: NavigationRailItemColors?)`Material Design navigation rail item. |
+| `@Composable Unit`                                  | `OutlinedButton(  onClick: (() -> Unit)?,  modifier: com.example.sky.Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  elevation: ButtonElevation?,  shape: Shape?,  border: BorderStroke?,  colors: ButtonColors?,  contentPadding: PaddingValues?,  content: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?)`![Outlined button image](https://developer.android.google.cn/images/reference/androidx/compose/material3/outlined-button.png) |
 | `@Composable Unit`                                  | `ProvideTextStyle(value: TextStyle?, content: (@Composable () -> Unit)?)`This function is used to set the current value of `LocalTextStyle`, merging the given style with the current style values for any missing attributes. |
-| `@Composable Unit`                                  | `RadioButton(  selected: Boolean?,  onClick: (() -> Unit)?,  modifier: Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  colors: RadioButtonColors?)`Material Design radio button. |
-| `@ExperimentalMaterial3Api @Composable Unit`        | `Scaffold(  modifier: Modifier?,  topBar: (@Composable () -> Unit)?,  bottomBar: (@Composable () -> Unit)?,  snackbarHost: (@Composable () -> Unit)?,  floatingActionButton: (@Composable () -> Unit)?,  floatingActionButtonPosition: FabPosition?,  containerColor: Color?,  contentColor: Color?,  content: (@Composable (PaddingValues) -> Unit)?)`[Material Design layout](https://material.io/design/layout/understanding-layout.html). |
-| `@Composable Unit`                                  | `SmallFloatingActionButton(  onClick: (() -> Unit)?,  modifier: Modifier?,  interactionSource: MutableInteractionSource?,  shape: Shape?,  containerColor: Color?,  contentColor: Color?,  elevation: FloatingActionButtonElevation?,  content: (@Composable () -> Unit)?)`![Small FAB image](https://developer.android.google.cn/images/reference/androidx/compose/material3/small-fab.png) |
-| `@Composable Unit`                                  | `SmallTopAppBar(  title: (@Composable () -> Unit)?,  modifier: Modifier?,  navigationIcon: (@Composable () -> Unit)?,  actions: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?,  colors: TopAppBarColors?,  scrollBehavior: TopAppBarScrollBehavior?)`![Small top app bar image](https://developer.android.google.cn/images/reference/androidx/compose/material3/small-top-app-bar.png) |
-| `@Composable Unit`                                  | `Snackbar(  modifier: Modifier?,  action: (@Composable () -> Unit)?,  dismissAction: (@Composable () -> Unit)?,  actionOnNewLine: Boolean?,  shape: Shape?,  containerColor: Color?,  contentColor: Color?,  content: (@Composable () -> Unit)?)`Material Design snackbar. |
-| `@Composable Unit`                                  | `Snackbar(  snackbarData: SnackbarData?,  modifier: Modifier?,  actionOnNewLine: Boolean?,  shape: Shape?,  containerColor: Color?,  contentColor: Color?,  actionColor: Color?)`Material Design snackbar. |
-| `@Composable Unit`                                  | `SnackbarHost(  hostState: SnackbarHostState?,  modifier: Modifier?,  snackbar: (@Composable (SnackbarData) -> Unit)?)`Host for `Snackbar`s to be used in `Scaffold` to properly show, hide and dismiss items based on material specification and the `hostState`. |
-| `@Composable Unit`                                  | `Surface(  modifier: Modifier?,  shape: Shape?,  color: Color?,  contentColor: Color?,  tonalElevation: Dp?,  shadowElevation: Dp?,  border: BorderStroke?,  content: (@Composable () -> Unit)?)`Material surface is the central metaphor in material design. |
-| `@Composable Unit`                                  | `Surface(  onClick: (() -> Unit)?,  modifier: Modifier?,  shape: Shape?,  color: Color?,  contentColor: Color?,  tonalElevation: Dp?,  shadowElevation: Dp?,  border: BorderStroke?,  interactionSource: MutableInteractionSource?,  indication: Indication?,  enabled: Boolean?,  onClickLabel: String?,  role: Role?,  content: (@Composable () -> Unit)?)`Material surface is the central metaphor in material design. |
-| `@Composable Unit`                                  | `Text(  text: String?,  modifier: Modifier?,  color: Color?,  fontSize: TextUnit?,  fontStyle: FontStyle?,  fontWeight: FontWeight?,  fontFamily: FontFamily?,  letterSpacing: TextUnit?,  textDecoration: TextDecoration?,  textAlign: TextAlign?,  lineHeight: TextUnit?,  overflow: TextOverflow?,  softWrap: Boolean?,  maxLines: Int?,  onTextLayout: ((TextLayoutResult) -> Unit)?,  style: TextStyle?)`High level element that displays text and provides semantics / accessibility information. |
-| `@Composable Unit`                                  | `Text(  text: AnnotatedString?,  modifier: Modifier?,  color: Color?,  fontSize: TextUnit?,  fontStyle: FontStyle?,  fontWeight: FontWeight?,  fontFamily: FontFamily?,  letterSpacing: TextUnit?,  textDecoration: TextDecoration?,  textAlign: TextAlign?,  lineHeight: TextUnit?,  overflow: TextOverflow?,  softWrap: Boolean?,  maxLines: Int?,  inlineContent: Map<String?, InlineTextContent?>?,  onTextLayout: ((TextLayoutResult) -> Unit)?,  style: TextStyle?)`High level element that displays text and provides semantics / accessibility information. |
-| `@Composable Unit`                                  | `TextButton(  onClick: (() -> Unit)?,  modifier: Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  elevation: ButtonElevation?,  shape: Shape?,  border: BorderStroke?,  colors: ButtonColors?,  contentPadding: PaddingValues?,  content: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?)`![Text button image](https://developer.android.google.cn/images/reference/androidx/compose/material3/text-button.png) |
-| `@Composable Unit`                                  | `TriStateCheckbox(  state: ToggleableState?,  onClick: (() -> Unit)?,  modifier: Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  colors: CheckboxColors?)`Material Design checkbox parent. |
+| `@Composable Unit`                                  | `RadioButton(  selected: Boolean?,  onClick: (() -> Unit)?,  modifier: com.example.sky.Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  colors: RadioButtonColors?)`Material Design radio button. |
+| `@ExperimentalMaterial3Api @Composable Unit`        | `Scaffold(  modifier: com.example.sky.Modifier?,  topBar: (@Composable () -> Unit)?,  bottomBar: (@Composable () -> Unit)?,  snackbarHost: (@Composable () -> Unit)?,  floatingActionButton: (@Composable () -> Unit)?,  floatingActionButtonPosition: FabPosition?,  containerColor: Color?,  contentColor: Color?,  content: (@Composable (PaddingValues) -> Unit)?)`[Material Design layout](https://material.io/design/layout/understanding-layout.html). |
+| `@Composable Unit`                                  | `SmallFloatingActionButton(  onClick: (() -> Unit)?,  modifier: com.example.sky.Modifier?,  interactionSource: MutableInteractionSource?,  shape: Shape?,  containerColor: Color?,  contentColor: Color?,  elevation: FloatingActionButtonElevation?,  content: (@Composable () -> Unit)?)`![Small FAB image](https://developer.android.google.cn/images/reference/androidx/compose/material3/small-fab.png) |
+| `@Composable Unit`                                  | `SmallTopAppBar(  title: (@Composable () -> Unit)?,  modifier: com.example.sky.Modifier?,  navigationIcon: (@Composable () -> Unit)?,  actions: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?,  colors: TopAppBarColors?,  scrollBehavior: TopAppBarScrollBehavior?)`![Small top app bar image](https://developer.android.google.cn/images/reference/androidx/compose/material3/small-top-app-bar.png) |
+| `@Composable Unit`                                  | `Snackbar(  modifier: com.example.sky.Modifier?,  action: (@Composable () -> Unit)?,  dismissAction: (@Composable () -> Unit)?,  actionOnNewLine: Boolean?,  shape: Shape?,  containerColor: Color?,  contentColor: Color?,  content: (@Composable () -> Unit)?)`Material Design snackbar. |
+| `@Composable Unit`                                  | `Snackbar(  snackbarData: SnackbarData?,  modifier: com.example.sky.Modifier?,  actionOnNewLine: Boolean?,  shape: Shape?,  containerColor: Color?,  contentColor: Color?,  actionColor: Color?)`Material Design snackbar. |
+| `@Composable Unit`                                  | `SnackbarHost(  hostState: SnackbarHostState?,  modifier: com.example.sky.Modifier?,  snackbar: (@Composable (SnackbarData) -> Unit)?)`Host for `Snackbar`s to be used in `Scaffold` to properly show, hide and dismiss items based on material specification and the `hostState`. |
+| `@Composable Unit`                                  | `Surface(  modifier: com.example.sky.Modifier?,  shape: Shape?,  color: Color?,  contentColor: Color?,  tonalElevation: Dp?,  shadowElevation: Dp?,  border: BorderStroke?,  content: (@Composable () -> Unit)?)`Material surface is the central metaphor in material design. |
+| `@Composable Unit`                                  | `Surface(  onClick: (() -> Unit)?,  modifier: com.example.sky.Modifier?,  shape: Shape?,  color: Color?,  contentColor: Color?,  tonalElevation: Dp?,  shadowElevation: Dp?,  border: BorderStroke?,  interactionSource: MutableInteractionSource?,  indication: Indication?,  enabled: Boolean?,  onClickLabel: String?,  role: Role?,  content: (@Composable () -> Unit)?)`Material surface is the central metaphor in material design. |
+| `@Composable Unit`                                  | `Text(  text: String?,  modifier: com.example.sky.Modifier?,  color: Color?,  fontSize: TextUnit?,  fontStyle: FontStyle?,  fontWeight: FontWeight?,  fontFamily: FontFamily?,  letterSpacing: TextUnit?,  textDecoration: TextDecoration?,  textAlign: TextAlign?,  lineHeight: TextUnit?,  overflow: TextOverflow?,  softWrap: Boolean?,  maxLines: Int?,  onTextLayout: ((TextLayoutResult) -> Unit)?,  style: TextStyle?)`High level element that displays text and provides semantics / accessibility information. |
+| `@Composable Unit`                                  | `Text(  text: AnnotatedString?,  modifier: com.example.sky.Modifier?,  color: Color?,  fontSize: TextUnit?,  fontStyle: FontStyle?,  fontWeight: FontWeight?,  fontFamily: FontFamily?,  letterSpacing: TextUnit?,  textDecoration: TextDecoration?,  textAlign: TextAlign?,  lineHeight: TextUnit?,  overflow: TextOverflow?,  softWrap: Boolean?,  maxLines: Int?,  inlineContent: Map<String?, InlineTextContent?>?,  onTextLayout: ((TextLayoutResult) -> Unit)?,  style: TextStyle?)`High level element that displays text and provides semantics / accessibility information. |
+| `@Composable Unit`                                  | `TextButton(  onClick: (() -> Unit)?,  modifier: com.example.sky.Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  elevation: ButtonElevation?,  shape: Shape?,  border: BorderStroke?,  colors: ButtonColors?,  contentPadding: PaddingValues?,  content: (@Composable @ExtensionFunctionType RowScope.() -> Unit)?)`![Text button image](https://developer.android.google.cn/images/reference/androidx/compose/material3/text-button.png) |
+| `@Composable Unit`                                  | `TriStateCheckbox(  state: ToggleableState?,  onClick: (() -> Unit)?,  modifier: com.example.sky.Modifier?,  enabled: Boolean?,  interactionSource: MutableInteractionSource?,  colors: CheckboxColors?)`Material Design checkbox parent. |
 | `@Composable Color`                                 | `contentColorFor(backgroundColor: Color?)`The Material color system contains pairs of colors that are typically used for the background and content color inside a component. |
 | `ColorScheme`                                       | `darkColorScheme(  primary: Color?,  onPrimary: Color?,  primaryContainer: Color?,  onPrimaryContainer: Color?,  inversePrimary: Color?,  secondary: Color?,  onSecondary: Color?,  secondaryContainer: Color?,  onSecondaryContainer: Color?,  tertiary: Color?,  onTertiary: Color?,  tertiaryContainer: Color?,  onTertiaryContainer: Color?,  background: Color?,  onBackground: Color?,  surface: Color?,  onSurface: Color?,  surfaceVariant: Color?,  onSurfaceVariant: Color?,  inverseSurface: Color?,  inverseOnSurface: Color?,  error: Color?,  onError: Color?,  errorContainer: Color?,  onErrorContainer: Color?,  outline: Color?)`Returns a dark Material color scheme. |
 | `@RequiresApi(value = 31) ColorScheme`              | `dynamicDarkColorScheme(context: Context?)`Creates a dark dynamic color scheme. |
@@ -146,7 +146,7 @@ Material 3 defines the qualities that can be expressed by UI regions, surfaces, 
 
 ## Extension functions summary
 
-| `@Composable Unit` | `RowScope?.NavigationBarItem(  selected: Boolean?,  onClick: (() -> Unit)?,  icon: (@Composable () -> Unit)?,  modifier: Modifier?,  enabled: Boolean?,  label: (@Composable () -> Unit)?,  alwaysShowLabel: Boolean?,  interactionSource: MutableInteractionSource?,  colors: NavigationBarItemColors?)`Material Design navigation bar item. |
+| `@Composable Unit` | `RowScope?.NavigationBarItem(  selected: Boolean?,  onClick: (() -> Unit)?,  icon: (@Composable () -> Unit)?,  modifier: com.example.sky.Modifier?,  enabled: Boolean?,  label: (@Composable () -> Unit)?,  alwaysShowLabel: Boolean?,  interactionSource: MutableInteractionSource?,  colors: NavigationBarItemColors?)`Material Design navigation bar item. |
 | ------------------ | ------------------------------------------------------------ |
 | `Color`            | `ColorScheme?.contentColorFor(backgroundColor: Color?)`The Material color system contains pairs of colors that are typically used for the background and content color inside a component. |
 
@@ -165,7 +165,7 @@ Material 3 defines the qualities that can be expressed by UI regions, surfaces, 
 ### AlertDialog
 
 ```
-@Composablefun AlertDialog(    onDismissRequest: (() -> Unit)?,    confirmButton: (@Composable () -> Unit)?,    modifier: Modifier? = Modifier,    dismissButton: (@Composable () -> Unit)? = null,    icon: (@Composable () -> Unit)? = null,    title: (@Composable () -> Unit)? = null,    text: (@Composable () -> Unit)? = null,    shape: Shape? = androidx.compose.material3.tokens.Dialog.ContainerShape,    containerColor: Color? = MaterialTheme.colorScheme.fromToken(
+@Composablefun AlertDialog(    onDismissRequest: (() -> Unit)?,    confirmButton: (@Composable () -> Unit)?,    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,    dismissButton: (@Composable () -> Unit)? = null,    icon: (@Composable () -> Unit)? = null,    title: (@Composable () -> Unit)? = null,    text: (@Composable () -> Unit)? = null,    shape: Shape? = androidx.compose.material3.tokens.Dialog.ContainerShape,    containerColor: Color? = MaterialTheme.colorScheme.fromToken(
             androidx.compose.material3.tokens.Dialog.ContainerColor
         ),    tonalElevation: Dp? = androidx.compose.material3.tokens.Dialog.ContainerElevation,    iconContentColor: Color? = MaterialTheme.colorScheme.fromToken(
         androidx.compose.material3.tokens.Dialog.WithIconIconColor
@@ -287,7 +287,7 @@ if (openDialog.value) {
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `onDismissRequest: (() -> Unit)?`                            | Executes when the user tries to dismiss the Dialog by clicking outside or pressing the back button. This is not called when the dismiss button is clicked. |
 | `confirmButton: (@Composable () -> Unit)?`                   | A button which is meant to confirm a proposed action, thus resolving what triggered the dialog. The dialog does not set up any events for this button so they need to be set up by the caller. |
-| `modifier: Modifier? = Modifier`                             | Modifier to be applied to the layout of the dialog.          |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | com.example.sky.Modifier to be applied to the layout of the dialog.          |
 | `dismissButton: (@Composable () -> Unit)? = null`            | A button which is meant to dismiss the dialog. The dialog does not set up any events for this button so they need to be set up by the caller. |
 | `icon: (@Composable () -> Unit)? = null`                     | An optional icon that will appear above the `title` or above the `text`, in case a title was not provided. |
 | `title: (@Composable () -> Unit)? = null`                    | The title of the Dialog which should specify the purpose of the Dialog. The title is not mandatory, because there may be sufficient information inside the `text`. |
@@ -307,7 +307,7 @@ if (openDialog.value) {
 ```
 @Composable
 fun Badge(
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     containerColor: Color? = MaterialTheme.colorScheme.fromToken(NavigationBar.BadgeColor),
     contentColor: Color? = contentColorFor(containerColor),
     content: (@Composable @ExtensionFunctionType RowScope.() -> Unit)? = null
@@ -320,7 +320,7 @@ See `BadgedBox` for a top level layout that will properly place the badge relati
 
 | Parameters                                                   |                                                  |
 | :----------------------------------------------------------- | ------------------------------------------------ |
-| `modifier: Modifier? = Modifier`                             | optional `Modifier` for this item                |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | optional `com.example.sky.Modifier` for this item                |
 | `containerColor: Color? = MaterialTheme.colorScheme.fromToken(NavigationBar.BadgeColor)` | the background color for the badge               |
 | `contentColor: Color? = contentColorFor(containerColor)`     | the color of label text rendered in the badge    |
 | `content: (@Composable @ExtensionFunctionType RowScope.() -> Unit)? = null` | optional content to be rendered inside the badge |
@@ -333,7 +333,7 @@ See `BadgedBox` for a top level layout that will properly place the badge relati
 @Composable
 fun BadgedBox(
     badge: (@Composable @ExtensionFunctionType BoxScope.() -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     content: (@Composable @ExtensionFunctionType BoxScope.() -> Unit)?
 ): Unit
 ```
@@ -371,7 +371,7 @@ NavigationBar {
 | Parameters                                                   |                                                   |
 | :----------------------------------------------------------- | ------------------------------------------------- |
 | `badge: (@Composable @ExtensionFunctionType BoxScope.() -> Unit)?` | the badge to be displayed - typically a `Badge`   |
-| `modifier: Modifier? = Modifier`                             | optional `Modifier` for this item                 |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | optional `com.example.sky.Modifier` for this item                 |
 | `content: (@Composable @ExtensionFunctionType BoxScope.() -> Unit)?` | the anchor to which this badge will be positioned |
 
 
@@ -382,7 +382,7 @@ NavigationBar {
 @Composable
 fun Button(
     onClick: (() -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     enabled: Boolean? = true,
     interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() },
     elevation: ButtonElevation? = ButtonDefaults.buttonElevation(),
@@ -415,9 +415,9 @@ Button(onClick = { /* Do something! */ }) {
     Icon(
         Icons.Filled.Favorite,
         contentDescription = "Localized description",
-        modifier = Modifier.size(ButtonDefaults.IconSize)
+        modifier = com.example.sky.Modifier.size(ButtonDefaults.IconSize)
     )
-    Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+    Spacer(com.example.sky.Modifier.size(ButtonDefaults.IconSpacing))
     Text("Like")
 }
 ```
@@ -434,7 +434,7 @@ The default text style for internal `Text` components will be set to `Typography
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `onClick: (() -> Unit)?`                                     | Will be called when the user clicks the button.              |
-| `modifier: Modifier? = Modifier`                             | Modifier to be applied to the button.                        |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | com.example.sky.Modifier to be applied to the button.                        |
 | `enabled: Boolean? = true`                                   | Controls the enabled state of the button. When `false`, this button will not be clickable. |
 | `interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() }` | the `MutableInteractionSource` representing the stream of `Interaction`s for this Button. You can create and pass in your own remembered `MutableInteractionSource` if you want to observe `Interaction`s and customize the appearance / behavior of this Button in different `Interaction`s. |
 | `elevation: ButtonElevation? = ButtonDefaults.buttonElevation()` | `ButtonElevation` used to resolve the elevation for this button in different states. This controls the size of the shadow below the button. When the container color is `ColorScheme.surface`, a higher elevation (surface blended with more primary) will result in a darker surface color in light theme and lighter color in dark theme. |
@@ -451,7 +451,7 @@ The default text style for internal `Text` components will be set to `Typography
 @Composable
 fun CenterAlignedTopAppBar(
     title: (@Composable () -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     navigationIcon: (@Composable () -> Unit)? = {},
     actions: (@Composable @ExtensionFunctionType RowScope.() -> Unit)? = {},
     colors: TopAppBarColors? = TopAppBarDefaults.centerAlignedTopAppBarColors(),
@@ -511,7 +511,7 @@ Scaffold(
                 Text(
                     text = list[it],
                     style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+                    modifier = com.example.sky.Modifier.fillMaxWidth().padding(horizontal = 16.dp)
                 )
             }
         }
@@ -522,7 +522,7 @@ Scaffold(
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `title: (@Composable () -> Unit)?`                           | the title to be displayed in the top app bar                 |
-| `modifier: Modifier? = Modifier`                             | the `Modifier` to be applied to this top app bar             |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | the `com.example.sky.Modifier` to be applied to this top app bar             |
 | `navigationIcon: (@Composable () -> Unit)? = {}`             | The navigation icon displayed at the start of the top app bar. This should typically be an `IconButton` or `IconToggleButton`. |
 | `actions: (@Composable @ExtensionFunctionType RowScope.() -> Unit)? = {}` | the actions displayed at the end of the top app bar. This should typically be `IconButton`s. The default layout here is a `Row`, so icons inside will be placed horizontally. |
 | `colors: TopAppBarColors? = TopAppBarDefaults.centerAlignedTopAppBarColors()` | a `TopAppBarColors` that will be used to resolve the colors used for this top app bar in different states. See `TopAppBarDefaults.centerAlignedTopAppBarColors`. |
@@ -537,7 +537,7 @@ Scaffold(
 fun Checkbox(
     checked: Boolean?,
     onCheckedChange: ((Boolean) -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     enabled: Boolean? = true,
     interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() },
     colors: CheckboxColors? = CheckboxDefaults.colors()
@@ -564,7 +564,7 @@ Checkbox(
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `checked: Boolean?`                                          | whether this Checkbox is checked or unchecked                |
 | `onCheckedChange: ((Boolean) -> Unit)?`                      | callback to be invoked when checkbox is being clicked, therefore the change of checked state in requested. If null, then this is passive and relies entirely on a higher-level component to control the "checked" state |
-| `modifier: Modifier? = Modifier`                             | Modifier to be applied to the layout of this `Checkbox`      |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | com.example.sky.Modifier to be applied to the layout of this `Checkbox`      |
 | `enabled: Boolean? = true`                                   | controls the enabled state of the `Checkbox`. When `false`, this `Checkbox` will not be clickable/selectable |
 | `interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() }` | the `MutableInteractionSource` representing the stream of `Interaction`s for this `Checkbox`. You can create and pass in your own remembered `MutableInteractionSource` if you want to observe `Interaction`s and customize the appearance / behavior of this `Checkbox` in different `Interaction`s |
 | `colors: CheckboxColors? = CheckboxDefaults.colors()`        | `CheckboxColors` that will be used to resolve the color used for this `Checkbox` in different states. See `CheckboxDefaults.colors` |
@@ -581,7 +581,7 @@ Checkbox(
 @Composable
 fun ElevatedButton(
     onClick: (() -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     enabled: Boolean? = true,
     interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() },
     elevation: ButtonElevation? = ButtonDefaults.elevatedButtonElevation(),
@@ -618,7 +618,7 @@ The default text style for internal `Text` components will be set to `Typography
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `onClick: (() -> Unit)?`                                     | Will be called when the user clicks the button.              |
-| `modifier: Modifier? = Modifier`                             | Modifier to be applied to the button.                        |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | com.example.sky.Modifier to be applied to the button.                        |
 | `enabled: Boolean? = true`                                   | Controls the enabled state of the button. When `false`, this button will not be clickable. |
 | `interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() }` | the `MutableInteractionSource` representing the stream of `Interaction`s for this Button. You can create and pass in your own remembered `MutableInteractionSource` if you want to observe `Interaction`s and customize the appearance / behavior of this Button in different `Interaction`s. |
 | `elevation: ButtonElevation? = ButtonDefaults.elevatedButtonElevation()` | `ButtonElevation` used to resolve the elevation for this button in different states. This controls the size of the shadow below the button. When the container color is `ColorScheme.surface`, a higher elevation (surface blended with more primary) will result in a darker surface color in light theme and lighter color in dark theme. `ButtonDefaults.elevatedButtonElevation`. |
@@ -632,7 +632,7 @@ The default text style for internal `Text` components will be set to `Typography
 ### ExtendedFloatingActionButton
 
 ```
-@Composablefun ExtendedFloatingActionButton(    text: (@Composable () -> Unit)?,    onClick: (() -> Unit)?,    modifier: Modifier? = Modifier,    icon: (@Composable () -> Unit)? = null,    interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() },    shape: Shape? = ExtendedFabPrimary.PrimaryContainerShape,    containerColor: Color? = MaterialTheme.colorScheme.fromToken(
+@Composablefun ExtendedFloatingActionButton(    text: (@Composable () -> Unit)?,    onClick: (() -> Unit)?,    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,    icon: (@Composable () -> Unit)? = null,    interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() },    shape: Shape? = ExtendedFabPrimary.PrimaryContainerShape,    containerColor: Color? = MaterialTheme.colorScheme.fromToken(
         ExtendedFabPrimary.PrimaryContainerColor
     ),    contentColor: Color? = contentColorFor(containerColor),    elevation: FloatingActionButtonElevation? = FloatingActionButtonDefaults.elevation()): Unit
 ```
@@ -657,7 +657,7 @@ ExtendedFloatingActionButton(
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `text: (@Composable () -> Unit)?`                            | Text label displayed inside this FAB                         |
 | `onClick: (() -> Unit)?`                                     | callback invoked when this FAB is clicked                    |
-| `modifier: Modifier? = Modifier`                             | `Modifier` to be applied to this FAB                         |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | `com.example.sky.Modifier` to be applied to this FAB                         |
 | `icon: (@Composable () -> Unit)? = null`                     | Optional icon for this FAB, typically this will be a `Icon`. |
 | `interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() }` | the `MutableInteractionSource` representing the stream of `Interaction`s for this FAB. You can create and pass in your own remembered `MutableInteractionSource` if you want to observe `Interaction`s and customize the appearance / behavior of this FAB in different `Interaction`s. |
 | `shape: Shape? = ExtendedFabPrimary.PrimaryContainerShape`   | The `Shape` of this FAB                                      |
@@ -673,7 +673,7 @@ ExtendedFloatingActionButton(
 @Composable
 fun FilledTonalButton(
     onClick: (() -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     enabled: Boolean? = true,
     interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() },
     elevation: ButtonElevation? = ButtonDefaults.filledTonalButtonElevation(),
@@ -710,7 +710,7 @@ The default text style for internal `Text` components will be set to `Typography
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `onClick: (() -> Unit)?`                                     | Will be called when the user clicks the button.              |
-| `modifier: Modifier? = Modifier`                             | Modifier to be applied to the button.                        |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | com.example.sky.Modifier to be applied to the button.                        |
 | `enabled: Boolean? = true`                                   | Controls the enabled state of the button. When `false`, this button will not be clickable. |
 | `interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() }` | the `MutableInteractionSource` representing the stream of `Interaction`s for this Button. You can create and pass in your own remembered `MutableInteractionSource` if you want to observe `Interaction`s and customize the appearance / behavior of this Button in different `Interaction`s. |
 | `elevation: ButtonElevation? = ButtonDefaults.filledTonalButtonElevation()` | `ButtonElevation` used to resolve the elevation for this button in different states. This controls the size of the shadow below the button. When the container color is `ColorScheme.surface`, a higher elevation (surface blended with more primary) will result in a darker surface color in light theme and lighter color in dark theme. |
@@ -727,7 +727,7 @@ The default text style for internal `Text` components will be set to `Typography
 @Composable
 fun FloatingActionButton(
     onClick: (() -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() },
     shape: Shape? = FabPrimary.PrimaryContainerShape,
     containerColor: Color? = MaterialTheme.colorScheme.fromToken(FabPrimary.PrimaryContainerColor),
@@ -755,7 +755,7 @@ FloatingActionButton(
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `onClick: (() -> Unit)?`                                     | callback invoked when this FAB is clicked                    |
-| `modifier: Modifier? = Modifier`                             | `Modifier` to be applied to this FAB.                        |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | `com.example.sky.Modifier` to be applied to this FAB.                        |
 | `interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() }` | the `MutableInteractionSource` representing the stream of `Interaction`s for this FAB. You can create and pass in your own remembered `MutableInteractionSource` if you want to observe `Interaction`s and customize the appearance / behavior of this FAB in different `Interaction`s. |
 | `shape: Shape? = FabPrimary.PrimaryContainerShape`           | The `Shape` of this FAB                                      |
 | `containerColor: Color? = MaterialTheme.colorScheme.fromToken(FabPrimary.PrimaryContainerColor)` | The container color. Use `Color.Transparent` to have no color |
@@ -772,7 +772,7 @@ FloatingActionButton(
 fun Icon(
     imageVector: ImageVector?,
     contentDescription: String?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     tint: Color? = LocalContentColor.current
 ): Unit
 ```
@@ -783,7 +783,7 @@ Icon component that draws `imageVector` using `tint`, defaulting to `LocalConten
 | :----------------------------------------- | ------------------------------------------------------------ |
 | `imageVector: ImageVector?`                | `ImageVector` to draw inside this Icon                       |
 | `contentDescription: String?`              | text used by accessibility services to describe what this icon represents. This should always be provided unless this icon is used for decorative purposes, and does not represent a meaningful action that a user can take. This text should be localized, such as by using `androidx.compose.ui.res.stringResource` or similar |
-| `modifier: Modifier? = Modifier`           | optional `Modifier` for this Icon                            |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`           | optional `com.example.sky.Modifier` for this Icon                            |
 | `tint: Color? = LocalContentColor.current` | tint to be applied to `imageVector`. If `Color.Unspecified` is provided, then no tint is applied |
 
 
@@ -795,7 +795,7 @@ Icon component that draws `imageVector` using `tint`, defaulting to `LocalConten
 fun Icon(
     bitmap: ImageBitmap?,
     contentDescription: String?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     tint: Color? = LocalContentColor.current
 ): Unit
 ```
@@ -806,7 +806,7 @@ Icon component that draws `bitmap` using `tint`, defaulting to `LocalContentColo
 | :----------------------------------------- | ------------------------------------------------------------ |
 | `bitmap: ImageBitmap?`                     | `ImageBitmap` to draw inside this Icon                       |
 | `contentDescription: String?`              | text used by accessibility services to describe what this icon represents. This should always be provided unless this icon is used for decorative purposes, and does not represent a meaningful action that a user can take. This text should be localized, such as by using `androidx.compose.ui.res.stringResource` or similar |
-| `modifier: Modifier? = Modifier`           | optional `Modifier` for this Icon                            |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`           | optional `com.example.sky.Modifier` for this Icon                            |
 | `tint: Color? = LocalContentColor.current` | tint to be applied to `bitmap`. If `Color.Unspecified` is provided, then no tint is applied |
 
 
@@ -818,7 +818,7 @@ Icon component that draws `bitmap` using `tint`, defaulting to `LocalContentColo
 fun Icon(
     painter: Painter?,
     contentDescription: String?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     tint: Color? = LocalContentColor.current
 ): Unit
 ```
@@ -829,7 +829,7 @@ Icon component that draws a `painter` using `tint`, defaulting to `LocalContentC
 | :----------------------------------------- | ------------------------------------------------------------ |
 | `painter: Painter?`                        | `Painter` to draw inside this Icon                           |
 | `contentDescription: String?`              | text used by accessibility services to describe what this icon represents. This should always be provided unless this icon is used for decorative purposes, and does not represent a meaningful action that a user can take. This text should be localized, such as by using `androidx.compose.ui.res.stringResource` or similar |
-| `modifier: Modifier? = Modifier`           | optional `Modifier` for this Icon                            |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`           | optional `com.example.sky.Modifier` for this Icon                            |
 | `tint: Color? = LocalContentColor.current` | tint to be applied to `painter`. If `Color.Unspecified` is provided, then no tint is applied |
 
 
@@ -840,7 +840,7 @@ Icon component that draws a `painter` using `tint`, defaulting to `LocalContentC
 @Composable
 fun IconButton(
     onClick: (() -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     enabled: Boolean? = true,
     interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() },
     content: (@Composable () -> Unit)?
@@ -865,7 +865,7 @@ IconButton(onClick = { /* doSomething() */ }) {
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `onClick: (() -> Unit)?`                                     | the lambda to be invoked when this icon is pressed           |
-| `modifier: Modifier? = Modifier`                             | optional `Modifier` for this IconButton                      |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | optional `com.example.sky.Modifier` for this IconButton                      |
 | `enabled: Boolean? = true`                                   | whether or not this IconButton will handle input events and appear enabled for semantics purposes |
 | `interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() }` | the `MutableInteractionSource` representing the stream of `Interaction`s for this IconButton. You can create and pass in your own remembered `MutableInteractionSource` if you want to observe `Interaction`s and customize the appearance / behavior of this IconButton in different `Interaction`s. |
 | `content: (@Composable () -> Unit)?`                         | the content (icon) to be drawn inside the IconButton. This is typically an `Icon`. |
@@ -879,7 +879,7 @@ IconButton(onClick = { /* doSomething() */ }) {
 fun IconToggleButton(
     checked: Boolean?,
     onCheckedChange: ((Boolean) -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     enabled: Boolean? = true,
     interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() },
     content: (@Composable () -> Unit)?
@@ -908,7 +908,7 @@ IconToggleButton(checked = checked, onCheckedChange = { checked = it }) {
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `checked: Boolean?`                                          | whether this IconToggleButton is currently checked           |
 | `onCheckedChange: ((Boolean) -> Unit)?`                      | callback to be invoked when this icon is selected            |
-| `modifier: Modifier? = Modifier`                             | optional `Modifier` for this IconToggleButton                |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | optional `com.example.sky.Modifier` for this IconToggleButton                |
 | `enabled: Boolean? = true`                                   | enabled whether or not this `IconToggleButton` will handle input events and appear enabled for semantics purposes |
 | `interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() }` | the `MutableInteractionSource` representing the stream of `Interaction`s for this IconToggleButton. You can create and pass in your own remembered `MutableInteractionSource` if you want to observe `Interaction`s and customize the appearance / behavior of this IconToggleButton in different `Interaction`s. |
 | `content: (@Composable () -> Unit)?`                         | the content (icon) to be drawn inside the IconToggleButton. This is typically an `Icon`. |
@@ -918,7 +918,7 @@ IconToggleButton(checked = checked, onCheckedChange = { checked = it }) {
 ### LargeFloatingActionButton
 
 ```
-@Composablefun LargeFloatingActionButton(    onClick: (() -> Unit)?,    modifier: Modifier? = Modifier,    interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() },    shape: Shape? = FabPrimaryLarge.PrimaryLargeContainerShape,    containerColor: Color? = MaterialTheme.colorScheme.fromToken(
+@Composablefun LargeFloatingActionButton(    onClick: (() -> Unit)?,    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,    interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() },    shape: Shape? = FabPrimaryLarge.PrimaryLargeContainerShape,    containerColor: Color? = MaterialTheme.colorScheme.fromToken(
         FabPrimaryLarge.PrimaryLargeContainerColor
     ),    contentColor: Color? = contentColorFor(containerColor),    elevation: FloatingActionButtonElevation? = FloatingActionButtonDefaults.elevation(),    content: (@Composable () -> Unit)?): Unit
 ```
@@ -938,7 +938,7 @@ LargeFloatingActionButton(
     Icon(
         Icons.Filled.Add,
         contentDescription = "Localized description",
-        modifier = Modifier.size(FloatingActionButtonDefaults.LargeIconSize),
+        modifier = com.example.sky.Modifier.size(FloatingActionButtonDefaults.LargeIconSize),
     )
 }
 ```
@@ -946,7 +946,7 @@ LargeFloatingActionButton(
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `onClick: (() -> Unit)?`                                     | callback invoked when this FAB is clicked                    |
-| `modifier: Modifier? = Modifier`                             | `Modifier` to be applied to this FAB.                        |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | `com.example.sky.Modifier` to be applied to this FAB.                        |
 | `interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() }` | the `MutableInteractionSource` representing the stream of `Interaction`s for this FAB. You can create and pass in your own remembered `MutableInteractionSource` if you want to observe `Interaction`s and customize the appearance / behavior of this FAB in different `Interaction`s. |
 | `shape: Shape? = FabPrimaryLarge.PrimaryLargeContainerShape` | The `Shape` of this FAB                                      |
 | `containerColor: Color? = MaterialTheme.colorScheme.fromToken(FabPrimaryLarge.PrimaryLargeContainerColor )` | The container color. Use `Color.Transparent` to have no color |
@@ -962,7 +962,7 @@ LargeFloatingActionButton(
 @Composable
 fun LargeTopAppBar(
     title: (@Composable () -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     navigationIcon: (@Composable () -> Unit)? = {},
     actions: (@Composable @ExtensionFunctionType RowScope.() -> Unit)? = {},
     colors: TopAppBarColors? = TopAppBarDefaults.largeTopAppBarColors(),
@@ -998,7 +998,7 @@ val scrollBehavior = remember(decayAnimationSpec) {
     TopAppBarDefaults.exitUntilCollapsedScrollBehavior(decayAnimationSpec)
 }
 Scaffold(
-    modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+    modifier = com.example.sky.Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     topBar = {
         LargeTopAppBar(
             title = { Text("Large TopAppBar") },
@@ -1031,7 +1031,7 @@ Scaffold(
                 Text(
                     text = list[it],
                     style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+                    modifier = com.example.sky.Modifier.fillMaxWidth().padding(horizontal = 16.dp)
                 )
             }
         }
@@ -1042,7 +1042,7 @@ Scaffold(
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `title: (@Composable () -> Unit)?`                           | the title to be displayed in the top app bar. This title will be used in the app bar's expanded and collapsed states, although in its collapsed state it will be composed with a smaller sized `TextStyle` |
-| `modifier: Modifier? = Modifier`                             | The `Modifier` to be applied to this top app bar             |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | The `com.example.sky.Modifier` to be applied to this top app bar             |
 | `navigationIcon: (@Composable () -> Unit)? = {}`             | The navigation icon displayed at the start of the top app bar. This should typically be an `IconButton` or `IconToggleButton`. |
 | `actions: (@Composable @ExtensionFunctionType RowScope.() -> Unit)? = {}` | The actions displayed at the end of the top app bar. This should typically be `IconButton`s. The default layout here is a `Row`, so icons inside will be placed horizontally. |
 | `colors: TopAppBarColors? = TopAppBarDefaults.largeTopAppBarColors()` | a `TopAppBarColors` that will be used to resolve the colors used for this top app bar in different states. See `TopAppBarDefaults.largeTopAppBarColors`. |
@@ -1082,7 +1082,7 @@ Any values that are not set will inherit the current value from the theme, falli
 @Composable
 fun MediumTopAppBar(
     title: (@Composable () -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     navigationIcon: (@Composable () -> Unit)? = {},
     actions: (@Composable @ExtensionFunctionType RowScope.() -> Unit)? = {},
     colors: TopAppBarColors? = TopAppBarDefaults.mediumTopAppBarColors(),
@@ -1118,7 +1118,7 @@ val scrollBehavior = remember(decayAnimationSpec) {
     TopAppBarDefaults.exitUntilCollapsedScrollBehavior(decayAnimationSpec)
 }
 Scaffold(
-    modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+    modifier = com.example.sky.Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     topBar = {
         MediumTopAppBar(
             title = { Text("Medium TopAppBar") },
@@ -1151,7 +1151,7 @@ Scaffold(
                 Text(
                     text = list[it],
                     style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+                    modifier = com.example.sky.Modifier.fillMaxWidth().padding(horizontal = 16.dp)
                 )
             }
         }
@@ -1162,7 +1162,7 @@ Scaffold(
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `title: (@Composable () -> Unit)?`                           | the title to be displayed in the top app bar. This title will be used in the app bar's expanded and collapsed states, although in its collapsed state it will be composed with a smaller sized `TextStyle` |
-| `modifier: Modifier? = Modifier`                             | the `Modifier` to be applied to this top app bar             |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | the `com.example.sky.Modifier` to be applied to this top app bar             |
 | `navigationIcon: (@Composable () -> Unit)? = {}`             | the navigation icon displayed at the start of the top app bar. This should typically be an `IconButton` or `IconToggleButton`. |
 | `actions: (@Composable @ExtensionFunctionType RowScope.() -> Unit)? = {}` | the actions displayed at the end of the top app bar. This should typically be `IconButton`s. The default layout here is a `Row`, so icons inside will be placed horizontally. |
 | `colors: TopAppBarColors? = TopAppBarDefaults.mediumTopAppBarColors()` | a `TopAppBarColors` that will be used to resolve the colors used for this top app bar in different states. See `TopAppBarDefaults.mediumTopAppBarColors`. |
@@ -1175,7 +1175,7 @@ Scaffold(
 ```
 @Composable
 fun NavigationBar(
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     containerColor: Color? = MaterialTheme.colorScheme.fromToken(NavigationBar.ContainerColor),
     contentColor: Color? = MaterialTheme.colorScheme.contentColorFor(containerColor),
     tonalElevation: Dp? = NavigationBar.ContainerElevation,
@@ -1220,7 +1220,7 @@ See `NavigationBarItem` for configuration specific to each item, and not the ove
 
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
-| `modifier: Modifier? = Modifier`                             | optional `Modifier` for this NavigationBar                   |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | optional `com.example.sky.Modifier` for this NavigationBar                   |
 | `containerColor: Color? = MaterialTheme.colorScheme.fromToken(NavigationBar.ContainerColor)` | the container color for this NavigationBar                   |
 | `contentColor: Color? = MaterialTheme.colorScheme.contentColorFor(containerColor)` | the preferred content color provided by this NavigationBar to its children. Defaults to either the matching content color for `containerColor`, or if `containerColor` is not a color from the theme, this will keep the same value set above this NavigationBar. |
 | `tonalElevation: Dp? = NavigationBar.ContainerElevation`     | When `containerColor` is `ColorScheme.surface`, a higher tonal elevation value will result in a darker color in light theme and lighter color in dark theme. See also: `Surface`. |
@@ -1235,7 +1235,7 @@ See `NavigationBarItem` for configuration specific to each item, and not the ove
 @ExperimentalMaterial3Api
 fun NavigationDrawer(
     drawerContent: (@Composable @ExtensionFunctionType ColumnScope.() -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     drawerState: DrawerState? = rememberDrawerState(DrawerValue.Closed),
     gesturesEnabled: Boolean? = true,
     drawerShape: Shape? = RoundedCornerShape(0.dp, 16.dp, 16.dp, 0.dp),
@@ -1271,18 +1271,18 @@ NavigationDrawer(
     drawerState = drawerState,
     drawerContent = {
         Button(
-            modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 16.dp),
+            modifier = com.example.sky.Modifier.align(Alignment.CenterHorizontally).padding(top = 16.dp),
             onClick = { scope.launch { drawerState.close() } },
             content = { Text("Close Drawer") }
         )
     },
     content = {
         Column(
-            modifier = Modifier.fillMaxSize().padding(16.dp),
+            modifier = com.example.sky.Modifier.fillMaxSize().padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(text = if (drawerState.isClosed) ">>> Swipe >>>" else "<<< Swipe <<<")
-            Spacer(Modifier.height(20.dp))
+            Spacer(com.example.sky.Modifier.height(20.dp))
             Button(onClick = { scope.launch { drawerState.open() } }) {
                 Text("Click to open")
             }
@@ -1294,7 +1294,7 @@ NavigationDrawer(
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `drawerContent: (@Composable @ExtensionFunctionType ColumnScope.() -> Unit)?` | composable that represents content inside the drawer         |
-| `modifier: Modifier? = Modifier`                             | optional modifier for the drawer                             |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | optional modifier for the drawer                             |
 | `drawerState: DrawerState? = rememberDrawerState(DrawerValue.Closed)` | state of the drawer                                          |
 | `gesturesEnabled: Boolean? = true`                           | whether or not drawer can be interacted by gestures          |
 | `drawerShape: Shape? = RoundedCornerShape(0.dp, 16.dp, 16.dp, 0.dp)` | shape of the drawer sheet                                    |
@@ -1315,7 +1315,7 @@ NavigationDrawer(
 ```
 @Composable
 fun NavigationRail(
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     containerColor: Color? = MaterialTheme.colorScheme.fromToken(NavigationRail.ContainerColor),
     contentColor: Color? = contentColorFor(containerColor),
     header: (@Composable @ExtensionFunctionType ColumnScope.() -> Unit)? = null,
@@ -1360,7 +1360,7 @@ See `NavigationRailItem` for configuration specific to each item, and not the ov
 
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
-| `modifier: Modifier? = Modifier`                             | optional `Modifier` for this NavigationRail                  |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | optional `com.example.sky.Modifier` for this NavigationRail                  |
 | `containerColor: Color? = MaterialTheme.colorScheme.fromToken(NavigationRail.ContainerColor)` | the container color for this NavigationRail                  |
 | `contentColor: Color? = contentColorFor(containerColor)`     | the preferred content color provided by this NavigationRail to its children. Defaults to either the matching content color for `containerColor`, or if `containerColor` is not a color from the theme, this will keep the same value set above this NavigationRail |
 | `header: (@Composable @ExtensionFunctionType ColumnScope.() -> Unit)? = null` | optional header that may hold a Floating Action Button or a logo |
@@ -1376,7 +1376,7 @@ fun NavigationRailItem(
     selected: Boolean?,
     onClick: (() -> Unit)?,
     icon: (@Composable () -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     enabled: Boolean? = true,
     label: (@Composable () -> Unit)? = null,
     alwaysShowLabel: Boolean? = true,
@@ -1396,7 +1396,7 @@ The text label is always shown (if it exists) when selected. Showing text labels
 | `selected: Boolean?`                                         | whether this item is selected                                |
 | `onClick: (() -> Unit)?`                                     | the callback to be invoked when this item is selected        |
 | `icon: (@Composable () -> Unit)?`                            | icon for this item, typically an `Icon`                      |
-| `modifier: Modifier? = Modifier`                             | optional `Modifier` for this item                            |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | optional `com.example.sky.Modifier` for this item                            |
 | `enabled: Boolean? = true`                                   | controls the enabled state of this item. When false, this item will not be clickable and will appear disabled to accessibility services |
 | `label: (@Composable () -> Unit)? = null`                    | optional text label for this item                            |
 | `alwaysShowLabel: Boolean? = true`                           | whether to always show the label for this item. If false, the label will only be shown when this item is selected. |
@@ -1411,7 +1411,7 @@ The text label is always shown (if it exists) when selected. Showing text labels
 @Composable
 fun OutlinedButton(
     onClick: (() -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     enabled: Boolean? = true,
     interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() },
     elevation: ButtonElevation? = null,
@@ -1448,7 +1448,7 @@ The default text style for internal `Text` components will be set to `Typography
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `onClick: (() -> Unit)?`                                     | Will be called when the user clicks the button.              |
-| `modifier: Modifier? = Modifier`                             | Modifier to be applied to the button.                        |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | com.example.sky.Modifier to be applied to the button.                        |
 | `enabled: Boolean? = true`                                   | Controls the enabled state of the button. When `false`, this button will not be clickable. |
 | `interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() }` | the `MutableInteractionSource` representing the stream of `Interaction`s for this Button. You can create and pass in your own remembered `MutableInteractionSource` if you want to observe `Interaction`s and customize the appearance / behavior of this Button in different `Interaction`s. |
 | `elevation: ButtonElevation? = null`                         | `ButtonElevation` used to resolve the elevation for this button in different states. This controls the size of the shadow below the button. When the container color is `ColorScheme.surface`, a higher elevation (surface blended with more primary) will result in a darker surface color in light theme and lighter color in dark theme. |
@@ -1481,7 +1481,7 @@ This function is used to set the current value of `LocalTextStyle`, merging the 
 fun RadioButton(
     selected: Boolean?,
     onClick: (() -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     enabled: Boolean? = true,
     interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() },
     colors: RadioButtonColors? = RadioButtonDefaults.colors()
@@ -1501,8 +1501,8 @@ import androidx.compose.runtime.remember
 
 // We have two radio buttons and only one can be selected
 var state by remember { mutableStateOf(true) }
-// com.example.sky.database.Note that Modifier.selectableGroup() is essential to ensure correct accessibility behavior
-Row(Modifier.selectableGroup()) {
+// com.example.sky.database.Note that com.example.sky.Modifier.selectableGroup() is essential to ensure correct accessibility behavior
+Row(com.example.sky.Modifier.selectableGroup()) {
     RadioButton(
         selected = state,
         onClick = { state = true }
@@ -1531,11 +1531,11 @@ import androidx.compose.runtime.remember
 
 val radioOptions = listOf("Calls", "Missed", "Friends")
 val (selectedOption, onOptionSelected) = remember { mutableStateOf(radioOptions[0]) }
-// com.example.sky.database.Note that Modifier.selectableGroup() is essential to ensure correct accessibility behavior
-Column(Modifier.selectableGroup()) {
+// com.example.sky.database.Note that com.example.sky.Modifier.selectableGroup() is essential to ensure correct accessibility behavior
+Column(com.example.sky.Modifier.selectableGroup()) {
     radioOptions.forEach { text ->
         Row(
-            Modifier
+            com.example.sky.Modifier
                 .fillMaxWidth()
                 .height(56.dp)
                 .selectable(
@@ -1553,7 +1553,7 @@ Column(Modifier.selectableGroup()) {
             Text(
                 text = text,
                 style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(start = 16.dp)
+                modifier = com.example.sky.Modifier.padding(start = 16.dp)
             )
         }
     }
@@ -1564,7 +1564,7 @@ Column(Modifier.selectableGroup()) {
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `selected: Boolean?`                                         | whether this radio button is selected or not                 |
 | `onClick: (() -> Unit)?`                                     | callback to be invoked when the RadioButton is clicked. If null, then this RadioButton will not handle input events, and only act as a visual indicator of `selected` state |
-| `modifier: Modifier? = Modifier`                             | Modifier to be applied to the radio button                   |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | com.example.sky.Modifier to be applied to the radio button                   |
 | `enabled: Boolean? = true`                                   | Controls the enabled state of the `RadioButton`. When `false`, this button will not be selectable and appears disabled |
 | `interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() }` | the `MutableInteractionSource` representing the stream of `Interaction`s for this RadioButton. You can create and pass in your own remembered `MutableInteractionSource` if you want to observe `Interaction`s and customize the appearance / behavior of this RadioButton in different `Interaction`s. |
 | `colors: RadioButtonColors? = RadioButtonDefaults.colors()`  | `RadioButtonColors` that will be used to resolve the color used for this RadioButton in different states. See `RadioButtonDefaults.colors`. |
@@ -1577,7 +1577,7 @@ Column(Modifier.selectableGroup()) {
 @ExperimentalMaterial3Api
 @Composable
 fun Scaffold(
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     topBar: (@Composable () -> Unit)? = {},
     bottomBar: (@Composable () -> Unit)? = {},
     snackbarHost: (@Composable () -> Unit)? = {},
@@ -1643,7 +1643,7 @@ Scaffold(
         LazyColumn(contentPadding = innerPadding) {
             items(count = 100) {
                 Box(
-                    Modifier
+                    com.example.sky.Modifier
                         .fillMaxWidth()
                         .height(50.dp)
                         .background(colors[it % colors.size])
@@ -1690,7 +1690,7 @@ Scaffold(
     content = { innerPadding ->
         Text(
             text = "Body content",
-            modifier = Modifier.padding(innerPadding).fillMaxSize().wrapContentSize()
+            modifier = com.example.sky.Modifier.padding(innerPadding).fillMaxSize().wrapContentSize()
         )
     }
 )
@@ -1698,7 +1698,7 @@ Scaffold(
 
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
-| `modifier: Modifier? = Modifier`                             | optional Modifier for the root of the `Scaffold`.            |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | optional com.example.sky.Modifier for the root of the `Scaffold`.            |
 | `topBar: (@Composable () -> Unit)? = {}`                     | top app bar of the screen. Consider using `SmallTopAppBar`.  |
 | `bottomBar: (@Composable () -> Unit)? = {}`                  | bottom bar of the screen. Consider using `NavigationBar`.    |
 | `snackbarHost: (@Composable () -> Unit)? = {}`               | component to host `Snackbar`s that are pushed to be shown via `SnackbarHostState.showSnackbar`. Usually it's a `SnackbarHost`. |
@@ -1706,7 +1706,7 @@ Scaffold(
 | `floatingActionButtonPosition: FabPosition? = FabPosition.End` | position of the FAB on the screen. See `FabPosition` for possible options available. |
 | `containerColor: Color? = MaterialTheme.colorScheme.background` | background of the scaffold body                              |
 | `contentColor: Color? = contentColorFor(containerColor)`     | color of the content in scaffold body. Defaults to either the matching content color for `containerColor`, or, if it is not a color from the theme, this will keep the same value set above this Surface. |
-| `content: (@Composable (PaddingValues) -> Unit)?`            | content of your screen. The lambda receives an `PaddingValues` that should be applied to the content root via Modifier.padding to properly offset top and bottom bars. If you're using Modifier.VerticalScroll, apply this modifier to the child of the scroll, and not on the scroll itself. |
+| `content: (@Composable (PaddingValues) -> Unit)?`            | content of your screen. The lambda receives an `PaddingValues` that should be applied to the content root via com.example.sky.Modifier.padding to properly offset top and bottom bars. If you're using com.example.sky.Modifier.VerticalScroll, apply this modifier to the child of the scroll, and not on the scroll itself. |
 
 
 
@@ -1716,7 +1716,7 @@ Scaffold(
 @Composable
 fun SmallFloatingActionButton(
     onClick: (() -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() },
     shape: Shape? = FabPrimarySmall.PrimarySmallContainerShape,
     containerColor: Color? = MaterialTheme.colorScheme.fromToken(FabPrimary.PrimaryContainerColor),
@@ -1744,7 +1744,7 @@ SmallFloatingActionButton(
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `onClick: (() -> Unit)?`                                     | callback invoked when this FAB is clicked                    |
-| `modifier: Modifier? = Modifier`                             | `Modifier` to be applied to this FAB.                        |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | `com.example.sky.Modifier` to be applied to this FAB.                        |
 | `interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() }` | the `MutableInteractionSource` representing the stream of `Interaction`s for this FAB. You can create and pass in your own remembered `MutableInteractionSource` if you want to observe `Interaction`s and customize the appearance / behavior of this FAB in different `Interaction`s. |
 | `shape: Shape? = FabPrimarySmall.PrimarySmallContainerShape` | The `Shape` of this FAB                                      |
 | `containerColor: Color? = MaterialTheme.colorScheme.fromToken(FabPrimary.PrimaryContainerColor)` | The container color. Use `Color.Transparent` to have no color |
@@ -1760,7 +1760,7 @@ SmallFloatingActionButton(
 @Composable
 fun SmallTopAppBar(
     title: (@Composable () -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     navigationIcon: (@Composable () -> Unit)? = {},
     actions: (@Composable @ExtensionFunctionType RowScope.() -> Unit)? = {},
     colors: TopAppBarColors? = TopAppBarDefaults.smallTopAppBarColors(),
@@ -1820,7 +1820,7 @@ Scaffold(
                 Text(
                     text = list[it],
                     style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+                    modifier = com.example.sky.Modifier.fillMaxWidth().padding(horizontal = 16.dp)
                 )
             }
         }
@@ -1844,7 +1844,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 
 val scrollBehavior = remember { TopAppBarDefaults.pinnedScrollBehavior() }
 Scaffold(
-    modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+    modifier = com.example.sky.Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     topBar = {
         SmallTopAppBar(
             title = { Text("Small TopAppBar") },
@@ -1884,7 +1884,7 @@ Scaffold(
                 Text(
                     text = list[it],
                     style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+                    modifier = com.example.sky.Modifier.fillMaxWidth().padding(horizontal = 16.dp)
                 )
             }
         }
@@ -1903,7 +1903,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 
 val scrollBehavior = remember { TopAppBarDefaults.enterAlwaysScrollBehavior() }
 Scaffold(
-    modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+    modifier = com.example.sky.Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     topBar = {
         SmallTopAppBar(
             title = { Text("Small TopAppBar") },
@@ -1936,7 +1936,7 @@ Scaffold(
                 Text(
                     text = list[it],
                     style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp)
+                    modifier = com.example.sky.Modifier.fillMaxWidth().padding(horizontal = 16.dp)
                 )
             }
         }
@@ -1947,7 +1947,7 @@ Scaffold(
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `title: (@Composable () -> Unit)?`                           | the title to be displayed in the top app bar                 |
-| `modifier: Modifier? = Modifier`                             | the `Modifier` to be applied to this top app bar             |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | the `com.example.sky.Modifier` to be applied to this top app bar             |
 | `navigationIcon: (@Composable () -> Unit)? = {}`             | The navigation icon displayed at the start of the top app bar. This should typically be an `IconButton` or `IconToggleButton`. |
 | `actions: (@Composable @ExtensionFunctionType RowScope.() -> Unit)? = {}` | the actions displayed at the end of the top app bar. This should typically be `IconButton`s. The default layout here is a `Row`, so icons inside will be placed horizontally. |
 | `colors: TopAppBarColors? = TopAppBarDefaults.smallTopAppBarColors()` | a `TopAppBarColors` that will be used to resolve the colors used for this top app bar in different states. See `TopAppBarDefaults.smallTopAppBarColors`. |
@@ -1960,7 +1960,7 @@ Scaffold(
 ```
 @Composable
 fun Snackbar(
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     action: (@Composable () -> Unit)? = null,
     dismissAction: (@Composable () -> Unit)? = null,
     actionOnNewLine: Boolean? = false,
@@ -2017,7 +2017,7 @@ Scaffold(
     content = { innerPadding ->
         Text(
             text = "Body content",
-            modifier = Modifier.padding(innerPadding).fillMaxSize().wrapContentSize()
+            modifier = com.example.sky.Modifier.padding(innerPadding).fillMaxSize().wrapContentSize()
         )
     }
 )
@@ -2073,7 +2073,7 @@ Scaffold(
             }
 
             Snackbar(
-                modifier = Modifier
+                modifier = com.example.sky.Modifier
                     .border(2.dp, MaterialTheme.colorScheme.secondary)
                     .padding(12.dp),
                 action = {
@@ -2106,7 +2106,7 @@ Scaffold(
     content = { innerPadding ->
         Text(
             text = "Custom Snackbar Demo",
-            modifier = Modifier.padding(innerPadding).fillMaxSize().wrapContentSize()
+            modifier = com.example.sky.Modifier.padding(innerPadding).fillMaxSize().wrapContentSize()
         )
     }
 )
@@ -2114,7 +2114,7 @@ Scaffold(
 
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
-| `modifier: Modifier? = Modifier`                             | modifiers for the Snackbar layout                            |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | modifiers for the Snackbar layout                            |
 | `action: (@Composable () -> Unit)? = null`                   | action / button component to add as an action to the snackbar. Consider using `ColorScheme.inversePrimary` as the color for the action, if you do not have a predefined color you wish to use instead. |
 | `dismissAction: (@Composable () -> Unit)? = null`            | action / button component to add as an additional close affordance action when a snackbar is non self-dismissive. Consider using `ColorScheme.inverseOnSurface` as the color for the action, if you do not have a predefined color you wish to use instead. |
 | `actionOnNewLine: Boolean? = false`                          | whether or not action should be put on the separate line. Recommended for action with long action text |
@@ -2131,7 +2131,7 @@ Scaffold(
 @Composable
 fun Snackbar(
     snackbarData: SnackbarData?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     actionOnNewLine: Boolean? = false,
     shape: Shape? = SnackbarTokens.ContainerShape,
     containerColor: Color? = MaterialTheme.colorScheme.fromToken(SnackbarTokens.ContainerColor),
@@ -2188,7 +2188,7 @@ Scaffold(
     content = { innerPadding ->
         Text(
             text = "Body content",
-            modifier = Modifier.padding(innerPadding).fillMaxSize().wrapContentSize()
+            modifier = com.example.sky.Modifier.padding(innerPadding).fillMaxSize().wrapContentSize()
         )
     }
 )
@@ -2244,7 +2244,7 @@ Scaffold(
             }
 
             Snackbar(
-                modifier = Modifier
+                modifier = com.example.sky.Modifier
                     .border(2.dp, MaterialTheme.colorScheme.secondary)
                     .padding(12.dp),
                 action = {
@@ -2277,7 +2277,7 @@ Scaffold(
     content = { innerPadding ->
         Text(
             text = "Custom Snackbar Demo",
-            modifier = Modifier.padding(innerPadding).fillMaxSize().wrapContentSize()
+            modifier = com.example.sky.Modifier.padding(innerPadding).fillMaxSize().wrapContentSize()
         )
     }
 )
@@ -2322,7 +2322,7 @@ Scaffold(
     content = { innerPadding ->
         Text(
             text = "Body content",
-            modifier = Modifier.padding(innerPadding).fillMaxSize().wrapContentSize()
+            modifier = com.example.sky.Modifier.padding(innerPadding).fillMaxSize().wrapContentSize()
         )
     }
 )
@@ -2331,7 +2331,7 @@ Scaffold(
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `snackbarData: SnackbarData?`                                | data about the current snackbar showing via `SnackbarHostState` |
-| `modifier: Modifier? = Modifier`                             | modifiers for the Snackbar layout                            |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | modifiers for the Snackbar layout                            |
 | `actionOnNewLine: Boolean? = false`                          | whether or not the Snackbar's action should be put on the separate line (recommended for action with long action text) |
 | `shape: Shape? = SnackbarTokens.ContainerShape`              | defines the Snackbar's shape (as well as its shadow when using `shadowElevation`) |
 | `containerColor: Color? = MaterialTheme.colorScheme.fromToken(SnackbarTokens.ContainerColor)` | background color of the Snackbar                             |
@@ -2346,7 +2346,7 @@ Scaffold(
 @Composable
 fun SnackbarHost(
     hostState: SnackbarHostState?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     snackbar: (@Composable (SnackbarData) -> Unit)? = { Snackbar(it) }
 ): Unit
 ```
@@ -2389,7 +2389,7 @@ Scaffold(
     content = { innerPadding ->
         Text(
             text = "Body content",
-            modifier = Modifier.padding(innerPadding).fillMaxSize().wrapContentSize()
+            modifier = com.example.sky.Modifier.padding(innerPadding).fillMaxSize().wrapContentSize()
         )
     }
 )
@@ -2445,7 +2445,7 @@ Scaffold(
             }
 
             Snackbar(
-                modifier = Modifier
+                modifier = com.example.sky.Modifier
                     .border(2.dp, MaterialTheme.colorScheme.secondary)
                     .padding(12.dp),
                 action = {
@@ -2478,7 +2478,7 @@ Scaffold(
     content = { innerPadding ->
         Text(
             text = "Custom Snackbar Demo",
-            modifier = Modifier.padding(innerPadding).fillMaxSize().wrapContentSize()
+            modifier = com.example.sky.Modifier.padding(innerPadding).fillMaxSize().wrapContentSize()
         )
     }
 )
@@ -2487,7 +2487,7 @@ Scaffold(
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `hostState: SnackbarHostState?`                              | state of this component to read and show `Snackbar`s accordingly |
-| `modifier: Modifier? = Modifier`                             | optional modifier for this component                         |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | optional modifier for this component                         |
 | `snackbar: (@Composable (SnackbarData) -> Unit)? = { Snackbar(it) }` | the instance of the `Snackbar` to be shown at the appropriate time with appearance based on the `SnackbarData` provided as a param |
 
 
@@ -2497,7 +2497,7 @@ Scaffold(
 ```
 @Composable
 fun Surface(
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     shape: Shape? = RectangleShape,
     color: Color? = MaterialTheme.colorScheme.surface,
     contentColor: Color? = contentColorFor(color),
@@ -2529,12 +2529,12 @@ To manually retrieve the content color inside a surface, use `LocalContentColor`
 
 | Parameters                                          |                                                              |
 | :-------------------------------------------------- | ------------------------------------------------------------ |
-| `modifier: Modifier? = Modifier`                    | Modifier to be applied to the layout corresponding to the surface |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                    | com.example.sky.Modifier to be applied to the layout corresponding to the surface |
 | `shape: Shape? = RectangleShape`                    | Defines the surface's shape as well its shadow.              |
 | `color: Color? = MaterialTheme.colorScheme.surface` | The background color. Use `Color.Transparent` to have no color. |
 | `contentColor: Color? = contentColorFor(color)`     | The preferred content color provided by this Surface to its children. Defaults to either the matching content color for `color`, or if `color` is not a color from the theme, this will keep the same value set above this Surface. |
 | `tonalElevation: Dp? = 0.dp`                        | When `color` is `ColorScheme.surface`, a higher the elevation will result in a darker color in light theme and lighter color in dark theme. |
-| `shadowElevation: Dp? = 0.dp`                       | The size of the shadow below the surface. To prevent shadow creep, only apply shadow elevation when absolutely necessary, such as when the surface requires visual separation from a patterned background. com.example.sky.database.Note that It will not affect z index of the Surface. If you want to change the drawing order you can use `Modifier.zIndex`. |
+| `shadowElevation: Dp? = 0.dp`                       | The size of the shadow below the surface. To prevent shadow creep, only apply shadow elevation when absolutely necessary, such as when the surface requires visual separation from a patterned background. com.example.sky.database.Note that It will not affect z index of the Surface. If you want to change the drawing order you can use `com.example.sky.Modifier.zIndex`. |
 | `border: BorderStroke? = null`                      | Optional border to draw on top of the surface                |
 
 
@@ -2545,7 +2545,7 @@ To manually retrieve the content color inside a surface, use `LocalContentColor`
 @Composable
 fun Surface(
     onClick: (() -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     shape: Shape? = RectangleShape,
     color: Color? = MaterialTheme.colorScheme.surface,
     contentColor: Color? = contentColorFor(color),
@@ -2572,7 +2572,7 @@ This clickable `Surface` is responsible for:
 3. Background: Surface fills the shape specified by `shape` with the `color`. If `color` is `ColorScheme.surface` a color overlay may be applied. The color of the overlay depends on the `tonalElevation` of this Surface, and the `LocalAbsoluteTonalElevation` set by any parent surfaces. This ensures that a Surface never appears to have a lower elevation overlay than its ancestors, by summing the elevation of all previous Surfaces.
 4. Content color: Surface uses `contentColor` to specify a preferred color for the content of this surface - this is used by the `Text` and `Icon` components as a default color. If no `contentColor` is set, this surface will try and match its background color to a color defined in the theme `ColorScheme`, and return the corresponding content color. For example, if the `color` of this surface is `ColorScheme.surface`, `contentColor` will be set to `ColorScheme.onSurface`. If `color` is not part of the theme palette, `contentColor` will keep the same value set above this Surface.
 5. Click handling. This version of surface will react to the clicks, calling `onClick` lambda, updating the `interactionSource` when `PressInteraction` occurs, and showing `indication` (if it is not `null) in response to press events. If you don't need click handling, consider using the version that doesn't require `onClick` param.
-6. Semantics for clicks. Just like with `Modifier.clickable`, clickable version of `Surface` will produce semantics to indicate that it is able to be clicked, with `onClickLabel` (if provided), announced by accessibility services.
+6. Semantics for clicks. Just like with `com.example.sky.Modifier.clickable`, clickable version of `Surface` will produce semantics to indicate that it is able to be clicked, with `onClickLabel` (if provided), announced by accessibility services.
 
 To modify these default style values used by text, use `ProvideTextStyle` or explicitly pass a new `TextStyle` to your text.
 
@@ -2581,12 +2581,12 @@ To manually retrieve the content color inside a surface, use `LocalContentColor`
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `onClick: (() -> Unit)?`                                     | callback to be called when the surface is clicked            |
-| `modifier: Modifier? = Modifier`                             | Modifier to be applied to the layout corresponding to the surface |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | com.example.sky.Modifier to be applied to the layout corresponding to the surface |
 | `shape: Shape? = RectangleShape`                             | Defines the surface's shape as well its shadow. A shadow is only displayed if the `tonalElevation` is greater than zero. |
 | `color: Color? = MaterialTheme.colorScheme.surface`          | The background color. Use `Color.Transparent` to have no color. |
 | `contentColor: Color? = contentColorFor(color)`              | The preferred content color provided by this Surface to its children. Defaults to either the matching content color for `color`, or if `color` is not a color from the theme, this will keep the same value set above this Surface. |
 | `tonalElevation: Dp? = 0.dp`                                 | When `color` is `ColorScheme.surface`, a higher the elevation will result in a darker color in light theme and lighter color in dark theme. |
-| `shadowElevation: Dp? = 0.dp`                                | The size of the shadow below the surface. com.example.sky.database.Note that It will not affect z index of the Surface. If you want to change the drawing order you can use `Modifier.zIndex`. |
+| `shadowElevation: Dp? = 0.dp`                                | The size of the shadow below the surface. com.example.sky.database.Note that It will not affect z index of the Surface. If you want to change the drawing order you can use `com.example.sky.Modifier.zIndex`. |
 | `border: BorderStroke? = null`                               | Optional border to draw on top of the surface                |
 | `interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() }` | the `MutableInteractionSource` representing the stream of `Interaction`s for this Surface. You can create and pass in your own remembered `MutableInteractionSource` if you want to observe `Interaction`s and customize the appearance / behavior of this Surface in different `Interaction`s. |
 | `indication: Indication? = LocalIndication.current`          | indication to be shown when surface is pressed. By default, indication from `LocalIndication` will be used. Pass `null` to show no indication, or current value from `LocalIndication` to show theme default |
@@ -2602,7 +2602,7 @@ To manually retrieve the content color inside a surface, use `LocalContentColor`
 @Composable
 fun Text(
     text: String?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     color: Color? = Color.Unspecified,
     fontSize: TextUnit? = TextUnit.Unspecified,
     fontStyle: FontStyle? = null,
@@ -2634,7 +2634,7 @@ Additionally, for `color`, if `color` is not set, and `style` does not have a co
 | Parameters                                         |                                                              |
 | :------------------------------------------------- | ------------------------------------------------------------ |
 | `text: String?`                                    | The text to be displayed.                                    |
-| `modifier: Modifier? = Modifier`                   | `Modifier` to apply to this layout node.                     |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                   | `com.example.sky.Modifier` to apply to this layout node.                     |
 | `color: Color? = Color.Unspecified`                | `Color` to apply to the text. If `Color.Unspecified`, and `style` has no color set, this will be `LocalContentColor`. |
 | `fontSize: TextUnit? = TextUnit.Unspecified`       | The size of glyphs to use when painting the text. See `TextStyle.fontSize`. |
 | `fontStyle: FontStyle? = null`                     | The typeface variant to use when drawing the letters (e.g., italic). See `TextStyle.fontStyle`. |
@@ -2658,7 +2658,7 @@ Additionally, for `color`, if `color` is not set, and `style` does not have a co
 @Composable
 fun Text(
     text: AnnotatedString?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     color: Color? = Color.Unspecified,
     fontSize: TextUnit? = TextUnit.Unspecified,
     fontStyle: FontStyle? = null,
@@ -2691,7 +2691,7 @@ Additionally, for `color`, if `color` is not set, and `style` does not have a co
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `text: AnnotatedString?`                                     | The text to be displayed.                                    |
-| `modifier: Modifier? = Modifier`                             | `Modifier` to apply to this layout node.                     |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | `com.example.sky.Modifier` to apply to this layout node.                     |
 | `color: Color? = Color.Unspecified`                          | `Color` to apply to the text. If `Color.Unspecified`, and `style` has no color set, this will be `LocalContentColor`. |
 | `fontSize: TextUnit? = TextUnit.Unspecified`                 | The size of glyphs to use when painting the text. See `TextStyle.fontSize`. |
 | `fontStyle: FontStyle? = null`                               | The typeface variant to use when drawing the letters (e.g., italic). See `TextStyle.fontStyle`. |
@@ -2716,7 +2716,7 @@ Additionally, for `color`, if `color` is not set, and `style` does not have a co
 @Composable
 fun TextButton(
     onClick: (() -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     enabled: Boolean? = true,
     interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() },
     elevation: ButtonElevation? = null,
@@ -2753,7 +2753,7 @@ The default text style for internal `Text` components will be set to `Typography
 | Parameters                                                   |                                                              |
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `onClick: (() -> Unit)?`                                     | Will be called when the user clicks the button.              |
-| `modifier: Modifier? = Modifier`                             | Modifier to be applied to the button.                        |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | com.example.sky.Modifier to be applied to the button.                        |
 | `enabled: Boolean? = true`                                   | Controls the enabled state of the button. When `false`, this button will not be clickable. |
 | `interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() }` | the `MutableInteractionSource` representing the stream of `Interaction`s for this Button. You can create and pass in your own remembered `MutableInteractionSource` if you want to observe `Interaction`s and customize the appearance / behavior of this Button in different `Interaction`s. |
 | `elevation: ButtonElevation? = null`                         | `ButtonElevation` used to resolve the elevation for this button in different states. This controls the size of the shadow below the button. When the container color is `ColorScheme.surface`, a higher elevation (surface blended with more primary) will result in a darker surface color in light theme and lighter color in dark theme. A TextButton typically has no elevation, and the default value is `null`. See `ElevatedButton` for a button with elevation. |
@@ -2771,7 +2771,7 @@ The default text style for internal `Text` components will be set to `Typography
 fun TriStateCheckbox(
     state: ToggleableState?,
     onClick: (() -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     enabled: Boolean? = true,
     interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() },
     colors: CheckboxColors? = CheckboxDefaults.colors()
@@ -2814,10 +2814,10 @@ Column {
         state = parentState,
         onClick = onParentClick,
     )
-    Spacer(Modifier.size(25.dp))
-    Column(Modifier.padding(10.dp, 0.dp, 0.dp, 0.dp)) {
+    Spacer(com.example.sky.Modifier.size(25.dp))
+    Column(com.example.sky.Modifier.padding(10.dp, 0.dp, 0.dp, 0.dp)) {
         Checkbox(state, onStateChange)
-        Spacer(Modifier.size(25.dp))
+        Spacer(com.example.sky.Modifier.size(25.dp))
         Checkbox(state2, onStateChange2)
     }
 }
@@ -2827,7 +2827,7 @@ Column {
 | :----------------------------------------------------------- | ------------------------------------------------------------ |
 | `state: ToggleableState?`                                    | whether TriStateCheckbox is checked, unchecked or in indeterminate state callback to be invoked when the TriStateCheckbox is clicked. |
 | `onClick: (() -> Unit)?`                                     | callback to be invoked when checkbox is being clicked, therefore the change of ToggleableState state is requested. If null, then this `TriStateCheckbox` will not handle input events, and only act as a visual indicator of `state` |
-| `modifier: Modifier? = Modifier`                             | Modifier to be applied to the layout of the `TriStateCheckbox` |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | com.example.sky.Modifier to be applied to the layout of the `TriStateCheckbox` |
 | `enabled: Boolean? = true`                                   | controls the enabled state of the `TriStateCheckbox`. When `false`, this `TriStateCheckbox` will not be clickable/selectable |
 | `interactionSource: MutableInteractionSource? = remember { MutableInteractionSource() }` | the `MutableInteractionSource` representing the stream of `Interaction`s for this `TriStateCheckbox`. You can create and pass in your own remembered `MutableInteractionSource` if you want to observe `Interaction`s and customize the appearance / behavior of this `TriStateCheckbox` in different `Interaction`s |
 | `colors: CheckboxColors? = CheckboxDefaults.colors()`        | `CheckboxColors` that will be used to resolve the color used for this `TriStateCheckbox` in different states. See `CheckboxDefaults.colors` |
@@ -2999,7 +2999,7 @@ fun RowScope?.NavigationBarItem(
     selected: Boolean?,
     onClick: (() -> Unit)?,
     icon: (@Composable () -> Unit)?,
-    modifier: Modifier? = Modifier,
+    modifier: com.example.sky.Modifier? = com.example.sky.Modifier,
     enabled: Boolean? = true,
     label: (@Composable () -> Unit)? = null,
     alwaysShowLabel: Boolean? = true,
@@ -3023,7 +3023,7 @@ A `NavigationBarItem` always shows text labels (if it exists) when selected. Sho
 | `selected: Boolean?`                                         | whether this item is selected                                |
 | `onClick: (() -> Unit)?`                                     | the callback to be invoked when this item is selected        |
 | `icon: (@Composable () -> Unit)?`                            | icon for this item, typically this will be an `Icon`         |
-| `modifier: Modifier? = Modifier`                             | optional `Modifier` for this item                            |
+| `modifier: com.example.sky.Modifier? = com.example.sky.Modifier`                             | optional `com.example.sky.Modifier` for this item                            |
 | `enabled: Boolean? = true`                                   | controls the enabled state of this item. When `false`, this item will not be clickable and will appear disabled to accessibility services. |
 | `label: (@Composable () -> Unit)? = null`                    | optional text label for this item                            |
 | `alwaysShowLabel: Boolean? = true`                           | whether to always show the label for this item. If false, the label will only be shown when this item is selected. |
