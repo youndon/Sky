@@ -12,12 +12,13 @@ import androidx.compose.ui.graphics.colorspace.ColorSpaces
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import com.example.sky.R
 
 interface Image {
     @Composable
     fun image() {
         Image(
-            painter = painterResource(id = 0),
+            painter = painterResource(R.drawable.ic_launcher_background),
             contentDescription = "",
             modifier = Modifier,
             alignment = Alignment.Center,

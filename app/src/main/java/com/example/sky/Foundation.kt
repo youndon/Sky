@@ -4,10 +4,7 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.gestures.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.shape.*
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.BasicTextField
@@ -29,7 +26,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 private fun Foundation() {
     LocalIndication
-    BorderStroke(Dp(1f), Color.Blue)
+    BorderStroke(20.dp, Color.Blue)
 //    Canvas() // FIXME: 15/07/2021
 //    Image() // FIXME: 15/07/2021
     rememberScrollState()
@@ -55,7 +52,8 @@ private fun Foundation() {
     }
     LazyRow {
     }
-//    LazyVerticalGrid(){} // FIXME: 15/07/2021
+    LazyVerticalGrid (cells = GridCells.Adaptive(1.dp)){
+    }
     rememberLazyListState()
     CircleShape
     ZeroCornerSize
@@ -70,7 +68,6 @@ private fun Foundation() {
     KeyboardActions {
     }
     LocalTextSelectionColors
-    DisableSelection {  }
     SelectionContainer {  }
     DisableSelection {  }
 }
