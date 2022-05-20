@@ -24,9 +24,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.jetpackcompose.core.Person
-import com.example.jetpackcompose.core.colors
-import com.example.jetpackcompose.core.getPersonList
+import com.example.sky.jetpackCompose.core.Person
+import com.example.sky.jetpackCompose.core.colors
+import com.example.sky.jetpackCompose.core.getPersonList
 
 class VerticalScrollableActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

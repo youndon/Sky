@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.animation
+package com.example.sky.jetpackCompose.animation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

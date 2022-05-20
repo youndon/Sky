@@ -1,4 +1,4 @@
-package com.example.jetpackcompose.core
+package com.example.sky.jetpackCompose.core
 
 import android.app.Activity
 import android.content.Context

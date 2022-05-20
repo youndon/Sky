@@ -3,8 +3,8 @@ package com.example.sky.jetpackCompose.state.livedata
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import com.example.jetpackcompose.core.Person
-import com.example.jetpackcompose.core.getSuperheroList
+import com.example.sky.jetpackCompose.core.Person
+import com.example.sky.jetpackCompose.core.getSuperheroList
 import kotlinx.coroutines.delay
 
 class SuperheroesViewModel : ViewModel() {

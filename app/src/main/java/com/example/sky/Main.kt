@@ -1,30 +1,35 @@
 package com.example.sky
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import android.content.Context
+import android.content.Intent
+import android.os.*
+import androidx.activity.compose.BackHandler
+import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.foundation.text.selection.SelectionContainer
 import androidx.compose.material.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import java.time.Clock
+import java.util.*
+import kotlin.coroutines.CoroutineContext
+import kotlin.reflect.KClass
 
 @Composable
 fun MAX() {
@@ -105,11 +110,32 @@ fun Plant() {
 }
 
 @Composable
-fun Seabeds() {
-    SelectionContainer {
-        Text(text = "")
+inline fun <reified C> Seabeds(
+    context: Context,
+) {
+    val con = LocalContext.current
+    val tent = Intent(context,C::class.java)
+    Button(onClick = {
+        con.startActivity(tent)
+    }) {
+
+    }
+
+}
+
+@Preview
+@Composable
+fun Milos() {
+//    Handler(Looper.getMainLooper()).postDelayed({},2000)
+    Column(verticalArrangement = Arrangement.Center,horizontalAlignment = Alignment.CenterHorizontally,modifier = Modifier.fillMaxSize()) {
+        Button(onClick = { /*TODO*/ }) {
+            Text(text = "AirplaneMode!")
+        }
     }
 }
 
-
+//androidx.activity.compose.*
+//androidx.constraintlayout.compose.*
+//androidx.navigation.compose.*
+//androidx.paging.compose.*
 

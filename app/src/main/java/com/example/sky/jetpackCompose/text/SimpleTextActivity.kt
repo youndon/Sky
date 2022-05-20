@@ -1,7 +1,7 @@
-package com.example.jetpackcompose.text
+package com.example.sky.jetpackCompose.text
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.activity.compose.setContent
 import androidx.compose.ui.tooling.preview.Preview
 
-class SimpleTextActivity : AppCompatActivity() {
+class SimpleTextActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // This is an extension function of Activity that sets the @Composable function that's

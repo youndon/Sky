@@ -41,9 +41,9 @@ import androidx.compose.ui.text.style.TextIndent
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.jetpackcompose.core.LOREM_IPSUM_1
-import com.example.jetpackcompose.core.LOREM_IPSUM_2
-import com.example.jetpackcompose.core.LOREM_IPSUM_3
+import com.example.sky.jetpackCompose.core.LOREM_IPSUM_1
+import com.example.sky.jetpackCompose.core.LOREM_IPSUM_2
+import com.example.sky.jetpackCompose.core.LOREM_IPSUM_3
 import kotlinx.coroutines.launch
 
 class DarkModeActivity : ComponentActivity() {

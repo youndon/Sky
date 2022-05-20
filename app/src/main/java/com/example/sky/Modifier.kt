@@ -141,7 +141,7 @@ interface Modifier {
             this.selectableGroup()
             this.toggleable(true) {}
             this.triStateToggleable(ToggleableState.On) {}
-            this.swipeable(SwipeableState(0), mapOf(), Orientation.Vertical)
+            this.swipeable(SwipeableState(0), mapOf(), Orientation.Horizontal)
             this.testTag("")
         }
 }
