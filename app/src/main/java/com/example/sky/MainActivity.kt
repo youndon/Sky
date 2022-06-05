@@ -47,10 +47,8 @@ class MainActivity : ComponentActivity() {
                     Land(get_theme.value!!) {
                         Surface {
                             AtlasNav(atlasModule, atlasModule.usersList)
-                            Seabeds<MainActivity2>(context = this)
                         }
             }
-//            Scaf()
         }
     }
 }

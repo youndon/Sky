@@ -75,7 +75,14 @@ private fun Ui() {
     Path()
     PathData {  }
     addPathNodes("")
-    rememberVectorPainter(Dp.Hairline, Dp.Hairline){viewportWidth: Float, viewportHeight: Float ->  }
+    rememberVectorPainter(Dp.Hairline,
+        Dp.Hairline,
+        Float.NaN,
+        Float.NaN,
+        RootGroupName,
+        Color.Unspecified,
+        BlendMode.SrcIn,
+        false) { viewportWidth: Float, viewportHeight: Float -> }
     Key(1)
 //    NativeKeyEvent // typealias of java.awt.event.KeyEvent
     FirstBaseline

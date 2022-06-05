@@ -17,5 +17,4 @@ class BR : BroadcastReceiver() {
         Toast.makeText(context, intent.action, Toast.LENGTH_LONG).show()
         SystemClock.currentGnssTimeClock()
     }
-
 }

@@ -13,8 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -24,6 +26,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 interface Fields {
     @Composable fun fs() {
         val rem = remember { mutableStateOf("") }
+        val manager = LocalFocusManager.current
         //
         TextField(
             value = rem.value,
@@ -47,7 +50,8 @@ interface Fields {
             keyboardActions = KeyboardActions(
                 // onGo, onNext, onPrevious, onSearch, onSend.
                 onDone = {
-                         this.defaultKeyboardAction(ImeAction.None)
+                    manager.moveFocus(FocusDirection.Next) // Previous, Up, Down, Left, Right, In, Out
+                    manager.clearFocus(false)
                 },
             ),
             singleLine = false,

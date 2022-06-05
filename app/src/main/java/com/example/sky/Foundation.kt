@@ -5,6 +5,9 @@ import androidx.compose.foundation.gestures.*
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyGridScope
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.*
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.foundation.text.BasicTextField
@@ -52,8 +55,7 @@ private fun Foundation() {
     }
     LazyRow {
     }
-    LazyVerticalGrid (cells = GridCells.Adaptive(1.dp)){
-    }
+    LazyVerticalGrid(columns = GridCells.Adaptive(1.dp)) { }
     rememberLazyListState()
     CircleShape
     ZeroCornerSize
