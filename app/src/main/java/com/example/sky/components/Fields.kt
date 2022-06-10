@@ -12,11 +12,13 @@ import androidx.compose.material.icons.twotone.Build
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
@@ -24,9 +26,11 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.VisualTransformation
 
 interface Fields {
+    @OptIn(ExperimentalComposeUiApi::class)
     @Composable fun fs() {
         val rem = remember { mutableStateOf("") }
         val manager = LocalFocusManager.current
+        val keyboardController = LocalSoftwareKeyboardController.current
         //
         TextField(
             value = rem.value,
@@ -52,6 +56,7 @@ interface Fields {
                 onDone = {
                     manager.moveFocus(FocusDirection.Next) // Previous, Up, Down, Left, Right, In, Out
                     manager.clearFocus(false)
+                    keyboardController ?.hide() // show()
                 },
             ),
             singleLine = false,

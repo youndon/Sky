@@ -43,12 +43,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         val atlasModule by viewModels<AtlasModel>()
         setContent {
-            val get_theme = AtlasStore(this).getTheme.collectAsState(false)
-                    Land(get_theme.value!!) {
-                        Surface {
-                            AtlasNav(atlasModule, atlasModule.usersList)
-                        }
-            }
+//            val get_theme = AtlasStore(this).getTheme.collectAsState(false)
+//                    Land(get_theme.value!!) {
+//                        Surface {
+//                            AtlasNav(atlasModule, atlasModule.usersList)
+//                        }
+//            }
+            Seabeds()
         }
     }
 }

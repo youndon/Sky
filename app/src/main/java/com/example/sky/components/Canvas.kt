@@ -52,7 +52,7 @@ private interface Canvas {
                 strokeWidth = Stroke.HairlineWidth,
                 cap = Stroke.DefaultCap,
                 pathEffect = PathEffect.cornerPathEffect(1f),
-                // cornerPathEffect(), dashPathEffect(), chainPathEffect(), stampedPathEffect()
+                // dashPathEffect(), chainPathEffect(), stampedPathEffect()
                 alpha = 1.0f,
                 colorFilter = ColorFilter.lighting(Color.Black, Color.Green),
                 blendMode = DefaultBlendMode
