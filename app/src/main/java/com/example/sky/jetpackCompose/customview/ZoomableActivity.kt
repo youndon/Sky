@@ -82,7 +82,7 @@ fun ZoomableComposable() {
         // However, it would be advisable to use the painterResource method as it loads
         // an image resource asynchronously
         val imagepainter = painterResource(id = 0)
-        // Image is a pre-defined composable that lays out and draws a given [ImageBitmap].
+        // Images is a pre-defined composable that lays out and draws a given [ImageBitmap].
         // We use the graphicsLayer modifier to modify the scale & translation of the image.
         // This is read from the state properties that we created above.
         Image(
@@ -93,7 +93,7 @@ fun ZoomableComposable() {
                 translationY = offsetY
             ),
             painter = imagepainter,
-            contentDescription = "Landscape Image"
+            contentDescription = "Landscape Images"
         )
     }
 }

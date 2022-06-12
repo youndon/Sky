@@ -1,82 +1,74 @@
 package com.example.sky
 
-import android.content.Context
-import android.content.Intent
+import android.opengl.Visibility
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.EnterTransition
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Indication
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.LocalIndication
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.text.KeyboardActions
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.semantics.ScrollAxisRange
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import java.security.acl.Permission
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import coil.compose.rememberImagePainter
+import coil.transform.CircleCropTransformation
+import com.example.sky.jetpackCompose.material.ClickableText
 
 @Preview(showBackground = true)
 @Composable
-fun Seabeds() {
-    val currency = remember {
-        mutableStateOf(1.0f)
+fun Lax() {
+    var ss by remember {
+        mutableStateOf(false)
     }
-    val manager = LocalFocusManager.current
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally) {
-        Yoro(currency)
-        Dollar(currency)
-        Divider(modifier = Modifier.padding(30.dp))
-        TextField(
-            value = currency.value.toString(),
-            onValueChange = { currency.value = it.toFloat() },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Number,
-                imeAction = ImeAction.Next
-            ),
-            keyboardActions = KeyboardActions(
-                onNext = { manager.moveFocus(FocusDirection.Down) }
-            )
-        )
-        Spacer(modifier = Modifier.height(30.dp))
-        TextField(value = "", onValueChange = { "Done" },
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Done
-            ),
-            keyboardActions = KeyboardActions { manager.clearFocus(true) }
-        )
+    Column(    modifier = Modifier.fillMaxSize()
+    ) {
+//        Image(painter = rememberImagePainter(
+//            data = "https://images.pexels.com/photos/5011647/pexels-photo-5011647.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+//            builder = {
+//                transformations(CircleCropTransformation())
+//            }),
+//            contentDescription = "",
+//            modifier = Modifier.clickable {
+//                ss = !ss
+//            }
+//        )
+        Button(onClick = {ss = !ss}) {
+            Text(text = "click it!")
+        }
     }
-}
-
-@Composable
-fun Dollar(currency: MutableState<Float>) {
-    val d = currency.value * 18
-    Text(text = "$d €", fontSize = 30.sp)
+    Visibility(ss = ss)
 
 }
 
 @Composable
-fun Yoro(currency: MutableState<Float>) {
-    val y = currency.value * 21
-    Text(text = "$y $", fontSize = 30.sp)
+fun Visibility(ss:Boolean) {
+    AnimatedVisibility(visible = ss) {
+
+            Text(text ="psqdsojgqis oejfzqjfqreg")
+    }
 }
+
+
 
 
 //
@@ -106,38 +98,7 @@ fun androidxPagingCompose() {
 //    androidx.paging.compose.LazyPagingItems
 }
 
-@Composable
-fun S() {
-    Surface(
-        modifier = Modifier,
-        shape = RectangleShape,
-        color = Color.Cyan,
-        contentColor = contentColorFor(Color.Cyan),
-        border = BorderStroke(1.dp, Color.White),
-        elevation = 1.dp
-    ) {
 
-    }
+
+fun main() {
 }
-@OptIn(ExperimentalMaterialApi::class)
-@Composable
-fun SS() {
-    Surface(
-        onClick = {},
-        modifier = Modifier,
-        shape = RectangleShape,
-        color = MaterialTheme.colors.surface,
-        contentColor = contentColorFor(Color.Cyan),
-        border = BorderStroke(1.dp, Color.Cyan),
-        elevation = 0.dp,
-        interactionSource = remember { MutableInteractionSource() },
-        indication = LocalIndication.current,
-        enabled = true,
-        onClickLabel = "click label",
-        role = Role.Button,
-    ) {
-
-    }
-}
-
-

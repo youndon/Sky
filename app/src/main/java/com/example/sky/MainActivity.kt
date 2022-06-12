@@ -49,7 +49,6 @@ class MainActivity : ComponentActivity() {
 //                            AtlasNav(atlasModule, atlasModule.usersList)
 //                        }
 //            }
-            Seabeds()
         }
     }
 }

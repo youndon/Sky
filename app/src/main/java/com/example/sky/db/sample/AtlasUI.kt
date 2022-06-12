@@ -208,6 +208,7 @@ fun UsersTable(
             ClickableText(text = AnnotatedString("${entity.id} : ${entity.userName} : ${entity.password}"),
                 onClick = {
                     navController.navigate("atlasMain")
+                    // or navController.popBackStack()
                     uV.value = entity.userName
                     pV.value = entity.password
                     iV.value = entity.id

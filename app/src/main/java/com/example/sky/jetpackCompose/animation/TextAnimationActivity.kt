@@ -153,7 +153,7 @@ fun ComposeLogoComponent() {
 
     // You can think of Modifiers as implementations of the decorators pattern that are
     // used to modify the composable that its applied to. In this example, we configure the
-    // Image composable to have a height of 48 dp.
+    // Images composable to have a height of 48 dp.
     Canvas(Modifier.size(48.dp)) {
         // As the Transition is changing the interpolating the value of the animated float
         // "rotation", you get access to all the values including the intermediate values as

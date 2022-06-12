@@ -31,7 +31,7 @@ private fun Foundation() {
     LocalIndication
     BorderStroke(20.dp, Color.Blue)
 //    Canvas() // FIXME: 15/07/2021
-//    Image() // FIXME: 15/07/2021
+//    Images() // FIXME: 15/07/2021
     rememberScrollState()
     DraggableState {
     }
