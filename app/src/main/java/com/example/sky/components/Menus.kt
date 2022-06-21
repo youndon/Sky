@@ -22,15 +22,17 @@ interface Menus {
             properties = PopupProperties(),
             modifier = Modifier,
             offset = DpOffset(0.dp, 0.dp),
-            content = @Composable {}
+            content = @Composable {
+                DropdownMenuItem(
+                    onClick = {},
+                    modifier = Modifier,
+                    enabled = true,
+                    contentPadding = MenuDefaults.DropdownMenuItemContentPadding,
+                    interactionSource = remember { MutableInteractionSource() },
+                    content = @Composable {}
+                )
+            }
         )
-        DropdownMenuItem(
-            onClick = {},
-            modifier = Modifier,
-            enabled = true,
-            contentPadding = MenuDefaults.DropdownMenuItemContentPadding,
-            interactionSource = remember { MutableInteractionSource() },
-            content = @Composable {}
-        )
+
     }
 }

@@ -39,15 +39,16 @@ interface Layouts {
             reverseLayout = false,
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.Start,
-            flingBehavior = ScrollableDefaults.flingBehavior(),
-            content = {/*unit*/})
+            flingBehavior = ScrollableDefaults.flingBehavior()
+        ){
+
+        }
         //
         Row(
             modifier = Modifier,
             horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.Top,
         ) {
-
         }
         //
         LazyRow(
@@ -75,5 +76,18 @@ interface Layouts {
             propagateMinConstraints = false,
         ) {
         }
+
+        //
+        ModalBottomSheetLayout(
+            sheetContent = @Composable {} ,
+            modifier = Modifier,
+            sheetState = rememberModalBottomSheetState(ModalBottomSheetValue.Hidden),
+            sheetShape = MaterialTheme.shapes.large,
+            sheetElevation = ModalBottomSheetDefaults.Elevation,
+            sheetBackgroundColor = MaterialTheme.colors.surface,
+            sheetContentColor = contentColorFor(backgroundColor),
+            scrimColor = ModalBottomSheetDefaults.scrimColor,
+            content = @Composable {}
+        )
     }
 }

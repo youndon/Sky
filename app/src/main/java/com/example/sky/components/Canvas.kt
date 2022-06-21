@@ -1,6 +1,7 @@
 package com.example.sky.components
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
@@ -11,8 +12,9 @@ import androidx.compose.ui.graphics.drawscope.*
 import androidx.compose.ui.graphics.drawscope.DrawScope.Companion.DefaultBlendMode
 
 private interface Canvas {
+    @OptIn(ExperimentalFoundationApi::class)
     @Composable fun canv() {
-        Canvas (modifier = Modifier){
+        Canvas (Modifier,""){
             this.center
             this.drawContext
             this.layoutDirection
@@ -142,9 +144,12 @@ private interface Canvas {
                 pivot = center,
             ) {
             }
-            this.translate {  }
-            this.withTransform({
-            }){
+            this.translate {
+            }
+            this.withTransform(
+                {
+                }
+            ){
             }
         }
     }
