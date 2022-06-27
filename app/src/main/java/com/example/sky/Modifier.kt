@@ -110,8 +110,6 @@ interface Modifier {
             this.verticalScroll(ScrollState(0))
             this.scrollable(ScrollableState { 1f }, Orientation.Vertical)
             this.transformable(TransformableState { zoomChange, panChange, rotationChange -> })
-            this.focusOrder {
-            }
             this.focusRequester(FocusRequester.Default)
             this.focusTarget()
             this.onFocusChanged {
