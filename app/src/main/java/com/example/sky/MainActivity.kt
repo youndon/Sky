@@ -14,6 +14,11 @@ import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldColors
 import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Build
+import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -31,6 +36,7 @@ import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import androidx.navigation.compose.rememberNavController
 import com.example.sky.db.sample.AtlasModel
 import com.example.sky.db.sample.AtlasNav
 import com.example.sky.db.sample.AtlasStore
@@ -42,6 +48,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val atlasModule by viewModels<AtlasModel>()
+
         setContent {
 //            val get_theme = AtlasStore(this).getTheme.collectAsState(false)
 //                    Land(get_theme.value!!) {
@@ -49,6 +56,16 @@ class MainActivity : ComponentActivity() {
 //                            AtlasNav(atlasModule, atlasModule.usersList)
 //                        }
 //            }
+            val navHostController = rememberNavController()
+
+            BottomNavigation(
+                listOf(
+                    NavData("White","white", Icons.Default.Build,Color.White),
+                    NavData("Gray","gray", Icons.Default.Home,Color.Gray),
+                    NavData("Black","black", Icons.Default.Done,Color.Black),
+                ),
+                navHostController
+            )
         }
     }
 }

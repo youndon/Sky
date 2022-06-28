@@ -1,30 +1,35 @@
 package com.example.sky
 
-import android.annotation.SuppressLint
-import android.hardware.camera2.params.BlackLevelPattern
-import android.net.wifi.hotspot2.pps.HomeSp
-import android.util.Log
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.VectorConverter
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Build
-import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material.icons.filled.Done
-import androidx.compose.runtime.*
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.contentColorFor
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.toUpperCase
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.*
-import androidx.navigation.NavDestination.Companion.hierarchy
-import androidx.navigation.compose.*
-import kotlinx.coroutines.internal.RemoveFirstDesc
-import kotlinx.coroutines.selects.select
-import kotlin.math.sqrt
+import androidx.navigation.NavControllerVisibleEntries
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 
 //
 fun androidxActivityCompose() {
@@ -74,37 +79,74 @@ fun Preview() {
 horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-        BottomNavigation()
+
+
+
     }
 }
 
 @OptIn(NavControllerVisibleEntries::class)
 @Composable
-fun BottomNavigation() {
-    val navHostController = rememberNavController()
+fun BottomNavigation(
+    items:List<NavData>,
+    navHostController: NavHostController
+) {
+    val currentNavState = navHostController.currentBackStackEntryAsState()
     Scaffold(
         bottomBar = {
-            BottomNavigation {
-              BottomNavigationItem(
-                  selected = navHostController.currentDestination?.route == "while",
-                  onClick = {
-                      navHostController.navigate("white")
-                  },
-                  icon = { Icon(Icons.Default.Build, contentDescription = null) },
-                  label = {
-                      Text("White")
-                  }
+            BottomNavigation(backgroundColor = Color.Transparent, elevation = 0.dp) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    horizontalArrangement = Arrangement.SpaceAround,
+                    verticalAlignment = Alignment.CenterVertically
+                ){
+                    items.forEach { navData ->
+//                    BottomNavigationItem(
+//                        selected = currentNavState.value?.destination?.route == navData.route,
+//                        onClick = {
+//                                  navHostController.navigate(navData.route)
+//                        },
+//                        icon = {
+//                            Icon(navData.icon,null)
+//                        },
+//                        label = {
+//                            AnimatedVisibility(visible = true) {
+//                                Text(navData.title)
+//                            }
+//                        },
+//                        alwaysShowLabel = currentNavState.value?.destination?.route==navData.route,
+//                        selectedContentColor = Color.Magenta,
+//                        unselectedContentColor = Color.DarkGray
+//                    )
 
-              )
-                BottomNavigationItem(
-                    selected = navHostController.currentDestination?.route == "gray",
-                    onClick = { navHostController.navigate("gray") },
-                    icon = { Icon(Icons.Default.Clear, contentDescription = null) })
-                BottomNavigationItem(
-                    selected = navHostController.currentDestination?.route == "black",
-                    onClick = { navHostController.navigate("black") },
-                    icon = { Icon(Icons.Default.Done, contentDescription = null) }
-                )
+                        IconButton(
+                            onClick = {
+                                navHostController.navigate(navData.route)
+                            },
+                            modifier = Modifier
+                                .width(75.dp)
+                                .clip(RoundedCornerShape(50.dp))
+                                .background(
+                                    if (currentNavState.value?.destination?.route == navData.route)
+                                        Color.Cyan
+                                    else Color.Transparent
+                                ),
+                        ) {
+                            Row(horizontalArrangement = Arrangement.Center,
+                            verticalAlignment = Alignment.CenterVertically) {
+                                Icon(navData.icon, contentDescription = null)
+                                Spacer(modifier = Modifier.height(10.dp))
+                                AnimatedVisibility(
+                                    visible = currentNavState.value?.destination?.route==navData.route
+                                ) {
+                                    Text(text = navData.title)
+                                }
+
+                            }
+                        }
+                    }
+                }
             }
         }
     ) {
@@ -115,34 +157,38 @@ fun BottomNavigation() {
 @Composable
 fun NavHostation(navController: NavHostController) {
 
-    NavHost(navController = navController,"white"){
+    NavHost(navController = navController,"gray"){
         composable("white"){
-            White(navController)
+            White()
         }
         composable("gray"){
-            Gray(navController)
+            Gray()
         }
         composable("black"){
-            Black(navController)
+            Black()
         }
     }
 }
 
 @Composable
-fun White(navController: NavController) {
+fun White() {
 
-    Column(modifier = Modifier.fillMaxSize(),
-    verticalArrangement = Arrangement.Center,
-    horizontalAlignment = Alignment.CenterHorizontally
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "White!")
     }
 }
 
 @Composable
-fun Gray(navController: NavController) {
-
-    Column(modifier = Modifier.fillMaxSize(),
+fun Gray() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Gray)
+        ,
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -150,9 +196,12 @@ fun Gray(navController: NavController) {
     }
 }
 @Composable
-fun Black(navController: NavController) {
-
-    Column(modifier = Modifier.fillMaxSize(),
+fun Black() {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Black)
+        ,
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -160,3 +209,9 @@ fun Black(navController: NavController) {
     }
 }
 
+data class NavData(
+    val title:String,
+    val route:String,
+    val icon: ImageVector,
+    val backgroundColor:Color
+)
