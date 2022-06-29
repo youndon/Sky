@@ -56,16 +56,7 @@ class MainActivity : ComponentActivity() {
 //                            AtlasNav(atlasModule, atlasModule.usersList)
 //                        }
 //            }
-            val navHostController = rememberNavController()
 
-            BottomNavigation(
-                listOf(
-                    NavData("White","white", Icons.Default.Build,Color.White),
-                    NavData("Gray","gray", Icons.Default.Home,Color.Gray),
-                    NavData("Black","black", Icons.Default.Done,Color.Black),
-                ),
-                navHostController
-            )
         }
     }
 }
