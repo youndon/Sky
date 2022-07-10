@@ -17,7 +17,8 @@ interface Badge {
             badge = @Composable {
                 Badge(
                     modifier = Modifier,
-                    contentColor = contentColorFor(Color.Unspecified)
+                    contentColor = Color.Unspecified,
+                    containerColor = Color.Unspecified
                 ) {
                 }
             }

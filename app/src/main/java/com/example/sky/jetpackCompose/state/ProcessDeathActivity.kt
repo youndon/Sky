@@ -121,7 +121,7 @@ fun ProcessDeathComponent() {
                     // altered, just its visual appearance is. You can easily created you own visual
                     // transformations by implementing the VisualTransformation interface like we did
                     // for CreditCardVisualTransformation.
-                    visualTransformation = CreditCardVisualTransformation(),
+//                    visualTransformation = CreditCardVisualTransformation(),
                     // Update value of textValue with the latest value of the text field
                     onValueChange = { newTextValue ->
                         textValue = newTextValue.text
@@ -150,25 +150,25 @@ fun ProcessDeathComponent() {
 // that it transforms the input to have a space added after every 4 characters. The text itself isn't
 // altered, just its visual appearance is. You can easily created you own visual transformations by
 // implementing the VisualTransformation interface like we did for CreditCardVisualTransformation.
-class CreditCardVisualTransformation : VisualTransformation {
-    override fun filter(text: AnnotatedString): TransformedText {
-        return TransformedText(
-            // Regex used to add a space after every 4 characters.
-            AnnotatedString(text.text.replace("....".toRegex(), "$0 ")),
-            creditCardOffsetMap
-        )
-    }
-}
+//class CreditCardVisualTransformation : VisualTransformation {
+//    override fun filter(text: AnnotatedString): TransformedText {
+//        return TransformedText(
+//            // Regex used to add a space after every 4 characters.
+//            AnnotatedString(text.text.replace("....".toRegex(), "$0 ")),
+//            creditCardOffsetMap
+//        )
+//    }
+//}
 
 // Offset map is used to change the position of the cursor based on the transormation being
 // applied. If no offset is needed for the cursor position, return the same offset value. In the
 // case of CreditCardVisualTransformation, since we add a space character after every 4
 // characters, we need to move the cursor accordingly. For example, if we added 3 space
 // characters, we need to account for that and move the cursor offset by 3 characters.
-val creditCardOffsetMap = object : OffsetMapping {
-    override fun originalToTransformed(offset: Int) = offset + (offset / 4)
-    override fun transformedToOriginal(offset: Int) = offset - (offset / 4)
-}
+//val creditCardOffsetMap = object : OffsetMapping {
+//    override fun originalToTransformed(offset: Int) = offset + (offset / 4)
+//    override fun transformedToOriginal(offset: Int) = offset - (offset / 4)
+//}
 
 /**
  * Android Studio lets you preview your composable functions within the IDE itself, instead of

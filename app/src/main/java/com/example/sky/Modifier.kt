@@ -10,6 +10,7 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.selection.triStateToggleable
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.SwipeableState
 import androidx.compose.material.swipeable
@@ -66,7 +67,7 @@ interface Modifier {
             this.padding()
 //        this.paddingFrom()
 //        this.paddingFromBaseline()
-            this.requiredHeight(IntrinsicSize.Max) // Min.
+            this.requiredHeight(IntrinsicSize.Max /*Min.*/)
             this.requiredHeightIn()
             this.requiredSize(1.dp, 1.dp)
             this.requiredSizeIn()
@@ -79,8 +80,8 @@ interface Modifier {
             this.wrapContentHeight()
             this.wrapContentSize()
             this.wrapContentWidth()
-            this.alpha(1f)
-//        this.clip()
+            this.alpha(1f) // Transparency of the component.
+            this.clip(CircleShape)
             this.clipToBounds()
             this.drawBehind {
             }

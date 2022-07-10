@@ -1,4 +1,4 @@
-package com.example.sky.nav
+package com.example.sky.nav.samples
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.*
@@ -16,7 +15,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavControllerVisibleEntries
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -63,6 +61,7 @@ fun BottomNavigation(
 
                         IconButton(
                             onClick = {
+                                navHostController.popBackStack(route = "gray",inclusive = true)
                                 navHostController.navigate(navData.route)
                                 coloration = when(navData.backgroundColor){
                                     Color.White -> Color.DarkGray

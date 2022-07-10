@@ -1,35 +1,31 @@
 package com.example.sky
 
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.VectorConverter
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Done
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.*
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.text.ExperimentalTextApi
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavControllerVisibleEntries
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
-import com.example.sky.jetpackCompose.core.colors
+import androidx.compose.ui.unit.sp
+import kotlinx.coroutines.delay
 
 //
 fun androidxActivityCompose() {
@@ -74,12 +70,60 @@ fun nav(){
 @Preview(showBackground = true)
 @Composable
 fun Preview() {
+    LinkText()
+}
+
+@Composable
+fun Nevada() {
+    var start by remember { mutableStateOf(false ) }
+    val alphaValue by animateFloatAsState(targetValue = if (start) 1f else 0f,
+    animationSpec = tween(2000))
+
+    LaunchedEffect(key1 = true){
+        start = true
+        delay(3000)
+    }
+    Defer(alphaValue)
+}
+
+@Composable
+fun Defer(alphaValue: Float) {
     Column (
-        modifier = Modifier.fillMaxSize(),
-horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Top
-    ) {
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center,
+        modifier = Modifier.fillMaxSize()){
+        Icon(Icons.Default.Done,null,
+            modifier = Modifier
+                .size(50.dp)
+                .alpha(alphaValue)
+        )
 
     }
 }
+
+@OptIn(ExperimentalTextApi::class)
+@Composable
+fun LinkText() {
+    val uri = LocalUriHandler.current
+
+    val s = buildAnnotatedString {
+        withStyle(SpanStyle()) {
+            append("Link to ")
+        }
+        withStyle(SpanStyle(color = Color.Cyan)) {
+            append("youtube")
+        }
+        addStringAnnotation("youtube", "https://www.youtube.com", 10, 17)
+    }
+
+    ClickableText(text = s, onClick = {
+        s.getStringAnnotations("youtube",it,it)
+            .firstOrNull()?.let { link ->
+                uri.openUri(link.item)
+            }
+    })
+
+}
+
+
 
