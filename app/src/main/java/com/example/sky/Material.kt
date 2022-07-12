@@ -1,7 +1,9 @@
 package com.example.sky
 
+import android.annotation.SuppressLint
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.materialIcon
 import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.material.ripple.rememberRipple
@@ -12,6 +14,7 @@ import androidx.compose.ui.state.ToggleableState
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 private fun <T> Material() {
@@ -37,7 +40,7 @@ private fun <T> Material() {
     DropdownMenuItem({}){}
     ExtendedFloatingActionButton({},{})
     FloatingActionButton({}){}
-//    Icon() // FIXME: 15/07/2021
+    Icon(imageVector = Icons.Default.Done, contentDescription = null)
     IconButton({}){}
     IconToggleButton(false,{b: Boolean -> b }){}
     LeadingIconTab(false,{},{},{})

@@ -1,4 +1,4 @@
-package com.example.sky.api.sample
+package com.example.sky.network.sample
 
 data class Movie(
     val name: String,

@@ -1,9 +1,7 @@
-package com.example.sky.db.sample
+package com.example.sky.database.sample
 
 import android.content.Context
-import androidx.compose.runtime.Composable
 import androidx.datastore.core.DataStore
-import androidx.datastore.dataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit

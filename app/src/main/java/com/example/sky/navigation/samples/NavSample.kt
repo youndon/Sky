@@ -1,4 +1,4 @@
-package com.example.sky.nav
+package com.example.sky.navigation
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background

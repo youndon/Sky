@@ -1,4 +1,4 @@
-package com.example.sky.api.sample
+package com.example.sky.network.sample
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

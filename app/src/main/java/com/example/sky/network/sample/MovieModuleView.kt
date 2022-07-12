@@ -1,4 +1,4 @@
-package com.example.sky.api.sample
+package com.example.sky.network.sample
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image

@@ -3,13 +3,12 @@ package com.example.sky
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Done
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
@@ -70,60 +69,12 @@ fun nav(){
 @Preview(showBackground = true)
 @Composable
 fun Preview() {
-    LinkText()
+  ivy()
 }
 
 @Composable
-fun Nevada() {
-    var start by remember { mutableStateOf(false ) }
-    val alphaValue by animateFloatAsState(targetValue = if (start) 1f else 0f,
-    animationSpec = tween(2000))
-
-    LaunchedEffect(key1 = true){
-        start = true
-        delay(3000)
-    }
-    Defer(alphaValue)
-}
-
-@Composable
-fun Defer(alphaValue: Float) {
-    Column (
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = Modifier.fillMaxSize()){
-        Icon(Icons.Default.Done,null,
-            modifier = Modifier
-                .size(50.dp)
-                .alpha(alphaValue)
-        )
+fun ivy() {
+    Box(modifier = Modifier.fillMaxSize()){
 
     }
 }
-
-@OptIn(ExperimentalTextApi::class)
-@Composable
-fun LinkText() {
-    val uri = LocalUriHandler.current
-
-    val s = buildAnnotatedString {
-        withStyle(SpanStyle()) {
-            append("Link to ")
-        }
-        withStyle(SpanStyle(color = Color.Cyan)) {
-            append("youtube")
-        }
-        addStringAnnotation("youtube", "https://www.youtube.com", 10, 17)
-    }
-
-    ClickableText(text = s, onClick = {
-        s.getStringAnnotations("youtube",it,it)
-            .firstOrNull()?.let { link ->
-                uri.openUri(link.item)
-            }
-    })
-
-}
-
-
-

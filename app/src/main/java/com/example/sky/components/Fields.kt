@@ -9,9 +9,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Phone
 import androidx.compose.material.icons.twotone.Build
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
@@ -28,13 +26,13 @@ import androidx.compose.ui.text.input.VisualTransformation
 interface Fields {
     @OptIn(ExperimentalComposeUiApi::class)
     @Composable fun fs() {
-        val rem = remember { mutableStateOf("") }
+        var rem by remember { mutableStateOf("") }
         val manager = LocalFocusManager.current
         val keyboardController = LocalSoftwareKeyboardController.current
         //
         TextField(
-            value = rem.value,
-            onValueChange = { rem.value = it },
+            value = rem,
+            onValueChange = { rem = it },
             modifier = Modifier,
             enabled = true,
             readOnly = false,

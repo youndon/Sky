@@ -1,4 +1,4 @@
-package com.example.sky.db.sample
+package com.example.sky.database.sample
 
 import android.app.Application
 import androidx.compose.runtime.getValue
