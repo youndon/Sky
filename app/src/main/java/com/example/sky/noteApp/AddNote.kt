@@ -1,6 +1,7 @@
 package com.example.sky.noteApp
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -32,13 +33,15 @@ fun AddNote(
 
         },
         floatingActionButton = {
-            FloatingActionButton(
-                onClick = {
-                    viewModel.addNote(NoteEntity(titleState,descriptionState))
-                    navController.popBackStack()
-                    navController.navigate("home")
-                }) {
-                Icon(Icons.Default.Done, null)
+            AnimatedVisibility(visible = titleState.isEmpty()) {
+                FloatingActionButton(
+                    onClick = {
+                        navController.popBackStack()
+                        navController.navigate("home")
+                        viewModel.addNote(NoteEntity(titleState,descriptionState))
+                    }) {
+                    Icon(Icons.Default.Done, null)
+                }
             }
         }
     ) {

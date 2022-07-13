@@ -2,6 +2,7 @@ package com.example.sky.noteApp
 
 import android.annotation.SuppressLint
 import android.content.ClipDescription
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,14 +17,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.sky.atlas.Animate
+import com.example.sky.noteApp.dattabase.NoteEntity
+import com.example.sky.noteApp.viewmodel.NoteViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditNote(
     navController: NavController,
+    viewModel: NoteViewModel,
     title:String,
-    description:String) {
+    description:String
+) {
 
     var titleState by remember { mutableStateOf(title) }
     var descriptionState by remember { mutableStateOf(description) }
@@ -31,11 +37,14 @@ fun EditNote(
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
-            FloatingActionButton(onClick = {
-                navController.popBackStack()
-                navController.navigate("home")
-            }){
-                Icon(Icons.Default.Edit, null)
+            AnimatedVisibility(visible = titleState != title) {
+                FloatingActionButton(onClick = {
+                    navController.popBackStack()
+                    navController.navigate("home")
+                    viewModel.updateNote(NoteEntity(titleState,descriptionState))
+                }){
+                    Icon(Icons.Default.Edit, null)
+                }
             }
         }
     ) {

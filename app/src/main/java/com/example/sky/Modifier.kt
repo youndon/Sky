@@ -44,7 +44,7 @@ import kotlin.coroutines.RestrictsSuspension
 interface Modifier {
     @OptIn(ExperimentalComposeUiApi::class,
         androidx.compose.material.ExperimentalMaterialApi::class,
-        androidx.compose.foundation.ExperimentalFoundationApi::class)
+        ExperimentalFoundationApi::class)
     val Modifier.ss: Any
         @SuppressLint("UnnecessaryComposedModifier")
         get() = with(this) {
@@ -58,13 +58,13 @@ interface Modifier {
             this.absolutePadding()
             this.aspectRatio(1f)
             this.defaultMinSize()
-            this.fillMaxHeight()
-            this.fillMaxSize()
-            this.fillMaxWidth()
-            this.height(1.dp)
+            fillMaxHeight()
+            fillMaxSize()
+            fillMaxWidth()
+            height(1.dp)
             this.heightIn()
             this.offset()
-            this.padding()
+            padding(1.dp)
 //        this.paddingFrom()
 //        this.paddingFromBaseline()
             this.requiredHeight(IntrinsicSize.Max /*Min.*/)
@@ -73,15 +73,15 @@ interface Modifier {
             this.requiredSizeIn()
             this.requiredWidth(IntrinsicSize.Max)
             this.requiredWidthIn()
-            this.size(1.dp)
+            size(1.dp)
             this.sizeIn()
             this.width(1.dp)
             this.widthIn()
             this.wrapContentHeight()
             this.wrapContentSize()
             this.wrapContentWidth()
-            this.alpha(1f) // Transparency of the component.
-            this.clip(CircleShape)
+            alpha(1f) // Transparency of the component.
+            clip(CircleShape)
             this.clipToBounds()
             this.drawBehind {
             }
@@ -93,9 +93,9 @@ interface Modifier {
             this.scale(1f)
             this.shadow(1.dp)
             this.animateContentSize { initialValue, targetValue -> }
-            this.background(Color.Gray)
-            this.border(BorderStroke(1.dp, Color.Gray))
-            this.clickable {
+            background(Color.Gray)
+            border(BorderStroke(1.dp, Color.Gray))
+            clickable {
             }
             this.combinedClickable {
             }
