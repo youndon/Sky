@@ -1,21 +1,33 @@
 package com.example.sky
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.ClickableText
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.FabPosition
+import androidx.compose.material.TextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Done
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.ExperimentalTextApi
 import androidx.compose.ui.text.SpanStyle
@@ -61,7 +73,7 @@ fun coi() {
 }
 
 fun nav(){
-//    androidx.navigation.*
+//    androidx.navigation.*String
 //    androidx.navigation.compose.
 }
 
@@ -69,12 +81,42 @@ fun nav(){
 @Preview(showBackground = true)
 @Composable
 fun Preview() {
-  ivy()
+
+    Some()
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnusedMaterialScaffoldPaddingParameter")
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ivy() {
-    Box(modifier = Modifier.fillMaxSize()){
+fun Some() {
+    androidx.compose.material.Scaffold(
+        floatingActionButton = {
+                               FloatingActionButton(onClick = { /*TODO*/ }) {
+                                   Icon(Icons.Default.Add, contentDescription =null)
+                               }
+        },
+        floatingActionButtonPosition = FabPosition.End,
+        isFloatingActionButtonDocked = true,
+        bottomBar = {
+            BottomAppBar() {
+                BottomNavigationItem(
+                    selected = true,
+                    onClick = { /*TODO*/ },
+                    icon = {Icon(Icons.Default.Done,null)
+                    }
+                )
+                BottomNavigationItem(
+                    selected = true,
+                    onClick = { /*TODO*/ },
+                    icon = {Icon(Icons.Default.Search,null)
+                    }
+                )
+            }
+        }
+    ) {
 
     }
 }
+
+
+

@@ -9,7 +9,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -27,8 +27,13 @@ fun HomeNote(
     viewModel: NoteViewModel,
     navController: NavController
 ) {
+    var noteSearch = remember { mutableStateOf("") }
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
+        topBar = {
+                NoteAppBar(noteSearch)
+        },
         floatingActionButton = {
             FloatingActionButton(onClick = {
                 navController.navigate("add")
@@ -37,8 +42,8 @@ fun HomeNote(
             }
         },
     ) {
-        LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(items = noteList) { note ->
+        LazyColumn(modifier = Modifier.fillMaxSize().padding(top = 70.dp)) {
+            items(items = noteList.filter { it.title.contains(noteSearch.value) }) { note ->
                 NoteCard(viewModel,note,navController)
             }
         }
@@ -59,12 +64,15 @@ fun NoteCard(
         icon = {
             Icon(Icons.Default.Delete, null)
         },
-        background = Color.Gray
+        background = Color.Red,
+        isUndo = true
     )
 
     SwipeableActionsBox(
         startActions = listOf(deletion),
-        endActions = listOf(deletion)
+        endActions = listOf(deletion),
+        backgroundUntilSwipeThreshold = Color.Transparent,
+        swipeThreshold = 140.dp
     ) {
         Card(
             modifier = Modifier

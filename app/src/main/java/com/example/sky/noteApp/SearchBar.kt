@@ -1,4 +1,4 @@
-package com.example.sky.atlas
+package com.example.sky.noteApp
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
@@ -32,14 +32,13 @@ import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun SearchBar() {
+fun NoteAppBar(noteSearch: MutableState<String>) {
     var appBarState by remember { mutableStateOf(false) }
-    var atlasState by remember { mutableStateOf("") }
     val keyBoardController = LocalSoftwareKeyboardController.current
     TopAppBar(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(10.dp)
+            .padding(6.dp)
             .clip(CircleShape),
         backgroundColor = Color.DarkGray
     ) {
@@ -50,7 +49,7 @@ fun SearchBar() {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Atlassian",
+                    text = "Your Notes",
                     style = TextStyle(
                         fontSize = 20.sp,
                         color = Color.LightGray
@@ -77,12 +76,12 @@ fun SearchBar() {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 OutlinedTextField(
-                    value = atlasState,
-                    onValueChange = { atlasState = it },
+                    value = noteSearch.value,
+                    onValueChange = { noteSearch.value = it },
                     textStyle = TextStyle(fontSize = 20.sp),
                     placeholder = {
                         Text(
-                            text = "Search in ...",
+                            text = "Search note ...",
                             fontSize = 20.sp,
                             color = Color.LightGray
                         )
@@ -94,7 +93,7 @@ fun SearchBar() {
                         focusedBorderColor = Color.Transparent
                     ),
                     leadingIcon = {
-                        AnimatedVisibility(visible = atlasState.isEmpty()) {
+                        AnimatedVisibility(visible = noteSearch.value.isEmpty()) {
                             Icon(
                                 imageVector = Icons.Default.ArrowBack,
                                 contentDescription = null,
@@ -105,7 +104,7 @@ fun SearchBar() {
                         }
                     },
                     trailingIcon = {
-                        AnimatedVisibility(visible = atlasState.isNotEmpty()) {
+                        AnimatedVisibility(visible = noteSearch.value.isNotEmpty()) {
                             Icon(
                                 imageVector = Icons.Default.Clear,
                                 contentDescription = null,
@@ -113,7 +112,7 @@ fun SearchBar() {
                                 modifier = Modifier
                                     .padding(end = 20.dp)
                                     .clickable {
-                                        atlasState = ""
+                                        noteSearch.value = ""
                                     },
                             )
                         }

@@ -33,7 +33,6 @@ fun AddNote(
 
         },
         floatingActionButton = {
-            AnimatedVisibility(visible = titleState.isEmpty()) {
                 FloatingActionButton(
                     onClick = {
                         navController.popBackStack()
@@ -42,7 +41,6 @@ fun AddNote(
                     }) {
                     Icon(Icons.Default.Done, null)
                 }
-            }
         }
     ) {
         Column(modifier = Modifier.fillMaxSize()) {

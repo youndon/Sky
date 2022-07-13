@@ -1,11 +1,13 @@
 package com.example.sky.components
 
+import android.annotation.SuppressLint
 import androidx.compose.material.*
 import androidx.compose.material3.MaterialTheme as MT3
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 private interface Scaffolds {
+    @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterialApi::class)
     @Composable
     fun sca() {

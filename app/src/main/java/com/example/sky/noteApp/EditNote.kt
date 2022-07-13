@@ -37,7 +37,6 @@ fun EditNote(
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
-            AnimatedVisibility(visible = titleState != title) {
                 FloatingActionButton(onClick = {
                     navController.popBackStack()
                     navController.navigate("home")
@@ -45,7 +44,6 @@ fun EditNote(
                 }){
                     Icon(Icons.Default.Edit, null)
                 }
-            }
         }
     ) {
         Column(modifier = Modifier.fillMaxSize()) {
