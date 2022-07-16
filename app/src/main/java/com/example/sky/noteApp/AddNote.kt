@@ -3,11 +3,11 @@ package com.example.sky.noteApp
 import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.MutableTransitionState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.material.BottomAppBar
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.TopAppBar
@@ -17,17 +17,21 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.sky.noteApp.bottoms.BottomBarNote
+import com.example.sky.noteApp.bottoms.NoteColors
 import com.example.sky.noteApp.dattabase.NoteEntity
 import com.example.sky.noteApp.tops.TopBarNote
 import com.example.sky.noteApp.viewmodel.NoteViewModel
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnusedMaterialScaffoldPaddingParameter")
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun AddNote(
     navController: NavController,
-    viewModel: NoteViewModel
+    viewModel: NoteViewModel,
+    backgroundColor:MutableState<Color>
 ) {
 
     var titleState by remember { mutableStateOf("") }
@@ -35,6 +39,8 @@ fun AddNote(
     val mutableTS = MutableTransitionState(
         titleState.isNotEmpty() && descriptionState.isNotEmpty()
     )
+
+    val showIcons = remember { mutableStateOf(false) }
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -56,10 +62,19 @@ fun AddNote(
             }
         },
         bottomBar = {
-
+            AnimatedVisibility(visible = !showIcons.value) {
+                BottomBarNote(showIcons = showIcons)
+            }
+            AnimatedVisibility(visible = showIcons.value) {
+                NoteColors(
+                    showIcons = showIcons,
+                    noteColors = noteColor,
+                    backgroundColor = backgroundColor
+                )
+            }
         }
     ) {
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier.fillMaxSize().background(backgroundColor.value)) {
             OutlinedTextField(
                 value = titleState,
                 onValueChange = { titleState = it },
@@ -76,3 +91,5 @@ fun AddNote(
         }
     }
 }
+
+

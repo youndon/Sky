@@ -35,17 +35,17 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.sky.R
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalComposeUiApi::class)
-@Preview
 @Composable
-fun SearchBarNote(noteSearch: MutableState<String> = mutableStateOf("")) {
+fun SearchBarNote(noteSearch: MutableState<String>) {
     var appBarState by remember { mutableStateOf(false) }
     val keyBoardController = LocalSoftwareKeyboardController.current
     OutlinedTextField(
         modifier = Modifier
             .fillMaxWidth()
-            .height(60.dp)
+            .height(65.dp)
             .padding(5.dp)
             .clip(CircleShape),
         value = noteSearch.value,
@@ -88,16 +88,17 @@ fun SearchBarNote(noteSearch: MutableState<String> = mutableStateOf("")) {
                         },
                 )
             }
-            AnimatedVisibility(visible = noteSearch.value.isEmpty()) {
-                Image(
-                    painter = painterResource(R.drawable.pexels_designecologist_3458448),
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(30.dp)
-                        .clip(CircleShape),
-                    contentScale = ContentScale.Crop
-                )
-            }
+            // TODO: out of the time bug!!
+//                AnimatedVisibility(visible = noteSearch.value.isEmpty()) {
+//                    Image(
+//                        painter = painterResource(R.drawable.pexels_designecologist_3458448),
+//                        contentDescription = null,
+//                        modifier = Modifier
+//                            .size(30.dp)
+//                            .clip(CircleShape),
+//                        contentScale = ContentScale.Crop
+//                    )
+//            }
         },
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
         keyboardActions = KeyboardActions(onSearch = {

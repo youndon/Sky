@@ -1,6 +1,9 @@
 package com.example.sky.noteApp
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
@@ -18,6 +21,9 @@ fun RootNote() {
 
     val navHostController = rememberNavController()
 
+    val backgroundColor = remember { mutableStateOf(Color.White) }
+
+
     NavHost(navController = navHostController, startDestination = "home"){
         composable("home"){
             HomeNote(
@@ -29,7 +35,8 @@ fun RootNote() {
         composable("add"){
             AddNote(
                 navController = navHostController,
-                viewModel = noteViewModel
+                viewModel = noteViewModel,
+                backgroundColor = backgroundColor
             )
         }
         composable("edit/{title}/{description}",
@@ -41,7 +48,9 @@ fun RootNote() {
                 type = NavType.StringType
             }
         )){
-            EditNote(navController = navHostController,
+            EditNote(
+                backgroundColor = backgroundColor,
+                navController = navHostController,
                 viewModel = noteViewModel,
                 title = it.arguments?.getString("title") ?: "" ,
                 description =it.arguments?.getString("description") ?: ""

@@ -48,7 +48,9 @@ fun HomeNote(
             }
         },
     ) {
-        LazyColumn(modifier = Modifier.fillMaxSize().padding(top = 70.dp)) {
+        LazyColumn(modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 70.dp)) {
             items(items = noteList.filter { it.title.contains(noteSearch.value) }) { note ->
                 NoteCard(viewModel,note,navController)
             }

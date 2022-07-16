@@ -1,31 +1,16 @@
 package com.example.sky
 
-import android.annotation.SuppressLint
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Build
-import androidx.annotation.FloatRange
-import androidx.annotation.RequiresApi
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.MutableTransitionState
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Done
-import androidx.compose.runtime.*
+import androidx.compose.foundation.gestures.Orientation
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.Text
+import androidx.compose.material.rememberSwipeableState
+import androidx.compose.material.swipeable
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.graphics.vector.Group
-import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import com.example.sky.atlas.Animate
-import com.example.sky.noteApp.bottoms.drawColoredShadow
 
 //
 fun androidxActivityCompose() {
@@ -67,38 +52,13 @@ fun nav(){
 }
 
 
-@RequiresApi(Build.VERSION_CODES.O)
-@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
+@Preview(showBackground = true)
 @Composable
 fun Preview() {
-    Some()
 }
 
 @OptIn(ExperimentalMaterialApi::class)
-@RequiresApi(Build.VERSION_CODES.O)
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnusedMaterialScaffoldPaddingParameter",
-    "RememberReturnType")
 @Composable
-fun Some() {
+fun Some(){
 
-
-
-//    Row(modifier = Modifier.fillMaxSize()){
-//        Button(
-//            modifier = Modifier
-//                .drawColoredShadow(color = Color.Cyan, alpha = 0.8f)
-//               ,
-//            onClick = {
-//
-//            }, elevation = ButtonDefaults.elevation(0.dp),
-//        colors = ButtonDefaults.buttonColors(
-//            backgroundColor = Color.Cyan
-//        )) {
-//            Text(text = "Shadow!", color = Color.DarkGray)
-//        }
-//
-//    }
 }
-
-
-

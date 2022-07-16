@@ -1,36 +1,37 @@
 package com.example.sky.noteApp
 
 import android.annotation.SuppressLint
-import android.content.ClipDescription
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.MutableTransitionState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Done
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.modifier.modifierLocalConsumer
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.sky.atlas.Animate
+import com.example.sky.noteApp.bottoms.BottomBarNote
+import com.example.sky.noteApp.bottoms.NoteColors
 import com.example.sky.noteApp.dattabase.NoteEntity
 import com.example.sky.noteApp.tops.TopBarNote
 import com.example.sky.noteApp.viewmodel.NoteViewModel
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnusedMaterialScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditNote(
     navController: NavController,
     viewModel: NoteViewModel,
     title:String,
-    description:String
+    description:String,
+    backgroundColor:MutableState<Color>
 ) {
 
     var titleState by remember { mutableStateOf(title) }
@@ -40,10 +41,14 @@ fun EditNote(
         title != titleState || description != descriptionState
     )
 
-    Scaffold(
+    val showIcons = remember { mutableStateOf(false) }
+
+    androidx.compose.material.Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
-                 TopBarNote(navController)
+            TopAppBar {
+                TopBarNote(navController)
+            }
         },
         floatingActionButton = {
             AnimatedVisibility(visibleState = mutableTS) {
@@ -57,10 +62,23 @@ fun EditNote(
             }
         },
         bottomBar = {
-
+            AnimatedVisibility(visible = !showIcons.value) {
+                BottomBarNote(showIcons = showIcons)
+            }
+            AnimatedVisibility(visible = showIcons.value) {
+                NoteColors(
+                    showIcons = showIcons,
+                    noteColors = noteColor,
+                    backgroundColor = backgroundColor
+                )
+            }
         }
     ) {
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(backgroundColor.value)
+        ) {
             OutlinedTextField(
                 value = titleState,
                 onValueChange = { titleState = it },

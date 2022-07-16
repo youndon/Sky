@@ -11,10 +11,8 @@ import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 
 class BR : BroadcastReceiver() {
-    @RequiresApi(Build.VERSION_CODES.Q)
     override fun onReceive(context: Context, intent: Intent) {
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
         Toast.makeText(context, intent.action, Toast.LENGTH_LONG).show()
-        SystemClock.currentGnssTimeClock()
     }
 }
