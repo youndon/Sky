@@ -3,6 +3,7 @@ package com.example.sky.noteApp
 import android.annotation.SuppressLint
 import android.content.ClipDescription
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.sky.atlas.Animate
 import com.example.sky.noteApp.dattabase.NoteEntity
+import com.example.sky.noteApp.tops.TopBarNote
 import com.example.sky.noteApp.viewmodel.NoteViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -34,9 +36,17 @@ fun EditNote(
     var titleState by remember { mutableStateOf(title) }
     var descriptionState by remember { mutableStateOf(description) }
 
+    val mutableTS = MutableTransitionState(
+        title != titleState || description != descriptionState
+    )
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
+        topBar = {
+                 TopBarNote(navController)
+        },
         floatingActionButton = {
+            AnimatedVisibility(visibleState = mutableTS) {
                 FloatingActionButton(onClick = {
                     navController.popBackStack()
                     navController.navigate("home")
@@ -44,6 +54,10 @@ fun EditNote(
                 }){
                     Icon(Icons.Default.Edit, null)
                 }
+            }
+        },
+        bottomBar = {
+
         }
     ) {
         Column(modifier = Modifier.fillMaxSize()) {

@@ -1,5 +1,6 @@
 package com.example.sky.atlas
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
@@ -63,6 +64,7 @@ fun Coloring() {
         }
     }
 }
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Snaking() {
     var textState by remember { mutableStateOf("") }
@@ -96,6 +98,7 @@ fun Snaking() {
     }
 }
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Effect() {
     val scaffold = rememberScaffoldState()

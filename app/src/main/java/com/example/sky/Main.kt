@@ -1,42 +1,31 @@
 package com.example.sky
 
 import android.annotation.SuppressLint
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
+import android.os.Build
+import androidx.annotation.FloatRange
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.MutableTransitionState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.grid.GridCells
-import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.ClickableText
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.FabPosition
-import androidx.compose.material.TextField
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Done
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.text.ExperimentalTextApi
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.graphics.vector.Group
+import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import kotlinx.coroutines.delay
+import com.example.sky.atlas.Animate
+import com.example.sky.noteApp.bottoms.drawColoredShadow
 
 //
 fun androidxActivityCompose() {
@@ -78,44 +67,37 @@ fun nav(){
 }
 
 
-@Preview(showBackground = true)
+@RequiresApi(Build.VERSION_CODES.O)
+@Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
 fun Preview() {
-
     Some()
 }
 
-@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnusedMaterialScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterialApi::class)
+@RequiresApi(Build.VERSION_CODES.O)
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnusedMaterialScaffoldPaddingParameter",
+    "RememberReturnType")
 @Composable
 fun Some() {
-    androidx.compose.material.Scaffold(
-        floatingActionButton = {
-                               FloatingActionButton(onClick = { /*TODO*/ }) {
-                                   Icon(Icons.Default.Add, contentDescription =null)
-                               }
-        },
-        floatingActionButtonPosition = FabPosition.End,
-        isFloatingActionButtonDocked = true,
-        bottomBar = {
-            BottomAppBar() {
-                BottomNavigationItem(
-                    selected = true,
-                    onClick = { /*TODO*/ },
-                    icon = {Icon(Icons.Default.Done,null)
-                    }
-                )
-                BottomNavigationItem(
-                    selected = true,
-                    onClick = { /*TODO*/ },
-                    icon = {Icon(Icons.Default.Search,null)
-                    }
-                )
-            }
-        }
-    ) {
 
-    }
+
+
+//    Row(modifier = Modifier.fillMaxSize()){
+//        Button(
+//            modifier = Modifier
+//                .drawColoredShadow(color = Color.Cyan, alpha = 0.8f)
+//               ,
+//            onClick = {
+//
+//            }, elevation = ButtonDefaults.elevation(0.dp),
+//        colors = ButtonDefaults.buttonColors(
+//            backgroundColor = Color.Cyan
+//        )) {
+//            Text(text = "Shadow!", color = Color.DarkGray)
+//        }
+//
+//    }
 }
 
 
