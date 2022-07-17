@@ -2,6 +2,7 @@ package com.example.sky.noteApp.bottoms
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.BottomAppBar
@@ -21,8 +22,11 @@ import com.example.sky.noteApp.bottomNavIcons
 fun BottomBarNote(
     showIcons : MutableState<Boolean>
 ) {
-    BottomAppBar(
-        modifier = Modifier,
+    androidx.compose.material.BottomAppBar(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(60.dp),
+        cutoutShape = CircleShape
     ) {
         Adapting {
             bottomNavIcons.forEach {
@@ -31,6 +35,7 @@ fun BottomBarNote(
                     contentDescription = null,
                     tint = Color.Gray,
                     modifier = Modifier
+                        .size(25.dp)
                         .clickable {
                                    actionClick(it,showIcons)
                         },
@@ -70,7 +75,7 @@ fun actionClick(img: ImageVector, showIcons: MutableState<Boolean>) = when(img) 
         showIcons.value = true
     }
     else -> {
-        throw Exception("...")
+        throw Exception("ops something wrong!!")
     }
 }
 

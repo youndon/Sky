@@ -1,8 +1,8 @@
 package com.example.sky.noteApp.bottoms
 
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -12,11 +12,18 @@ import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Done
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Paint
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -27,33 +34,33 @@ fun NoteColors(
 ) {
     BottomAppBar(
         modifier = Modifier
-            .fillMaxWidth(),
-        backgroundColor = Color.White
-
+            .fillMaxWidth()
+            .height(60.dp),
+        backgroundColor = MaterialTheme.colorScheme.onSurface,
+        cutoutShape = CircleShape
     ) {
-        LazyRow(
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            items(items = noteColors){
-                Button(
-                    onClick = {
-                              backgroundColor.value = it
-                        showIcons.value = false
-                    },
-                    modifier = Modifier
-                        .align(Alignment.CenterVertically)
-                        .size(42.dp)
-                        .padding(5.dp)
-//                        .drawColoredShadow(
-//                            color = it,
-//                            alpha = if (backgroundColor.value == it) 1f else 0.3f
-//                        ),
-                            ,
-                    shape = CircleShape,
-                    colors = ButtonDefaults.buttonColors(backgroundColor = it),
-                    elevation = ButtonDefaults.elevation(0.dp)
-                ) {
-                    Icon(Icons.Default.Done, contentDescription =null,modifier = Modifier.size(50.dp))
+        Adapting {
+            LazyRow(
+                modifier = Modifier.fillMaxWidth(),
+            ) {
+                items(items = noteColors){
+                    Button(
+                        onClick = {
+                            backgroundColor.value = it
+                            showIcons.value = false
+                        },
+                        modifier = Modifier
+                            .align(Alignment.CenterVertically)
+                            .size(if (backgroundColor.value == it) 50.dp else 45.dp)
+                            .padding(5.dp),
+                        shape = CircleShape,
+                        colors = ButtonDefaults.buttonColors(backgroundColor = it),
+                        elevation = ButtonDefaults.elevation(0.dp)
+                    ) {
+                        if (backgroundColor.value == it) {
+                            Icon(Icons.Default.Done, contentDescription =null,modifier = Modifier.fillMaxSize())
+                        }
+                    }
                 }
             }
         }

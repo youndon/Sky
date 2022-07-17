@@ -13,6 +13,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -33,12 +34,13 @@ fun HomeNote(
     viewModel: NoteViewModel,
     navController: NavController
 ) {
-    val noteSearch = remember { mutableStateOf("") }
+    val search = remember { mutableStateOf("") }
+    val grid = remember { mutableStateOf(false) }
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         topBar = {
-                SearchBarNote(noteSearch)
+                SearchBarNote(noteSearch = search,isGrid = grid)
         },
         floatingActionButton = {
             FloatingActionButton(onClick = {
@@ -51,10 +53,12 @@ fun HomeNote(
         LazyColumn(modifier = Modifier
             .fillMaxSize()
             .padding(top = 70.dp)) {
-            items(items = noteList.filter { it.title.contains(noteSearch.value) }) { note ->
+            items(items = noteList.filter { it.title.contains(search.value) }) { note ->
                 NoteCard(viewModel,note,navController)
             }
         }
+
+        // TODO: Grid Layout.
     }
 }
 

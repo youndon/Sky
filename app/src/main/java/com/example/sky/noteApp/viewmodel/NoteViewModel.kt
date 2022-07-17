@@ -42,11 +42,13 @@ class NoteViewModel(application: Application):AndroidViewModel(application) {
     }
 
     fun updateNote(noteEntity: NoteEntity) {
-        notes.find { it.id == noteEntity.id } ?.let {
-            it.title = noteEntity.title
-            it.description = noteEntity.description
+        GlobalScope.launch(Dispatchers.IO) {
+        notes.find { it.id == noteEntity.id }?.let {
+//                it.title = noteEntity.title
+//                it.description = noteEntity.description
+            noteDatabase.noteDao().editNote(it)
         }
-
+        }
     }
 
     fun deleteNote(noteEntity:NoteEntity) {

@@ -4,10 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.TopAppBar
@@ -55,26 +52,32 @@ fun AddNote(
                     onClick = {
                         navController.popBackStack()
                         navController.navigate("home")
+                        backgroundColor.value = Color.Unspecified
                         viewModel.addNote(NoteEntity(titleState,descriptionState))
                     }) {
                     Icon(Icons.Default.Done, null)
                 }
             }
         },
+        isFloatingActionButtonDocked = true,
         bottomBar = {
-            AnimatedVisibility(visible = !showIcons.value) {
-                BottomBarNote(showIcons = showIcons)
-            }
-            AnimatedVisibility(visible = showIcons.value) {
-                NoteColors(
-                    showIcons = showIcons,
-                    noteColors = noteColor,
-                    backgroundColor = backgroundColor
-                )
+                Row(modifier = Modifier.fillMaxWidth()) {
+                AnimatedVisibility(visible = !showIcons.value) {
+                    BottomBarNote(showIcons = showIcons)
+                }
+                AnimatedVisibility(visible = showIcons.value) {
+                    NoteColors(
+                        showIcons = showIcons,
+                        noteColors = noteColor,
+                        backgroundColor = backgroundColor
+                    )
+                }
             }
         }
     ) {
-        Column(modifier = Modifier.fillMaxSize().background(backgroundColor.value)) {
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .background(backgroundColor.value)) {
             OutlinedTextField(
                 value = titleState,
                 onValueChange = { titleState = it },

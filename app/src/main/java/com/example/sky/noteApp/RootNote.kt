@@ -21,7 +21,7 @@ fun RootNote() {
 
     val navHostController = rememberNavController()
 
-    val backgroundColor = remember { mutableStateOf(Color.White) }
+    val backgroundColor = remember { mutableStateOf(Color.Unspecified) }
 
 
     NavHost(navController = navHostController, startDestination = "home"){

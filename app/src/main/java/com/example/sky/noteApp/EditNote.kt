@@ -4,10 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.MutableTransitionState
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
@@ -24,7 +21,6 @@ import com.example.sky.noteApp.tops.TopBarNote
 import com.example.sky.noteApp.viewmodel.NoteViewModel
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter", "UnusedMaterialScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditNote(
     navController: NavController,
@@ -52,25 +48,31 @@ fun EditNote(
         },
         floatingActionButton = {
             AnimatedVisibility(visibleState = mutableTS) {
-                FloatingActionButton(onClick = {
-                    navController.popBackStack()
-                    navController.navigate("home")
-                    viewModel.updateNote(NoteEntity(titleState,descriptionState))
-                }){
+                androidx.compose.material.FloatingActionButton(
+                    onClick = {
+                        navController.popBackStack()
+                        navController.navigate("home")
+                        backgroundColor.value = Color.Unspecified
+                        viewModel.updateNote(NoteEntity(titleState, descriptionState))
+                    },
+                ) {
                     Icon(Icons.Default.Edit, null)
                 }
             }
         },
+        isFloatingActionButtonDocked = true,
         bottomBar = {
-            AnimatedVisibility(visible = !showIcons.value) {
-                BottomBarNote(showIcons = showIcons)
-            }
-            AnimatedVisibility(visible = showIcons.value) {
-                NoteColors(
-                    showIcons = showIcons,
-                    noteColors = noteColor,
-                    backgroundColor = backgroundColor
-                )
+            Row(modifier = Modifier.fillMaxWidth()) {
+                AnimatedVisibility(visible = !showIcons.value) {
+                    BottomBarNote(showIcons = showIcons)
+                }
+                AnimatedVisibility(visible = showIcons.value) {
+                    NoteColors(
+                        showIcons = showIcons,
+                        noteColors = noteColor,
+                        backgroundColor = backgroundColor
+                    )
+                }
             }
         }
     ) {
