@@ -46,9 +46,8 @@ fun coi() {
     coil.transform.RoundedCornersTransformation()
 }
 
-fun nav(){
-//    androidx.navigation.*String
-//    androidx.navigation.compose.
+fun hilt() {
+//    dagger.hilt.*
 }
 
 
@@ -57,8 +56,11 @@ fun nav(){
 fun Preview() {
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun Some(){
 
+}
+
+fun main() {
+    println()
 }

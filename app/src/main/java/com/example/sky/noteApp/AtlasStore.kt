@@ -1,4 +1,4 @@
-package com.example.sky.database.sample
+package com.example.sky.noteApp
 
 import android.content.Context
 import androidx.datastore.core.DataStore

@@ -1,37 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sky">
-
     <!-- In order for our app to access the Internet, we need to define this permission. -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".NoteApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher_foreground"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Sky">
+        <activity
+            android:name=".NoteActivity"
+            android:exported="false"
+            android:label="noteApp"
+            android:theme="@style/Theme.Sky.NoActionBar" />
+
         <receiver
             android:name=".BR"
             android:enabled="true"
             android:exported="true">
-<!--            android:permission="android.intent.action.AIRPLANE_MODE">-->
+
+            <!-- android:permission="android.intent.action.AIRPLANE_MODE"> -->
             <intent-filter>
                 <action android:name="android.intent.action.AIRPLANE_MODE" />
             </intent-filter>
         </receiver>
-
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.Sky" />
-
-        <receiver
-            android:name=".MyReceiver"
-            android:enabled="true"
-            android:exported="true" />
 
         <activity
             android:name=".MainActivity"
