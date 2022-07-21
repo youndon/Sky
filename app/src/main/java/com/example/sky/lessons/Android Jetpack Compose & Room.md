@@ -47,24 +47,24 @@ And corresponding DAO:
 interface NotesDao {  
   
   @Query("SELECT * FROM note")  
-  fun getAll(): List<com.example.sky.database.Note>  
+  fun getAll(): List<Note>  
   
   @Insert  
-  fun insert(note: com.example.sky.database.Note)  
+  fun insert(note: Note)  
   
   @Delete  
-  fun delete(note: com.example.sky.database.Note)
+  fun delete(note: Note)
 }
 ```
 
 And the last missing piece for accessing our data is `AppDatabase` class. Again, it’s very simple:
 
 ```kotlin
-@Database(entities = arrayOf(com.example.sky.database.Note::class), version = 1)  
-abstract class AppDatabase : RoomDatabase() {  
-  
-  abstract fun notes(): NotesDao  
-  
+@Database(entities = [Note::class], version = 1)
+abstract class AppDatabase : RoomDatabase() {
+
+    abstract fun notes(): NotesDao
+
 }
 ```
 
@@ -83,7 +83,7 @@ class NotesViewModel(application: Application) : AndroidViewModel(application) {
     "db-notes"  
   ).build()  
   
-  var notes by mutableStateOf(listOf<com.example.sky.database.Note>())  
+  var notes by mutableStateOf(listOf<Note>())  
     private set  
     
   // Load initial data from Room asynchronously.  
@@ -96,7 +96,7 @@ class NotesViewModel(application: Application) : AndroidViewModel(application) {
   
   fun addNote(note: String) {  
     // Generate ID in a simple way - from timestamp.  
-    val noteObj = com.example.sky.database.Note(
+    val noteObj = Note(
       (System.currentTimeMillis() % Int.MAX_VALUE).toInt(), 
       note
     )  
@@ -104,7 +104,7 @@ class NotesViewModel(application: Application) : AndroidViewModel(application) {
     GlobalScope.launch { db.notes().insert(noteObj) }  
   }  
   
-  fun removeNote(note: com.example.sky.database.Note) {  
+  fun removeNote(Note) {  
     notes = notes - listOf(note)  
     GlobalScope.launch { db.notes().delete(note) }  
   }  
@@ -129,7 +129,7 @@ fun AddNote(title: String, onNoteAdded: (String) -> Unit) {
             value = text.value,
             onValueChange = { text.value = it },
             label = { Text(title) },
-            modifier = com.example.sky.Modifier
+            modifier = Modifier
                 .weight(1f, true)
                 .padding(16.dp, 16.dp, 8.dp, 16.dp)
         )
@@ -141,14 +141,14 @@ fun AddNote(title: String, onNoteAdded: (String) -> Unit) {
                     text.value = TextFieldValue("")
                 }
             },
-            modifier = com.example.sky.Modifier
+            modifier = Modifier
                 .padding(8.dp, 16.dp, 16.dp, 16.dp)
                 .align(Alignment.CenterVertically)
         ) {
             Icon(
                 Icons.Filled.Add,
                 "...",
-                modifier = com.example.sky.Modifier.size(24.dp)
+                modifier = Modifier.size(24.dp)
             )
         }
     }
@@ -167,7 +167,7 @@ fun ShowNotes(items: List<Note>, onNodeRemoved: (Note) -> Unit) {
             Row {
                 Text(
                     text = it.content,
-                    modifier = com.example.sky.Modifier
+                    modifier = Modifier
                         .padding(16.dp, 4.dp, 4.dp, 4.dp)
                         .weight(1f, true)
                         .align(Alignment.CenterVertically)
@@ -177,14 +177,14 @@ fun ShowNotes(items: List<Note>, onNodeRemoved: (Note) -> Unit) {
                         onNodeRemoved(it)
                     },
                     contentPadding = PaddingValues(0.dp),
-                    modifier = com.example.sky.Modifier
+                    modifier = Modifier
                         .padding(4.dp, 4.dp, 16.dp, 4.dp)
                         .align(Alignment.CenterVertically)
                 ) {
                     Icon(
                         Icons.Filled.Delete,
                         "...",
-                        modifier = com.example.sky.Modifier.size(24.dp)
+                        modifier = Modifier.size(24.dp)
                     )
                 }
             }
