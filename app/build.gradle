@@ -138,6 +138,9 @@ dependencies {
     //Indicators.
     implementation "com.google.accompanist:accompanist-pager-indicators:0.24.11-rc"
 
+    //SwipeRefresh.
+    implementation "com.google.accompanist:accompanist-swiperefresh:0.24.11-rc"
+
     //Swipe.
     implementation "me.saket.swipe:swipe:1.0.0"
 

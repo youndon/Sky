@@ -104,7 +104,7 @@ class NotesViewModel(application: Application) : AndroidViewModel(application) {
     GlobalScope.launch { db.notes().insert(noteObj) }  
   }  
   
-  fun removeNote(Note) {  
+  fun removeNote(note:Note) {  
     notes = notes - listOf(note)  
     GlobalScope.launch { db.notes().delete(note) }  
   }  

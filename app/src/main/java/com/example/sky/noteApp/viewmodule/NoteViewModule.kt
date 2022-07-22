@@ -1,6 +1,6 @@
 package com.example.sky.noteApp.viewmodule
 
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.sky.noteApp.database.NoteEntity
@@ -11,13 +11,15 @@ import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.internal.synchronized
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 data class NoteEntityState (
     val id:Int = 1,
-    val title:String ="",
-    val description:String="",
+    var title:String ="",
+    var description:String="",
     val color:Int = 1
 )
 
@@ -30,8 +32,9 @@ class NoteViewModule @Inject constructor(
     init {
        getAllNotes()
     }
-    private val _allNotes = MutableStateFlow<List<NoteEntity>>(listOf())
 
+    // for observing the note changes.
+    private val _allNotes = MutableStateFlow<List<NoteEntity>>(listOf())
     val allNotes = _allNotes.asStateFlow()
 
     private fun getAllNotes(){
@@ -42,35 +45,40 @@ class NoteViewModule @Inject constructor(
         }
     }
 
-    private val _noteState = MutableStateFlow(NoteEntityState())
-    val noteState = _noteState.asStateFlow()
+    // for putting the note changes on Notes EntityState (the instance of Node Entity class).
+     var noteState by mutableStateOf(listOf(NoteEntity()))
+    private set
 
-    fun updateTitle(title: String){
-        _noteState.update {
-            it.copy(title = title)
-        }
-    }
+    // catching any title changes to put it in NoteEntityState.
+//    fun updateTitle(title: String){
+//                noteState.title = title
+//            }
 
-    fun addNote() {
-        viewModelScope.launch {
-            val note = NoteEntity(
-                title = noteState.value.title,
-                description = noteState.value.description,
-                color = noteState.value.color
-            )
+    // for add a note from NoteEntityState as it to NoteEntity class.
+    fun addNote(note: NoteEntity) {
+        viewModelScope.launch(Dispatchers.IO) {
+            noteState = noteState + note
             repository.addNote(note)
+
         }
     }
 
-    fun updating(id:Int){
-        viewModelScope.launch(Dispatchers.IO){
+    // for updateNote a note from NoteEntityState and put it to NoteEntity class,
+    // depending on changes.
+    fun updateNote(note: NoteEntity){
+        viewModelScope.launch(Dispatchers.IO) {
+
+            repository.editNote(note)
+        }
+    }
+
+    // for deleting a note by the id.
+    fun deleteNote(id:Int){
+        viewModelScope.launch(Dispatchers.IO) {
             val note = NoteEntity(
-                title = noteState.value.title,
-                description = noteState.value.description,
-                color = noteState.value.color,
                 id = id
             )
-            repository.editNote(note)
+            repository.deleteNote(note)
         }
     }
 }
