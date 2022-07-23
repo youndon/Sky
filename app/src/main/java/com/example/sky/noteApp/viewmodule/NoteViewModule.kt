@@ -16,6 +16,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
+import kotlinx.datetime.Clock
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import javax.inject.Inject
 
 @OptIn(InternalCoroutinesApi::class)
@@ -36,9 +39,8 @@ class NoteViewModule @Inject constructor(
         }
     }
 
-    private fun getAllNotes() {
+    //
 
-    }
 
     // for putting the note changes on Notes EntityState (the instance of Node Entity class).
      var noteState by mutableStateOf(listOf(NoteEntity()))

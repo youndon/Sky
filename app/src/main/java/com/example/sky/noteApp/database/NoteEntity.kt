@@ -10,5 +10,5 @@ data class NoteEntity (
     @ColumnInfo(name = "title") var title:String ="",
     @ColumnInfo(name = "description") var description:String="",
     @ColumnInfo(name = "color") var color:String ="",
-//    @ColumnInfo(name = "date") var date :Unit
+    @ColumnInfo(name = "date") var date :String = ""
 )

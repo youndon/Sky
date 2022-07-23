@@ -22,7 +22,7 @@ fun NoteRoot(
             NoteAdd(navController = navC, viewModule = viewModule)
         }
         composable(
-            route = "edit/{id}/{title}/{description}/{color}",
+            route = "edit/{id}/{title}/{description}/{color}/{date}",
             arguments = listOf(
                 navArgument("id") {
                     type = NavType.IntType
@@ -36,6 +36,9 @@ fun NoteRoot(
                 navArgument("color") {
                     type = NavType.StringType
                 },
+                navArgument("date") {
+                    type = NavType.StringType
+                }
             )
         ) {
             NoteEdit(
@@ -44,7 +47,8 @@ fun NoteRoot(
                 id = it.arguments?.getInt("id"),
                 title = it.arguments?.getString("title") ?: "",
                 description = it.arguments?.getString("description") ?: "",
-                color = it.arguments?.getString("color") ?: ""
+                color = it.arguments?.getString("color") ?: "",
+                date = it.arguments?.getString("date") ?: ""
             )
         }
     }

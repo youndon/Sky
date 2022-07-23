@@ -39,7 +39,8 @@ fun NoteCard(
                             "${note.id}/" +
                             "${note.title}/" +
                             "${note.description}/" +
-                            note.color
+                            "${note.color}/" +
+                            note.date
                 )
             },
         colors = CardDefaults.cardColors(
@@ -50,6 +51,7 @@ fun NoteCard(
         Text(text = note.title, fontWeight = FontWeight.SemiBold, fontSize = 20.sp)
         Text(text = note.description)
         Text(text = note.color)
+        Text(text = note.date)
         IconButton(
             onClick = {
                 viewModule.deleteNote(NoteEntity(id = note.id))

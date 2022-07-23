@@ -1,5 +1,6 @@
 package com.example.sky.noteApp.ui
 
+import android.icu.util.Calendar
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.OutlinedTextField
@@ -12,6 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.example.sky.noteApp.database.NoteEntity
 import com.example.sky.noteApp.viewmodule.NoteViewModule
+import kotlinx.datetime.Clock
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -21,12 +26,14 @@ fun NoteEdit(
     id: Int?,
     title:String,
     description:String,
-    color: String
+    color: String,
+    date:String
 ) {
     var titleState by remember { mutableStateOf(title) }
     var descriptionState by remember { mutableStateOf(description) }
-    var colorState = remember { mutableStateOf("") }
-    var dropdownMenuState = remember { mutableStateOf(false) }
+    val colorState = remember { mutableStateOf("") }
+    val dropdownMenuState = remember { mutableStateOf(false) }
+    val dateState = mutableStateOf(Calendar.getInstance().time)
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(onClick = {
@@ -37,7 +44,8 @@ fun NoteEdit(
                         id = id!!,
                         title = titleState,
                         description=descriptionState,
-                        color = colorState.value
+                        color = colorState.value,
+                        date = dateState.value.toString()
                     )
                 )
             }) {

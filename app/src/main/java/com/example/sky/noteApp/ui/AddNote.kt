@@ -1,5 +1,7 @@
 package com.example.sky.noteApp.ui
 
+import android.icu.text.DateFormat
+import android.icu.util.Calendar
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.OutlinedTextField
@@ -9,9 +11,16 @@ import androidx.compose.material.icons.outlined.Done
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavController
 import com.example.sky.noteApp.database.NoteEntity
 import com.example.sky.noteApp.viewmodule.NoteViewModule
+import kotlinx.datetime.Clock
+import kotlinx.datetime.LocalDate
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
+import java.lang.String.format
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -21,9 +30,10 @@ fun NoteAdd(
 ) {
     var titleState by remember { mutableStateOf("") }
     var descriptionState by remember { mutableStateOf("") }
-    var colorState = remember { mutableStateOf("") }
-    var dropdownMenuState = remember { mutableStateOf(false) }
+    val colorState = remember { mutableStateOf("") }
+    val dropdownMenuState = remember { mutableStateOf(false) }
 
+    val dateState = mutableStateOf(Calendar.getInstance().time)
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(onClick = {
@@ -31,7 +41,8 @@ fun NoteAdd(
                     NoteEntity(
                         title = titleState,
                         description = descriptionState,
-                        color = colorState.value
+                        color = colorState.value,
+                        date = dateState.value.toString()
                     )
                 )
                 navController.navigate("home")

@@ -10,7 +10,12 @@ import androidx.compose.material.rememberSwipeableState
 import androidx.compose.material.swipeable
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.room.util.CopyLock
+import kotlinx.datetime.Clock
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 
 //
 fun androidxActivityCompose() {
@@ -59,8 +64,7 @@ fun Preview() {
 @Composable
 fun Some(){
 
+
+
 }
 
-fun main() {
-    println()
-}
