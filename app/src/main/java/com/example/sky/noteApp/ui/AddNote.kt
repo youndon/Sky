@@ -5,10 +5,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Scaffold
+import androidx.compose.material.icons.outlined.Done
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
@@ -23,6 +21,8 @@ fun NoteAdd(
 ) {
     var titleState by remember { mutableStateOf("") }
     var descriptionState by remember { mutableStateOf("") }
+    var colorState = remember { mutableStateOf("") }
+    var dropdownMenuState = remember { mutableStateOf(false) }
 
     Scaffold(
         floatingActionButton = {
@@ -31,12 +31,12 @@ fun NoteAdd(
                     NoteEntity(
                         title = titleState,
                         description = descriptionState,
-                        color = 68543
+                        color = colorState.value
                     )
                 )
                 navController.navigate("home")
             }) {
-                Icon(Icons.Outlined.Add,null)
+                Icon(Icons.Outlined.Done,null)
             }
         }
     ) {
@@ -44,6 +44,11 @@ fun NoteAdd(
             Column(Modifier.fillMaxSize()) {
                 OutlinedTextField(value =titleState, onValueChange ={titleState = it})
                 OutlinedTextField(value =descriptionState, onValueChange ={descriptionState = it})
+                Button(onClick = {
+                    dropdownMenuState.value = !dropdownMenuState.value
+                }) {
+                    NoteColors(color = colorState,dropdownMenuState)
+                }
         }
     }
 }

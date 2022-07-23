@@ -1,5 +1,6 @@
 package com.example.sky.noteApp.database.repository
 
+import androidx.lifecycle.LiveData
 import com.example.sky.noteApp.database.NoteDao
 import com.example.sky.noteApp.database.NoteEntity
 import dagger.hilt.android.scopes.ViewModelScoped

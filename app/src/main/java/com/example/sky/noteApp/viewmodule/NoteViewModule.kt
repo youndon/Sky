@@ -2,6 +2,8 @@ package com.example.sky.noteApp.viewmodule
 
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.example.sky.noteApp.database.NoteEntity
 import com.example.sky.noteApp.database.repository.DefaultNoteRepository
@@ -16,28 +18,17 @@ import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-data class NoteEntityState (
-    val id:Int = 1,
-    var title:String ="",
-    var description:String="",
-    val color:Int = 1
-)
-
 @OptIn(InternalCoroutinesApi::class)
 @HiltViewModel
 class NoteViewModule @Inject constructor(
     private val repository: DefaultNoteRepository
 ):ViewModel() {
 
-    init {
-       getAllNotes()
-    }
-
     // for observing the note changes.
     private val _allNotes = MutableStateFlow<List<NoteEntity>>(listOf())
-    val allNotes = _allNotes.asStateFlow()
+    val allNotes = _allNotes
 
-    private fun getAllNotes(){
+    init {
         viewModelScope.launch(Dispatchers.IO) {
             repository.getAllNotes.collect {
                 _allNotes.value = it
@@ -45,21 +36,19 @@ class NoteViewModule @Inject constructor(
         }
     }
 
+    private fun getAllNotes() {
+
+    }
+
     // for putting the note changes on Notes EntityState (the instance of Node Entity class).
      var noteState by mutableStateOf(listOf(NoteEntity()))
     private set
-
-    // catching any title changes to put it in NoteEntityState.
-//    fun updateTitle(title: String){
-//                noteState.title = title
-//            }
 
     // for add a note from NoteEntityState as it to NoteEntity class.
     fun addNote(note: NoteEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             noteState = noteState + note
             repository.addNote(note)
-
         }
     }
 
@@ -67,17 +56,14 @@ class NoteViewModule @Inject constructor(
     // depending on changes.
     fun updateNote(note: NoteEntity){
         viewModelScope.launch(Dispatchers.IO) {
-
             repository.editNote(note)
         }
     }
 
     // for deleting a note by the id.
-    fun deleteNote(id:Int){
+    fun deleteNote(note: NoteEntity){
         viewModelScope.launch(Dispatchers.IO) {
-            val note = NoteEntity(
-                id = id
-            )
+            noteState = noteState - note
             repository.deleteNote(note)
         }
     }

@@ -9,6 +9,6 @@ data class NoteEntity (
     @PrimaryKey(autoGenerate = true) var id:Int = 0,
     @ColumnInfo(name = "title") var title:String ="",
     @ColumnInfo(name = "description") var description:String="",
-    @ColumnInfo(name = "color") var color:Int = 0,
+    @ColumnInfo(name = "color") var color:String ="",
 //    @ColumnInfo(name = "date") var date :Unit
 )
