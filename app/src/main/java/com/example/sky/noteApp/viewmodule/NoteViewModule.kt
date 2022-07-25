@@ -2,8 +2,6 @@ package com.example.sky.noteApp.viewmodule
 
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.example.sky.noteApp.database.NoteEntity
 import com.example.sky.noteApp.database.repository.DefaultNoteRepository
@@ -11,14 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.internal.synchronized
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
-import kotlinx.coroutines.withContext
-import kotlinx.datetime.Clock
-import kotlinx.datetime.TimeZone
-import kotlinx.datetime.toLocalDateTime
 import javax.inject.Inject
 
 @OptIn(InternalCoroutinesApi::class)
@@ -28,13 +19,13 @@ class NoteViewModule @Inject constructor(
 ):ViewModel() {
 
     // for observing the note changes.
-    private val _allNotes = MutableStateFlow<List<NoteEntity>>(listOf())
-    val allNotes = _allNotes
+    private val _allNotesById = MutableStateFlow<List<NoteEntity>>(listOf())
+    val allNotesById = _allNotesById
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
-            repository.getAllNotes.collect {
-                _allNotes.value = it
+            repository.getAllNotesById.collect {
+                _allNotesById.value = it
             }
         }
     }

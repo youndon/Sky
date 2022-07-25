@@ -1,6 +1,5 @@
 package com.example.sky.noteApp.database.repository
 
-import androidx.lifecycle.LiveData
 import com.example.sky.noteApp.database.NoteDao
 import com.example.sky.noteApp.database.NoteEntity
 import dagger.hilt.android.scopes.ViewModelScoped
@@ -11,8 +10,8 @@ import javax.inject.Inject
 
 @ViewModelScoped
 class DefaultNoteRepository @Inject constructor(private val noteDao: NoteDao):NoteRepository {
-    override val getAllNotes: Flow<List<NoteEntity>>
-        get() = noteDao.allNotes()
+    override val getAllNotesById: Flow<List<NoteEntity>>
+        get() = noteDao.allNotesOrderedById()
 
     override suspend fun addNote(noteEntity: NoteEntity) {
         coroutineScope { launch { noteDao.addNote(noteEntity) } }

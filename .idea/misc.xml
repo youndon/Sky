@@ -156,7 +156,11 @@
         <entry key="../../../../layout/compose-model-1658228265459.xml" value="0.24351851851851852" />
         <entry key="../../../../layout/compose-model-1658231712998.xml" value="1.0" />
         <entry key="../../../../layout/compose-model-1658334744200.xml" value="2.0" />
+        <entry key="../../../../layout/compose-model-1658758634659.xml" value="0.2456732798649219" />
+        <entry key="app/src/main/res/drawable/grid_on.xml" value="0.1315" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1055" />
+        <entry key="app/src/main/res/layout/activity_engine.xml" value="0.25181159420289856" />
+        <entry key="app/src/main/res/layout/activity_engine2.xml" value="0.25181159420289856" />
       </map>
     </option>
   </component>

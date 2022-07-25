@@ -3,6 +3,7 @@
     package="com.example.sky">
     <!-- In order for our app to access the Internet, we need to define this permission. -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".noteApp.NoteApplication"

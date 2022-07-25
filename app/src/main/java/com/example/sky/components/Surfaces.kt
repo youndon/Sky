@@ -30,7 +30,8 @@ interface Surfaces {
     @OptIn(ExperimentalMaterialApi::class)
     @Composable
     fun SE() {
-        Surface(onClick = {},
+        Surface(
+            onClick = {},
             modifier = Modifier,
             enabled = true,
             shape = RectangleShape,
@@ -38,7 +39,8 @@ interface Surfaces {
             contentColor = contentColorFor(Color.Cyan),
             border = BorderStroke(1.dp, Color.Cyan),
             elevation = 0.dp,
-            interactionSource = remember { MutableInteractionSource() }) {
+            interactionSource = remember { MutableInteractionSource() }
+        ) {
 
         }
 

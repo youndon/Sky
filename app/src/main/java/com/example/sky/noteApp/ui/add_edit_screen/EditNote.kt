@@ -31,7 +31,7 @@ fun NoteEdit(
 ) {
     var titleState by remember { mutableStateOf(title) }
     var descriptionState by remember { mutableStateOf(description) }
-    val colorState = remember { mutableStateOf("") }
+    val colorState = remember { mutableStateOf(color) }
     val dropdownMenuState = remember { mutableStateOf(false) }
     val dateState = mutableStateOf(Calendar.getInstance().time)
     Scaffold(

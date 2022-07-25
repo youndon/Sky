@@ -1,24 +1,21 @@
 package com.example.sky.components
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.DrawerValue
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.SnackbarDefaults.backgroundColor
-import androidx.compose.material3.MaterialTheme as M3
 import androidx.compose.material.contentColorFor
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.*
 import androidx.compose.material3.DrawerDefaults
+import androidx.compose.material3.DrawerValue
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
+import androidx.compose.material3.MaterialTheme as M3
 
 interface Navigational {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -79,7 +76,7 @@ interface Navigational {
         DismissibleNavigationDrawer(
             drawerContent = @Composable { },
             modifier = Modifier,
-            drawerState = rememberDrawerState(androidx.compose.material3.DrawerValue.Closed),
+            drawerState = rememberDrawerState(DrawerValue.Closed),
             gesturesEnabled = true,
             drawerShape = RectangleShape,
             drawerTonalElevation = DrawerDefaults.DismissibleDrawerElevation,
@@ -91,7 +88,7 @@ interface Navigational {
         ModalNavigationDrawer(
             drawerContent = @Composable { },
             modifier = Modifier,
-            drawerState = rememberDrawerState(androidx.compose.material3.DrawerValue.Closed),
+            drawerState = rememberDrawerState(DrawerValue.Closed),
             gesturesEnabled = true,
             drawerShape = RoundedCornerShape(0.dp, 16.dp, 16.dp, 0.dp),
             drawerTonalElevation = DrawerDefaults.ModalDrawerElevation,

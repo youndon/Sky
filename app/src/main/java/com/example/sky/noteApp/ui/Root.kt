@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.sky.noteApp.ui.home_screen.NoteHome
 import com.example.sky.noteApp.viewmodule.NoteViewModule
 
 @Composable

@@ -62,7 +62,7 @@ fun NoteCard(
     }
 }
 
-val getColor: (String) -> Color = { c ->
+private val getColor: (String) -> Color = { c ->
     when(c) {
         "Cyan" -> Color.Cyan
         "Gray" -> Color.Gray
@@ -73,7 +73,7 @@ val getColor: (String) -> Color = { c ->
 }
 
 @Composable
-fun NoteColors(
+private fun NoteColors(
     color:MutableState<String>,
     isShow:MutableState<Boolean>
 ) {
