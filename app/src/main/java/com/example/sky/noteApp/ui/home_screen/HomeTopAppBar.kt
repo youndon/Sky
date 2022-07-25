@@ -1,40 +1,51 @@
 package com.example.sky.noteApp.ui.home_screen
 
-import android.accounts.Account
-import android.text.Layout
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.PopupProperties
 
-@Preview()
 @Composable
 fun HomeTopAppBar(
-    searchNoteTitle:MutableState<String> = mutableStateOf(""),
-    layoutState:MutableState<Boolean> = mutableStateOf(false)
+    searchNoteTitle: MutableState<String>,
+    currentOrder: MutableState<String>,
+    layoutState: MutableState<Boolean>
 ) {
+    val showSortMenu = remember { mutableStateOf(false) }
     SmallTopAppBar(
         title = {
-                TopAppBarTextField(title = searchNoteTitle)
+                TopAppBarTextField(
+                    title = searchNoteTitle
+                )
         },
         navigationIcon = {
-                         Icon(Icons.Outlined.Settings, contentDescription =null)
+                         Icon(
+                             imageVector = Icons.Outlined.Settings,
+                             contentDescription = null
+                         )
         },
         actions = {
-            SortBy()
-            Layout(layoutState = layoutState)
+            SortBy(
+                isShow = showSortMenu,
+                order = currentOrder
+            )
+            Layout(
+                layoutState = layoutState
+            )
+            Account()
         },
         colors = TopAppBarDefaults.smallTopAppBarColors(
             containerColor = Color.Gray
@@ -71,17 +82,6 @@ private fun TopAppBarTextField(
 }
 
 @Composable
-private fun SortBy() {
-    Icon(
-        imageVector = Icons.Outlined.CheckCircle,
-        contentDescription =null,
-        modifier = Modifier.clickable {
-
-        }
-    )
-}
-
-@Composable
 private fun Layout(layoutState: MutableState<Boolean>) {
     Icon(
         imageVector = if (layoutState.value) Icons.Outlined.List else Icons.Outlined.Info,
@@ -94,5 +94,44 @@ private fun Layout(layoutState: MutableState<Boolean>) {
 
 @Composable
 private fun Account() {
-    Icon(Icons.Outlined.AccountCircle, contentDescription =null)
+    Icon(
+        imageVector = Icons.Outlined.AccountCircle,
+        contentDescription = null
+    )
+}
+
+@OptIn(ExperimentalMaterialApi::class)
+@Composable
+private fun SortBy(
+    isShow:MutableState<Boolean>,
+    order:MutableState<String>
+) {
+    Icon(
+        imageVector = Icons.Outlined.CheckCircle,
+        contentDescription = null,
+        modifier = Modifier.clickable {
+            isShow.value = true
+        }
+    )
+
+    DropdownMenu(
+        expanded = isShow.value,
+        onDismissRequest = { },
+        properties = PopupProperties()
+    ) {
+        DropdownMenuItem(
+            text = { Text("Default") },
+            onClick = {
+                isShow.value = false
+                order.value = "order_by_default"
+            }
+        )
+        DropdownMenuItem(
+            text = { Text("Lasts") },
+            onClick = {
+                isShow.value = false
+                order.value = "order_by_lasts"
+            }
+        )
+    }
 }

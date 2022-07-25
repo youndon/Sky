@@ -22,6 +22,10 @@ class NoteViewModule @Inject constructor(
     private val _allNotesById = MutableStateFlow<List<NoteEntity>>(listOf())
     val allNotesById = _allNotesById
 
+    // TODO:
+    private val _allNotesByLasts = MutableStateFlow<List<NoteEntity>>(listOf())
+    val allNotesByLasts = _allNotesByLasts
+
     init {
         viewModelScope.launch(Dispatchers.IO) {
             repository.getAllNotesById.collect {

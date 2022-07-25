@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.example.sky.noteApp.database.NoteEntity
+import com.example.sky.noteApp.ui.add_edit_screen.NoteColors
 import com.example.sky.noteApp.viewmodule.NoteViewModule
 import kotlinx.datetime.Clock
 import kotlinx.datetime.TimeZone
