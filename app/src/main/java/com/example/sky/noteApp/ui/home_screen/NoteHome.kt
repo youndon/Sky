@@ -1,9 +1,11 @@
 package com.example.sky.noteApp.ui.home_screen
 
-import androidx.compose.foundation.layout.captionBarPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -28,41 +30,70 @@ fun NoteHome(
     // the true value is 'list' layout by default and false is 'grid'.
     val currentLayout = remember { mutableStateOf(true) }
 
+    //
+    val drawerState = rememberDrawerState(DrawerValue.Closed)
+
     // to observer data while changing immediately.
     val observerNotes: State<List<NoteEntity>> = when (orderBy.value) {
-        "order_by_lasts" ->  viewModule.allNotesByLasts.collectAsState()
+        "order_by_name" ->  viewModule.allNotesByName.collectAsState()
+        "order_by_oldest" ->  viewModule.allNotesByOldest.collectAsState()
+        "order_by_newest" ->  viewModule.allNotesByNewest.collectAsState()
         else -> viewModule.allNotesById.collectAsState() // sort_by_default
     }
 
-    Scaffold(
-        topBar = {
-                 HomeTopAppBar(
-                     searchNoteTitle = searchNote,
-                     currentOrder = orderBy,
-                     layoutState = currentLayout
-                 )
-        },
-        bottomBar = {
+    ModalNavigationDrawer(
+        drawerContent = {
 
         },
-        floatingActionButton = {
-            FloatingActionButton(
-                onClick = {
-                    navController.navigate("add")
-            }) {
-                Icon(Icons.Filled.Add, null)
-            }
-        }
+        drawerState = drawerState
     ) {
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(top = 55.dp),
+        Scaffold(
+            topBar = {
+                HomeTopAppBar(
+                    searchNoteTitle = searchNote,
+                    currentOrder = orderBy,
+                    layoutState = currentLayout,
+                    showDrawer = drawerState
+                )
+            },
+            bottomBar = {
+
+            },
+            floatingActionButton = {
+                FloatingActionButton(
+                    onClick = {
+                        navController.navigate("add")
+                    }) {
+                    Icon(Icons.Filled.Add, null)
+                }
+            }
         ) {
-            items(
-                items = observerNotes.value.filter { it.title.contains(searchNote.value) }
-            ) { note ->
-                NoteCard(note = note, navController,viewModule)
+
+            if (currentLayout.value){
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = 55.dp),
+                ) {
+                    items(
+                        observerNotes.value.filter { it.title.contains(searchNote.value) }
+                    ) { note ->
+                        NoteCard(note = note, navController,viewModule)
+                    }
+                }
+            } else {
+                LazyVerticalGrid(
+                    columns = GridCells.Fixed(2),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(top = 55.dp),
+                ){
+                    items(
+                        observerNotes.value.filter { it.title.contains(searchNote.value) }
+                    ) { note ->
+                        NoteCard(note = note, navController,viewModule)
+                    }
+                }
             }
         }
     }

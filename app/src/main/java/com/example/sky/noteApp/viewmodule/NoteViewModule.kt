@@ -22,9 +22,14 @@ class NoteViewModule @Inject constructor(
     private val _allNotesById = MutableStateFlow<List<NoteEntity>>(listOf())
     val allNotesById = _allNotesById
 
-    // TODO:
-    private val _allNotesByLasts = MutableStateFlow<List<NoteEntity>>(listOf())
-    val allNotesByLasts = _allNotesByLasts
+    private val _allNotesByOldest = MutableStateFlow<List<NoteEntity>>(listOf())
+    val allNotesByOldest = _allNotesByOldest
+
+    private val _allNotesByNewest = MutableStateFlow<List<NoteEntity>>(listOf())
+    val allNotesByNewest = _allNotesByNewest
+
+    private val _allNotesByName = MutableStateFlow<List<NoteEntity>>(listOf())
+    val allNotesByName = _allNotesByName
 
     init {
         viewModelScope.launch(Dispatchers.IO) {
@@ -32,10 +37,22 @@ class NoteViewModule @Inject constructor(
                 _allNotesById.value = it
             }
         }
+        viewModelScope.launch(Dispatchers.IO){
+            repository.getAllNotesByName.collect {
+                _allNotesByName.value = it
+            }
+        }
+        viewModelScope.launch(Dispatchers.IO){
+            repository.getAllNotesByNewest.collect {
+                _allNotesByNewest.value = it
+            }
+        }
+        viewModelScope.launch(Dispatchers.IO){
+            repository.getAllNotesByOldest.collect {
+                _allNotesByOldest.value = it
+            }
+        }
     }
-
-    //
-
 
     // for putting the note changes on Notes EntityState (the instance of Node Entity class).
      var noteState by mutableStateOf(listOf(NoteEntity()))

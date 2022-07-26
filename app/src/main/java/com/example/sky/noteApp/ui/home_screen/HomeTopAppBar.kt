@@ -1,5 +1,6 @@
 package com.example.sky.noteApp.ui.home_screen
 
+import android.widget.Toast
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.KeyboardActions
@@ -12,19 +13,24 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupProperties
+import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeTopAppBar(
     searchNoteTitle: MutableState<String>,
     currentOrder: MutableState<String>,
-    layoutState: MutableState<Boolean>
+    layoutState: MutableState<Boolean>,
+    showDrawer: DrawerState
 ) {
     val showSortMenu = remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
     SmallTopAppBar(
         title = {
                 TopAppBarTextField(
@@ -34,7 +40,12 @@ fun HomeTopAppBar(
         navigationIcon = {
                          Icon(
                              imageVector = Icons.Outlined.Settings,
-                             contentDescription = null
+                             contentDescription = null,
+                             modifier = Modifier.clickable {
+                                 scope.launch {
+                                     showDrawer.open()
+                                 }
+                             }
                          )
         },
         actions = {
@@ -94,13 +105,16 @@ private fun Layout(layoutState: MutableState<Boolean>) {
 
 @Composable
 private fun Account() {
+    val c = LocalContext.current
     Icon(
         imageVector = Icons.Outlined.AccountCircle,
-        contentDescription = null
+        contentDescription = null,
+        modifier = Modifier.clickable {
+            Toast.makeText(c, "soon.", Toast.LENGTH_LONG).show()
+        }
     )
 }
 
-@OptIn(ExperimentalMaterialApi::class)
 @Composable
 private fun SortBy(
     isShow:MutableState<Boolean>,
@@ -117,7 +131,9 @@ private fun SortBy(
     DropdownMenu(
         expanded = isShow.value,
         onDismissRequest = { },
-        properties = PopupProperties()
+        properties = PopupProperties(
+            focusable = true
+        )
     ) {
         DropdownMenuItem(
             text = { Text("Default") },
@@ -127,10 +143,24 @@ private fun SortBy(
             }
         )
         DropdownMenuItem(
-            text = { Text("Lasts") },
+            text = { Text("Newest") },
             onClick = {
                 isShow.value = false
-                order.value = "order_by_lasts"
+                order.value = "order_by_newest"
+            }
+        )
+        DropdownMenuItem(
+            text = { Text("Oldest") },
+            onClick = {
+                isShow.value = false
+                order.value = "order_by_oldest"
+            }
+        )
+        DropdownMenuItem(
+            text = { Text("Name") },
+            onClick = {
+                isShow.value = false
+                order.value = "order_by_name"
             }
         )
     }

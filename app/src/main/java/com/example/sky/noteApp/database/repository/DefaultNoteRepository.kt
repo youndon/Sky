@@ -13,6 +13,15 @@ class DefaultNoteRepository @Inject constructor(private val noteDao: NoteDao):No
     override val getAllNotesById: Flow<List<NoteEntity>>
         get() = noteDao.allNotesOrderedById()
 
+    override val getAllNotesByName: Flow<List<NoteEntity>>
+        get() = noteDao.allNotesOrderedByName()
+
+    override val getAllNotesByNewest: Flow<List<NoteEntity>>
+        get() = noteDao.allNotesOrderedByNewest()
+
+    override val getAllNotesByOldest: Flow<List<NoteEntity>>
+        get() = noteDao.allNotesOrderedByOldest()
+
     override suspend fun addNote(noteEntity: NoteEntity) {
         coroutineScope { launch { noteDao.addNote(noteEntity) } }
     }
