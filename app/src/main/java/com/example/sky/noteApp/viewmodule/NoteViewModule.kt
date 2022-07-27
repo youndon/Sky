@@ -32,24 +32,26 @@ class NoteViewModule @Inject constructor(
     val allNotesByName = _allNotesByName
 
     init {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.getAllNotesById.collect {
-                _allNotesById.value = it
+        viewModelScope.apply {
+            launch(Dispatchers.IO) {
+                repository.getAllNotesById.collect {
+                    _allNotesById.value = it
+                }
             }
-        }
-        viewModelScope.launch(Dispatchers.IO){
-            repository.getAllNotesByName.collect {
-                _allNotesByName.value = it
+            launch(Dispatchers.IO) {
+                repository.getAllNotesByName.collect {
+                    _allNotesByName.value = it
+                }
             }
-        }
-        viewModelScope.launch(Dispatchers.IO){
-            repository.getAllNotesByNewest.collect {
-                _allNotesByNewest.value = it
+            launch(Dispatchers.IO) {
+                repository.getAllNotesByNewest.collect {
+                    _allNotesByNewest.value = it
+                }
             }
-        }
-        viewModelScope.launch(Dispatchers.IO){
-            repository.getAllNotesByOldest.collect {
-                _allNotesByOldest.value = it
+            launch(Dispatchers.IO) {
+                repository.getAllNotesByOldest.collect {
+                    _allNotesByOldest.value = it
+                }
             }
         }
     }

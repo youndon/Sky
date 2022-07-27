@@ -24,6 +24,9 @@ fun NoteHome(
     navController: NavController ,
     viewModule: NoteViewModule ,
 ) {
+    val dd =  {
+
+    }
     val searchNote = remember { mutableStateOf("") }
     val orderBy = remember { mutableStateOf("") }
 
@@ -32,6 +35,8 @@ fun NoteHome(
 
     //
     val drawerState = rememberDrawerState(DrawerValue.Closed)
+
+    //
 
     // to observer data while changing immediately.
     val observerNotes: State<List<NoteEntity>> = when (orderBy.value) {
@@ -56,9 +61,6 @@ fun NoteHome(
                     showDrawer = drawerState
                 )
             },
-            bottomBar = {
-
-            },
             floatingActionButton = {
                 FloatingActionButton(
                     onClick = {
@@ -68,7 +70,6 @@ fun NoteHome(
                 }
             }
         ) {
-
             if (currentLayout.value){
                 LazyColumn(
                     modifier = Modifier
@@ -95,6 +96,7 @@ fun NoteHome(
                     }
                 }
             }
+
         }
     }
 }
