@@ -30,6 +30,8 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.PermissionChecker
+import coil.Coil
+import coil.compose.rememberImagePainter
 import com.google.accompanist.permissions.*
 import kotlin.reflect.jvm.internal.impl.metadata.jvm.JvmProtoBuf
 
@@ -69,6 +71,11 @@ fun coi() {
 
 fun hilt() {
 //    dagger.hilt.*
+}
+
+@Composable
+fun c(){
+//    LocalContext.current.*
 }
 
 
@@ -125,14 +132,16 @@ fun Some(
             Text(text = "contract!")
         }
 
-
-        uri?.let {
-            image.value = MediaStore.Images.Media.getBitmap(context.contentResolver,it)
-
-            image.value?.let { img ->
-                Image(img.asImageBitmap(), contentDescription = null)
-            }
+        image.value?.let {
+            Image(bitmap =it.asImageBitmap(), contentDescription =null)
         }
+
+//        uri?.let {
+//            image.value = MediaStore.Images.Media.getBitmap(context.contentResolver,it)
+//            image.value?.let { img ->
+//                Image(img.asImageBitmap(), contentDescription = null)
+//            }
+//        }
 
     }
 }
@@ -141,3 +150,11 @@ val tos : (Any?,Context) -> Unit = { a, con ->
     Toast.makeText(con, "$a", Toast.LENGTH_LONG).show()
 }
 
+@Composable
+fun Coiling() {
+
+}
+
+fun main() {
+
+}

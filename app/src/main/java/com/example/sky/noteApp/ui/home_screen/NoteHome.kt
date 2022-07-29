@@ -15,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.sky.noteApp.database.NoteEntity
-import com.example.sky.noteApp.ui.NoteCard
 import com.example.sky.noteApp.viewmodule.NoteViewModule
 
 @OptIn(ExperimentalMaterial3Api::class)

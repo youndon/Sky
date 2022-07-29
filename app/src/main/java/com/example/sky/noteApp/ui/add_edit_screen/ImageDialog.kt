@@ -4,6 +4,7 @@ import android.Manifest.permission.CAMERA
 import android.graphics.Bitmap
 import android.net.Uri
 import android.widget.Toast
+import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.launch
@@ -35,20 +36,13 @@ internal fun ImageDialog(
     dialogState: MutableState<Boolean>,
     navController: NavController,
     photo: MutableState<Bitmap?>,
-    imageUri: MutableState<Uri?>
-    ) {
+    imageUri: MutableState<Uri?>,
+    photoLaunch:ManagedActivityResultLauncher<Void?,Bitmap?>,
+    imageLaunch:ManagedActivityResultLauncher<String,Uri?>
+) {
     val c = LocalContext.current
 
     val prCamera = rememberPermissionState(CAMERA)
-
-    val takePhotoLauncher =
-        rememberLauncherForActivityResult(ActivityResultContracts.TakePicturePreview()) {
-            photo.value = it
-        }
-    val chooseImageLauncher =
-        rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) {
-            imageUri.value = it
-        }
 
     AlertDialog(
         onDismissRequest = {
@@ -72,7 +66,7 @@ internal fun ImageDialog(
                     modifier = Modifier.clickable {
                         prCamera.launchPermissionRequest()
                         if (prCamera.status.isGranted) {
-                            takePhotoLauncher.launch()
+                            photoLaunch.launch()
                         } else {
                             Toast.makeText(c, "permission denied", Toast.LENGTH_SHORT).show()
                         }
@@ -87,7 +81,7 @@ internal fun ImageDialog(
 
                 Row(
                     modifier = Modifier.clickable {
-                        chooseImageLauncher.launch("image/*")
+                        imageLaunch.launch("image/*")
                         dialogState.value = false
                     }
                 ) {

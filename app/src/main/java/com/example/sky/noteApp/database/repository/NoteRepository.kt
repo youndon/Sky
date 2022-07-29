@@ -7,8 +7,11 @@ import kotlinx.coroutines.flow.Flow
 interface NoteRepository {
 
     val getAllNotesById:Flow<List<NoteEntity>>
+
     val getAllNotesByName:Flow<List<NoteEntity>>
+
     val getAllNotesByNewest:Flow<List<NoteEntity>>
+
     val getAllNotesByOldest:Flow<List<NoteEntity>>
 
     suspend fun addNote(noteEntity: NoteEntity)

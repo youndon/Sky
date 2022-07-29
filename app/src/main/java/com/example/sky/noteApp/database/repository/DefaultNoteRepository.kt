@@ -10,6 +10,7 @@ import javax.inject.Inject
 
 @ViewModelScoped
 class DefaultNoteRepository @Inject constructor(private val noteDao: NoteDao):NoteRepository {
+
     override val getAllNotesById: Flow<List<NoteEntity>>
         get() = noteDao.allNotesOrderedById()
 
@@ -33,6 +34,5 @@ class DefaultNoteRepository @Inject constructor(private val noteDao: NoteDao):No
     override suspend fun deleteNote(noteEntity: NoteEntity) {
         coroutineScope { launch { noteDao.deleteNote(noteEntity) } }
     }
-
 
 }

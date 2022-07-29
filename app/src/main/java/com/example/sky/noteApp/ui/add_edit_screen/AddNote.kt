@@ -3,6 +3,9 @@ package com.example.sky.noteApp.ui.add_edit_screen
 import android.graphics.Bitmap
 import android.icu.util.Calendar
 import android.net.Uri
+import android.provider.MediaStore
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,11 +16,15 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavController
 import com.example.sky.noteApp.database.NoteEntity
 import com.example.sky.noteApp.ui.add_edit_screen.bottoms.AddEditBottomBar
 import com.example.sky.noteApp.ui.home_screen.ImageDialog
 import com.example.sky.noteApp.viewmodule.NoteViewModule
+import java.io.File
+import java.io.FileOutputStream
+import java.util.*
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -26,58 +33,90 @@ fun NoteAdd(
     navController: NavController,
     viewModule: NoteViewModule
 ) {
+    val c = LocalContext.current
     var titleState by remember { mutableStateOf("") }
-
     var descriptionState by remember { mutableStateOf("") }
-
     val colorState = remember { mutableStateOf("") }
-
     val dropdownMenuState = remember { mutableStateOf(false) }
-
     val imageDialogState = remember { mutableStateOf(false) }
-
     val photoState = remember { mutableStateOf<Bitmap?>(null) }
-
     val imageUriState = remember { mutableStateOf<Uri?>(null) }
-
     val dateState = mutableStateOf(Calendar.getInstance().time)
+    val takePhotoLauncher =
+        rememberLauncherForActivityResult(ActivityResultContracts.TakePicturePreview()) {
+            photoState.value = it
+        }
+    val chooseImageLauncher =
+        rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) {
+            imageUriState.value = it
+        }
+    val img by remember { mutableStateOf(photoState) }
+
+    val imagesPath = c.filesDir.path + "images"
+
+    val uuid = UUID.randomUUID()
 
     Scaffold(
-        floatingActionButton = {
-
-        },
         bottomBar = {
-            AddEditBottomBar(dialogState = imageDialogState, actionButton = {
-                FloatingActionButton(onClick = {
-                    viewModule.addNote(
-                        NoteEntity(
-                            title = titleState,
-                            description = descriptionState,
-                            color = colorState.value,
-                            date = dateState.value.toString()
-                        )
-                    )
-                    navController.navigate("home")
-                }) {
-                    Icon(Icons.Outlined.Done,null)
-                }
-            }
-            )
-        }
-    ) {
+            AddEditBottomBar(
+                dialogState = imageDialogState,
+                actionButton = {
+                    FloatingActionButton(
+                        onClick = {
+                            // todo move it to view module
+                            img.value?.let {
+                                FileOutputStream(
+                                    File(imagesPath,"${uuid}.jpeg")
+                                ).apply {
+                                    img.value?.compress(Bitmap.CompressFormat.JPEG, 100, this)
+                                    flush()
+                                    close()
+                                }
+                            }
 
-            Column(Modifier.fillMaxSize()) {
-                //
-                photoState.value ?.let {
-                    Image(bitmap = it.asImageBitmap(), contentDescription = null)
+                            viewModule.addNote(
+                                NoteEntity(
+                                    title = titleState,
+                                    description = descriptionState,
+                                    color = colorState.value,
+                                    date = dateState.value.toString(),
+                                    image = if (img.value != null)
+                                        "$uuid.jpeg"
+                                     else
+                                        null
+                                )
+                            )
+                            navController.navigate("home")
+                        }) {
+                        Icon(Icons.Outlined.Done, null)
+                    }
                 }
-                OutlinedTextField(value =titleState, onValueChange ={titleState = it})
-                OutlinedTextField(value =descriptionState, onValueChange ={descriptionState = it})
-                Button(onClick = {
-                    dropdownMenuState.value = !dropdownMenuState.value
-                }) {
-                    NoteColors(color = colorState,dropdownMenuState)
+            )
+        }) {
+
+        Column(Modifier.fillMaxSize()) {
+            // todo move it to view module and fix the file size.
+            imageUriState.value?.let { uri ->
+                    uri.buildUpon().clearQuery()
+                    photoState.value = MediaStore.Images.Media.getBitmap(c.contentResolver, uri)
+                photoState.value?.let { photo ->
+                    img.value = photo
                 }
+            } ?: photoState.value?.let { photo ->
+                img.value = photo
+            }
+
+            img.value?.let {
+                Image(bitmap = it.asImageBitmap(), contentDescription = null)
+            }
+
+            OutlinedTextField(value = titleState, onValueChange = { titleState = it })
+            OutlinedTextField(value = descriptionState, onValueChange = { descriptionState = it })
+            Button(onClick = {
+                dropdownMenuState.value = !dropdownMenuState.value
+            }) {
+                NoteMenuColors(color = colorState, dropdownMenuState)
+            }
         }
         // image dialog.
         if (imageDialogState.value) {
@@ -85,7 +124,9 @@ fun NoteAdd(
                 dialogState = imageDialogState,
                 navController = navController,
                 photo = photoState,
-                imageUri = imageUriState
+                imageUri = imageUriState,
+                photoLaunch = takePhotoLauncher,
+                imageLaunch = chooseImageLauncher
             )
         }
 
