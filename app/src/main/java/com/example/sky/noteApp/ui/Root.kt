@@ -30,12 +30,15 @@ fun NoteRoot(
                     type = NavType.IntType
                 },
                 navArgument("title") {
+                    nullable = true
                     type = NavType.StringType
                 },
                 navArgument("description") {
+                    nullable = true
                     type = NavType.StringType
                 },
                 navArgument("color") {
+                    nullable = true
                     type = NavType.StringType
                 },
                 navArgument("date") {
@@ -51,9 +54,9 @@ fun NoteRoot(
                 navController = navC,
                 viewModule = viewModule,
                 id = it.arguments?.getInt("id"),
-                title = it.arguments?.getString("title") ?: "",
-                description = it.arguments?.getString("description") ?: "",
-                color = it.arguments?.getString("color") ?: "",
+                title = it.arguments?.getString("title"),
+                description = it.arguments?.getString("description"),
+                color = it.arguments?.getString("color"),
                 date = it.arguments?.getString("date") ?: "",
                 image = it.arguments?.getString("image")
             )

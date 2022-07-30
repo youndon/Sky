@@ -11,11 +11,11 @@ data class NoteEntity(
     @NonNull
     var id:Int = 0,
     @ColumnInfo(name = "title")
-    var title: String = "",
+    var title: String? = null,
     @ColumnInfo(name = "description")
-    var description: String = "",
+    var description: String? = null,
     @ColumnInfo(name = "color")
-    var color: String = "",
+    var color: String? = null,
     @ColumnInfo(name = "date")
     var date: String = "",
     @ColumnInfo(name = "image")

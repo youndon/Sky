@@ -76,7 +76,7 @@ fun NoteHome(
                         .padding(top = 55.dp),
                 ) {
                     items(
-                        observerNotes.value.filter { it.title.contains(searchNote.value) }
+                        observerNotes.value.filter { it.title?.contains(searchNote.value) ?: true}
                     ) { note ->
                         NoteCard(note = note, navController,viewModule)
                     }
@@ -89,7 +89,7 @@ fun NoteHome(
                         .padding(top = 55.dp),
                 ){
                     items(
-                        observerNotes.value.filter { it.title.contains(searchNote.value) }
+                        observerNotes.value.filter { it.title?.contains(searchNote.value) ?: true }
                     ) { note ->
                         NoteCard(note = note, navController,viewModule)
                     }

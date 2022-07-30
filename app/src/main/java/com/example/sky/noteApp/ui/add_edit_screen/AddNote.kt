@@ -34,9 +34,9 @@ fun NoteAdd(
     viewModule: NoteViewModule
 ) {
     val c = LocalContext.current
-    var titleState by remember { mutableStateOf("") }
-    var descriptionState by remember { mutableStateOf("") }
-    val colorState = remember { mutableStateOf("") }
+    var titleState by remember { mutableStateOf<String?>(null) }
+    var descriptionState by remember { mutableStateOf<String?>(null) }
+    val colorState = remember { mutableStateOf<String?>(null) }
     val dropdownMenuState = remember { mutableStateOf(false) }
     val imageDialogState = remember { mutableStateOf(false) }
     val photoState = remember { mutableStateOf<Bitmap?>(null) }
@@ -65,14 +65,17 @@ fun NoteAdd(
                         onClick = {
                             // todo move it to view module
                             img.value?.let {
-                                FileOutputStream(
-                                    File(imagesPath,"${uuid}.jpeg")
-                                ).apply {
-                                    img.value?.compress(Bitmap.CompressFormat.JPEG, 100, this)
-                                    flush()
-                                    close()
-                                }
+                                viewModule::saveImageInternally.invoke(img.value,imagesPath,uuid)
                             }
+//                            img.value?.let {
+//                                FileOutputStream(
+//                                    File(imagesPath,"${uuid}.jpeg")
+//                                ).apply {
+//                                    img.value?.compress(Bitmap.CompressFormat.JPEG, 100, this)
+//                                    flush()
+//                                    close()
+//                                }
+//                            }
 
                             viewModule.addNote(
                                 NoteEntity(
@@ -80,10 +83,7 @@ fun NoteAdd(
                                     description = descriptionState,
                                     color = colorState.value,
                                     date = dateState.value.toString(),
-                                    image = if (img.value != null)
-                                        "$uuid.jpeg"
-                                     else
-                                        null
+                                    image = if (img.value != null) "$uuid.jpeg" else null
                                 )
                             )
                             navController.navigate("home")
@@ -96,12 +96,13 @@ fun NoteAdd(
 
         Column(Modifier.fillMaxSize()) {
             // todo move it to view module and fix the file size.
-            imageUriState.value?.let { uri ->
-                    uri.buildUpon().clearQuery()
-                    photoState.value = MediaStore.Images.Media.getBitmap(c.contentResolver, uri)
-                photoState.value?.let { photo ->
-                    img.value = photo
-                }
+            imageUriState.value?.let {
+//                    uri.buildUpon().clearQuery()
+//                    photoState.value = MediaStore.Images.Media.getBitmap(c.contentResolver, uri)
+//                photoState.value?.let { photo ->
+//                    img.value = photo
+//                }
+                viewModule::displayImage.invoke(img,photoState,it,c)
             } ?: photoState.value?.let { photo ->
                 img.value = photo
             }
@@ -110,8 +111,14 @@ fun NoteAdd(
                 Image(bitmap = it.asImageBitmap(), contentDescription = null)
             }
 
-            OutlinedTextField(value = titleState, onValueChange = { titleState = it })
-            OutlinedTextField(value = descriptionState, onValueChange = { descriptionState = it })
+            OutlinedTextField(
+                value = titleState ?: "",
+                onValueChange = { titleState = it }
+            )
+            OutlinedTextField(
+                value = descriptionState ?: "",
+                onValueChange = { descriptionState = it }
+            )
             Button(onClick = {
                 dropdownMenuState.value = !dropdownMenuState.value
             }) {

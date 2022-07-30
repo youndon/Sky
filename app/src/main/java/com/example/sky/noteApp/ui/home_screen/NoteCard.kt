@@ -37,11 +37,11 @@ fun NoteCard(
             .clickable {
                 navController.navigate(
                     route = "edit/" +
-                            "${note.id}/" +
-                            "${note.title}/" +
-                            "${note.description}/" +
-                            "${note.color}/" +
-                            "${note.date}/" +
+                            note.id  + "/" +
+                            note.title + "/" +
+                            note.description + "/" +
+                            note.color + "/" +
+                            note.date  + "/" +
                             note.image
                 )
             },
@@ -50,16 +50,18 @@ fun NoteCard(
         )
     ) {
         Text(text = note.id.toString())
-        Text(text = note.title, fontWeight = FontWeight.SemiBold, fontSize = 20.sp)
-        Text(text = note.description)
-        Text(text = note.color)
+        Text(text = note.title ?: "", fontWeight = FontWeight.SemiBold, fontSize = 20.sp)
+        Text(text = note.description ?: "")
+        Text(text = note.color ?: "")
         Text(text = note.date)
         Text(text = note.image ?: "")
         //
         note.image ?.let {
             val path = File(c.filesDir.path + "images", it)
             val bitImg = BitmapFactory.decodeFile(path.absolutePath)
-            Image(bitmap = bitImg.asImageBitmap(), contentDescription =null)
+            runCatching {
+                Image(bitmap = bitImg.asImageBitmap(), contentDescription =null)
+            }
         }
 
         IconButton(
@@ -75,7 +77,7 @@ fun NoteCard(
     }
 }
 
-private val getColor: (String) -> Color = { c ->
+private val getColor: (String?) -> Color = { c ->
     when(c) {
         "Cyan" -> Color.Cyan
         "Gray" -> Color.Gray

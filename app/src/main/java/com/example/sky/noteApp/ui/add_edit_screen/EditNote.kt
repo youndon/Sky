@@ -26,9 +26,9 @@ fun NoteEdit(
     navController: NavController,
     viewModule: NoteViewModule,
     id: Int?,
-    title:String,
-    description:String,
-    color: String,
+    title:String?,
+    description:String?,
+    color: String?,
     date:String,
     image:String?
 ) {
@@ -37,9 +37,7 @@ fun NoteEdit(
     val colorState = remember { mutableStateOf(color) }
     val dropdownMenuState = remember { mutableStateOf(false) }
     val dateState = mutableStateOf(Calendar.getInstance().time)
-    val imageState = remember {
-        mutableStateOf(image)
-    }
+    val imageState = remember { mutableStateOf(image) }
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(onClick = {
@@ -68,20 +66,19 @@ fun NoteEdit(
                     Image(bitmap = bitImg.asImageBitmap(), contentDescription = null)
                 }
             }
-            OutlinedTextField(value =titleState, onValueChange ={titleState=it})
-            OutlinedTextField(value =descriptionState, onValueChange ={descriptionState=it})
+            OutlinedTextField(
+                value = if (titleState=="null") "" else titleState ?: "",
+                onValueChange = { titleState = it }
+            )
+            OutlinedTextField(
+                value = if (descriptionState=="null") "" else descriptionState ?: "",
+                onValueChange = { descriptionState = it }
+            )
             Button(onClick = {
                 dropdownMenuState.value = !dropdownMenuState.value
             }) {
-                NoteMenuColors(color = colorState,dropdownMenuState)
+                NoteMenuColors(color = colorState, dropdownMenuState)
             }
-
-
         }
     }
-}
-
-@Composable
-fun img (str:String?) {
-
 }

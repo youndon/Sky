@@ -8,7 +8,7 @@ import androidx.compose.runtime.MutableState
 
 @Composable
 fun NoteMenuColors(
-    color: MutableState<String>,
+    color: MutableState<String?>,
     isShow: MutableState<Boolean>
 ) {
     DropdownMenu(
