@@ -5,10 +5,11 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 
 @Composable
 fun NoteMenuColors(
-    color: MutableState<String?>,
+    color: MutableState<String?> = mutableStateOf("Black"),
     isShow: MutableState<Boolean>
 ) {
     DropdownMenu(

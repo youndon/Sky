@@ -30,7 +30,7 @@ import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
-@OptIn(ExperimentalPermissionsApi::class, ExperimentalCoroutinesApi::class)
+@OptIn(ExperimentalPermissionsApi::class)
 @Composable
 internal fun ImageDialog(
     dialogState: MutableState<Boolean>,

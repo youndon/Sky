@@ -2,10 +2,8 @@ package com.example.sky.noteApp.ui.home_screen
 
 import android.widget.Toast
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
@@ -17,17 +15,16 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.PopupProperties
+import com.example.sky3.NoteDataStore
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeTopAppBar(
     searchNoteTitle: MutableState<String>,
-    currentOrder: MutableState<String>,
-    layoutState: MutableState<Boolean>,
-    showDrawer: DrawerState
+    showDrawer: DrawerState,
+    dataStore: NoteDataStore
 ) {
     val showSortMenu = remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
@@ -51,10 +48,10 @@ fun HomeTopAppBar(
         actions = {
             SortBy(
                 isShow = showSortMenu,
-                order = currentOrder
+                dataStore = dataStore
             )
             Layout(
-                layoutState = layoutState
+                dataStore = dataStore
             )
             Account()
         },
@@ -66,7 +63,7 @@ fun HomeTopAppBar(
 }
 
 
-@OptIn(ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
 @Composable
 private fun TopAppBarTextField(
     title: MutableState<String>
@@ -93,12 +90,16 @@ private fun TopAppBarTextField(
 }
 
 @Composable
-private fun Layout(layoutState: MutableState<Boolean>) {
+private fun Layout(dataStore: NoteDataStore) {
+    val layout = dataStore.getLayout.collectAsState(true)
+    val scope = rememberCoroutineScope()
     Icon(
-        imageVector = if (layoutState.value) Icons.Outlined.List else Icons.Outlined.Info,
+        imageVector = if (layout.value) Icons.Outlined.List else Icons.Outlined.Info,
         contentDescription = null,
         modifier = Modifier.clickable {
-            layoutState.value = !layoutState.value
+            scope.launch {
+                dataStore.saveLayout(!layout.value)
+            }
         }
     )
 }
@@ -117,9 +118,10 @@ private fun Account() {
 
 @Composable
 private fun SortBy(
-    isShow:MutableState<Boolean>,
-    order:MutableState<String>
+    isShow: MutableState<Boolean>,
+    dataStore: NoteDataStore
 ) {
+    val scope = rememberCoroutineScope()
     Icon(
         imageVector = Icons.Outlined.CheckCircle,
         contentDescription = null,
@@ -139,28 +141,36 @@ private fun SortBy(
             text = { Text("Default") },
             onClick = {
                 isShow.value = false
-                order.value = "order_by_default"
+                scope.launch {
+                    dataStore.saveOrder("order_by_default")
+                }
             }
         )
         DropdownMenuItem(
             text = { Text("Newest") },
             onClick = {
                 isShow.value = false
-                order.value = "order_by_newest"
+                scope.launch {
+                    dataStore.saveOrder("order_by_newest")
+                }
             }
         )
         DropdownMenuItem(
             text = { Text("Oldest") },
             onClick = {
                 isShow.value = false
-                order.value = "order_by_oldest"
+                scope.launch {
+                    dataStore.saveOrder("order_by_oldest")
+                }
             }
         )
         DropdownMenuItem(
             text = { Text("Name") },
             onClick = {
                 isShow.value = false
-                order.value = "order_by_name"
+                scope.launch {
+                    dataStore.saveOrder("order_by_name")
+                }
             }
         )
     }

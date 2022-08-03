@@ -1,5 +1,6 @@
 package com.example.sky.noteApp.ui.home_screen
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -12,36 +13,38 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.sky3.NoteDataStore
 import com.example.sky.noteApp.database.NoteEntity
 import com.example.sky.noteApp.viewmodule.NoteViewModule
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteHome(
     navController: NavController ,
-    viewModule: NoteViewModule ,
-) {
-    val dd =  {
-
-    }
+    viewModule: NoteViewModule
+    ) {
     val searchNote = remember { mutableStateOf("") }
-    val orderBy = remember { mutableStateOf("") }
+
+    val noteDataStore = NoteDataStore(LocalContext.current)
+
+    //
+    val orderBy = noteDataStore.getOrder.collectAsState("")
 
     // the true value is 'list' layout by default and false is 'grid'.
-    val currentLayout = remember { mutableStateOf(true) }
+    val currentLayout = noteDataStore.getLayout.collectAsState(true)
 
     //
     val drawerState = rememberDrawerState(DrawerValue.Closed)
 
-    //
-
     // to observer data while changing immediately.
     val observerNotes: State<List<NoteEntity>> = when (orderBy.value) {
-        "order_by_name" ->  viewModule.allNotesByName.collectAsState()
-        "order_by_oldest" ->  viewModule.allNotesByOldest.collectAsState()
-        "order_by_newest" ->  viewModule.allNotesByNewest.collectAsState()
+        "order_by_name" -> viewModule.allNotesByName.collectAsState()
+        "order_by_oldest" -> viewModule.allNotesByOldest.collectAsState()
+        "order_by_newest" -> viewModule.allNotesByNewest.collectAsState()
         else -> viewModule.allNotesById.collectAsState() // sort_by_default
     }
 
@@ -55,9 +58,8 @@ fun NoteHome(
             topBar = {
                 HomeTopAppBar(
                     searchNoteTitle = searchNote,
-                    currentOrder = orderBy,
-                    layoutState = currentLayout,
-                    showDrawer = drawerState
+                    showDrawer = drawerState,
+                    dataStore = noteDataStore
                 )
             },
             floatingActionButton = {
@@ -69,16 +71,16 @@ fun NoteHome(
                 }
             }
         ) {
-            if (currentLayout.value){
+            if (currentLayout.value) {
                 LazyColumn(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(top = 55.dp),
                 ) {
                     items(
-                        observerNotes.value.filter { it.title?.contains(searchNote.value) ?: true}
+                        observerNotes.value.filter { it.title?.contains(searchNote.value) ?: true }
                     ) { note ->
-                        NoteCard(note = note, navController,viewModule)
+                        NoteCard(note = note, navController, viewModule)
                     }
                 }
             } else {
@@ -87,16 +89,14 @@ fun NoteHome(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(top = 55.dp),
-                ){
+                ) {
                     items(
                         observerNotes.value.filter { it.title?.contains(searchNote.value) ?: true }
                     ) { note ->
-                        NoteCard(note = note, navController,viewModule)
+                        NoteCard(note = note, navController, viewModule)
                     }
                 }
             }
-
         }
     }
 }
-

@@ -18,7 +18,6 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.io.File
 import java.io.FileOutputStream
-import java.util.*
 import javax.inject.Inject
 
 @OptIn(InternalCoroutinesApi::class)
@@ -28,16 +27,16 @@ class NoteViewModule @Inject constructor(
 ):ViewModel() {
 
     // for observing the note changes.
-    private val _allNotesById = MutableStateFlow<List<NoteEntity>>(listOf())
+    private val _allNotesById = MutableStateFlow<List<NoteEntity>>(emptyList())
     val allNotesById = _allNotesById
 
-    private val _allNotesByOldest = MutableStateFlow<List<NoteEntity>>(listOf())
+    private val _allNotesByOldest = MutableStateFlow<List<NoteEntity>>(emptyList())
     val allNotesByOldest = _allNotesByOldest
 
-    private val _allNotesByNewest = MutableStateFlow<List<NoteEntity>>(listOf())
+    private val _allNotesByNewest = MutableStateFlow<List<NoteEntity>>(emptyList())
     val allNotesByNewest = _allNotesByNewest
 
-    private val _allNotesByName = MutableStateFlow<List<NoteEntity>>(listOf())
+    private val _allNotesByName = MutableStateFlow<List<NoteEntity>>(emptyList())
     val allNotesByName = _allNotesByName
 
     init {
@@ -94,9 +93,9 @@ class NoteViewModule @Inject constructor(
     }
 
     //
-    fun saveImageInternally(img:Bitmap?, imagesPath:String, uuid:UUID) {
+    fun saveImageInternally(img:Bitmap?, imagesPath:String, imageID:String?) {
             FileOutputStream(
-                File(imagesPath, "$uuid.jpeg")
+                imageID?.let { File(imagesPath, it) }
             ).use {
                 img?.compress(Bitmap.CompressFormat.JPEG, 100,it)
                 it.flush()
@@ -104,20 +103,16 @@ class NoteViewModule @Inject constructor(
         }
 
     //
-    fun displayImage (img:MutableState<Bitmap?>, photo: MutableState<Bitmap?>, uri: Uri, c:Context){
+    fun decodeBitmapImage (img:MutableState<Bitmap?>, photo: MutableState<Bitmap?>, uri: Uri, c:Context){
         if (Build.VERSION.SDK_INT < 28) {
-            uri.buildUpon().clearQuery()
             img.value = MediaStore.Images.Media.getBitmap(c.contentResolver,uri)
-
         } else {
-            val source = ImageDecoder
-                .createSource(c.contentResolver,uri)
+            val source = ImageDecoder.createSource(c.contentResolver,uri)
             img.value = ImageDecoder.decodeBitmap(source)
         }
-            photo.value?.let {
-                img.value = it
-            }
+            photo.value?.let { img.value = it }
     }
+
 
 }
 

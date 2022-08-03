@@ -41,7 +41,6 @@ fun NoteCard(
                             note.title + "/" +
                             note.description + "/" +
                             note.color + "/" +
-                            note.date  + "/" +
                             note.image
                 )
             },
@@ -83,6 +82,7 @@ private val getColor: (String?) -> Color = { c ->
         "Gray" -> Color.Gray
         "Magenta" -> Color.Magenta
         "Yellow" -> Color.Yellow
+        "Black" -> Color.Black
         else -> Color.White
     }
 }

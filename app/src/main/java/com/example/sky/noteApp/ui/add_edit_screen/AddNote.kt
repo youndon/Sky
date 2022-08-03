@@ -1,15 +1,16 @@
 package com.example.sky.noteApp.ui.add_edit_screen
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.icu.util.Calendar
 import android.net.Uri
-import android.provider.MediaStore
+import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Done
 import androidx.compose.material3.*
@@ -22,11 +23,11 @@ import com.example.sky.noteApp.database.NoteEntity
 import com.example.sky.noteApp.ui.add_edit_screen.bottoms.AddEditBottomBar
 import com.example.sky.noteApp.ui.home_screen.ImageDialog
 import com.example.sky.noteApp.viewmodule.NoteViewModule
-import java.io.File
-import java.io.FileOutputStream
 import java.util.*
 
 
+@SuppressLint("UnrememberedMutableState", "UnusedMaterial3ScaffoldPaddingParameter")
+@RequiresApi(Build.VERSION_CODES.N)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteAdd(
@@ -34,14 +35,17 @@ fun NoteAdd(
     viewModule: NoteViewModule
 ) {
     val c = LocalContext.current
+
     var titleState by remember { mutableStateOf<String?>(null) }
     var descriptionState by remember { mutableStateOf<String?>(null) }
     val colorState = remember { mutableStateOf<String?>(null) }
+    val dateState = mutableStateOf(Calendar.getInstance().time)
+
     val dropdownMenuState = remember { mutableStateOf(false) }
     val imageDialogState = remember { mutableStateOf(false) }
+
     val photoState = remember { mutableStateOf<Bitmap?>(null) }
     val imageUriState = remember { mutableStateOf<Uri?>(null) }
-    val dateState = mutableStateOf(Calendar.getInstance().time)
     val takePhotoLauncher =
         rememberLauncherForActivityResult(ActivityResultContracts.TakePicturePreview()) {
             photoState.value = it
@@ -65,17 +69,8 @@ fun NoteAdd(
                         onClick = {
                             // todo move it to view module
                             img.value?.let {
-                                viewModule::saveImageInternally.invoke(img.value,imagesPath,uuid)
+                                viewModule::saveImageInternally.invoke(img.value,imagesPath,"$uuid.jpeg")
                             }
-//                            img.value?.let {
-//                                FileOutputStream(
-//                                    File(imagesPath,"${uuid}.jpeg")
-//                                ).apply {
-//                                    img.value?.compress(Bitmap.CompressFormat.JPEG, 100, this)
-//                                    flush()
-//                                    close()
-//                                }
-//                            }
 
                             viewModule.addNote(
                                 NoteEntity(
@@ -95,18 +90,14 @@ fun NoteAdd(
         }) {
 
         Column(Modifier.fillMaxSize()) {
-            // todo move it to view module and fix the file size.
+
             imageUriState.value?.let {
-//                    uri.buildUpon().clearQuery()
-//                    photoState.value = MediaStore.Images.Media.getBitmap(c.contentResolver, uri)
-//                photoState.value?.let { photo ->
-//                    img.value = photo
-//                }
-                viewModule::displayImage.invoke(img,photoState,it,c)
+                viewModule::decodeBitmapImage.invoke(img,photoState,it,c)
             } ?: photoState.value?.let { photo ->
                 img.value = photo
             }
 
+            // display the image.
             img.value?.let {
                 Image(bitmap = it.asImageBitmap(), contentDescription = null)
             }

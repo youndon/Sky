@@ -1,5 +1,7 @@
 package com.example.sky.noteApp.ui
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavType
@@ -11,6 +13,7 @@ import com.example.sky.noteApp.ui.add_edit_screen.NoteAdd
 import com.example.sky.noteApp.ui.home_screen.NoteHome
 import com.example.sky.noteApp.viewmodule.NoteViewModule
 
+@RequiresApi(Build.VERSION_CODES.N)
 @Composable
 fun NoteRoot(
     viewModule: NoteViewModule = hiltViewModel()
@@ -24,7 +27,7 @@ fun NoteRoot(
             NoteAdd(navController = navC, viewModule = viewModule)
         }
         composable(
-            route = "edit/{id}/{title}/{description}/{color}/{date}/{image}",
+            route = "edit/{id}/{title}/{description}/{color}/{image}",
             arguments = listOf(
                 navArgument("id") {
                     type = NavType.IntType
@@ -41,9 +44,6 @@ fun NoteRoot(
                     nullable = true
                     type = NavType.StringType
                 },
-                navArgument("date") {
-                    type = NavType.StringType
-                },
                 navArgument("image") {
                     nullable = true
                     type = NavType.StringType
@@ -57,7 +57,6 @@ fun NoteRoot(
                 title = it.arguments?.getString("title"),
                 description = it.arguments?.getString("description"),
                 color = it.arguments?.getString("color"),
-                date = it.arguments?.getString("date") ?: "",
                 image = it.arguments?.getString("image")
             )
         }
