@@ -33,6 +33,8 @@ import androidx.core.content.PermissionChecker
 import coil.Coil
 import coil.compose.rememberImagePainter
 import com.google.accompanist.permissions.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import kotlin.reflect.jvm.internal.impl.metadata.jvm.JvmProtoBuf
 
 //
@@ -65,7 +67,6 @@ fun androidxPagingCompose() {
 //
 fun coi() {
 //    coil.compose.*
-    coil.transform.GrayscaleTransformation()
     coil.transform.RoundedCornersTransformation()
 }
 
@@ -109,46 +110,8 @@ fun Some(
     val launcher = rememberLauncherForActivityResult(ActivityResultContracts.GetContent()) {
        uri = it
     }
-
-
-    Column {
-
-        Button(
-            onClick = {
-                launcher.launch("picture/*")
-            pr.launchPermissionRequest()
-                .runCatching {
-                    when(pr.status){
-                        is PermissionStatus.Granted -> {
-                            launcherPicturePreview.launch()
-                        }
-                        is PermissionStatus.Denied -> {
-                            Toast.makeText(context, "0000000", Toast.LENGTH_LONG).show()
-                        }
-                    }
-                }
-            }
-        ) {
-            Text(text = "contract!")
-        }
-
-        image.value?.let {
-            Image(bitmap =it.asImageBitmap(), contentDescription =null)
-        }
-
-//        uri?.let {
-//            image.value = MediaStore.Images.Media.getBitmap(context.contentResolver,it)
-//            image.value?.let { img ->
-//                Image(img.asImageBitmap(), contentDescription = null)
-//            }
-//        }
-
-    }
 }
 
-val tos : (Any?,Context) -> Unit = { a, con ->
-    Toast.makeText(con, "$a", Toast.LENGTH_LONG).show()
-}
 
 @Composable
 fun Coiling() {
@@ -156,5 +119,6 @@ fun Coiling() {
 }
 
 fun main() {
+
 
 }

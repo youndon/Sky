@@ -3,15 +3,16 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.sky"
         minSdk 23
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -58,18 +59,27 @@ kapt {
 dependencies {
 
     //Defaults.
-    implementation 'androidx.core:core-ktx:1.8.0'
-    implementation "androidx.compose.ui:ui:1.3.0-alpha02"
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation "androidx.compose.ui:ui:1.3.0-beta02"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
     implementation 'androidx.activity:activity-compose:1.5.1'
+    implementation 'com.google.android.material:material:1.8.0-alpha01'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    //Firebase.
+    implementation platform('com.google.firebase:firebase-bom:30.4.1')
+    implementation 'com.google.firebase:firebase-database-ktx:20.0.6'
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.3.0'
+    implementation 'com.google.firebase:firebase-auth:21.0.8'
 
     //DateTime.
     implementation "org.jetbrains.kotlinx:kotlinx-datetime:0.4.0"
 
     //Material3.
-    implementation "androidx.compose.material3:material3:1.0.0-alpha15"
+    implementation "androidx.compose.material3:material3:1.0.0-beta02"
 
     //Retrofit.
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
@@ -80,22 +90,19 @@ dependencies {
     implementation("com.squareup.moshi:moshi-kotlin:1.13.0")
 
     //Coil.
-    implementation "io.coil-kt:coil-compose:1.4.0"
+    implementation "io.coil-kt:coil-compose:2.2.0"
 
     //Glide.
     implementation 'com.github.bumptech.glide:glide:4.13.0'
-    implementation 'com.google.android.material:material:1.7.0-alpha03'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.5.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
 
     //Picasso.
     implementation 'com.squareup.picasso:picasso:2.8'
 
     //Navigation.
-    implementation("androidx.navigation:navigation-compose:2.5.1")
+    implementation("androidx.navigation:navigation-compose:2.5.2"){
+        transitive(true)
+    }
 
     //Room.
     implementation "androidx.room:room-ktx:2.4.3"
@@ -108,7 +115,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.5.1"
 
     //LiveData.
-    implementation 'androidx.compose.runtime:runtime-livedata:1.3.0-alpha02'
+    implementation 'androidx.compose.runtime:runtime-livedata:1.3.0-beta02'
 
     //WorkManager.
     implementation "androidx.work:work-runtime-ktx:2.7.1"
@@ -130,7 +137,7 @@ dependencies {
     implementation("androidx.paging:paging-runtime:3.1.1")
     testImplementation("androidx.paging:paging-common:3.1.1")
     //Paging Compose.
-    implementation("androidx.paging:paging-compose:1.0.0-alpha15")
+    implementation("androidx.paging:paging-compose:1.0.0-alpha16")
 
     //SystemUiController.
     implementation "com.google.accompanist:accompanist-systemuicontroller:0.24.11-rc"
@@ -150,7 +157,7 @@ dependencies {
     //Swipe.
     implementation "me.saket.swipe:swipe:1.0.0"
 
-    //Sketchbook: Drawer Library.
+    //Sketchbook.
     implementation "io.getstream:sketchbook:1.0.4"
 
     testImplementation 'junit:junit:4.13.2'

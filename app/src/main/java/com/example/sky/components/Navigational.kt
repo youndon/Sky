@@ -78,10 +78,6 @@ interface Navigational {
             modifier = Modifier,
             drawerState = rememberDrawerState(DrawerValue.Closed),
             gesturesEnabled = true,
-            drawerShape = RectangleShape,
-            drawerTonalElevation = DrawerDefaults.DismissibleDrawerElevation,
-            drawerContainerColor = M3.colorScheme.surface,
-            drawerContentColor = contentColorFor(M3.colorScheme.surface)
         ) {
 
             }
@@ -90,10 +86,6 @@ interface Navigational {
             modifier = Modifier,
             drawerState = rememberDrawerState(DrawerValue.Closed),
             gesturesEnabled = true,
-            drawerShape = RoundedCornerShape(0.dp, 16.dp, 16.dp, 0.dp),
-            drawerTonalElevation = DrawerDefaults.ModalDrawerElevation,
-            drawerContainerColor = M3.colorScheme.surface,
-            drawerContentColor = contentColorFor(M3.colorScheme.surface),
             scrimColor = DrawerDefaults.scrimColor
         ) {
 
@@ -101,10 +93,6 @@ interface Navigational {
         PermanentNavigationDrawer(
             drawerContent = @Composable {},
             modifier = Modifier,
-            drawerShape = RectangleShape,
-            drawerTonalElevation = DrawerDefaults.PermanentDrawerElevation,
-            drawerContainerColor = M3.colorScheme.surface,
-            drawerContentColor = contentColorFor(M3.colorScheme.surface)
         ) {
 
         }

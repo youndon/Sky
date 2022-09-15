@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 private interface AppBars {
+    @OptIn(ExperimentalMaterial3Api::class)
     @Composable fun app() {
         //
         TopAppBar(

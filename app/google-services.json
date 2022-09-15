@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "553785004723",
+    "firebase_url": "https://skybase-ee14a-default-rtdb.firebaseio.com",
+    "project_id": "skybase-ee14a",
+    "storage_bucket": "skybase-ee14a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:553785004723:android:b62c1ee2821173f9f196c6",
+        "android_client_info": {
+          "package_name": "com.example.sky"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "553785004723-1da4h2vmanhbcmgdunomctkmboi6grje.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sky",
+            "certificate_hash": "eb3a5f7b04f3c392ce3c97e6c010583de1162edc"
+          }
+        },
+        {
+          "client_id": "553785004723-dnekj9rr9a3q0pbfjneuhc801idd96uu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzRPLWSAo4rIRxtxpFnae8wu6-KD5OP9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "553785004723-dnekj9rr9a3q0pbfjneuhc801idd96uu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -5,9 +5,13 @@ buildscript {
     
     dependencies {
         classpath("com.google.dagger:hilt-android-gradle-plugin:2.42")
+
+        // Add the dependency for the Google services Gradle plugin
+        classpath 'com.google.gms:google-services:4.3.13'
     }
 
     repositories {
+        google()
         mavenCentral()
     }
 
@@ -21,7 +25,5 @@ plugins {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-
 
 
