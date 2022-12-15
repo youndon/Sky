@@ -19,7 +19,7 @@ fun LinkText() {
         withStyle(SpanStyle(color = Color.Cyan)) {
             append("youtube")
         }
-        addStringAnnotation("youtube", "https://www.youtube.com", 10, 17)
+        addStringAnnotation("youtube", "https://www.youtube.com", 0, 1)
     }
 
     ClickableText(text = s, onClick = {
