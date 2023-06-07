@@ -2,40 +2,20 @@
 import android.Manifest.permission.CAMERA
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.res.ColorStateList
 import android.graphics.Bitmap
 import android.graphics.Color.*
-import android.graphics.drawable.Drawable
 import android.net.Uri
-import android.os.Build
-import android.os.Build.VERSION.SDK_INT
-import android.view.OnReceiveContentListener
-import android.view.animation.Animation
-import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputConnection
-import android.widget.EditText
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.*
 import androidx.compose.ui.text.*
 import androidx.compose.ui.text.input.*
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.viewinterop.AndroidView
-import androidx.core.view.inputmethod.EditorInfoCompat
-import androidx.core.view.inputmethod.InputConnectionCompat
-import coil.ComponentRegistry
-import coil.ImageLoader
-import coil.compose.rememberAsyncImagePainter
+import androidx.glance.appwidget.GlanceAppWidget
+import androidx.glance.appwidget.GlanceAppWidgetReceiver
 import coil.decode.GifDecoder.*
-import coil.decode.ImageDecoderDecoder
 import coil.transform.RoundedCornersTransformation
 import com.google.accompanist.permissions.*
 
@@ -104,6 +84,15 @@ fun Some(
        uri = it
     }
 }
+
+@SuppressLint("CoroutineCreationDuringComposition")
+fun main() {
+
+    derivedStateOf() {
+
+    }
+}
+
 
 
 

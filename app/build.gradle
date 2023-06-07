@@ -20,6 +20,11 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        Properties properties = new Properties()
+        properties.load(rootProject.file("local.properties").newDataInputStream())
+
+        buildConfigField "String", "API_KEY", properties['API_KEY']
     }
 
     buildTypes {
@@ -73,7 +78,7 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:30.4.1')
     implementation 'com.google.firebase:firebase-database-ktx:20.1.0'
     implementation 'com.google.firebase:firebase-firestore-ktx:24.4.1'
-    implementation 'com.google.firebase:firebase-auth:21.1.0'
+    implementation 'com.google.firebase:firebase-auth-ktx:21.1.0'
 
     //DateTime.
     implementation "org.jetbrains.kotlinx:kotlinx-datetime:0.4.0"
@@ -127,7 +132,6 @@ dependencies {
     //Dagger.
     implementation 'com.google.dagger:dagger:2.44'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.44'
-
     //Hilt.
     implementation "com.google.dagger:hilt-android:2.44"
     implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
@@ -148,13 +152,16 @@ dependencies {
     implementation "com.google.accompanist:accompanist-permissions:0.24.11-rc"
     implementation "com.google.accompanist:accompanist-flowlayout:0.27.0"
 
-
     //Swipe.
     implementation "me.saket.swipe:swipe:1.0.0"
 
     //Sketchbook.
     implementation "io.getstream:sketchbook:1.0.4"
 
+    //Glance.
+    implementation "androidx.glance:glance-appwidget:1.0.0-alpha05"
+
+    //Test
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
